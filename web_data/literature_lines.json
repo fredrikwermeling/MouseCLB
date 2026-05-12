@@ -67,6 +67,66 @@
         "Kerafast (MC38-K) and Leiden University Medical Center (MC38-L) variants differ substantially in mutations and mRNA expression — note your source when comparing studies (PMID 36969213).",
         "Historical confusion with the rat line 'MCA38' / 'isolate 406'; the mitochondrial sequence KM820832.1 deposited as MCA38 is actually rat (PMID 25434994)."
       ]
+    },
+    {
+      "id": "LITLL2",
+      "name": "LL/2",
+      "synonyms": ["LL/2 (LLC1)", "LL2", "LLC1", "LLC", "Lewis lung carcinoma line 1", "Lewis lung carcinoma", "Lewis Lung Cancer"],
+      "dataSource": "Literature",
+      "litCitation": "Lewis 1951 (Bull Johns Hopkins Hosp 88:251); immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_4358",
+      "cellosaurusRrid": "CVCL_4358",
+      "ncitDisease": "Malignant tumors of the mouse pulmonary system",
+
+      "curated": "LL/2",
+      "curatedTier": 1,
+
+      "lineage": "Lung",
+      "tissue": "EpithelialTissue",
+      "site": "Lung",
+      "tumorLocation": "Lung",
+      "cancerType": "LungCancer",
+      "cancerTypeDetailed": "LungCarcinoma",
+      "morphology": "Epithelial",
+      "morphologyDetailed": null,
+
+      "modelType": "Wildtype",
+      "mouseModel": "Spontaneous",
+      "mouseModelDetailed": "Spontaneously arising lung carcinoma in a C57BL/6 mouse (Lewis 1951). KRAS-mutant, TP53-mutant. Used as the canonical 'cold' / immune-excluded NSCLC syngeneic model and a standard negative-control line for ICB efficacy studies.",
+      "strain": "C57BL/6",
+      "strainPct": 100,
+
+      "mhcA": "H-2b",
+      "mhcB": "H-2b",
+      "gender": null,
+
+      "complexRearrangement": null,
+      "chromothripsis": null,
+      "survivalDays": null,
+      "metastasis": "Highly metastatic to lung when injected intravenously; one of the most-used syngeneic metastasis models.",
+
+      "immuneProfile": {
+        "tmbCategory": "low",
+        "tmbDetail": "Low TMB relative to MC38 / CT26; consistent with the spontaneous low-mutator origin.",
+        "msiStatus": "stable",
+        "msiDetail": "Microsatellite stable.",
+        "immunePhenotype": "cold",
+        "immunePhenotypeDetail": "Immune-excluded / cold tumour. Low CD8+ infiltration, high myeloid / MDSC content (Mosely 2017).",
+        "icbResponse": "resistant",
+        "icbResponseDetail": "Anti-PD-1 / anti-PD-L1 monotherapy resistant — used as the canonical negative-control syngeneic line for checkpoint-blockade studies. Some combination strategies (anti-PD-L1 + chemotherapy / anti-CTLA-4) show partial efficacy.",
+        "source": "Mosely 2017 (PMID 28768203)"
+      },
+
+      "immunocompetent": "Yes (C57BL/6)",
+      "source": "Lewis 1951 (Johns Hopkins)",
+      "distributor": "ATCC (CRL-1642), ECACC, Kerafast.",
+      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+      "cultureSystem": "Adherent 2D",
+      "pmid": "7226139",
+
+      "cautions": [
+        "Cellosaurus notes LL/2 could be identical to 3LL (CVCL_5653). The two designations refer to clonal derivatives of the same Lewis 1951 parent tumour; treat data across the two as comparable but not strictly interchangeable.",
+        "Sex of the originating mouse is not consistently reported in the primary literature — left as unknown rather than guess."
+      ]
     }
   ]
 }
