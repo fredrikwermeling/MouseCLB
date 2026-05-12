@@ -1,13 +1,21 @@
 {
   "_doc": "Supplemental cell-line entries for workhorse mouse lines NOT covered by MCCA (the MCCA cohort is heavily KRAS-GEMM-biased and misses the carcinogen-induced / spontaneous tumour lines that dominate everyday mouse-tumour work). Each entry is hand-curated from primary literature, with the source paper PMID under `litCitation`. Same field shape as metadata.json; `dataSource: 'Literature'` flags provenance for the UI. Anyone re-processing MCCA shouldn't touch this file.",
-  "_schemaVersion": 1,
+  "_schemaVersion": 2,
+  "_schemaNotes": {
+    "immuneProfile": "Per-line immune characterisation. Sourced from Mosely 2017 (PMID 28768203) where covered; TISMO / individual papers otherwise. Fields: tmbCategory (high/medium/low), msiStatus (high/stable/unknown), immunePhenotype (hot / inflamed / variable / cold), icbResponse (responsive / partial / resistant / untested), notes (free-text), source.",
+    "synonyms": "Alternative names listed in Cellosaurus.",
+    "ncitDisease": "NCI Thesaurus disease label for the cell line, from Cellosaurus.",
+    "cautions": "Important caveats from Cellosaurus comment-list (variant heterogeneity, mis-identification risk, etc.)."
+  },
   "lines": [
     {
       "id": "LITMC38",
       "name": "MC38",
+      "synonyms": ["MC-38", "MCA-38", "MCA 38", "MCA38", "MC-38 B/6"],
       "dataSource": "Literature",
-      "litCitation": "Corbett 1975 (Cancer Res 35:2434, PMID 1212137); exome characterisation in Mosely 2017 (Cell Reports, PMID 28768203)",
+      "litCitation": "Corbett 1975 (Cancer Res 35:2434, PMID 1212137); exome / immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_B288",
       "cellosaurusRrid": "CVCL_B288",
+      "ncitDisease": "Mouse colon adenocarcinoma",
 
       "curated": "MC38",
       "curatedTier": 1,
@@ -23,7 +31,7 @@
 
       "modelType": "Wildtype",
       "mouseModel": "Carcinogen-induced",
-      "mouseModelDetailed": "1,2-Dimethylhydrazine (DMH) induced colon adenocarcinoma in a female C57BL/6 mouse (Corbett 1975). Subsequent exome sequencing (Mosely 2017) shows high tumour mutational burden and microsatellite instability — MC38 is one of the few high-TMB syngeneic models and a workhorse for ICB (anti-PD-1 / anti-PD-L1) efficacy studies.",
+      "mouseModelDetailed": "1,2-Dimethylhydrazine (DMH) induced colon adenocarcinoma in a female C57BL/6 mouse (Corbett 1975).",
       "strain": "C57BL/6",
       "strainPct": 100,
 
@@ -36,12 +44,29 @@
       "survivalDays": null,
       "metastasis": "Limited; primarily a subcutaneous-engraftment model.",
 
+      "immuneProfile": {
+        "tmbCategory": "high",
+        "tmbDetail": "Highest TMB among the carcinogen-induced syngeneic panel; ~800+ non-synonymous mutations (Mosely 2017).",
+        "msiStatus": "high",
+        "msiDetail": "Microsatellite-unstable, defective MMR phenotype consistent with DMH-induced mucosal damage.",
+        "immunePhenotype": "hot",
+        "immunePhenotypeDetail": "T-cell inflamed; substantial CD8+ tumour infiltration relative to the cold lines (B16-F10, 4T1, LL/2).",
+        "icbResponse": "responsive",
+        "icbResponseDetail": "Anti-PD-1 and anti-PD-L1 sensitive — the canonical positive-control syngeneic model for checkpoint-blockade efficacy studies.",
+        "source": "Mosely 2017 (PMID 28768203)"
+      },
+
       "immunocompetent": "Yes (C57BL/6)",
       "source": "Corbett (NCI)",
       "distributor": "Available via collaborators / Kerafast / Memorial Sloan Kettering bank.",
       "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
       "cultureSystem": "Adherent 2D",
-      "pmid": "1212137"
+      "pmid": "1212137",
+
+      "cautions": [
+        "Kerafast (MC38-K) and Leiden University Medical Center (MC38-L) variants differ substantially in mutations and mRNA expression — note your source when comparing studies (PMID 36969213).",
+        "Historical confusion with the rat line 'MCA38' / 'isolate 406'; the mitochondrial sequence KM820832.1 deposited as MCA38 is actually rat (PMID 25434994)."
+      ]
     }
   ]
 }

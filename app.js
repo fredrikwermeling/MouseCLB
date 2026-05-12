@@ -48,7 +48,8 @@
         'complexRearrangement', 'chromothripsis', 'strain', 'strainPct',
         'mhcA', 'mhcB', 'gender', 'immunocompetent', 'source', 'distributor',
         'curated', 'curatedTier', 'dataSource', 'litCitation',
-        'cellosaurusRrid'
+        'cellosaurusRrid', 'ncitDisease', 'synonyms', 'immuneProfile',
+        'cautions'
       ];
       for (const entry of (lit.lines || [])) {
         const id = entry.id;
@@ -105,6 +106,48 @@
     if (s == null || s === '') return '';
     if (typeof s !== 'string') return s;
     return s.replace(/([a-z])([A-Z])/g, '$1 $2');
+  }
+
+  // Immune-profile pill (colour-coded by category) — used inside the
+  // "Immune profile" detail section so the user can scan TMB / MSI /
+  // phenotype / ICB-response at a glance.
+  function pill(category, label, detail) {
+    const palette = {
+      high:        { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' },
+      medium:      { bg: '#fef9c3', fg: '#854d0e', border: '#fde047' },
+      low:         { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' },
+      stable:      { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' },
+      hot:         { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+      inflamed:    { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+      variable:    { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' },
+      cold:        { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe' },
+      responsive:  { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+      partial:     { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' },
+      resistant:   { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+      untested:    { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' },
+      unknown:     { bg: '#f3f4f6', fg: '#9ca3af', border: '#e5e7eb' }
+    };
+    const p = palette[category] || palette.unknown;
+    return `<span class="badge" style="background:${p.bg}; color:${p.fg}; border-color:${p.border};" title="${(detail || '').replace(/"/g, '&quot;')}">${label}</span>`;
+  }
+
+  function renderImmuneProfile(prof) {
+    if (!prof || typeof prof !== 'object') return '';
+    const tmbPill   = prof.tmbCategory       ? pill(prof.tmbCategory,       'TMB: ' + prof.tmbCategory,       prof.tmbDetail) : '';
+    const msiPill   = prof.msiStatus         ? pill(prof.msiStatus,         'MSI: ' + prof.msiStatus,         prof.msiDetail) : '';
+    const phenPill  = prof.immunePhenotype   ? pill(prof.immunePhenotype,   'Phenotype: ' + prof.immunePhenotype, prof.immunePhenotypeDetail) : '';
+    const icbPill   = prof.icbResponse       ? pill(prof.icbResponse,       'ICB: ' + prof.icbResponse,       prof.icbResponseDetail) : '';
+    const pills = [tmbPill, msiPill, phenPill, icbPill].filter(Boolean).join(' ');
+    const detailRow = (k, v) => v ? `<div class="field"><div class="k">${k}</div><div class="v">${v}</div></div>` : '';
+    return `
+      <div class="section-title">Immune profile</div>
+      ${pills ? `<div style="margin: 0 0 10px; display:flex; gap:6px; flex-wrap:wrap;">${pills}</div>` : ''}
+      ${detailRow('TMB',           prof.tmbDetail)}
+      ${detailRow('MSI status',    prof.msiDetail)}
+      ${detailRow('Phenotype',     prof.immunePhenotypeDetail)}
+      ${detailRow('ICB response',  prof.icbResponseDetail)}
+      ${prof.source ? `<div style="font-size:10px; color:var(--gray-500); margin-top:6px;">Source: ${prof.source}</div>` : ''}
+    `;
   }
 
   // Sex glyph (♀ / ♂ / ⚥) coloured to match Correlate V2.
@@ -276,10 +319,29 @@
          </div>`
       : '';
 
+    // Synonyms line (Cellosaurus name-list minus the canonical identifier).
+    const syns = meta.synonyms?.[cl];
+    const synonymsLine = Array.isArray(syns) && syns.length
+      ? `<div style="font-size:11px; color:var(--gray-500); margin: -4px 0 14px;">also known as: ${syns.map(s => `<code style="background:#f3f4f6; padding:1px 4px; border-radius:3px; color:#374151;">${s}</code>`).join(' ')}</div>`
+      : '';
+
+    // Cautions block — variant heterogeneity, mis-identification, etc.
+    const cautions = meta.cautions?.[cl];
+    const cautionBlock = Array.isArray(cautions) && cautions.length
+      ? `<div style="margin: 0 0 14px; padding: 8px 12px; background: #fef2f2; border-left: 3px solid #dc2626; font-size: 11px; color: #991b1b; border-radius: 0 4px 4px 0;">
+           <b>⚠ Caution${cautions.length > 1 ? 's' : ''}:</b>
+           <ul style="margin: 4px 0 0; padding-left: 18px;">
+             ${cautions.map(c => `<li>${c}</li>`).join('')}
+           </ul>
+         </div>`
+      : '';
+
     const html = `
       <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge} ${sourceBadge}</h2>
-      <div class="id">${cl} · ${src}</div>
+      <div class="id">${cl} · ${src}${meta.ncitDisease?.[cl] ? ' · ' + meta.ncitDisease[cl] : ''}</div>
+      ${synonymsLine}
       ${provenance}
+      ${cautionBlock}
 
       <div class="section-title">Cancer classification</div>
       ${row('Cancer type',           prettyCancer(meta.cancerType[cl] || ''))}
@@ -308,6 +370,8 @@
       ${row('MHC haplotype A',         meta.mhcA[cl])}
       ${row('MHC haplotype B',         meta.mhcB[cl])}
       ${row('Immunocompetent transplant', meta.immunocompetent[cl])}
+
+      ${renderImmuneProfile(meta.immuneProfile?.[cl])}
 
       <div class="section-title">Culture & source</div>
       ${row('Curated name',     meta.curated[cl] || '<em style="color:#9ca3af;">not on curated list</em>')}
