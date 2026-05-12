@@ -1,0 +1,47 @@
+{
+  "_doc": "Supplemental cell-line entries for workhorse mouse lines NOT covered by MCCA (the MCCA cohort is heavily KRAS-GEMM-biased and misses the carcinogen-induced / spontaneous tumour lines that dominate everyday mouse-tumour work). Each entry is hand-curated from primary literature, with the source paper PMID under `litCitation`. Same field shape as metadata.json; `dataSource: 'Literature'` flags provenance for the UI. Anyone re-processing MCCA shouldn't touch this file.",
+  "_schemaVersion": 1,
+  "lines": [
+    {
+      "id": "LITMC38",
+      "name": "MC38",
+      "dataSource": "Literature",
+      "litCitation": "Corbett 1975 (Cancer Res 35:2434, PMID 1212137); exome characterisation in Mosely 2017 (Cell Reports, PMID 28768203)",
+      "cellosaurusRrid": "CVCL_B288",
+
+      "curated": "MC38",
+      "curatedTier": 1,
+
+      "lineage": "IntestineLarge",
+      "tissue": "EpithelialTissue",
+      "site": "Colon",
+      "tumorLocation": "Colon",
+      "cancerType": "IntestinalCancer",
+      "cancerTypeDetailed": "ColonAdenocarcinoma",
+      "morphology": "Epithelial",
+      "morphologyDetailed": "Grade III adenocarcinoma",
+
+      "modelType": "Wildtype",
+      "mouseModel": "Carcinogen-induced",
+      "mouseModelDetailed": "1,2-Dimethylhydrazine (DMH) induced colon adenocarcinoma in a female C57BL/6 mouse (Corbett 1975). Subsequent exome sequencing (Mosely 2017) shows high tumour mutational burden and microsatellite instability — MC38 is one of the few high-TMB syngeneic models and a workhorse for ICB (anti-PD-1 / anti-PD-L1) efficacy studies.",
+      "strain": "C57BL/6",
+      "strainPct": 100,
+
+      "mhcA": "H-2b",
+      "mhcB": "H-2b",
+      "gender": "female",
+
+      "complexRearrangement": null,
+      "chromothripsis": null,
+      "survivalDays": null,
+      "metastasis": "Limited; primarily a subcutaneous-engraftment model.",
+
+      "immunocompetent": "Yes (C57BL/6)",
+      "source": "Corbett (NCI)",
+      "distributor": "Available via collaborators / Kerafast / Memorial Sloan Kettering bank.",
+      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+      "cultureSystem": "Adherent 2D",
+      "pmid": "1212137"
+    }
+  ]
+}

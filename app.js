@@ -8,6 +8,7 @@
 
 (async function main() {
   const META_URL = 'web_data/metadata.json';
+  const LIT_URL  = 'web_data/literature_lines.json';
 
   // ---------- load ----------
   let meta;
@@ -20,7 +21,55 @@
       `<div class="empty" style="color:#991b1b;">Failed to load <code>${META_URL}</code>: ${e.message}.<br>Run <code>scripts/process_mcca_metadata.py</code> first.</div>`;
     return;
   }
-  document.getElementById('count-tag').textContent = `${meta.cellLines.length} cell lines`;
+
+  // Tag every MCCA line with its provenance, then merge the supplemental
+  // literature-curated lines (MC38, LL/2, Pan02, MOC1/2, ID8, TC-1, etc.)
+  // MCCA is heavily KRAS-GEMM-biased and silently misses the carcinogen-
+  // induced workhorses that dominate everyday mouse-tumour work; the
+  // literature file fills that gap one line at a time. Each line carries
+  // its own dataSource + litCitation so the detail pane can show
+  // provenance.
+  if (!meta.dataSource) meta.dataSource = {};
+  if (!meta.litCitation) meta.litCitation = {};
+  if (!meta.cellosaurusRrid) meta.cellosaurusRrid = {};
+  for (const cl of meta.cellLines) meta.dataSource[cl] = 'MCCA';
+
+  try {
+    const lr = await fetch(LIT_URL);
+    if (lr.ok) {
+      const lit = await lr.json();
+      const flat = (k, v, id) => { if (v != null && v !== '') meta[k][id] = v; };
+      // String/scalar fields we know about on each line.
+      const fields = [
+        'names:name', 'pmid', 'tumorLocation', 'modelType', 'mouseModel',
+        'mouseModelDetailed', 'tissue', 'lineage', 'site', 'cancerType',
+        'cancerTypeDetailed', 'media', 'cultureSystem', 'morphology',
+        'morphologyDetailed', 'survivalDays', 'metastasis',
+        'complexRearrangement', 'chromothripsis', 'strain', 'strainPct',
+        'mhcA', 'mhcB', 'gender', 'immunocompetent', 'source', 'distributor',
+        'curated', 'curatedTier', 'dataSource', 'litCitation',
+        'cellosaurusRrid'
+      ];
+      for (const entry of (lit.lines || [])) {
+        const id = entry.id;
+        if (!id || meta.dataSource[id]) continue; // skip dupes / collisions with MCCA
+        meta.cellLines.push(id);
+        for (const f of fields) {
+          const [dest, src] = f.includes(':') ? f.split(':') : [f, f];
+          if (!meta[dest]) meta[dest] = {};
+          if (entry[src] != null) meta[dest][id] = entry[src];
+        }
+      }
+    }
+  } catch (e) {
+    // Literature file is optional — log and continue.
+    console.warn('Could not load literature lines:', e);
+  }
+
+  const nLit = Object.values(meta.dataSource).filter(s => s !== 'MCCA').length;
+  const nTot = meta.cellLines.length;
+  document.getElementById('count-tag').textContent =
+    nLit > 0 ? `${nTot} cell lines (${nTot - nLit} MCCA + ${nLit} literature)` : `${nTot} cell lines`;
 
   // ---------- UI state ----------
   const state = {
@@ -121,9 +170,11 @@
       const tier = meta.curatedTier[cl];
       const tierTag = tier === 1 ? '<span class="tier-1">★ T1</span>'
                     : tier === 2 ? '<span class="tier-2">T2</span>' : '';
+      const src = meta.dataSource?.[cl];
+      const litTag = src && src !== 'MCCA' ? '<span class="lit-tag" title="Literature-curated (not in MCCA)">lit</span>' : '';
       return `<div class="cl-row${cl === state.activeId ? ' active' : ''}" data-cl="${cl}" title="${cl}">`
         + `<span class="sex ${sx.cls}" title="${sx.title}">${sx.sym}</span>`
-        + `<span class="name">${name}${tierTag}</span>`
+        + `<span class="name">${name}${tierTag}${litTag}</span>`
         + `<span class="tissue">${lin}</span>`
         + `</div>`;
     }).join('');
@@ -213,9 +264,22 @@
       : '';
 
     // Sections — grouped to mirror Correlate V2's CLB detail pane.
+    const src = meta.dataSource?.[cl] || 'MCCA';
+    const isLit = src !== 'MCCA';
+    const sourceBadge = isLit
+      ? `<span class="badge lit">Literature-curated</span>`
+      : `<span class="badge mcca">MCCA</span>`;
+    const provenance = isLit && meta.litCitation?.[cl]
+      ? `<div style="margin: 0 0 14px; padding: 8px 12px; background: #fffbeb; border-left: 3px solid #d97706; font-size: 11px; color: #92400e; border-radius: 0 4px 4px 0;">
+           <b>Source:</b> ${meta.litCitation[cl]}
+           ${meta.cellosaurusRrid?.[cl] ? `<br><b>RRID:</b> <a href="https://www.cellosaurus.org/${meta.cellosaurusRrid[cl]}" target="_blank" rel="noopener">${meta.cellosaurusRrid[cl]} ↗</a>` : ''}
+         </div>`
+      : '';
+
     const html = `
-      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge}</h2>
-      <div class="id">${cl} · MCCA</div>
+      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge} ${sourceBadge}</h2>
+      <div class="id">${cl} · ${src}</div>
+      ${provenance}
 
       <div class="section-title">Cancer classification</div>
       ${row('Cancer type',           prettyCancer(meta.cancerType[cl] || ''))}
