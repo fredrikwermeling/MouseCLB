@@ -8,14 +8,20 @@
     :root {
       --green-700: #15803d;
       --green-800: #166534;
+      --green-50:  #f0fdf4;
+      --green-200: #bbf7d0;
       --gray-50:   #f9fafb;
       --gray-100:  #f3f4f6;
       --gray-200:  #e5e7eb;
+      --gray-300:  #d1d5db;
       --gray-400:  #9ca3af;
       --gray-500:  #6b7280;
       --gray-700:  #374151;
       --red-700:   #991b1b;
+      --blue-700:  #1d4ed8;
+      --pink-600:  #db2777;
       --indigo-700:#3730a3;
+      --amber-700: #b45309;
     }
     * { box-sizing: border-box; }
     body {
@@ -23,62 +29,175 @@
       color: var(--gray-700); background: #fff; font-size: 13px; line-height: 1.5;
     }
     header {
-      border-bottom: 1px solid var(--gray-200); padding: 14px 20px;
-      display: flex; align-items: baseline; gap: 16px;
+      border-bottom: 1px solid var(--gray-200); padding: 12px 20px;
+      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
     }
     header h1 { margin: 0; font-size: 18px; color: var(--green-800); }
     header .tag {
       font-size: 10px; padding: 2px 8px; background: var(--gray-100);
       border-radius: 10px; color: var(--gray-500); border: 1px solid var(--gray-200);
     }
-    main { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 56px); }
+    header .sub {
+      font-size: 11px; color: var(--gray-500); margin-left: auto;
+    }
+    main { display: grid; grid-template-columns: 360px 1fr; min-height: calc(100vh - 49px); }
+
+    /* List pane */
     #list-pane {
       border-right: 1px solid var(--gray-200); overflow-y: auto;
-      max-height: calc(100vh - 56px);
+      max-height: calc(100vh - 49px); background: #fff;
     }
-    #list-pane .search {
-      position: sticky; top: 0; background: #fff; padding: 10px 12px;
-      border-bottom: 1px solid var(--gray-200); z-index: 1;
+    .filter-bar {
+      position: sticky; top: 0; background: #fff; z-index: 2;
+      border-bottom: 1px solid var(--gray-200); padding: 8px 10px 10px;
+      display: flex; flex-direction: column; gap: 6px;
     }
-    #list-pane input[type="text"] {
+    .filter-bar input[type="text"] {
       width: 100%; padding: 6px 10px; font-size: 12px;
-      border: 1px solid var(--gray-200); border-radius: 4px;
+      border: 1px solid var(--gray-300); border-radius: 4px;
     }
+    .filter-bar input[type="text"]:focus {
+      outline: none; border-color: var(--green-700); box-shadow: 0 0 0 2px var(--green-50);
+    }
+    .filter-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+    }
+    .filter-bar select {
+      padding: 4px 6px; font-size: 11px; border: 1px solid var(--gray-300);
+      border-radius: 4px; background: #fff; color: var(--gray-700);
+      min-width: 0; /* allow grid shrink */
+    }
+    .filter-bar .sort-row {
+      display: grid; grid-template-columns: 1fr 30px; gap: 6px; align-items: stretch;
+    }
+    .filter-bar .sort-dir {
+      padding: 0; font-size: 11px; cursor: pointer;
+      border: 1px solid var(--gray-300); background: #fff; border-radius: 4px;
+      color: var(--gray-500);
+    }
+    .filter-bar .sort-dir:hover { background: var(--gray-50); }
+    .filter-bar .active-bar {
+      display: none; flex-wrap: wrap; gap: 4px; font-size: 10px; align-items: center;
+    }
+    .filter-bar .active-bar.shown { display: flex; }
+    .filter-bar .chip {
+      background: var(--gray-100); color: var(--gray-700);
+      padding: 1px 6px; border-radius: 10px; display: inline-flex; align-items: center; gap: 3px;
+      border: 1px solid var(--gray-200);
+    }
+    .filter-bar .chip a {
+      color: inherit; text-decoration: none; font-weight: 700; opacity: 0.55;
+    }
+    .filter-bar .chip a:hover { opacity: 1; }
+    .filter-bar .reset {
+      background: none; border: none; color: var(--blue-700); cursor: pointer;
+      font-size: 10px; padding: 0; text-decoration: underline;
+    }
+
     .cl-row {
-      padding: 8px 12px; border-bottom: 1px solid var(--gray-100); cursor: pointer;
+      padding: 7px 12px; border-bottom: 1px solid var(--gray-100); cursor: pointer;
+      display: flex; align-items: baseline; gap: 6px;
     }
     .cl-row:hover { background: var(--gray-50); }
-    .cl-row.active { background: #ecfdf5; border-left: 3px solid var(--green-700); padding-left: 9px; }
+    .cl-row.active { background: var(--green-50); border-left: 3px solid var(--green-700); padding-left: 9px; }
+    .cl-row .sex { font-weight: 700; flex-shrink: 0; width: 12px; text-align: center; }
+    .cl-row .sex.f { color: var(--pink-600); }
+    .cl-row .sex.m { color: var(--blue-700); }
+    .cl-row .sex.u { color: var(--gray-400); font-style: italic; }
     .cl-row .name { font-weight: 600; color: var(--gray-700); }
     .cl-row .tier-1 { color: var(--green-700); font-size: 9px; margin-left: 4px; }
     .cl-row .tier-2 { color: var(--indigo-700); font-size: 9px; margin-left: 4px; }
-    .cl-row .meta { font-size: 10px; color: var(--gray-500); margin-top: 1px; }
-    #detail-pane { padding: 20px 24px; overflow-y: auto; max-height: calc(100vh - 56px); }
-    #detail-pane h2 { margin: 0 0 4px; color: var(--green-800); font-size: 18px; }
-    #detail-pane .id { color: var(--gray-500); font-size: 11px; margin-bottom: 14px; }
-    .field { display: grid; grid-template-columns: 200px 1fr; gap: 8px; padding: 2px 0; }
+    .cl-row .tissue {
+      font-size: 10px; color: var(--gray-500); margin-left: auto; flex-shrink: 0;
+      max-width: 130px; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .empty { padding: 20px; color: var(--gray-400); font-style: italic; text-align: center; }
+
+    /* Detail pane */
+    #detail-pane { padding: 18px 24px 60px; overflow-y: auto; max-height: calc(100vh - 49px); }
+    #detail-pane .placeholder { color: var(--gray-400); font-style: italic; padding: 40px 0; text-align: center; }
+    #detail-pane h2 { margin: 0 0 4px; color: var(--green-800); font-size: 20px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    #detail-pane .id { color: var(--gray-500); font-size: 11px; margin-bottom: 18px; }
+
+    .section-title {
+      margin: 18px 0 8px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--green-800);
+      background: var(--green-50);
+      border-left: 3px solid var(--green-700);
+      border-radius: 0 4px 4px 0;
+      font-weight: 600;
+    }
+    .field { display: grid; grid-template-columns: 180px 1fr; gap: 8px; padding: 2px 0; }
     .field .k { color: var(--gray-500); font-size: 12px; }
     .field .v { color: var(--gray-700); font-size: 12px; }
-    .placeholder { color: var(--gray-400); font-style: italic; padding: 40px 0; text-align: center; }
+    .field .v a { color: var(--green-700); }
+    .field .v a:hover { text-decoration: underline; }
+
     .badge {
       display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px;
       background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200);
-      margin-left: 6px;
     }
-    .badge.t1 { background: #f0fdf4; color: var(--green-700); border-color: #bbf7d0; }
+    .badge.t1 { background: var(--green-50); color: var(--green-700); border-color: var(--green-200); }
     .badge.t2 { background: #eef2ff; color: var(--indigo-700); border-color: #c7d2fe; }
+    .badge.model {
+      background: #fef3c7; color: var(--amber-700); border-color: #fde68a;
+      text-transform: uppercase; font-size: 9px; letter-spacing: 0.04em;
+    }
+    .badge.wt { background: var(--gray-100); color: var(--gray-500); }
+
+    .stub-note {
+      margin-top: 20px; padding: 10px 14px; background: var(--gray-50);
+      border-left: 3px solid var(--gray-400); font-size: 11px; color: var(--gray-500); border-radius: 0 4px 4px 0;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>MouseCLB</h1>
-    <span class="tag">v0.1 — pre-alpha</span>
+    <span class="tag">v0.2 — pre-alpha</span>
     <span class="tag" id="count-tag">loading…</span>
+    <span class="sub">Mouse Cancer Cell Line Browser · <a href="https://github.com/fredrikwermeling/MouseCLB" target="_blank" rel="noopener" style="color:var(--gray-500);">source ↗</a></span>
   </header>
   <main>
     <aside id="list-pane">
-      <div class="search">
+      <div class="filter-bar">
         <input type="text" id="search" placeholder="filter by name, lineage, cancer type…" autocomplete="off">
+        <div class="filter-row">
+          <select id="filterLineage"><option value="">All lineages</option></select>
+          <select id="filterCancer"><option value="">All cancer types</option></select>
+        </div>
+        <div class="filter-row">
+          <select id="filterModel">
+            <option value="">All model types</option>
+            <option value="Wildtype">Wildtype / carcinogen / spontaneous</option>
+            <option value="GEMM-Endogenous">GEMM (endogenous)</option>
+            <option value="GEMM-Implanted">GEMM (implanted)</option>
+          </select>
+          <select id="filterSex">
+            <option value="">Any sex</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+        <div class="filter-row">
+          <select id="filterTier">
+            <option value="">All cell lines</option>
+            <option value="1">Tier 1 — workhorses only</option>
+            <option value="1or2">Tier 1 + 2 — curated</option>
+          </select>
+          <div class="sort-row">
+            <select id="sortBy">
+              <option value="name">Sort: name</option>
+              <option value="tier">Sort: tier</option>
+              <option value="lineage">Sort: lineage</option>
+              <option value="cancer">Sort: cancer type</option>
+            </select>
+            <button id="sortDir" class="sort-dir" title="Toggle ascending / descending">▲</button>
+          </div>
+        </div>
+        <div class="active-bar" id="activeBar"></div>
       </div>
       <div id="cl-list"></div>
     </aside>
@@ -86,6 +205,6 @@
       <div class="placeholder">Pick a cell line from the list to see its details.</div>
     </section>
   </main>
-  <script src="app.js?v=v0_1"></script>
+  <script src="app.js?v=v0_2"></script>
 </body>
 </html>

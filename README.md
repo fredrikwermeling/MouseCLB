@@ -1,5 +1,7 @@
 # MouseCLB — Mouse Cancer Cell Line Browser
 
+**Live app:** https://fredrikwermeling.github.io/MouseCLB/
+
 A standalone web app for browsing commonly-used mouse cancer cell lines.
 Same visual / interaction language as Correlate V2's Cell Line Browser, but a
 distinct product — focused on a curated set of mouse cell lines instead of the
