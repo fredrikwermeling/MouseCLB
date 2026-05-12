@@ -9,6 +9,7 @@
 (async function main() {
   const META_URL = 'web_data/metadata.json';
   const LIT_URL  = 'web_data/literature_lines.json';
+  const MCCA_CELLO_URL = 'web_data/mcca_cellosaurus.json';
 
   // ---------- load ----------
   let meta;
@@ -32,7 +33,32 @@
   if (!meta.dataSource) meta.dataSource = {};
   if (!meta.litCitation) meta.litCitation = {};
   if (!meta.cellosaurusRrid) meta.cellosaurusRrid = {};
+  if (!meta.synonyms) meta.synonyms = {};
+  if (!meta.ncitDisease) meta.ncitDisease = {};
+  if (!meta.cautions) meta.cautions = {};
   for (const cl of meta.cellLines) meta.dataSource[cl] = 'MCCA';
+
+  // Merge in Cellosaurus enrichment for the MCCA lines (built offline by
+  // scripts/enrich_with_cellosaurus.py). Only ~34/590 lines match because
+  // the MCCA cohort is mostly paper-internal GEMM names, but the matched
+  // ones are the canonical workhorses (4T1, CT26, EMT6, A20, EL4, etc.)
+  // and getting their RRIDs + synonyms + cautions onto the detail pane
+  // is high-value.
+  try {
+    const er = await fetch(MCCA_CELLO_URL);
+    if (er.ok) {
+      const enrich = await er.json();
+      for (const [cl, v] of Object.entries(enrich.byCellLine || {})) {
+        if (!v || !v.rrid) continue;
+        meta.cellosaurusRrid[cl] = v.rrid;
+        if (Array.isArray(v.synonyms) && v.synonyms.length) meta.synonyms[cl] = v.synonyms;
+        if (v.ncitDisease) meta.ncitDisease[cl] = v.ncitDisease;
+        if (Array.isArray(v.cautions) && v.cautions.length) meta.cautions[cl] = v.cautions;
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load MCCA Cellosaurus enrichment:', e);
+  }
 
   try {
     const lr = await fetch(LIT_URL);
@@ -49,7 +75,7 @@
         'mhcA', 'mhcB', 'gender', 'immunocompetent', 'source', 'distributor',
         'curated', 'curatedTier', 'dataSource', 'litCitation',
         'cellosaurusRrid', 'ncitDisease', 'synonyms', 'immuneProfile',
-        'cautions'
+        'cautions', 'drivers'
       ];
       for (const entry of (lit.lines || [])) {
         const id = entry.id;
@@ -129,6 +155,46 @@
     };
     const p = palette[category] || palette.unknown;
     return `<span class="badge" style="background:${p.bg}; color:${p.fg}; border-color:${p.border};" title="${(detail || '').replace(/"/g, '&quot;')}">${label}</span>`;
+  }
+
+  // Driver-mutation alteration → palette mapping. Mirrors the V2 oncoprint
+  // colour cues: red = LoF / loss, blue = WT (when explicitly notable),
+  // amber = mutated, purple = transgene, orange = amplified / gain.
+  function alterationPill(alt) {
+    const palettes = {
+      'mutated':    { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+      'deleted':    { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+      'lost':       { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+      'low':        { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe' },
+      'wild-type':  { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+      'WT':         { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+      'transgene':  { bg: '#f3e8ff', fg: '#6b21a8', border: '#e9d5ff' },
+      'amplified':  { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+      'overexpressed': { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+      'deficient':  { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' }
+    };
+    const p = palettes[alt] || { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' };
+    return `<span class="badge" style="background:${p.bg}; color:${p.fg}; border-color:${p.border}; font-family:ui-monospace, monospace; font-size:10px;">${alt}</span>`;
+  }
+
+  function renderDrivers(drivers) {
+    if (!Array.isArray(drivers) || drivers.length === 0) return '';
+    const rows = drivers.map(d => {
+      const gene = `<code style="font-weight:600; color:#374151;">${d.gene || ''}</code>`;
+      const pill = alterationPill(d.alteration || 'unknown');
+      const pathway = d.pathway ? `<span style="color:var(--gray-500); font-size:11px;">[${d.pathway}]</span>` : '';
+      const note = d.note ? `<span style="color:var(--gray-700); font-size:11px;">${d.note}</span>` : '';
+      return `<div style="display:grid; grid-template-columns: 110px 90px 1fr; gap:8px; align-items:baseline; padding:3px 0; border-bottom:1px solid #f3f4f6;">
+        <div>${gene} ${pathway}</div>
+        <div>${pill}</div>
+        <div>${note}</div>
+      </div>`;
+    }).join('');
+    return `
+      <div class="section-title">Driver mutations &amp; genome</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">Literature-curated driver alterations. Pill colour: red = loss / mutated / deleted; green = notable WT; purple = engineered transgene; blue = low expression.</div>
+      ${rows}
+    `;
   }
 
   function renderImmuneProfile(prof) {
@@ -317,7 +383,11 @@
            <b>Source:</b> ${meta.litCitation[cl]}
            ${meta.cellosaurusRrid?.[cl] ? `<br><b>RRID:</b> <a href="https://www.cellosaurus.org/${meta.cellosaurusRrid[cl]}" target="_blank" rel="noopener">${meta.cellosaurusRrid[cl]} ↗</a>` : ''}
          </div>`
-      : '';
+      : (meta.cellosaurusRrid?.[cl]
+        ? `<div style="font-size:11px; color:var(--gray-500); margin: 0 0 10px;">
+             RRID: <a href="https://www.cellosaurus.org/${meta.cellosaurusRrid[cl]}" target="_blank" rel="noopener" style="color:var(--green-700);">${meta.cellosaurusRrid[cl]} ↗</a>
+           </div>`
+        : '');
 
     // Synonyms line (Cellosaurus name-list minus the canonical identifier).
     const syns = meta.synonyms?.[cl];
@@ -365,6 +435,8 @@
       ${row('Distant metastasis',    meta.metastasis[cl])}
       ${row('Complex rearrangement', meta.complexRearrangement[cl])}
       ${row('Chromothripsis',        meta.chromothripsis[cl])}
+
+      ${renderDrivers(meta.drivers?.[cl])}
 
       <div class="section-title">Immune context</div>
       ${row('MHC haplotype A',         meta.mhcA[cl])}
