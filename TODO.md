@@ -7,7 +7,7 @@ TISMO/Dryad / Zeng 2022 (114-gene immune panel + full 15.4k-gene
 expression matrix × baseline/R/NR for 22 lines), PubMed (literature
 presence), primary literature (8 deep curated workhorses).
 
-## Shipped between v0.15 and v0.20
+## Shipped between v0.15 and v0.22
 
 - ✅ Per-gene expression browser (full Dryad matrix, 1.7 MB binary blob,
   v0.15) — gene-search UI + cohort-dotplot per condition.
@@ -20,27 +20,28 @@ presence), primary literature (8 deep curated workhorses).
   plot (v0.19).
 - ✅ Unified Drivers schema — literature + MCCA WES merged into one
   table with source badges (v0.20).
+- ✅ PD-L1 ↑/↓ and TMB ↑/↓ tertile tags in list rows (v0.21) — silent
+  for mid-tertile to keep rows scannable.
+- ✅ "Pick a model" guided picker (v0.22) — 5 preset goals
+  (ICB-responsive / cold-resistant / high-TMB / PD-L1-high / MHC-I-loss),
+  lineage filter, ranked candidates with match-reason explanations.
 
 ## Quick wins still open (~30-60 min each)
 
-- [ ] **Immune-summary tag in list row**: small pill showing PD-L1
-      tertile (HIGH/MID/LOW vs cohort) for lines with TISMO data, so
-      you can scan PD-L1-high candidates without opening each.
-- [ ] **List-row TMB tag** showing HIGH-impact-count tertile for MCCA
-      lines with WES data.
 - [ ] **CURATED_CELL_LINES.md refresh** — it's still v0.1 era.
 - [ ] **README sources table refresh** — sync with current contents.
 
 ## Heavier still open
 
-- [ ] **"Pick the right model" decision tree**: given user goal
-      (e.g. "ICB-responsive HNSCC", "cold KRAS-mutant lung",
-      "high-TMB colon"), narrow to candidate lines with reasons. The
-      app currently has the data; this is a guided-UX layer on top.
 - [ ] **Mosely 2017 supplementary tables**: their TMB / TIL density /
       MDSC ratio / anti-PD-L1 efficacy data for all ~22 lines in
       their cohort (not just our 8). Probably PDF/Excel from the
       paper supplement — needs manual extraction.
+- [ ] **Refine model-picker scoring**: the v0.22 scoring is heuristic
+      (literal points per matching criterion). Worth iterating on the
+      weights once a user has spent time with it — particularly the
+      "high-TMB" goal (which currently rewards Pole / MMR-deficient
+      annotations) and the "ICB-resistant" goal.
 
 ## Sources not yet tried (worth probing)
 

@@ -375,7 +375,13 @@
     // When length === 2 and compareActive is true, the detail pane
     // renders the comparison view instead of the single-line view.
     compareIds: [],
-    compareActive: false
+    compareActive: false,
+    // Model-picker: when active, the detail pane shows a guided
+    // selector ("which model should I use?") instead of the single
+    // cell-line view. `goal` is one of the presets below or 'custom'.
+    pickerActive: false,
+    pickerGoal: 'icb_responsive',
+    pickerLineageFilter: ''
   };
 
   // ---------- populate the lineage / cancer-type dropdowns from data ----------
@@ -1228,6 +1234,184 @@
     render();
   }
 
+  // ---------- model picker (guided "which line should I use?") ----------
+  // Each preset goal has a scoring function over cell lines and a
+  // short description. Lines are scored, sorted desc, top N shown with
+  // their match reasons (so the user sees WHY each was picked).
+  const PICKER_GOALS = [
+    {
+      key: 'icb_responsive',
+      label: 'ICB-responsive (anti-PD-1 / PD-L1 sensitive)',
+      desc: 'Use case: testing immune-checkpoint blockade efficacy. Goal: positive-control model that responds to anti-PD-1 / anti-PD-L1 monotherapy.',
+      score: (cl) => {
+        const reasons = []; let s = 0;
+        const ip = meta.immuneProfile?.[cl];
+        if (ip?.icbResponse === 'responsive') { s += 10; reasons.push('Literature ICB: <b>responsive</b>'); }
+        else if (ip?.icbResponse === 'partial') { s += 5; reasons.push('Literature ICB: partial'); }
+        const sc = meta.immuneScores?.[cl];
+        if (sc?.tCellInflamed != null && sc.tCellInflamed > 0.5) { s += 3; reasons.push(`T-cell-inflamed score +${sc.tCellInflamed.toFixed(2)}σ`); }
+        if (sc?.mhcI != null && sc.mhcI > 0.5) { s += 2; reasons.push(`MHC-I score +${sc.mhcI.toFixed(2)}σ`); }
+        if (ip?.immunePhenotype === 'hot' || ip?.immunePhenotype === 'inflamed') { s += 3; reasons.push(`Phenotype: ${ip.immunePhenotype}`); }
+        const t = meta.tismo?.[cl];
+        if (t?.icbResponders > 0) { s += Math.min(3, t.icbResponders / 5); reasons.push(`${t.icbResponders} R samples in TISMO`); }
+        return { score: s, reasons };
+      }
+    },
+    {
+      key: 'icb_resistant',
+      label: 'ICB-resistant / immune-cold (negative-control)',
+      desc: 'Use case: studying ICB resistance or testing combination strategies. Goal: cold tumour that does NOT respond to ICB monotherapy.',
+      score: (cl) => {
+        const reasons = []; let s = 0;
+        const ip = meta.immuneProfile?.[cl];
+        if (ip?.icbResponse === 'resistant') { s += 10; reasons.push('Literature ICB: <b>resistant</b>'); }
+        if (ip?.immunePhenotype === 'cold') { s += 5; reasons.push('Phenotype: cold'); }
+        const sc = meta.immuneScores?.[cl];
+        if (sc?.tCellInflamed != null && sc.tCellInflamed < -0.5) { s += 3; reasons.push(`T-cell-inflamed score ${sc.tCellInflamed.toFixed(2)}σ`); }
+        if (sc?.mhcI != null && sc.mhcI < -0.5) { s += 2; reasons.push(`MHC-I score ${sc.mhcI.toFixed(2)}σ`); }
+        if (sc?.mdsc != null && sc.mdsc > 0.5) { s += 2; reasons.push(`MDSC / suppression score +${sc.mdsc.toFixed(2)}σ`); }
+        return { score: s, reasons };
+      }
+    },
+    {
+      key: 'high_tmb',
+      label: 'High-TMB / hypermutated (neoantigen-rich)',
+      desc: 'Use case: neoantigen-targeted therapy, MMR-deficient phenotype, or studies needing many predicted neoepitopes.',
+      score: (cl) => {
+        const reasons = []; let s = 0;
+        const ip = meta.immuneProfile?.[cl];
+        if (ip?.tmbCategory === 'high') { s += 8; reasons.push('Literature TMB: <b>high</b>'); }
+        else if (ip?.tmbCategory === 'medium') { s += 3; reasons.push('Literature TMB: medium'); }
+        if (ip?.msiStatus === 'high') { s += 4; reasons.push('MSI-high (MMR-deficient)'); }
+        const m = meta.mutations?.[cl];
+        const tmbT = meta._tertiles?.tmb;
+        if (m && tmbT && m.totalHigh >= tmbT.hi) { s += 5; reasons.push(`Top-tertile MCCA WES (${m.totalHigh} HIGH-impact)`); }
+        // Pole / MMR-deficient driver bonus
+        const drv = meta.drivers?.[cl] || [];
+        if (drv.find(d => d.gene === 'Pole')) { s += 2; reasons.push('Pole mutation → polymerase-ε proofreading defect'); }
+        if (drv.find(d => d.gene === 'MMR' && d.alteration === 'deficient')) { s += 2; reasons.push('MMR-deficient annotated'); }
+        return { score: s, reasons };
+      }
+    },
+    {
+      key: 'pdl1_high',
+      label: 'PD-L1 high (anti-PD-L1 efficacy / sensitivity)',
+      desc: 'Use case: lines that already express PD-L1 at high baseline — useful as readout cohort for anti-PD-L1 binding / efficacy.',
+      score: (cl) => {
+        const reasons = []; let s = 0;
+        const v = meta.immunePanel?.[cl]?.preICB_baseline?.mean?.Cd274;
+        const t = meta._tertiles?.pdl1;
+        if (v != null && t) {
+          if (v >= t.hi) { s += 8; reasons.push(`Top-tertile PD-L1 baseline (${v.toFixed(2)})`); }
+          else if (v >= (t.lo + t.hi) / 2) { s += 3; reasons.push(`Above-median PD-L1 baseline (${v.toFixed(2)})`); }
+        }
+        const sc = meta.immuneScores?.[cl];
+        if (sc?.tCellInflamed != null && sc.tCellInflamed > 0.5) { s += 2; reasons.push(`T-cell-inflamed score +${sc.tCellInflamed.toFixed(2)}σ`); }
+        return { score: s, reasons };
+      }
+    },
+    {
+      key: 'mhc1_loss',
+      label: 'MHC-I loss / immune-escape',
+      desc: 'Use case: studying tumour immune escape via antigen-presentation loss; B2M-loss / HLA-loss biology.',
+      score: (cl) => {
+        const reasons = []; let s = 0;
+        const sc = meta.immuneScores?.[cl];
+        if (sc?.mhcI != null) {
+          if (sc.mhcI < -1)  { s += 8; reasons.push(`Strongly low MHC-I score (${sc.mhcI.toFixed(2)}σ)`); }
+          else if (sc.mhcI < -0.5) { s += 4; reasons.push(`Low MHC-I score (${sc.mhcI.toFixed(2)}σ)`); }
+        }
+        const drv = meta.drivers?.[cl] || [];
+        if (drv.find(d => d.gene === 'MHC-I' && d.alteration === 'low')) { s += 4; reasons.push('Literature: MHC-I low annotated'); }
+        return { score: s, reasons };
+      }
+    }
+  ];
+
+  function renderPickerView() {
+    const goal = PICKER_GOALS.find(g => g.key === state.pickerGoal) || PICKER_GOALS[0];
+    const lineageOpts = Array.from(new Set(meta.cellLines.map(cl => meta.lineage[cl]).filter(Boolean))).sort();
+
+    // Score every cell line under the chosen goal; keep those with non-zero
+    // score; optionally filter by lineage.
+    const candidates = [];
+    for (const cl of meta.cellLines) {
+      if (state.pickerLineageFilter && (meta.lineage[cl] || '') !== state.pickerLineageFilter) continue;
+      const { score, reasons } = goal.score(cl);
+      if (score > 0) candidates.push({ cl, score, reasons });
+    }
+    candidates.sort((a, b) => b.score - a.score);
+    const top = candidates.slice(0, 15);
+
+    const goalButtons = PICKER_GOALS.map(g => {
+      const active = g.key === state.pickerGoal;
+      return `<button data-picker-goal="${g.key}" style="font-size:11px; padding:5px 10px; cursor:pointer; background:${active ? 'var(--green-700)' : '#fff'}; color:${active ? '#fff' : 'var(--gray-700)'}; border:1px solid ${active ? 'var(--green-700)' : 'var(--gray-300)'}; border-radius:4px; text-align:left;">${g.label}</button>`;
+    }).join('');
+
+    const lineageOptionsHtml = lineageOpts.map(l => `<option value="${l}" ${l === state.pickerLineageFilter ? 'selected' : ''}>${prettyLineage(l)}</option>`).join('');
+
+    const rows = top.length === 0
+      ? `<div style="color:var(--gray-500); padding:20px; text-align:center; font-style:italic;">No cell lines match this goal${state.pickerLineageFilter ? ' for the selected lineage' : ''}. Try a different lineage or goal.</div>`
+      : top.map((c, i) => {
+          const name = meta.names[c.cl] || c.cl;
+          const lin = prettyLineage(meta.lineage[c.cl] || '');
+          const cancer = prettyCancer(meta.cancerType[c.cl] || '');
+          return `<div data-picker-pick="${c.cl}" style="padding:8px 12px; border-bottom:1px solid var(--gray-200); cursor:pointer; display:grid; grid-template-columns: 30px 160px 1fr 50px; gap:10px; align-items:start;"
+                       onmouseover="this.style.background='var(--green-50)'" onmouseout="this.style.background=''">
+            <div style="font-weight:600; color:var(--green-700); font-size:14px;">${i + 1}</div>
+            <div>
+              <div style="font-weight:600; color:var(--gray-700);">${name}</div>
+              <div style="font-size:10px; color:var(--gray-500);">${lin}${cancer ? ' · ' + cancer : ''}</div>
+            </div>
+            <div style="font-size:11px; color:var(--gray-700);">
+              ${c.reasons.map(r => `<div style="margin:1px 0;">• ${r}</div>`).join('')}
+            </div>
+            <div style="text-align:right; font-size:11px; color:var(--gray-500); font-variant-numeric:tabular-nums;">score<br><b style="color:var(--green-700); font-size:14px;">${c.score.toFixed(1)}</b></div>
+          </div>`;
+        }).join('');
+
+    return `
+      <h2>Pick a model <button data-picker-close="1" style="margin-left:auto; font-size:11px; padding:3px 8px; cursor:pointer; background:#fff; border:1px solid var(--gray-300); border-radius:4px;">← Back</button></h2>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:10px;">
+        Guided picker: choose a research goal and a lineage filter (optional). Cell lines are scored by how well they match, with the reasons displayed alongside. Score is heuristic — use it as a shortlist, not a substitute for primary-literature verification.
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:10px;">
+        ${goalButtons}
+      </div>
+      <div style="margin-bottom:10px; padding:8px 12px; background:var(--gray-50); border-radius:4px;">
+        <div style="font-size:11px; color:var(--gray-500); margin-bottom:4px;">${goal.desc}</div>
+        <label style="font-size:11px; color:var(--gray-500);">Lineage filter:
+          <select id="pickerLineageSel" style="font-size:11px; padding:2px 6px; border:1px solid var(--gray-300); border-radius:3px; margin-left:4px;">
+            <option value="">Any</option>
+            ${lineageOptionsHtml}
+          </select>
+        </label>
+      </div>
+      <div style="background:#fff; border:1px solid var(--gray-200); border-radius:4px; overflow:hidden;">
+        ${rows}
+      </div>
+    `;
+  }
+
+  function wirePickerView() {
+    document.querySelectorAll('[data-picker-goal]').forEach(b => {
+      b.addEventListener('click', () => { state.pickerGoal = b.dataset.pickerGoal; renderDetail(null); });
+    });
+    document.querySelectorAll('[data-picker-pick]').forEach(b => {
+      b.addEventListener('click', () => {
+        state.pickerActive = false;
+        state.activeId = b.dataset.pickerPick;
+        render();
+        renderDetail(state.activeId);
+      });
+    });
+    document.querySelectorAll('[data-picker-close]').forEach(b => {
+      b.addEventListener('click', () => { state.pickerActive = false; renderDetail(state.activeId); });
+    });
+    const sel = document.getElementById('pickerLineageSel');
+    if (sel) sel.addEventListener('change', () => { state.pickerLineageFilter = sel.value; renderDetail(null); });
+  }
+
   // ---------- compare-view helpers ----------
   function pinForCompare(cl) {
     const i = state.compareIds.indexOf(cl);
@@ -1383,6 +1567,12 @@
   // ---------- detail pane ----------
   function renderDetail(cl) {
     const pane = document.getElementById('detail-pane');
+    // Picker-view takeover.
+    if (state.pickerActive) {
+      pane.innerHTML = renderPickerView();
+      wirePickerView();
+      return;
+    }
     // Compare-view takeover: when two lines are pinned and compareActive
     // is true, render the side-by-side view instead of the single-line
     // detail. The "show comparison" / "back to single line" buttons in
@@ -1568,4 +1758,11 @@
   state.sortBy = 'tier';
   sortBySel.value = 'tier';
   render();
+
+  // Header "Pick a model" button — toggles the guided model-picker view
+  // in the detail pane.
+  document.getElementById('pickerBtn')?.addEventListener('click', () => {
+    state.pickerActive = !state.pickerActive;
+    renderDetail(state.activeId);
+  });
 })();
