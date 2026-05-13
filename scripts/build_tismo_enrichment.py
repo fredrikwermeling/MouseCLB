@@ -51,7 +51,11 @@ def main():
     vivo = vv_resp.get('data', [])
     print(f'  {len(vivo)} in-vivo samples')
 
-    # Per-line index: collapse all the things we want per cell line.
+    # Per-line index. Capture the per-sample richness — distinct cell
+    # genotypes, sub-clones, mouse strains, treatments tested, and the
+    # per-sample ICB-response labels (R / NR / Baseline) so users see
+    # what the cell line has actually been used for in immuno-onc work.
+    from collections import Counter
     by_line = {}
     for cl in cell_lines:
         name = cl['cellLine']
@@ -65,48 +69,90 @@ def main():
             'parent': cl.get('parent') or None,
             'vitroSamples': 0,
             'vivoSamples': 0,
-            'icbTreatedSamples': 0,
             'studies': [],
-            'mouseStrains': set(),
-            'icbTreatments': set(),
-            'cellTreatments': set()
+            # Distributions (Counter → dict for JSON):
+            'vitroCellGenotype':   Counter(),
+            'vitroCellTreatment':  Counter(),
+            'vitroSubClone':       Counter(),
+            'vivoCellGenotype':    Counter(),
+            'vivoSubClone':        Counter(),
+            'vivoMouseGenotype':   Counter(),
+            'vivoMouseStrain':     Counter(),
+            'vivoMouseTreatment':  Counter(),
+            'vivoImplantationSite': Counter(),
+            'icbResponseDistro':   Counter(),  # R / NR / Baseline / untreated
         }
 
     studies = {}
+
+    def reps(s):
+        try: return int(s.get('replicates') or 1)
+        except Exception: return 1
+
     for s in vitro:
         name = s.get('cellLine')
         if name not in by_line: continue
         e = by_line[name]
-        try: e['vitroSamples'] += int(s.get('replicates') or 0)
-        except Exception: e['vitroSamples'] += 1
+        n = reps(s)
+        e['vitroSamples'] += n
         sid = s.get('studyId')
         if sid: studies.setdefault(name, set()).add(sid)
-        ct = s.get('cellTreatment') or ''
-        if ct and ct != 'no_treatment':
-            e['cellTreatments'].add(ct)
+        ct = (s.get('cellTreatment') or '').strip()
+        cg = (s.get('cellGenotype') or '').strip()
+        sc = (s.get('subClone') or '').strip()
+        if ct: e['vitroCellTreatment'][ct] += n
+        if cg: e['vitroCellGenotype'][cg] += n
+        if sc: e['vitroSubClone'][sc] += n
 
     for s in vivo:
         name = s.get('cellLine')
         if name not in by_line: continue
         e = by_line[name]
-        try: e['vivoSamples'] += int(s.get('replicates') or 0)
-        except Exception: e['vivoSamples'] += 1
+        n = reps(s)
+        e['vivoSamples'] += n
         sid = s.get('studyId')
         if sid: studies.setdefault(name, set()).add(sid)
+        cg = (s.get('cellGenotype') or '').strip()
+        sc = (s.get('subClone') or '').strip()
+        mg = (s.get('mouseGenotype') or '').strip()
+        ms = (s.get('mouseStrain') or '').strip()
         mt = (s.get('mouseTreatment') or '').strip()
-        # Anything other than untreated counts as an ICB / drug arm.
-        if mt and mt.lower() not in ('no_treatment', 'untreated', '', 'control'):
-            e['icbTreatments'].add(mt)
-            try: e['icbTreatedSamples'] += int(s.get('replicates') or 0)
-            except Exception: e['icbTreatedSamples'] += 1
-        ms = s.get('mouseStrain')
-        if ms: e['mouseStrains'].add(ms)
+        impl = (s.get('implantationSite') or '').strip()
+        icb = (s.get('icbStudy') or '').strip()
+        if cg: e['vivoCellGenotype'][cg] += n
+        if sc: e['vivoSubClone'][sc] += n
+        if mg: e['vivoMouseGenotype'][mg] += n
+        if ms: e['vivoMouseStrain'][ms] += n
+        if mt: e['vivoMouseTreatment'][mt] += n
+        if impl: e['vivoImplantationSite'][impl] += n
+        # The icbStudy field is empty for non-ICB studies; for ICB studies
+        # it carries R / NR / Baseline / unknown per-sample labels.
+        label = icb if icb else 'untreated'
+        e['icbResponseDistro'][label] += n
+
+    # Convert Counters to dicts (sorted by count desc), drop empty.
+    def top_dict(c, k=8):
+        if not c: return None
+        # Cap at top-k entries; the rest are usually long tail of variants.
+        items = sorted(c.items(), key=lambda x: -x[1])
+        return dict(items[:k])
 
     for name, e in by_line.items():
         e['studies'] = sorted(studies.get(name, []))
-        e['mouseStrains'] = sorted(e['mouseStrains'])
-        e['icbTreatments'] = sorted(e['icbTreatments'])
-        e['cellTreatments'] = sorted(e['cellTreatments'])
+        for k in list(e.keys()):
+            if isinstance(e[k], Counter):
+                e[k] = top_dict(e[k])
+        # Quick derived: total ICB-arm samples (R + NR), responder rate
+        rd = e.get('icbResponseDistro') or {}
+        r = rd.get('R', 0)
+        nr = rd.get('NR', 0)
+        baseline = rd.get('Baseline', 0)
+        e['icbArmSamples'] = r + nr
+        e['icbResponders'] = r
+        e['icbNonResponders'] = nr
+        e['icbBaselineSamples'] = baseline
+        # Keep legacy "icbTreatedSamples" for backward compatibility
+        e['icbTreatedSamples'] = r + nr
 
     out = {
         '_doc': 'Per-cell-line TISMO enrichment: sample counts, study IDs (mostly GEO accessions), ICB-arm flags, host-strain options. Built by scripts/build_tismo_enrichment.py against https://tismo.pku-genomics.org. Raw expression matrices live behind the TISMO download pages; this file links each MouseCLB cell line to its TISMO entry so users can dive deeper.',

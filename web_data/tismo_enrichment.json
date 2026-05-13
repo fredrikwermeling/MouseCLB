@@ -12,7 +12,6 @@
    "parent": null,
    "vitroSamples": 94,
    "vivoSamples": 168,
-   "icbTreatedSamples": 147,
    "studies": [
     "GSE101104",
     "GSE104463",
@@ -48,47 +47,79 @@
     "RTM28723893",
     "SSG33589424"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6 ARE-del +/-",
-    "C57BL/6J"
-   ],
-   "icbTreatments": [
-    "M1-c6v1",
-    "antiCD40;",
-    "antiCD40; TNFa; antiTRP1;",
-    "antiCTLA4",
-    "antiPD1",
-    "antiPD1; Gvax;",
-    "antiPD1; antiCD40;",
-    "antiPD1; antiCTLA4;",
-    "antiPD1; antiCTLA4; birinapant",
-    "antiPD1; antiCTLA4; intra&extracranial;",
-    "antiPD1; antiCTLA4; intracranial;",
-    "antiPDL1",
-    "antiPDL1; swainsonine",
-    "birinapant",
-    "cyclophosphamide",
-    "high cholesterol diet",
-    "isotype",
-    "isotype; PBS",
-    "isotype; intra&extracranial;",
-    "isotype; intracranial;",
-    "normal diet",
-    "swainsonine",
-    "vehicle"
-   ],
-   "cellTreatments": [
-    "IFNb",
-    "IFNb; gRNA_control;",
-    "IFNg",
-    "IFNg; sgRosa26;",
-    "IFNg; sgTraf3-1;",
-    "TNFa",
-    "gRNA_control;",
-    "sgRosa26",
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 90,
+    "Traf3_KO": 4
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 44,
+    "IFNg": 22,
+    "vehicle": 6,
+    "IFNg; sgTraf3-1;": 4,
+    "sgRosa26": 4,
+    "gRNA_control;": 3,
+    "IFNb; gRNA_control;": 3,
+    "IFNb": 3
+   },
+   "vitroSubClone": {
+    "B16F10": 59,
+    "parental": 18,
+    "B16F1": 10,
+    "B16F10.9": 6,
+    "B16BL6": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 148,
+    "MDK_knockdown": 8,
+    "Man2a1_KO": 6,
+    "CXCL5_OE": 2,
+    "Alkbh5_KO": 2,
+    "Fto_KO": 2
+   },
+   "vivoSubClone": {
+    "B16F10": 130,
+    "B16F1": 17,
+    "B16R2L": 16,
+    "parental": 5
+   },
+   "vivoMouseGenotype": {
+    "WT": 142,
+    "KO": 15,
+    "Aire_KO": 11
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 111,
+    "C57BL/6J": 42,
+    "C57BL/6 ARE-del +/-": 15
+   },
+   "vivoMouseTreatment": {
+    "isotype": 36,
+    "no_treatment": 21,
+    "antiPD1": 15,
+    "antiCTLA4": 12,
+    "antiPDL1": 9,
+    "vehicle": 7,
+    "antiCD40;": 7,
+    "antiPD1; antiCD40;": 7
+   },
+   "vivoImplantationSite": {
+    "flank": 129,
+    "unknown": 22,
+    "intracranial": 12,
+    "mammary gland": 5
+   },
+   "icbResponseDistro": {
+    "Baseline": 56,
+    "untreated": 48,
+    "R": 33,
+    "NR": 17,
+    "unknown": 14
+   },
+   "icbArmSamples": 50,
+   "icbResponders": 33,
+   "icbNonResponders": 17,
+   "icbBaselineSamples": 56,
+   "icbTreatedSamples": 50
   },
   "S91-M3": {
    "tismoId": 2,
@@ -100,13 +131,30 @@
    "parent": "S91",
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE109268"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "YUMM1.1": {
    "tismoId": 3,
@@ -118,13 +166,30 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE84264"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "YUMM2.1": {
    "tismoId": 4,
@@ -136,13 +201,30 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE84264"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "YUMM1.7": {
    "tismoId": 5,
@@ -154,22 +236,54 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 37,
-   "icbTreatedSamples": 37,
    "studies": [
     "GSE103713",
     "GSE103725",
     "GSE84264"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "NSG"
-   ],
-   "icbTreatments": [
-    "BRAFi",
-    "BRAFi; antiPDL2;",
-    "vehicle"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 31,
+    "PDL2_OE": 6
+   },
+   "vivoSubClone": {
+    "parental": 37
+   },
+   "vivoMouseGenotype": {
+    "WT": 25,
+    "immunodeficient": 12
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 25,
+    "NSG": 12
+   },
+   "vivoMouseTreatment": {
+    "BRAFi": 22,
+    "vehicle": 11,
+    "BRAFi; antiPDL2;": 4
+   },
+   "vivoImplantationSite": {
+    "flank": 37
+   },
+   "icbResponseDistro": {
+    "untreated": 30,
+    "Baseline": 3,
+    "NR": 2,
+    "R": 2
+   },
+   "icbArmSamples": 4,
+   "icbResponders": 2,
+   "icbNonResponders": 2,
+   "icbBaselineSamples": 3,
+   "icbTreatedSamples": 4
   },
   "YUMMER1.7": {
    "tismoId": 6,
@@ -181,11 +295,22 @@
    "parent": "YUMM1.7",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "D4M.3A": {
    "tismoId": 7,
@@ -197,11 +322,22 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "D4M.3A.3": {
    "tismoId": 8,
@@ -213,19 +349,42 @@
    "parent": "D4M.3A",
    "vitroSamples": 0,
    "vivoSamples": 9,
-   "icbTreatedSamples": 9,
    "studies": [
     "GSE159344"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "antiPD1",
-    "antiPD1; aFP; imiquimod;",
-    "isotype"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 9
+   },
+   "vivoSubClone": {
+    "parental": 9
+   },
+   "vivoMouseGenotype": {
+    "WT": 9
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 9
+   },
+   "vivoMouseTreatment": {
+    "antiPD1": 3,
+    "antiPD1; aFP; imiquimod;": 3,
+    "isotype": 3
+   },
+   "vivoImplantationSite": {
+    "flank": 9
+   },
+   "icbResponseDistro": {
+    "NR": 3,
+    "R": 3,
+    "Baseline": 3
+   },
+   "icbArmSamples": 6,
+   "icbResponders": 3,
+   "icbNonResponders": 3,
+   "icbBaselineSamples": 3,
+   "icbTreatedSamples": 6
   },
   "D3UV2": {
    "tismoId": 9,
@@ -237,18 +396,40 @@
    "parent": "D4M.3A.3",
    "vitroSamples": 0,
    "vivoSamples": 6,
-   "icbTreatedSamples": 6,
    "studies": [
     "GSE159344"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "antiPD1",
-    "isotype"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "NA": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 6
+   },
+   "vivoMouseTreatment": {
+    "antiPD1": 3,
+    "isotype": 3
+   },
+   "vivoImplantationSite": {
+    "flank": 6
+   },
+   "icbResponseDistro": {
+    "R": 3,
+    "Baseline": 3
+   },
+   "icbArmSamples": 3,
+   "icbResponders": 3,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 3,
+   "icbTreatedSamples": 3
   },
   "CT26": {
    "tismoId": 10,
@@ -260,7 +441,6 @@
    "parent": null,
    "vitroSamples": 23,
    "vivoSamples": 113,
-   "icbTreatedSamples": 89,
    "studies": [
     "ERP114266",
     "GSE111092",
@@ -275,30 +455,62 @@
     "GSE60647",
     "RTM28723893"
    ],
-   "mouseStrains": [
-    "BALB/c",
-    "Balb/cAnNCr"
-   ],
-   "icbTreatments": [
-    "Semliki Forest virus VA7",
-    "antiGARP:TGFb FcD",
-    "antiGARP:TGFb FcD; antiPD1 FcS;",
-    "antiGARP:TGFb WT",
-    "antiGARP:TGFb WT; antiPD1 FcS;",
-    "antiPD1",
-    "antiPD1_FcS",
-    "antiPDL1; antiCTL4;",
-    "antiTGFb",
-    "antiTGFb; antiPD1 FcS;",
-    "incomplete radiofrequency ablation",
-    "isotype",
-    "vehicle"
-   ],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "TNFa"
-   ]
+   "vitroCellGenotype": {
+    "WT": 23
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 14,
+    "IFNb": 3,
+    "IFNg": 3,
+    "TNFa": 3
+   },
+   "vitroSubClone": {
+    "parental": 23
+   },
+   "vivoCellGenotype": {
+    "WT": 95,
+    "Mettl3_KO": 10,
+    "LacZ": 4,
+    "IL34_KO": 2,
+    "IL34_OE": 2
+   },
+   "vivoSubClone": {
+    "parental": 109,
+    "clone_B04": 2,
+    "clone_B64": 1,
+    "clone_B65": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 113
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 105,
+    "Balb/cAnNCr": 8
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 24,
+    "isotype": 22,
+    "antiPD1": 11,
+    "antiPDL1; antiCTL4;": 10,
+    "antiGARP:TGFb FcD": 5,
+    "antiGARP:TGFb FcD; antiPD1 FcS;": 5,
+    "antiGARP:TGFb WT": 5,
+    "antiGARP:TGFb WT; antiPD1 FcS;": 5
+   },
+   "vivoImplantationSite": {
+    "flank": 113
+   },
+   "icbResponseDistro": {
+    "Baseline": 37,
+    "untreated": 35,
+    "R": 31,
+    "NR": 10
+   },
+   "icbArmSamples": 41,
+   "icbResponders": 31,
+   "icbNonResponders": 10,
+   "icbBaselineSamples": 37,
+   "icbTreatedSamples": 41
   },
   "MC38": {
    "tismoId": 11,
@@ -310,7 +522,6 @@
    "parent": null,
    "vitroSamples": 79,
    "vivoSamples": 45,
-   "icbTreatedSamples": 33,
    "studies": [
     "GSE112251",
     "GSE112252",
@@ -323,27 +534,67 @@
     "GSE93017",
     "RTM28723893"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6N",
-    "C57BL/6N Rag1_KO"
-   ],
-   "icbTreatments": [
-    "antiPD1",
-    "antiPD1; exercise",
-    "antiPDL1",
-    "exercise",
-    "isotype"
-   ],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "IFNg; TNFa",
-    "TNFa",
-    "gRNA_control;",
-    "gRNA_control; TNFa;",
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 73,
+    "OVA": 6
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 23,
+    "IFNg": 14,
+    "TNFa": 14,
+    "IFNb": 12,
+    "gRNA_control; TNFa;": 8,
+    "gRNA_control;": 4,
+    "IFNg; TNFa": 2,
+    "vehicle": 2
+   },
+   "vitroSubClone": {
+    "parental": 43,
+    "clone3": 12,
+    "clone4": 12,
+    "clone7": 12
+   },
+   "vivoCellGenotype": {
+    "WT": 41,
+    "GFP": 4
+   },
+   "vivoSubClone": {
+    "parental": 45
+   },
+   "vivoMouseGenotype": {
+    "WT": 36,
+    "immunodeficient": 6,
+    "Aire_KO": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 27,
+    "C57BL/6N": 12,
+    "C57BL/6N Rag1_KO": 6
+   },
+   "vivoMouseTreatment": {
+    "antiPD1": 15,
+    "no_treatment": 12,
+    "isotype": 7,
+    "antiPD1; exercise": 4,
+    "exercise": 4,
+    "antiPDL1": 3
+   },
+   "vivoImplantationSite": {
+    "flank": 25,
+    "unknown": 16,
+    "upper right shoulder": 4
+   },
+   "icbResponseDistro": {
+    "R": 16,
+    "untreated": 12,
+    "Baseline": 11,
+    "NR": 6
+   },
+   "icbArmSamples": 22,
+   "icbResponders": 16,
+   "icbNonResponders": 6,
+   "icbBaselineSamples": 11,
+   "icbTreatedSamples": 22
   },
   "1638N-T1": {
    "tismoId": 12,
@@ -355,13 +606,30 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE78696"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "CMT93": {
    "tismoId": 13,
@@ -373,13 +641,30 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE78696"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "LLC": {
    "tismoId": 14,
@@ -391,7 +676,6 @@
    "parent": null,
    "vitroSamples": 55,
    "vivoSamples": 68,
-   "icbTreatedSamples": 19,
    "studies": [
     "GSE100412",
     "GSE103548",
@@ -406,29 +690,71 @@
     "GSE98672",
     "RTM28723893"
    ],
-   "mouseStrains": [
-    "B6.129P2-Syktm1.2Tara/J (flox)",
-    "C57BL/6",
-    "C57BL/6 Syk cre",
-    "C57BL/6 p110g_KO",
-    "C57BL/6-GFP(C57BL/6J-132Tg(UBC-GFP)30Scha/J)",
-    "C57BL/6-Tg(UBC-GFP)30Scha/J",
-    "C57BL/6J"
-   ],
-   "icbTreatments": [
-    "SRX3207",
-    "antiPD1; antiCTL4;",
-    "cyclophosphamide",
-    "vehicle"
-   ],
-   "cellTreatments": [
-    "BMP2",
-    "IFNb",
-    "IFNg",
-    "TNFa",
-    "sh_control",
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 55
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 15,
+    "IFNb": 12,
+    "TNFa": 12,
+    "IFNg": 11,
+    "sh_control": 3,
+    "BMP2": 1,
+    "vehicle": 1
+   },
+   "vitroSubClone": {
+    "parental": 22,
+    "clone7": 12,
+    "clone9": 12,
+    "clone8": 9
+   },
+   "vivoCellGenotype": {
+    "WT": 41,
+    "Setdb1_KO": 17,
+    "luciferase": 7,
+    "Socs1_knockdown": 3
+   },
+   "vivoSubClone": {
+    "parental": 68
+   },
+   "vivoMouseGenotype": {
+    "WT": 61,
+    "KO": 7
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 33,
+    "C57BL/6": 17,
+    "C57BL/6-GFP(C57BL/6J-132Tg(UBC-GFP)30Scha/J)": 6,
+    "C57BL/6-Tg(UBC-GFP)30Scha/J": 5,
+    "C57BL/6 p110g_KO": 3,
+    "B6.129P2-Syktm1.2Tara/J (flox)": 2,
+    "C57BL/6 Syk cre": 2
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 49,
+    "antiPD1; antiCTL4;": 13,
+    "SRX3207": 2,
+    "vehicle": 2,
+    "cyclophosphamide": 2
+   },
+   "vivoImplantationSite": {
+    "flank": 45,
+    "left lung lobe parenchyma": 11,
+    "unknown": 8,
+    "tail vein": 2,
+    "back": 2
+   },
+   "icbResponseDistro": {
+    "untreated": 35,
+    "Baseline": 20,
+    "R": 7,
+    "NR": 6
+   },
+   "icbArmSamples": 13,
+   "icbResponders": 7,
+   "icbNonResponders": 6,
+   "icbBaselineSamples": 20,
+   "icbTreatedSamples": 13
   },
   "CMT-167": {
    "tismoId": 15,
@@ -440,15 +766,38 @@
    "parent": "CMT-64",
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE100412"
    ],
-   "mouseStrains": [
-    "C57BL/6-Tg(UBC-GFP)30Scha/J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "luciferase": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6-Tg(UBC-GFP)30Scha/J": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "left lung lobe parenchyma": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MLE12": {
    "tismoId": 16,
@@ -460,13 +809,30 @@
    "parent": null,
    "vitroSamples": 4,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE103548"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 4
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "4T1": {
    "tismoId": 17,
@@ -478,7 +844,6 @@
    "parent": "410.4",
    "vitroSamples": 145,
    "vivoSamples": 182,
-   "icbTreatedSamples": 112,
    "studies": [
     "GSE100403",
     "GSE104264",
@@ -513,37 +878,80 @@
     "RTM28723893",
     "XW33589424"
    ],
-   "mouseStrains": [
-    "BALB/c",
-    "BALB/cJ",
-    "NSG"
-   ],
-   "icbTreatments": [
-    "antiCTLA4; old;",
-    "antiCTLA4; young;",
-    "antiPD1",
-    "antiPDL1; old;",
-    "antiPDL1; young;",
-    "aza",
-    "isotype; old;",
-    "isotype; young;",
-    "vehicle"
-   ],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "TGFb1",
-    "TNFa",
-    "gRNA_control",
-    "mock infected",
-    "plasmid_control",
-    "sgCOP1; IFNg",
-    "sgCOP1; IFNg;",
-    "sgRosa26;",
-    "sgRosa26; IFNg;",
-    "sh_control",
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 141,
+    "COP1_KO": 4
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 78,
+    "vehicle": 24,
+    "sh_control": 9,
+    "gRNA_control": 7,
+    "IFNg": 5,
+    "plasmid_control": 3,
+    "TGFb1": 3,
+    "IFNb": 3
+   },
+   "vitroSubClone": {
+    "parental": 108,
+    "Clone 4T1-C": 2,
+    "Clone 4T1-D": 2,
+    "Clone 4T1-E": 2,
+    "Clone 4T1-F": 2,
+    "Clone 4T1-G": 2,
+    "Clone 4T1-H": 2,
+    "Clone 4T1-I": 2
+   },
+   "vivoCellGenotype": {
+    "WT": 137,
+    "Hif1b_KO": 14,
+    "Brca1_KO": 10,
+    "Brca2_KO": 8,
+    "GFP": 8,
+    "CD95_KO": 4,
+    "prolactin.receptor_knockdown": 1
+   },
+   "vivoSubClone": {
+    "parental": 182
+   },
+   "vivoMouseGenotype": {
+    "WT": 170,
+    "immunodeficient": 12
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 147,
+    "BALB/cJ": 23,
+    "NSG": 12
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 70,
+    "aza": 28,
+    "vehicle": 21,
+    "antiCTLA4; young;": 12,
+    "antiPD1": 11,
+    "antiPDL1; young;": 10,
+    "antiCTLA4; old;": 8,
+    "antiPDL1; old;": 8
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 99,
+    "mammary gland": 54,
+    "flank": 9,
+    "mammary gland_intraductal": 9,
+    "tail vein": 9,
+    "unknown": 2
+   },
+   "icbResponseDistro": {
+    "untreated": 106,
+    "Baseline": 27,
+    "R": 25,
+    "NR": 24
+   },
+   "icbArmSamples": 49,
+   "icbResponders": 25,
+   "icbNonResponders": 24,
+   "icbBaselineSamples": 27,
+   "icbTreatedSamples": 49
   },
   "4T07": {
    "tismoId": 18,
@@ -555,16 +963,45 @@
    "parent": "44FT0",
    "vitroSamples": 7,
    "vivoSamples": 6,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE145319",
     "GSE150928"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 7
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 7
+   },
+   "vitroSubClone": {
+    "parental": 7
+   },
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "parental": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 6
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 6
+   },
+   "vivoImplantationSite": {
+    "tail vein": 6
+   },
+   "icbResponseDistro": {
+    "untreated": 6
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "EMT6": {
    "tismoId": 19,
@@ -576,24 +1013,54 @@
    "parent": null,
    "vitroSamples": 6,
    "vivoSamples": 47,
-   "icbTreatedSamples": 40,
    "studies": [
     "GSE107801",
     "GSE150928",
     "XW33589424"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [
-    "M7824 (anti_PDL1_TGFb_Trap)",
-    "antiPDL1;",
-    "anti_PDL1(mut)_TGFb_Trap_control",
-    "isotype"
-   ],
-   "cellTreatments": [
-    "IFNg"
-   ]
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 4,
+    "IFNg": 2
+   },
+   "vitroSubClone": {
+    "parental": 6
+   },
+   "vivoCellGenotype": {
+    "WT": 47
+   },
+   "vivoSubClone": {
+    "parental": 47
+   },
+   "vivoMouseGenotype": {
+    "WT": 47
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 47
+   },
+   "vivoMouseTreatment": {
+    "anti_PDL1(mut)_TGFb_Trap_control": 10,
+    "antiPDL1;": 10,
+    "isotype": 10,
+    "M7824 (anti_PDL1_TGFb_Trap)": 10,
+    "no_treatment": 7
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 44,
+    "flank": 3
+   },
+   "icbResponseDistro": {
+    "Baseline": 20,
+    "R": 20,
+    "untreated": 7
+   },
+   "icbArmSamples": 20,
+   "icbResponders": 20,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 20,
+   "icbTreatedSamples": 20
   },
   "67NR": {
    "tismoId": 20,
@@ -605,19 +1072,47 @@
    "parent": "67",
    "vitroSamples": 12,
    "vivoSamples": 6,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE138026",
     "GSE145319",
     "GSE150928"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 12
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 8,
+    "vehicle": 4
+   },
+   "vitroSubClone": {
+    "parental": 12
+   },
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "parental": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 6
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 6
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 6
+   },
+   "icbResponseDistro": {
+    "untreated": 6
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "D2A1": {
    "tismoId": 21,
@@ -629,15 +1124,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "F311": {
    "tismoId": 22,
@@ -649,15 +1167,38 @@
    "parent": "M3",
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "6DT1": {
    "tismoId": 23,
@@ -669,15 +1210,45 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 23,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": {
+    "WT": 23
+   },
+   "vivoSubClone": {
+    "parental": 23
+   },
+   "vivoMouseGenotype": {
+    "WT": 23
+   },
+   "vivoMouseStrain": {
+    "FVB": 23
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 23
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 16,
+    "tail vein": 7
+   },
+   "icbResponseDistro": {
+    "untreated": 23
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "HRM1": {
    "tismoId": 24,
@@ -689,15 +1260,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "FVB": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Mvt1": {
    "tismoId": 25,
@@ -709,18 +1303,48 @@
    "parent": null,
    "vitroSamples": 6,
    "vivoSamples": 32,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE130900",
     "GSE150928"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "sh_control"
-   ]
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "sh_control": 3,
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 6
+   },
+   "vivoCellGenotype": {
+    "WT": 25,
+    "Rnaseh2c_knockdown": 7
+   },
+   "vivoSubClone": {
+    "parental": 32
+   },
+   "vivoMouseGenotype": {
+    "WT": 32
+   },
+   "vivoMouseStrain": {
+    "FVB": 32
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 32
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 26,
+    "tail vein": 6
+   },
+   "icbResponseDistro": {
+    "untreated": 32
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Met1": {
    "tismoId": 26,
@@ -732,16 +1356,47 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 32,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE111157",
     "GSE150928"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": {
+    "WT": 32
+   },
+   "vivoSubClone": {
+    "parental": 32
+   },
+   "vivoMouseGenotype": {
+    "WT": 32
+   },
+   "vivoMouseStrain": {
+    "FVB": 32
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 32
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 24,
+    "left ventricle": 7,
+    "tail vein": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 32
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "NDL(UCD)": {
    "tismoId": 27,
@@ -753,15 +1408,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE113379"
    ],
-   "mouseStrains": [
-    "FVB/N"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "FVB/N": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "E0771": {
    "tismoId": 28,
@@ -773,25 +1451,57 @@
    "parent": null,
    "vitroSamples": 4,
    "vivoSamples": 26,
-   "icbTreatedSamples": 16,
    "studies": [
     "GSE148149",
     "GSE150928",
     "GSE174053",
     "XW33589424"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6J",
-    "C57BL/6_Adiponectin-Cre_PD-L1f/f"
-   ],
-   "icbTreatments": [
-    "antiPD1; high.fat.diet;",
-    "isotype; high.fat.diet;"
-   ],
-   "cellTreatments": [
-    "IFNg"
-   ]
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "IFNg": 2,
+    "no_treatment": 2
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": {
+    "luciferase": 16,
+    "WT": 10
+   },
+   "vivoSubClone": {
+    "parental": 26
+   },
+   "vivoMouseGenotype": {
+    "WT": 23,
+    "KO": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 16,
+    "C57BL/6": 7,
+    "C57BL/6_Adiponectin-Cre_PD-L1f/f": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 10,
+    "antiPD1; high.fat.diet;": 8,
+    "isotype; high.fat.diet;": 8
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 16,
+    "mammary fat pad": 10
+   },
+   "icbResponseDistro": {
+    "untreated": 10,
+    "NR": 8,
+    "Baseline": 8
+   },
+   "icbArmSamples": 8,
+   "icbResponders": 0,
+   "icbNonResponders": 8,
+   "icbBaselineSamples": 8,
+   "icbTreatedSamples": 8
   },
   "Py230": {
    "tismoId": 29,
@@ -803,15 +1513,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 9,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE140192"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 9
+   },
+   "vivoSubClone": {
+    "parental": 9
+   },
+   "vivoMouseGenotype": {
+    "WT": 9
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 9
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 9
+   },
+   "vivoImplantationSite": {
+    "mammary gland_intraductal": 9
+   },
+   "icbResponseDistro": {
+    "untreated": 9
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Py8119": {
    "tismoId": 30,
@@ -823,17 +1556,47 @@
    "parent": null,
    "vitroSamples": 2,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE126606",
     "GSE144787"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6_Tet2KO"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 2
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 2
+   },
+   "vitroSubClone": {
+    "parental": 2
+   },
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "KO": 2,
+    "WT": 2
+   },
+   "vivoMouseStrain": {
+    "C57BL/6_Tet2KO": 2,
+    "C57BL/6": 2
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "unknown": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "TS/A": {
    "tismoId": 31,
@@ -845,15 +1608,30 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE154541"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "sh_control"
-   ]
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "sh_control": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "TSAE1": {
    "tismoId": 32,
@@ -865,15 +1643,38 @@
    "parent": "TS/A",
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "M6": {
    "tismoId": 33,
@@ -885,19 +1686,48 @@
    "parent": null,
    "vitroSamples": 6,
    "vivoSamples": 31,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928",
     "GSE96641"
    ],
-   "mouseStrains": [
-    "FVB",
-    "REAR"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "vector_control"
-   ]
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "vector_control": 4,
+    "no_treatment": 2
+   },
+   "vitroSubClone": {
+    "parental": 6
+   },
+   "vivoCellGenotype": {
+    "WT": 31
+   },
+   "vivoSubClone": {
+    "parental": 31
+   },
+   "vivoMouseGenotype": {
+    "WT": 31
+   },
+   "vivoMouseStrain": {
+    "FVB": 16,
+    "REAR": 15
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 31
+   },
+   "vivoImplantationSite": {
+    "left ventricle": 16,
+    "mammary fat pad": 15
+   },
+   "icbResponseDistro": {
+    "untreated": 31
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "KPB25L": {
    "tismoId": 34,
@@ -909,17 +1739,51 @@
    "parent": null,
    "vitroSamples": 6,
    "vivoSamples": 59,
-   "icbTreatedSamples": 25,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "FVB/NJ"
-   ],
-   "icbTreatments": [
-    "antiPD1; antiCTLA4;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 6
+   },
+   "vitroSubClone": {
+    "parental": 3,
+    "KPB25L-Apobec": 2,
+    "KPB25L-UV": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 59
+   },
+   "vivoSubClone": {
+    "KPB25L-UV": 27,
+    "parental": 27,
+    "KPB25L-Apobec": 5
+   },
+   "vivoMouseGenotype": {
+    "WT": 59
+   },
+   "vivoMouseStrain": {
+    "FVB/NJ": 59
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 34,
+    "antiPD1; antiCTLA4;": 25
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 59
+   },
+   "icbResponseDistro": {
+    "Baseline": 29,
+    "R": 25,
+    "untreated": 5
+   },
+   "icbArmSamples": 25,
+   "icbResponders": 25,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 29,
+   "icbTreatedSamples": 25
   },
   "KPB25L-Apobec": {
    "tismoId": 35,
@@ -931,11 +1795,22 @@
    "parent": "KPB25L",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "KPB25L-UV": {
    "tismoId": 36,
@@ -947,11 +1822,22 @@
    "parent": "KPB25L",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "T11": {
    "tismoId": 37,
@@ -963,17 +1849,51 @@
    "parent": null,
    "vitroSamples": 6,
    "vivoSamples": 74,
-   "icbTreatedSamples": 37,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [
-    "antiPD1; antiCTLA4;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 6
+   },
+   "vitroSubClone": {
+    "parental": 3,
+    "T11-Apobec": 2,
+    "T11-UV": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 74
+   },
+   "vivoSubClone": {
+    "parental": 26,
+    "T11-Apobec": 24,
+    "T11-UV": 24
+   },
+   "vivoMouseGenotype": {
+    "WT": 74
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 74
+   },
+   "vivoMouseTreatment": {
+    "antiPD1; antiCTLA4;": 37,
+    "no_treatment": 37
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 74
+   },
+   "icbResponseDistro": {
+    "Baseline": 37,
+    "R": 24,
+    "NR": 13
+   },
+   "icbArmSamples": 37,
+   "icbResponders": 24,
+   "icbNonResponders": 13,
+   "icbBaselineSamples": 37,
+   "icbTreatedSamples": 37
   },
   "T11-Apobec": {
    "tismoId": 38,
@@ -985,11 +1905,22 @@
    "parent": "T11",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "T11-UV": {
    "tismoId": 39,
@@ -1001,11 +1932,22 @@
    "parent": "T11",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-2153F": {
    "tismoId": 40,
@@ -1017,15 +1959,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-2224": {
    "tismoId": 41,
@@ -1037,15 +2002,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "parental": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-2225L": {
    "tismoId": 42,
@@ -1057,17 +2045,40 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 22,
-   "icbTreatedSamples": 8,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [
-    "antiPD1; antiCTLA4;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 22
+   },
+   "vivoSubClone": {
+    "parental": 22
+   },
+   "vivoMouseGenotype": {
+    "WT": 22
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 22
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 14,
+    "antiPD1; antiCTLA4;": 8
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 22
+   },
+   "icbResponseDistro": {
+    "Baseline": 14,
+    "NR": 8
+   },
+   "icbArmSamples": 8,
+   "icbResponders": 0,
+   "icbNonResponders": 8,
+   "icbBaselineSamples": 14,
+   "icbTreatedSamples": 8
   },
   "p53-2245": {
    "tismoId": 43,
@@ -1079,15 +2090,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-2245": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-2336R": {
    "tismoId": 44,
@@ -1099,17 +2133,40 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 21,
-   "icbTreatedSamples": 10,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [
-    "antiPD1; antiCTLA4;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 21
+   },
+   "vivoSubClone": {
+    "p53-2336R": 21
+   },
+   "vivoMouseGenotype": {
+    "WT": 21
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 21
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 11,
+    "antiPD1; antiCTLA4;": 10
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 21
+   },
+   "icbResponseDistro": {
+    "Baseline": 11,
+    "NR": 10
+   },
+   "icbArmSamples": 10,
+   "icbResponders": 0,
+   "icbNonResponders": 10,
+   "icbBaselineSamples": 11,
+   "icbTreatedSamples": 10
   },
   "p53-9263-3": {
    "tismoId": 45,
@@ -1121,15 +2178,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 5,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 5
+   },
+   "vivoSubClone": {
+    "p53-9263-3": 5
+   },
+   "vivoMouseGenotype": {
+    "WT": 5
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 5
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 5
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 5
+   },
+   "icbResponseDistro": {
+    "untreated": 5
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-T1": {
    "tismoId": 46,
@@ -1141,15 +2221,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-T1": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-T12": {
    "tismoId": 47,
@@ -1161,15 +2264,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-T12": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-T2": {
    "tismoId": 48,
@@ -1181,15 +2307,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-T2": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-T6": {
    "tismoId": 49,
@@ -1201,15 +2350,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-T6": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "p53-T7": {
    "tismoId": 50,
@@ -1221,15 +2393,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 1,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE124821"
    ],
-   "mouseStrains": [
-    "BALB/cJ"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 1
+   },
+   "vivoSubClone": {
+    "p53-T7": 1
+   },
+   "vivoMouseGenotype": {
+    "WT": 1
+   },
+   "vivoMouseStrain": {
+    "BALB/cJ": 1
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 1
+   },
+   "vivoImplantationSite": {
+    "mammary gland": 1
+   },
+   "icbResponseDistro": {
+    "untreated": 1
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "R3T": {
    "tismoId": 51,
@@ -1241,15 +2436,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE150928"
    ],
-   "mouseStrains": [
-    "129S1J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "129S1J": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "mammary fat pad": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Renca": {
    "tismoId": 52,
@@ -1261,24 +2479,56 @@
    "parent": null,
    "vitroSamples": 13,
    "vivoSamples": 87,
-   "icbTreatedSamples": 48,
    "studies": [
     "GSE145919",
     "GSE153941",
     "GSE162105",
     "RTM28723893"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [
-    "antiCTLA4; antiPDL1;"
-   ],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "TNFa"
-   ]
+   "vitroCellGenotype": {
+    "WT": 13
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 4,
+    "IFNb": 3,
+    "IFNg": 3,
+    "TNFa": 3
+   },
+   "vitroSubClone": {
+    "parental": 13
+   },
+   "vivoCellGenotype": {
+    "WT": 77,
+    "Pbrm1_KO": 10
+   },
+   "vivoSubClone": {
+    "parental": 87
+   },
+   "vivoMouseGenotype": {
+    "WT": 87
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 87
+   },
+   "vivoMouseTreatment": {
+    "antiCTLA4; antiPDL1;": 48,
+    "no_treatment": 39
+   },
+   "vivoImplantationSite": {
+    "flank": 72,
+    "back": 15
+   },
+   "icbResponseDistro": {
+    "NR": 24,
+    "R": 24,
+    "Baseline": 24,
+    "untreated": 15
+   },
+   "icbArmSamples": 48,
+   "icbResponders": 24,
+   "icbNonResponders": 24,
+   "icbBaselineSamples": 24,
+   "icbTreatedSamples": 48
   },
   "Hepa1-6": {
    "tismoId": 53,
@@ -1290,21 +2540,49 @@
    "parent": "Hepa-1",
    "vitroSamples": 6,
    "vivoSamples": 8,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE106975",
     "GSE134246",
     "GSE144787"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6_Tet2KO"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "sh_control",
-    "si_control"
-   ]
+   "vitroCellGenotype": {
+    "WT": 6
+   },
+   "vitroCellTreatment": {
+    "sh_control": 3,
+    "si_control": 3
+   },
+   "vitroSubClone": {
+    "parental": 6
+   },
+   "vivoCellGenotype": {
+    "WT": 8
+   },
+   "vivoSubClone": {
+    "parental": 8
+   },
+   "vivoMouseGenotype": {
+    "KO": 4,
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "C57BL/6_Tet2KO": 4,
+    "C57BL/6": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 8
+   },
+   "vivoImplantationSite": {
+    "unknown": 8
+   },
+   "icbResponseDistro": {
+    "untreated": 8
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Hepa-1c1c7": {
    "tismoId": 54,
@@ -1316,15 +2594,30 @@
    "parent": "Hepa-1c1",
    "vitroSamples": 3,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE49571"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "vehicle": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "BNL-MEA": {
    "tismoId": 55,
@@ -1336,22 +2629,46 @@
    "parent": "BNL CL.2",
    "vitroSamples": 0,
    "vivoSamples": 32,
-   "icbTreatedSamples": 32,
    "studies": [
     "GSE148947"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [
-    "DC-101_800ug",
-    "antiPD1",
-    "antiPD1; regorafenib_5;",
-    "regorafenib_20",
-    "regorafenib_5",
-    "vehicle"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 32
+   },
+   "vivoSubClone": {
+    "parental": 32
+   },
+   "vivoMouseGenotype": {
+    "WT": 32
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 32
+   },
+   "vivoMouseTreatment": {
+    "vehicle": 11,
+    "regorafenib_5": 9,
+    "antiPD1": 3,
+    "antiPD1; regorafenib_5;": 3,
+    "DC-101_800ug": 3,
+    "regorafenib_20": 3
+   },
+   "vivoImplantationSite": {
+    "left liver lobe": 32
+   },
+   "icbResponseDistro": {
+    "untreated": 20,
+    "Baseline": 6,
+    "NR": 3,
+    "R": 3
+   },
+   "icbArmSamples": 6,
+   "icbResponders": 3,
+   "icbNonResponders": 3,
+   "icbBaselineSamples": 6,
+   "icbTreatedSamples": 6
   },
   "RM-1": {
    "tismoId": 56,
@@ -1363,16 +2680,45 @@
    "parent": null,
    "vitroSamples": 7,
    "vivoSamples": 2,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE131828",
     "GSE147099"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 7
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 7
+   },
+   "vitroSubClone": {
+    "parental": 7
+   },
+   "vivoCellGenotype": {
+    "RM1_PKH26_eCFP_luc2": 2
+   },
+   "vivoSubClone": {
+    "parental": 2
+   },
+   "vivoMouseGenotype": {
+    "WT": 2
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 2
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 2
+   },
+   "vivoImplantationSite": {
+    "intracardiac": 2
+   },
+   "icbResponseDistro": {
+    "untreated": 2
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "CE1-4": {
    "tismoId": 57,
@@ -1384,13 +2730,30 @@
    "parent": "CE1",
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE126159"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Pten-Smad4": {
    "tismoId": 58,
@@ -1402,13 +2765,30 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE131828"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Panc02": {
    "tismoId": 59,
@@ -1420,18 +2800,34 @@
    "parent": null,
    "vitroSamples": 14,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE137382",
     "RTM28723893"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "TNFa"
-   ]
+   "vitroCellGenotype": {
+    "WT": 14
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 5,
+    "IFNb": 3,
+    "IFNg": 3,
+    "TNFa": 3
+   },
+   "vitroSubClone": {
+    "parental": 14
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "KPC": {
    "tismoId": 60,
@@ -1443,20 +2839,48 @@
    "parent": null,
    "vitroSamples": 12,
    "vivoSamples": 8,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE101336",
     "RTM28723893"
    ],
-   "mouseStrains": [
-    "KrasG12D/+;Trp53R172H/+"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "IFNb",
-    "IFNg",
-    "TNFa"
-   ]
+   "vitroCellGenotype": {
+    "WT": 12
+   },
+   "vitroCellTreatment": {
+    "IFNb": 3,
+    "IFNg": 3,
+    "no_treatment": 3,
+    "TNFa": 3
+   },
+   "vitroSubClone": {
+    "parental": 12
+   },
+   "vivoCellGenotype": {
+    "WT": 8
+   },
+   "vivoSubClone": {
+    "parental": 8
+   },
+   "vivoMouseGenotype": {
+    "WT": 8
+   },
+   "vivoMouseStrain": {
+    "KrasG12D/+;Trp53R172H/+": 8
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 8
+   },
+   "vivoImplantationSite": {
+    "flank": 8
+   },
+   "icbResponseDistro": {
+    "untreated": 8
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "KCP": {
    "tismoId": 61,
@@ -1468,22 +2892,47 @@
    "parent": "KPC1203",
    "vitroSamples": 3,
    "vivoSamples": 11,
-   "icbTreatedSamples": 11,
    "studies": [
     "GSE149815"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "ARS1620;",
-    "SHP099;",
-    "SHP099; ARS1620;",
-    "vehicle"
-   ],
-   "cellTreatments": [
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "vehicle": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": {
+    "WT": 11
+   },
+   "vivoSubClone": {
+    "parental": 11
+   },
+   "vivoMouseGenotype": {
+    "WT": 11
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 11
+   },
+   "vivoMouseTreatment": {
+    "ARS1620;": 3,
+    "SHP099;": 3,
+    "SHP099; ARS1620;": 3,
+    "vehicle": 2
+   },
+   "vivoImplantationSite": {
+    "pancreas": 11
+   },
+   "icbResponseDistro": {
+    "untreated": 11
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "6419c5": {
    "tismoId": 62,
@@ -1495,17 +2944,40 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 6,
-   "icbTreatedSamples": 2,
    "studies": [
     "GSE146834"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "antiPD1; antiCTLA4; gemcitabine; abraxane; CD40agonist;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "parental": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 6
+   },
+   "vivoMouseTreatment": {
+    "control": 4,
+    "antiPD1; antiCTLA4; gemcitabine; abraxane; CD40agonist;": 2
+   },
+   "vivoImplantationSite": {
+    "unknown": 6
+   },
+   "icbResponseDistro": {
+    "Baseline": 4,
+    "NR": 2
+   },
+   "icbArmSamples": 2,
+   "icbResponders": 0,
+   "icbNonResponders": 2,
+   "icbBaselineSamples": 4,
+   "icbTreatedSamples": 2
   },
   "MB49": {
    "tismoId": 63,
@@ -1517,16 +2989,45 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 8,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE112973",
     "GSE136619"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 8
+   },
+   "vivoSubClone": {
+    "parental": 8
+   },
+   "vivoMouseGenotype": {
+    "WT": 8
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 8
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 8
+   },
+   "vivoImplantationSite": {
+    "flank": 8
+   },
+   "icbResponseDistro": {
+    "untreated": 8
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "UPPL1541": {
    "tismoId": 64,
@@ -1538,17 +3039,46 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 8,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE112973",
     "GSE136619"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 8
+   },
+   "vivoSubClone": {
+    "parental": 8
+   },
+   "vivoMouseGenotype": {
+    "WT": 8
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 4,
+    "C57BL/6J": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 8
+   },
+   "vivoImplantationSite": {
+    "flank": 8
+   },
+   "icbResponseDistro": {
+    "untreated": 8
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "BBN963": {
    "tismoId": 65,
@@ -1560,16 +3090,45 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE112973",
     "GSE136619"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "flank": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "ID8": {
    "tismoId": 66,
@@ -1581,14 +3140,33 @@
    "parent": null,
    "vitroSamples": 7,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE111630",
     "GSE129097"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 7
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 7
+   },
+   "vitroSubClone": {
+    "parental": 3,
+    "ID8-P0": 2,
+    "ID8-PW2": 2
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "KMF (ID8-IP)": {
    "tismoId": 67,
@@ -1600,11 +3178,22 @@
    "parent": "ID8",
    "vitroSamples": 0,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "HGS1": {
    "tismoId": 68,
@@ -1616,15 +3205,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "C57BL/6J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "HGS2": {
    "tismoId": 69,
@@ -1636,15 +3248,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "C57BL/6J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "HGS3": {
    "tismoId": 70,
@@ -1656,15 +3291,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "C57BL/6J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "HGS4": {
    "tismoId": 71,
@@ -1676,15 +3334,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 5,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "C57BL/6J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 5
+   },
+   "vivoSubClone": {
+    "parental": 5
+   },
+   "vivoMouseGenotype": {
+    "WT": 5
+   },
+   "vivoMouseStrain": {
+    "C57BL/6J": 5
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 5
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 5
+   },
+   "icbResponseDistro": {
+    "untreated": 5
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "30200": {
    "tismoId": 72,
@@ -1696,15 +3377,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 4,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 4
+   },
+   "vivoSubClone": {
+    "parental": 4
+   },
+   "vivoMouseGenotype": {
+    "WT": 4
+   },
+   "vivoMouseStrain": {
+    "FVB": 4
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 4
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 4
+   },
+   "icbResponseDistro": {
+    "untreated": 4
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "60577": {
    "tismoId": 73,
@@ -1716,15 +3420,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 5,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE132289"
    ],
-   "mouseStrains": [
-    "FVB"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 5
+   },
+   "vivoSubClone": {
+    "parental": 5
+   },
+   "vivoMouseGenotype": {
+    "WT": 5
+   },
+   "vivoMouseStrain": {
+    "FVB": 5
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 5
+   },
+   "vivoImplantationSite": {
+    "intraperitoneal": 5
+   },
+   "icbResponseDistro": {
+    "untreated": 5
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MOC1": {
    "tismoId": 74,
@@ -1736,18 +3463,50 @@
    "parent": null,
    "vitroSamples": 18,
    "vivoSamples": 9,
-   "icbTreatedSamples": 0,
    "studies": [
     "RU31562203",
     "RU31562203_LZ5733"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "IFNg"
-   ]
+   "vitroCellGenotype": {
+    "WT": 18
+   },
+   "vitroCellTreatment": {
+    "IFNg": 9,
+    "no_treatment": 9
+   },
+   "vitroSubClone": {
+    "MOC1e1": 6,
+    "MOC1e2": 6,
+    "parental": 6
+   },
+   "vivoCellGenotype": {
+    "WT": 9
+   },
+   "vivoSubClone": {
+    "MOC1e1": 3,
+    "MOC1e2": 3,
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 9
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 9
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 9
+   },
+   "vivoImplantationSite": {
+    "flank": 9
+   },
+   "icbResponseDistro": {
+    "untreated": 9
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MOC2": {
    "tismoId": 75,
@@ -1759,17 +3518,45 @@
    "parent": null,
    "vitroSamples": 7,
    "vivoSamples": 6,
-   "icbTreatedSamples": 0,
    "studies": [
     "RU31562203"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "IFNg"
-   ]
+   "vitroCellGenotype": {
+    "WT": 7
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 5,
+    "IFNg": 2
+   },
+   "vitroSubClone": {
+    "parental": 7
+   },
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "parental": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 6
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 6
+   },
+   "vivoImplantationSite": {
+    "flank": 6
+   },
+   "icbResponseDistro": {
+    "untreated": 6
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MOC22": {
    "tismoId": 76,
@@ -1781,20 +3568,47 @@
    "parent": null,
    "vitroSamples": 4,
    "vivoSamples": 6,
-   "icbTreatedSamples": 6,
    "studies": [
     "RU31562203"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "antiPD1",
-    "isotype"
-   ],
-   "cellTreatments": [
-    "IFNg"
-   ]
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "IFNg": 2,
+    "no_treatment": 2
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": {
+    "WT": 6
+   },
+   "vivoSubClone": {
+    "parental": 6
+   },
+   "vivoMouseGenotype": {
+    "WT": 6
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 6
+   },
+   "vivoMouseTreatment": {
+    "antiPD1": 3,
+    "isotype": 3
+   },
+   "vivoImplantationSite": {
+    "flank": 6
+   },
+   "icbResponseDistro": {
+    "R": 3,
+    "Baseline": 3
+   },
+   "icbArmSamples": 3,
+   "icbResponders": 3,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 3,
+   "icbTreatedSamples": 3
   },
   "YTN2": {
    "tismoId": 77,
@@ -1806,15 +3620,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 15,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE146027"
    ],
-   "mouseStrains": [
-    "C57BL/6N"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 15
+   },
+   "vivoSubClone": {
+    "parental": 15
+   },
+   "vivoMouseGenotype": {
+    "WT": 15
+   },
+   "vivoMouseStrain": {
+    "C57BL/6N": 15
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 15
+   },
+   "vivoImplantationSite": {
+    "flank": 15
+   },
+   "icbResponseDistro": {
+    "Baseline": 15
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 15,
+   "icbTreatedSamples": 0
   },
   "YTN16": {
    "tismoId": 78,
@@ -1826,20 +3663,44 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 44,
-   "icbTreatedSamples": 27,
    "studies": [
     "GSE146027"
    ],
-   "mouseStrains": [
-    "C57BL/6N"
-   ],
-   "icbTreatments": [
-    "antiCTLA4",
-    "antiPD1",
-    "antiPD1; antiIL17",
-    "anti_IL17"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 44
+   },
+   "vivoSubClone": {
+    "parental": 44
+   },
+   "vivoMouseGenotype": {
+    "WT": 44
+   },
+   "vivoMouseStrain": {
+    "C57BL/6N": 44
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 17,
+    "antiCTLA4": 15,
+    "anti_IL17": 4,
+    "antiPD1": 4,
+    "antiPD1; antiIL17": 4
+   },
+   "vivoImplantationSite": {
+    "flank": 44
+   },
+   "icbResponseDistro": {
+    "Baseline": 21,
+    "R": 19,
+    "NR": 4
+   },
+   "icbArmSamples": 23,
+   "icbResponders": 19,
+   "icbNonResponders": 4,
+   "icbBaselineSamples": 21,
+   "icbTreatedSamples": 23
   },
   "GL261": {
    "tismoId": 79,
@@ -1851,7 +3712,6 @@
    "parent": null,
    "vitroSamples": 4,
    "vivoSamples": 40,
-   "icbTreatedSamples": 15,
    "studies": [
     "GSE107423",
     "GSE151284",
@@ -1860,18 +3720,53 @@
     "GSE94239",
     "GSE97975"
    ],
-   "mouseStrains": [
-    "C57BL/6",
-    "C57BL/6_PfpKO_Rag2KO",
-    "SCID"
-   ],
-   "icbTreatments": [
-    "antiVEGFa_100ug",
-    "antiVEGFa_200ug",
-    "antiVEGFa_50ug",
-    "cyclophosphamide"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 4
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": {
+    "WT": 22,
+    "GFP": 15,
+    "GFP-Fluc": 3
+   },
+   "vivoSubClone": {
+    "parental": 40
+   },
+   "vivoMouseGenotype": {
+    "WT": 28,
+    "immunodeficient": 12
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 28,
+    "C57BL/6_PfpKO_Rag2KO": 6,
+    "SCID": 6
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 25,
+    "cyclophosphamide": 6,
+    "antiVEGFa_100ug": 3,
+    "antiVEGFa_200ug": 3,
+    "antiVEGFa_50ug": 3
+   },
+   "vivoImplantationSite": {
+    "intracerebral": 15,
+    "intracranial": 12,
+    "flank": 10,
+    "right hemisphere": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 40
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "CT-2A": {
    "tismoId": 80,
@@ -1883,15 +3778,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE151414"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "GFP-Fluc": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "right hemisphere": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Mut3": {
    "tismoId": 81,
@@ -1903,15 +3821,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE151414"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "GFP-Fluc": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "right hemisphere": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "5": {
    "tismoId": 82,
@@ -1923,15 +3864,38 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 3,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE151414"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "GFP-Fluc": 3
+   },
+   "vivoSubClone": {
+    "parental": 3
+   },
+   "vivoMouseGenotype": {
+    "WT": 3
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 3
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 3
+   },
+   "vivoImplantationSite": {
+    "right hemisphere": 3
+   },
+   "icbResponseDistro": {
+    "untreated": 3
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "Neuro-2a": {
    "tismoId": 83,
@@ -1943,15 +3907,32 @@
    "parent": "C-1300",
    "vitroSamples": 7,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE106999",
     "GSE140357",
     "GSE87862"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 7
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 7
+   },
+   "vitroSubClone": {
+    "parental": 7
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "A20": {
    "tismoId": 84,
@@ -1963,18 +3944,48 @@
    "parent": null,
    "vitroSamples": 4,
    "vivoSamples": 30,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE139536",
     "GSE157920",
     "GSE60927"
    ],
-   "mouseStrains": [
-    "BALB/c",
-    "BALB/c_Sparc_KO"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 4
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": {
+    "WT": 30
+   },
+   "vivoSubClone": {
+    "parental": 30
+   },
+   "vivoMouseGenotype": {
+    "KO": 15,
+    "WT": 15
+   },
+   "vivoMouseStrain": {
+    "BALB/c_Sparc_KO": 15,
+    "BALB/c": 15
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 30
+   },
+   "vivoImplantationSite": {
+    "intravenous": 30
+   },
+   "icbResponseDistro": {
+    "untreated": 30
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MPC-11": {
    "tismoId": 85,
@@ -1986,13 +3997,30 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE60927"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "P815": {
    "tismoId": 86,
@@ -2004,15 +4032,44 @@
    "parent": null,
    "vitroSamples": 1,
    "vivoSamples": 2,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE136619"
    ],
-   "mouseStrains": [
-    "DBA/2J"
-   ],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 1
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 1
+   },
+   "vitroSubClone": {
+    "parental": 1
+   },
+   "vivoCellGenotype": {
+    "WT": 2
+   },
+   "vivoSubClone": {
+    "parental": 2
+   },
+   "vivoMouseGenotype": {
+    "WT": 2
+   },
+   "vivoMouseStrain": {
+    "DBA/2J": 2
+   },
+   "vivoMouseTreatment": {
+    "no_treatment": 2
+   },
+   "vivoImplantationSite": {
+    "tail vein": 2
+   },
+   "icbResponseDistro": {
+    "untreated": 2
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "EL4": {
    "tismoId": 87,
@@ -2024,15 +4081,32 @@
    "parent": null,
    "vitroSamples": 5,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE111092",
     "GSE125384",
     "GSE138165"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": []
+   "vitroCellGenotype": {
+    "WT": 5
+   },
+   "vitroCellTreatment": {
+    "no_treatment": 5
+   },
+   "vitroSubClone": {
+    "parental": 5
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "F9": {
    "tismoId": 88,
@@ -2044,17 +4118,33 @@
    "parent": "OTT6050",
    "vitroSamples": 4,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE111145",
     "GSE56893"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "sh_control",
-    "vehicle"
-   ]
+   "vitroCellGenotype": {
+    "WT": 4
+   },
+   "vitroCellTreatment": {
+    "vehicle": 2,
+    "no_treatment": 1,
+    "sh_control": 1
+   },
+   "vitroSubClone": {
+    "parental": 4
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "AB1": {
    "tismoId": 89,
@@ -2066,17 +4156,41 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 72,
-   "icbTreatedSamples": 48,
    "studies": [
     "GSE153941"
    ],
-   "mouseStrains": [
-    "BALB/c"
-   ],
-   "icbTreatments": [
-    "antiCTLA4; antiPDL1;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 72
+   },
+   "vivoSubClone": {
+    "parental": 72
+   },
+   "vivoMouseGenotype": {
+    "WT": 72
+   },
+   "vivoMouseStrain": {
+    "BALB/c": 72
+   },
+   "vivoMouseTreatment": {
+    "antiCTLA4; antiPDL1;": 48,
+    "no_treatment": 24
+   },
+   "vivoImplantationSite": {
+    "flank": 72
+   },
+   "icbResponseDistro": {
+    "NR": 25,
+    "Baseline": 24,
+    "R": 23
+   },
+   "icbArmSamples": 48,
+   "icbResponders": 23,
+   "icbNonResponders": 25,
+   "icbBaselineSamples": 24,
+   "icbTreatedSamples": 48
   },
   "AB22": {
    "tismoId": 90,
@@ -2088,15 +4202,30 @@
    "parent": null,
    "vitroSamples": 3,
    "vivoSamples": 0,
-   "icbTreatedSamples": 0,
    "studies": [
     "GSE134795"
    ],
-   "mouseStrains": [],
-   "icbTreatments": [],
-   "cellTreatments": [
-    "sh_control"
-   ]
+   "vitroCellGenotype": {
+    "WT": 3
+   },
+   "vitroCellTreatment": {
+    "sh_control": 3
+   },
+   "vitroSubClone": {
+    "parental": 3
+   },
+   "vivoCellGenotype": null,
+   "vivoSubClone": null,
+   "vivoMouseGenotype": null,
+   "vivoMouseStrain": null,
+   "vivoMouseTreatment": null,
+   "vivoImplantationSite": null,
+   "icbResponseDistro": null,
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "MCA205": {
    "tismoId": 91,
@@ -2108,18 +4237,39 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 8,
-   "icbTreatedSamples": 8,
    "studies": [
     "GSE126988"
    ],
-   "mouseStrains": [
-    "C57BL/6"
-   ],
-   "icbTreatments": [
-    "cisplatin; crizotinib",
-    "vehicle"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 8
+   },
+   "vivoSubClone": {
+    "parental": 8
+   },
+   "vivoMouseGenotype": {
+    "WT": 8
+   },
+   "vivoMouseStrain": {
+    "C57BL/6": 8
+   },
+   "vivoMouseTreatment": {
+    "cisplatin; crizotinib": 4,
+    "vehicle": 4
+   },
+   "vivoImplantationSite": {
+    "flank": 8
+   },
+   "icbResponseDistro": {
+    "untreated": 8
+   },
+   "icbArmSamples": 0,
+   "icbResponders": 0,
+   "icbNonResponders": 0,
+   "icbBaselineSamples": 0,
+   "icbTreatedSamples": 0
   },
   "402230": {
    "tismoId": 92,
@@ -2131,20 +4281,43 @@
    "parent": null,
    "vitroSamples": 0,
    "vivoSamples": 16,
-   "icbTreatedSamples": 16,
    "studies": [
     "GSE148856"
    ],
-   "mouseStrains": [
-    "129/SvJae"
-   ],
-   "icbTreatments": [
-    "antiPD1",
-    "antiPD1; radiation;",
-    "isotype",
-    "isotype; radiation;"
-   ],
-   "cellTreatments": []
+   "vitroCellGenotype": null,
+   "vitroCellTreatment": null,
+   "vitroSubClone": null,
+   "vivoCellGenotype": {
+    "WT": 16
+   },
+   "vivoSubClone": {
+    "parental": 16
+   },
+   "vivoMouseGenotype": {
+    "WT": 16
+   },
+   "vivoMouseStrain": {
+    "129/SvJae": 16
+   },
+   "vivoMouseTreatment": {
+    "antiPD1": 4,
+    "antiPD1; radiation;": 4,
+    "isotype": 4,
+    "isotype; radiation;": 4
+   },
+   "vivoImplantationSite": {
+    "gastrocnemius": 16
+   },
+   "icbResponseDistro": {
+    "Baseline": 8,
+    "NR": 4,
+    "R": 4
+   },
+   "icbArmSamples": 8,
+   "icbResponders": 4,
+   "icbNonResponders": 4,
+   "icbBaselineSamples": 8,
+   "icbTreatedSamples": 8
   }
  }
 }

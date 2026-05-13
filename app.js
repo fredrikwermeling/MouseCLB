@@ -98,10 +98,13 @@
         if (hit) {
           meta.tismo[cl] = hit;
           if (!meta.sources[cl]) meta.sources[cl] = [];
+          const what = `${hit.vivoSamples || 0} in-vivo / ${hit.vitroSamples || 0} in-vitro samples across ${(hit.studies || []).length} studies`
+            + ((hit.icbResponders || 0) + (hit.icbNonResponders || 0) > 0
+              ? `; ${hit.icbResponders}R / ${hit.icbNonResponders}NR labelled` : '');
           meta.sources[cl].push({
             name: 'TISMO',
             url: 'https://tismo.pku-genomics.org/#/databrowser',
-            what: `RNA-seq sample index (${hit.vitroSamples || 0} in-vitro / ${hit.vivoSamples || 0} in-vivo, ${(hit.studies || []).length} studies)`
+            what
           });
         }
       }
@@ -374,47 +377,80 @@
     return `<div class="field"><div class="k">Available from</div><div class="v" style="display:flex; flex-wrap:wrap; gap:3px;">${chips}</div></div>`;
   }
 
-  // TISMO record section — sample counts, GEO study links, ICB
-  // arm counts. Linked out to the TISMO portal for the raw data.
+  // TISMO record section — surfaces the per-sample richness in TISMO:
+  // ICB-response label distribution (R/NR/Baseline), cell-line genotype
+  // variants studied (engineered KO/OE), mouse host strain variety,
+  // ICB / drug treatment arms, implantation sites, GEO study links.
+  // Linked out to the TISMO portal for the raw data.
   function renderTismo(t) {
     if (!t) return '';
-    // GEO accessions are GSE-prefixed; the rest are internal study IDs
-    // (which TISMO keeps despite no public landing page).
+
+    // Helper: render a top-k distribution as count pills.
+    const distroChips = (distro, palette) => {
+      if (!distro) return '';
+      return Object.entries(distro).map(([k, n]) =>
+        `<span style="background:${palette.bg}; color:${palette.fg}; padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid ${palette.border}; margin-right:3px; font-variant-numeric:tabular-nums;"><b>${n}</b> ${k}</span>`
+      ).join('');
+    };
+
+    // GEO accessions get clickable links; internal study IDs are plain pills.
     const studyChips = (t.studies || []).map(s => {
       if (/^GSE\d+$/.test(s)) {
         return `<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${s}" target="_blank" rel="noopener" style="background:#dcfce7; color:#15803d; padding:1px 6px; border-radius:10px; font-size:10px; text-decoration:none; border:1px solid #bbf7d0; margin-right:3px;">${s} ↗</a>`;
       }
       return `<span style="background:#f3f4f6; color:#6b7280; padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid #e5e7eb; margin-right:3px;">${s}</span>`;
     }).join('');
-    const icbBadge = (t.icbTreatedSamples || 0) > 0
-      ? `<span class="badge" style="background:#dcfce7; color:#15803d; border-color:#bbf7d0;">${t.icbTreatedSamples} ICB-arm samples</span>`
-      : `<span class="badge" style="background:#f3f4f6; color:#6b7280; border-color:#e5e7eb;">no ICB arm</span>`;
-    const portalLink = `https://tismo.pku-genomics.org/#/databrowser`;
+
+    const portalLink = 'https://tismo.pku-genomics.org/#/databrowser';
+    const rawLink    = 'https://datadryad.org/dataset/doi:10.5061/dryad.b8gtht7g1';
+
+    // ICB-response summary — the headline number.
+    const r = t.icbResponders || 0, nr = t.icbNonResponders || 0;
+    const baseline = t.icbBaselineSamples || 0;
+    const icbHeader = (r + nr + baseline) > 0
+      ? `<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+           <span class="badge" style="background:#dcfce7; color:#15803d; border-color:#bbf7d0;"><b>${r}</b> responder samples</span>
+           <span class="badge" style="background:#fee2e2; color:#991b1b; border-color:#fecaca;"><b>${nr}</b> non-responder samples</span>
+           <span class="badge" style="background:#f3f4f6; color:#6b7280;"><b>${baseline}</b> Baseline (untreated)</span>
+         </div>`
+      : `<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+           <span class="badge" style="background:#f3f4f6; color:#6b7280; border-color:#e5e7eb;">no per-sample ICB-response labels</span>
+         </div>`;
+
     const fields = [];
     if (t.vitroSamples) fields.push(`<b>${t.vitroSamples}</b> in-vitro`);
     if (t.vivoSamples)  fields.push(`<b>${t.vivoSamples}</b> in-vivo`);
     const sampleLine = fields.join(' · ');
-    const treatmentLine = (t.icbTreatments && t.icbTreatments.length)
-      ? `<div class="field"><div class="k">ICB / drug arms</div><div class="v">${t.icbTreatments.join(', ')}</div></div>`
-      : '';
-    const strainLine = (t.mouseStrains && t.mouseStrains.length)
-      ? `<div class="field"><div class="k">Host strains used</div><div class="v">${t.mouseStrains.join(', ')}</div></div>`
-      : '';
+
+    // The per-variable distributions. Each one is "Top 8 by sample count".
+    const distroRow = (label, distro, palette) => {
+      if (!distro || Object.keys(distro).length === 0) return '';
+      return `<div class="field"><div class="k">${label}</div><div class="v" style="display:flex; flex-wrap:wrap; gap:3px;">${distroChips(distro, palette)}</div></div>`;
+    };
+    const pGenotype = { bg: '#eef2ff', fg: '#3730a3', border: '#c7d2fe' };
+    const pStrain   = { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' };
+    const pTrt      = { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' };
+    const pSite     = { bg: '#f3f4f6', fg: '#374151', border: '#e5e7eb' };
+    const pSub      = { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' };
+
     return `
       <div class="section-title">TISMO record</div>
       <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">
-        Cell line is catalogued in <a href="${portalLink}" target="_blank" rel="noopener" style="color:var(--green-700);">TISMO ↗</a> (Tumor Immune Syngeneic MOuse). Raw RNA-seq + ICB-treatment data are at the GEO accessions below.
+        Per-sample RNA-seq + ICB-treatment context aggregated from <a href="${portalLink}" target="_blank" rel="noopener" style="color:var(--green-700);">TISMO ↗</a>.
+        Raw expression matrices are on <a href="${rawLink}" target="_blank" rel="noopener" style="color:var(--green-700);">Dryad ↗</a> (Zeng 2022).
+        Counts below are samples (n × replicates), top-8 shown per axis.
       </div>
-      <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
-        ${icbBadge}
-        ${t.originYear ? `<span class="badge" style="background:#f3f4f6; color:#6b7280;">est. ${t.originYear}</span>` : ''}
-        ${t.parent ? `<span class="badge" style="background:#eef2ff; color:#3730a3; border-color:#c7d2fe;">child of ${t.parent}</span>` : ''}
-      </div>
-      ${sampleLine ? `<div class="field"><div class="k">Samples</div><div class="v">${sampleLine}</div></div>` : ''}
-      ${treatmentLine}
-      ${strainLine}
+      ${icbHeader}
+      ${sampleLine ? `<div class="field"><div class="k">Samples</div><div class="v">${sampleLine}${t.parent ? ` · child of <b>${t.parent}</b>` : ''}${t.originYear ? ` · est. ${t.originYear}` : ''}</div></div>` : ''}
+      ${distroRow('Cell-line variants (in vivo)', t.vivoCellGenotype, pGenotype)}
+      ${distroRow('Sub-clones (in vivo)',         t.vivoSubClone,     pSub)}
+      ${distroRow('ICB / drug arms tested',       t.vivoMouseTreatment, pTrt)}
+      ${distroRow('Host mouse strains',           t.vivoMouseStrain,   pStrain)}
+      ${distroRow('Host mouse genotypes',         t.vivoMouseGenotype, pGenotype)}
+      ${distroRow('Implantation sites',           t.vivoImplantationSite, pSite)}
+      ${distroRow('In-vitro treatments',          t.vitroCellTreatment, pTrt)}
       ${t.origin ? `<div class="field"><div class="k">Origin (TISMO)</div><div class="v">${t.origin}</div></div>` : ''}
-      ${studyChips ? `<div style="margin-top:8px;"><div style="font-size:11px; color:var(--gray-500); margin-bottom:4px;">Studies (${(t.studies||[]).length}):</div>${studyChips}</div>` : ''}
+      ${studyChips ? `<div style="margin-top:8px;"><div style="font-size:11px; color:var(--gray-500); margin-bottom:4px;">GEO studies (${(t.studies||[]).length}):</div>${studyChips}</div>` : ''}
     `;
   }
 
@@ -480,6 +516,13 @@
           // Negative for ascending = highest TMB first.
           if (!m) return 0;
           return -(m.totalHigh + m.totalModerate / 10);
+        }
+        case 'icb':     {
+          // Surface lines with the most actual ICB-arm labelled samples
+          // (R + NR + Baseline) in TISMO.
+          const t = meta.tismo?.[cl];
+          if (!t) return 0;
+          return -((t.icbResponders || 0) + (t.icbNonResponders || 0) + (t.icbBaselineSamples || 0));
         }
         default:        return (meta.names[cl] || cl).toLowerCase();
       }
