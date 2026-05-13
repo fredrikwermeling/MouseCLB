@@ -199,6 +199,55 @@
     console.warn('Could not load TISMO immune panel:', e);
   }
 
+  // Composite immune-signature scores per cell line. Computed on the fly
+  // from the panel data: mean z-score across each signature's gene set,
+  // measured at preICB baseline so the score reflects the line's intrinsic
+  // immune phenotype (not its post-ICB response). Signatures:
+  //   tCellInflamed — Ayers-like IFN-γ / CD8 cytotoxic signature
+  //   mdsc          — myeloid-derived suppressor / immunosuppression
+  //   mhcI          — MHC-I antigen-presentation machinery
+  //   mhcII         — MHC-II machinery
+  //   m1m2          — M1-vs-M2 macrophage polarisation
+  meta.immuneScores = {};
+  const SIG_PANELS = {
+    tCellInflamed: ['Cd8a', 'Cd8b1', 'Ifng', 'Cxcl9', 'Cxcl10', 'Cxcl11', 'Stat1', 'Gzmb', 'Gzma', 'Prf1', 'Cd3d', 'Cd3e', 'Irf1', 'Tigit', 'Lag3', 'Pdcd1'],
+    mdsc: ['Arg1', 'Nos2', 'S100a8', 'S100a9', 'Cebpb', 'Csf1r', 'Csf1', 'Ccl2', 'Itgam', 'Ly6g'],
+    mhcI: ['B2m', 'H2-K1', 'H2-D1', 'H2-T22', 'Tap1', 'Tap2', 'Tapbp', 'Psmb8', 'Psmb9', 'Nlrc5', 'Erap1'],
+    mhcII: ['Cd74', 'Ciita', 'H2-Ab1', 'H2-Aa', 'H2-Eb1', 'H2-DMa', 'H2-DMb1'],
+    m1: ['Nos2', 'Tnf', 'Il6', 'Cd68', 'Il12a', 'Il12b'],
+    m2: ['Mrc1', 'Cd163', 'Il10', 'Arg1']
+  };
+  function computeImmuneScores() {
+    if (!meta.immunePanelMeta?.cohortStats || !meta.immunePanel) return;
+    const cohort = meta.immunePanelMeta.cohortStats;
+    function panelZ(baselineMeans, genes) {
+      const zs = [];
+      for (const g of genes) {
+        const v = baselineMeans?.[g];
+        const c = cohort[g];
+        if (v == null || !c || c.sd <= 0) continue;
+        zs.push((v - c.mean) / c.sd);
+      }
+      return zs.length >= 3 ? zs.reduce((a, b) => a + b, 0) / zs.length : null;
+    }
+    for (const cl of meta.cellLines) {
+      const ip = meta.immunePanel[cl];
+      if (!ip) continue;
+      const baseline = ip.preICB_baseline?.mean;
+      if (!baseline) continue;
+      const m1 = panelZ(baseline, SIG_PANELS.m1);
+      const m2 = panelZ(baseline, SIG_PANELS.m2);
+      meta.immuneScores[cl] = {
+        tCellInflamed: panelZ(baseline, SIG_PANELS.tCellInflamed),
+        mdsc:          panelZ(baseline, SIG_PANELS.mdsc),
+        mhcI:          panelZ(baseline, SIG_PANELS.mhcI),
+        mhcII:         panelZ(baseline, SIG_PANELS.mhcII),
+        m1m2:          (m1 != null && m2 != null) ? (m1 - m2) : null
+      };
+    }
+  }
+  computeImmuneScores();
+
   // Full TISMO expression matrix (Dryad / Zeng 2022). Eager-load the
   // small metadata for the gene autocomplete; lazy-load the 1.7 MB
   // binary blob on first gene query so detail-pane render isn't slowed
@@ -532,12 +581,56 @@
     const totalBase  = base.n  || 0;
     const totalR     = rcond.n || 0;
     const totalNR    = nrcond.n || 0;
+
+    // Composite signature scores for this line — mean z-score across
+    // each curated gene panel, computed at preICB baseline.
+    const scores = meta.immuneScores?.[cl];
+    let scoreBar = '';
+    if (scores) {
+      const SCORE_DEFS = [
+        { key: 'tCellInflamed', label: 'T-cell inflamed',  hi: '#15803d', lo: '#3730a3' },
+        { key: 'mhcI',          label: 'MHC-I',             hi: '#15803d', lo: '#991b1b' },
+        { key: 'mhcII',         label: 'MHC-II',            hi: '#15803d', lo: '#991b1b' },
+        { key: 'mdsc',          label: 'MDSC / suppression',hi: '#991b1b', lo: '#15803d' },
+        { key: 'm1m2',          label: 'M1 − M2',           hi: '#15803d', lo: '#991b1b' }
+      ];
+      const cellWidthPct = 100 / SCORE_DEFS.length;
+      const scoreCells = SCORE_DEFS.map(d => {
+        const z = scores[d.key];
+        if (z == null) return `<td style="text-align:center; color:var(--gray-400); padding:4px;">—</td>`;
+        // Map z ∈ [-2, +2] → 0..100 % of cell width as a horizontal bar.
+        const clamped = Math.max(-2, Math.min(2, z));
+        const pct = (Math.abs(clamped) / 2) * 50;
+        const side = clamped >= 0 ? 'right' : 'left';
+        const colour = clamped >= 0 ? d.hi : d.lo;
+        const tone = clamped >= 0 ? '#dcfce7' : '#fee2e2';
+        // The cell is split at 50% with bars growing outward from centre.
+        return `<td style="padding:4px; vertical-align:middle;">
+          <div style="position:relative; height:14px; background:#f9fafb; border-radius:4px; overflow:hidden;">
+            <div style="position:absolute; top:0; bottom:0; left:50%; width:1px; background:#d1d5db;"></div>
+            <div style="position:absolute; top:0; bottom:0; ${side}:50%; width:${pct}%; background:${tone};"></div>
+          </div>
+          <div style="text-align:center; font-size:10px; color:${colour}; font-variant-numeric:tabular-nums; margin-top:2px;">${z >= 0 ? '+' : ''}${z.toFixed(2)}σ</div>
+        </td>`;
+      }).join('');
+      const headerCells = SCORE_DEFS.map(d => `<th style="text-align:center; font-size:9px; color:var(--gray-500); padding:2px 4px; font-weight:600; width:${cellWidthPct}%;">${d.label}</th>`).join('');
+      scoreBar = `
+        <div style="margin-bottom:10px;">
+          <div style="font-size:11px; color:var(--gray-500); margin-bottom:4px;">Composite signature z-scores (vs 22-line TISMO cohort, at baseline). Bars grow from centre — right = above cohort, left = below; saturation at ±2σ.</div>
+          <table style="width:100%; border-collapse:collapse;">
+            <thead><tr>${headerCells}</tr></thead>
+            <tbody><tr>${scoreCells}</tr></tbody>
+          </table>
+        </div>`;
+    }
+
     return `
       <div class="section-title">Immune gene panel (TISMO)</div>
       <div style="font-size:11px; color:var(--gray-500); margin-bottom:8px;">
         Mean expression of a ${Object.values(ipMeta.panel).reduce((a,gs)=>a+gs.length,0)}-gene immune panel, per ICB-response group. Source: <a href="${ipMeta.source.url}" target="_blank" rel="noopener" style="color:var(--green-700);">${ipMeta.source.name} ↗</a> (${ipMeta.source.paper.split(',')[0]}). Values are log-normalised TPM (quantile + ComBat). Cell shading: red = high vs cohort, blue = low.
         ${totalBase + totalR + totalNR === 0 ? '<br><b>No samples</b> for this line in this cohort.' : ''}
       </div>
+      ${scoreBar}
       ${html}
     `;
   }
@@ -811,6 +904,15 @@
           const t = meta.tismo?.[cl];
           if (!t) return 0;
           return -((t.icbResponders || 0) + (t.icbNonResponders || 0) + (t.icbBaselineSamples || 0));
+        }
+        case 'tCellInflamed':
+        case 'mdsc':
+        case 'mhcI':
+        case 'mhcII':
+        case 'm1m2': {
+          // Negative z-score = pushed to top in ascending sort.
+          const s = meta.immuneScores?.[cl]?.[state.sortBy];
+          return s == null ? 99 : -s;
         }
         default:        return (meta.names[cl] || cl).toLowerCase();
       }
