@@ -74,6 +74,16 @@ def extract_fields(h):
     breed = h.get('breed')
     sex = h.get('sex')
     cautions = [c.get('value') for c in (h.get('comment-list') or []) if c.get('category') == 'Caution']
+    # Distributor cross-refs: each provider entry has a database name
+    # (ATCC, Kerafast, Sigma, ABM, etc.) plus an accession and URL.
+    providers = []
+    for x in (h.get('xref-list') or []):
+        if x.get('category') == 'Cell line collections (Providers)' and not x.get('discontinued'):
+            providers.append({
+                'db': x.get('database'),
+                'accession': x.get('accession'),
+                'url': x.get('url')
+            })
     return {
         'rrid': primary,
         'identifier': ident,
@@ -81,7 +91,8 @@ def extract_fields(h):
         'ncitDisease': dz_label,
         'breed': breed,
         'sex': sex,
-        'cautions': cautions or None
+        'cautions': cautions or None,
+        'providers': providers or None
     }
 
 def main():

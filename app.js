@@ -12,6 +12,7 @@
   const MCCA_CELLO_URL = 'web_data/mcca_cellosaurus.json';
   const TISMO_URL = 'web_data/tismo_enrichment.json';
   const PUBMED_URL = 'web_data/pubmed_presence.json';
+  const WIKI_URL = 'web_data/wikipedia_summaries.json';
 
   // ---------- load ----------
   let meta;
@@ -35,6 +36,7 @@
   if (!meta.ncitDisease) meta.ncitDisease = {};
   if (!meta.cautions) meta.cautions = {};
   if (!meta.sources) meta.sources = {};
+  if (!meta.providers) meta.providers = {};
 
   // Bulk metadata for the 590 lines comes from MCCA. Tag them now;
   // additional sources are added as we merge each enrichment file.
@@ -62,6 +64,7 @@
         if (Array.isArray(v.synonyms) && v.synonyms.length) meta.synonyms[cl] = v.synonyms;
         if (v.ncitDisease) meta.ncitDisease[cl] = v.ncitDisease;
         if (Array.isArray(v.cautions) && v.cautions.length) meta.cautions[cl] = v.cautions;
+        if (Array.isArray(v.providers) && v.providers.length) meta.providers[cl] = v.providers;
         if (!meta.sources[cl]) meta.sources[cl] = [];
         meta.sources[cl].push({
           name: 'Cellosaurus',
@@ -132,6 +135,28 @@
     console.warn('Could not load PubMed presence:', e);
   }
 
+  // Wikipedia narrative summaries (only for lines with a dedicated
+  // MediaWiki page — typically a handful of canonical workhorses).
+  if (!meta.wiki) meta.wiki = {};
+  try {
+    const wr = await fetch(WIKI_URL);
+    if (wr.ok) {
+      const wd = await wr.json();
+      for (const [cl, v] of Object.entries(wd.byCellLine || {})) {
+        if (!v) continue;
+        meta.wiki[cl] = v;
+        if (!meta.sources[cl]) meta.sources[cl] = [];
+        meta.sources[cl].push({
+          name: 'Wikipedia',
+          url: v.pageUrl,
+          what: 'narrative summary'
+        });
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load Wikipedia summaries:', e);
+  }
+
   try {
     const lr = await fetch(LIT_URL);
     if (lr.ok) {
@@ -147,7 +172,7 @@
         'mhcA', 'mhcB', 'gender', 'immunocompetent', 'source', 'distributor',
         'curated', 'curatedTier', 'dataSource', 'litCitation',
         'cellosaurusRrid', 'ncitDisease', 'synonyms', 'immuneProfile',
-        'cautions', 'drivers'
+        'cautions', 'drivers', 'providers'
       ];
       for (const entry of (lit.lines || [])) {
         const id = entry.id;
@@ -290,6 +315,21 @@
       ${detailRow('ICB response',  prof.icbResponseDetail)}
       ${prof.source ? `<div style="font-size:10px; color:var(--gray-500); margin-top:6px;">Source: ${prof.source}</div>` : ''}
     `;
+  }
+
+  // Distributor cross-refs from Cellosaurus xref-list. Each provider
+  // chip is a clickable link to that catalog's product page for the
+  // line (ATCC, Kerafast, Sigma, ABM, ECACC, etc.).
+  function renderProviders(providers) {
+    if (!Array.isArray(providers) || providers.length === 0) return '';
+    const chips = providers.map(p => {
+      const label = `${p.db || '?'}: ${p.accession || '?'}`;
+      const inner = p.url
+        ? `<a href="${p.url}" target="_blank" rel="noopener" style="color:#15803d; text-decoration:none;">${label} ↗</a>`
+        : label;
+      return `<span style="background:var(--green-50); padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid var(--green-200); margin-right:3px;">${inner}</span>`;
+    }).join('');
+    return `<div class="field"><div class="k">Available from</div><div class="v" style="display:flex; flex-wrap:wrap; gap:3px;">${chips}</div></div>`;
   }
 
   // TISMO record section — sample counts, GEO study links, ICB
@@ -515,7 +555,9 @@
       'MCCA':                { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe' },
       'Cellosaurus':         { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
       'TISMO':               { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
-      'Primary literature':  { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' }
+      'Primary literature':  { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' },
+      'PubMed':              { bg: '#f3e8ff', fg: '#6b21a8', border: '#e9d5ff' },
+      'Wikipedia':           { bg: '#f3f4f6', fg: '#374151', border: '#e5e7eb' }
     };
     const sourceChips = sources.map(s => {
       const p = chipColours[s.name] || { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' };
@@ -549,11 +591,25 @@
          </div>`
       : '';
 
+    // Optional Wikipedia narrative block (only for the few lines with
+    // a dedicated MediaWiki page). Placed just under the title so it
+    // sets context before the structured detail rows.
+    const w = meta.wiki?.[cl];
+    const wikiBlock = w
+      ? `<div style="margin: 0 0 14px; padding: 10px 14px; background: var(--gray-50); border-left: 3px solid var(--gray-400); font-size: 12px; line-height: 1.5; color: var(--gray-700); border-radius: 0 4px 4px 0;">
+           <div style="display:flex; gap:10px; align-items:flex-start;">
+             ${w.thumbnail ? `<img src="${w.thumbnail}" alt="" style="max-width:80px; max-height:80px; border-radius:4px; flex-shrink:0;">` : ''}
+             <div>${w.extract} <a href="${w.pageUrl}" target="_blank" rel="noopener" style="color:var(--green-700); white-space:nowrap;">— Wikipedia ↗</a></div>
+           </div>
+         </div>`
+      : '';
+
     const html = `
       <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge}</h2>
       <div class="id">${cl}${meta.ncitDisease?.[cl] ? ' · ' + meta.ncitDisease[cl] : ''}</div>
       ${synonymsLine}
       ${provenance}
+      ${wikiBlock}
       ${cautionBlock}
 
       <div class="section-title">Cancer classification</div>
@@ -603,6 +659,7 @@
       ${row('Culture system',   prettyValue(meta.cultureSystem[cl] || ''))}
       ${row('Source',           prettyValue(meta.source[cl] || ''))}
       ${row('Distributor',      meta.distributor[cl])}
+      ${renderProviders(meta.providers?.[cl])}
       ${row('PMID',             pmidV)}
 
       <div class="stub-note">

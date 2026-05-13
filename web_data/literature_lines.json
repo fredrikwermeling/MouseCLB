@@ -1,533 +1,838 @@
 {
-  "_doc": "Supplemental cell-line entries for workhorse mouse lines NOT covered by MCCA (the MCCA cohort is heavily KRAS-GEMM-biased and misses the carcinogen-induced / spontaneous tumour lines that dominate everyday mouse-tumour work). Each entry is hand-curated from primary literature, with the source paper PMID under `litCitation`. Same field shape as metadata.json; `dataSource: 'Literature'` flags provenance for the UI. Anyone re-processing MCCA shouldn't touch this file.",
-  "_schemaVersion": 2,
-  "_schemaNotes": {
-    "immuneProfile": "Per-line immune characterisation. Sourced from Mosely 2017 (PMID 28768203) where covered; TISMO / individual papers otherwise. Fields: tmbCategory (high/medium/low), msiStatus (high/stable/unknown), immunePhenotype (hot / inflamed / variable / cold), icbResponse (responsive / partial / resistant / untested), notes (free-text), source.",
-    "synonyms": "Alternative names listed in Cellosaurus.",
-    "ncitDisease": "NCI Thesaurus disease label for the cell line, from Cellosaurus.",
-    "cautions": "Important caveats from Cellosaurus comment-list (variant heterogeneity, mis-identification risk, etc.)."
-  },
-  "lines": [
+ "_doc": "Supplemental cell-line entries for workhorse mouse lines NOT covered by MCCA (the MCCA cohort is heavily KRAS-GEMM-biased and misses the carcinogen-induced / spontaneous tumour lines that dominate everyday mouse-tumour work). Each entry is hand-curated from primary literature, with the source paper PMID under `litCitation`. Same field shape as metadata.json; `dataSource: 'Literature'` flags provenance for the UI. Anyone re-processing MCCA shouldn't touch this file.",
+ "_schemaVersion": 2,
+ "_schemaNotes": {
+  "immuneProfile": "Per-line immune characterisation. Sourced from Mosely 2017 (PMID 28768203) where covered; TISMO / individual papers otherwise. Fields: tmbCategory (high/medium/low), msiStatus (high/stable/unknown), immunePhenotype (hot / inflamed / variable / cold), icbResponse (responsive / partial / resistant / untested), notes (free-text), source.",
+  "synonyms": "Alternative names listed in Cellosaurus.",
+  "ncitDisease": "NCI Thesaurus disease label for the cell line, from Cellosaurus.",
+  "cautions": "Important caveats from Cellosaurus comment-list (variant heterogeneity, mis-identification risk, etc.)."
+ },
+ "lines": [
+  {
+   "id": "LITMC38",
+   "name": "MC38",
+   "synonyms": [
+    "MC-38",
+    "MCA-38",
+    "MCA 38",
+    "MCA38",
+    "MC-38 B/6"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Corbett 1975 (Cancer Res 35:2434, PMID 1212137); exome / immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_B288",
+   "cellosaurusRrid": "CVCL_B288",
+   "ncitDisease": "Mouse colon adenocarcinoma",
+   "curated": "MC38",
+   "curatedTier": 1,
+   "lineage": "IntestineLarge",
+   "tissue": "EpithelialTissue",
+   "site": "Colon",
+   "tumorLocation": "Colon",
+   "cancerType": "IntestinalCancer",
+   "cancerTypeDetailed": "ColonAdenocarcinoma",
+   "morphology": "Epithelial",
+   "morphologyDetailed": "Grade III adenocarcinoma",
+   "modelType": "Wildtype",
+   "mouseModel": "Carcinogen-induced",
+   "mouseModelDetailed": "1,2-Dimethylhydrazine (DMH) induced colon adenocarcinoma in a female C57BL/6 mouse (Corbett 1975).",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "female",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Limited; primarily a subcutaneous-engraftment model.",
+   "immuneProfile": {
+    "tmbCategory": "high",
+    "tmbDetail": "Highest TMB among the carcinogen-induced syngeneic panel; ~800+ non-synonymous mutations (Mosely 2017).",
+    "msiStatus": "high",
+    "msiDetail": "Microsatellite-unstable, defective MMR phenotype consistent with DMH-induced mucosal damage.",
+    "immunePhenotype": "hot",
+    "immunePhenotypeDetail": "T-cell inflamed; substantial CD8+ tumour infiltration relative to the cold lines (B16-F10, 4T1, LL/2).",
+    "icbResponse": "responsive",
+    "icbResponseDetail": "Anti-PD-1 and anti-PD-L1 sensitive \u2014 the canonical positive-control syngeneic model for checkpoint-blockade efficacy studies.",
+    "source": "Mosely 2017 (PMID 28768203)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Corbett (NCI)",
+   "distributor": "Available via collaborators / Kerafast / Memorial Sloan Kettering bank.",
+   "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "1212137",
+   "cautions": [
+    "Kerafast (MC38-K) and Leiden University Medical Center (MC38-L) variants differ substantially in mutations and mRNA expression \u2014 note your source when comparing studies (PMID 36969213).",
+    "Historical confusion with the rat line 'MCA38' / 'isolate 406'; the mitochondrial sequence KM820832.1 deposited as MCA38 is actually rat (PMID 25434994)."
+   ],
+   "drivers": [
     {
-      "id": "LITMC38",
-      "name": "MC38",
-      "synonyms": ["MC-38", "MCA-38", "MCA 38", "MCA38", "MC-38 B/6"],
-      "dataSource": "Literature",
-      "litCitation": "Corbett 1975 (Cancer Res 35:2434, PMID 1212137); exome / immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_B288",
-      "cellosaurusRrid": "CVCL_B288",
-      "ncitDisease": "Mouse colon adenocarcinoma",
-
-      "curated": "MC38",
-      "curatedTier": 1,
-
-      "lineage": "IntestineLarge",
-      "tissue": "EpithelialTissue",
-      "site": "Colon",
-      "tumorLocation": "Colon",
-      "cancerType": "IntestinalCancer",
-      "cancerTypeDetailed": "ColonAdenocarcinoma",
-      "morphology": "Epithelial",
-      "morphologyDetailed": "Grade III adenocarcinoma",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Carcinogen-induced",
-      "mouseModelDetailed": "1,2-Dimethylhydrazine (DMH) induced colon adenocarcinoma in a female C57BL/6 mouse (Corbett 1975).",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "female",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Limited; primarily a subcutaneous-engraftment model.",
-
-      "immuneProfile": {
-        "tmbCategory": "high",
-        "tmbDetail": "Highest TMB among the carcinogen-induced syngeneic panel; ~800+ non-synonymous mutations (Mosely 2017).",
-        "msiStatus": "high",
-        "msiDetail": "Microsatellite-unstable, defective MMR phenotype consistent with DMH-induced mucosal damage.",
-        "immunePhenotype": "hot",
-        "immunePhenotypeDetail": "T-cell inflamed; substantial CD8+ tumour infiltration relative to the cold lines (B16-F10, 4T1, LL/2).",
-        "icbResponse": "responsive",
-        "icbResponseDetail": "Anti-PD-1 and anti-PD-L1 sensitive — the canonical positive-control syngeneic model for checkpoint-blockade efficacy studies.",
-        "source": "Mosely 2017 (PMID 28768203)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Corbett (NCI)",
-      "distributor": "Available via collaborators / Kerafast / Memorial Sloan Kettering bank.",
-      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "1212137",
-
-      "cautions": [
-        "Kerafast (MC38-K) and Leiden University Medical Center (MC38-L) variants differ substantially in mutations and mRNA expression — note your source when comparing studies (PMID 36969213).",
-        "Historical confusion with the rat line 'MCA38' / 'isolate 406'; the mitochondrial sequence KM820832.1 deposited as MCA38 is actually rat (PMID 25434994)."
-      ],
-
-      "drivers": [
-        {"gene": "Trp53", "alteration": "mutated",   "pathway": "p53",            "note": "Inactivating point mutations — LoF of the p53 axis."},
-        {"gene": "Apc",   "alteration": "mutated",   "pathway": "Wnt",            "note": "Truncating mutation — Wnt-pathway hyperactivation, canonical colorectal driver."},
-        {"gene": "Smad4", "alteration": "mutated",   "pathway": "TGF-β",          "note": "Inactivating — TGF-β pathway loss."},
-        {"gene": "Pole",  "alteration": "mutated",   "pathway": "DNA repair",     "note": "Polymerase-ε proofreading defect — major contributor to the ultramutator / high-TMB phenotype."},
-        {"gene": "MMR",   "alteration": "deficient", "pathway": "DNA repair",     "note": "Mismatch-repair deficient → microsatellite instability."}
-      ]
+     "gene": "Trp53",
+     "alteration": "mutated",
+     "pathway": "p53",
+     "note": "Inactivating point mutations \u2014 LoF of the p53 axis."
     },
     {
-      "id": "LITLL2",
-      "name": "LL/2",
-      "synonyms": ["LL/2 (LLC1)", "LL2", "LLC1", "LLC", "Lewis lung carcinoma line 1", "Lewis lung carcinoma", "Lewis Lung Cancer"],
-      "dataSource": "Literature",
-      "litCitation": "Lewis 1951 (Bull Johns Hopkins Hosp 88:251); immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_4358",
-      "cellosaurusRrid": "CVCL_4358",
-      "ncitDisease": "Malignant tumors of the mouse pulmonary system",
-
-      "curated": "LL/2",
-      "curatedTier": 1,
-
-      "lineage": "Lung",
-      "tissue": "EpithelialTissue",
-      "site": "Lung",
-      "tumorLocation": "Lung",
-      "cancerType": "LungCancer",
-      "cancerTypeDetailed": "LungCarcinoma",
-      "morphology": "Epithelial",
-      "morphologyDetailed": null,
-
-      "modelType": "Wildtype",
-      "mouseModel": "Spontaneous",
-      "mouseModelDetailed": "Spontaneously arising lung carcinoma in a C57BL/6 mouse (Lewis 1951). KRAS-mutant, TP53-mutant. Used as the canonical 'cold' / immune-excluded NSCLC syngeneic model and a standard negative-control line for ICB efficacy studies.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": null,
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Highly metastatic to lung when injected intravenously; one of the most-used syngeneic metastasis models.",
-
-      "immuneProfile": {
-        "tmbCategory": "low",
-        "tmbDetail": "Low TMB relative to MC38 / CT26; consistent with the spontaneous low-mutator origin.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "cold",
-        "immunePhenotypeDetail": "Immune-excluded / cold tumour. Low CD8+ infiltration, high myeloid / MDSC content (Mosely 2017).",
-        "icbResponse": "resistant",
-        "icbResponseDetail": "Anti-PD-1 / anti-PD-L1 monotherapy resistant — used as the canonical negative-control syngeneic line for checkpoint-blockade studies. Some combination strategies (anti-PD-L1 + chemotherapy / anti-CTLA-4) show partial efficacy.",
-        "source": "Mosely 2017 (PMID 28768203)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Lewis 1951 (Johns Hopkins)",
-      "distributor": "ATCC (CRL-1642), ECACC, Kerafast.",
-      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "7226139",
-
-      "cautions": [
-        "Cellosaurus notes LL/2 could be identical to 3LL (CVCL_5653). The two designations refer to clonal derivatives of the same Lewis 1951 parent tumour; treat data across the two as comparable but not strictly interchangeable.",
-        "Sex of the originating mouse is not consistently reported in the primary literature — left as unknown rather than guess."
-      ],
-
-      "drivers": [
-        {"gene": "Kras",   "alteration": "mutated",  "pathway": "RAS/MAPK", "note": "Activating mutation (G12V most commonly reported)."},
-        {"gene": "Trp53",  "alteration": "mutated",  "pathway": "p53",      "note": "Inactivating — LoF of the p53 axis."},
-        {"gene": "Cdkn2a", "alteration": "lost",     "pathway": "Cell cycle","note": "Homozygous deletion in some sub-lines."}
-      ]
+     "gene": "Apc",
+     "alteration": "mutated",
+     "pathway": "Wnt",
+     "note": "Truncating mutation \u2014 Wnt-pathway hyperactivation, canonical colorectal driver."
     },
     {
-      "id": "LITPANC02",
-      "name": "Panc02",
-      "synonyms": ["Panc-02", "Panc 02", "Pan02", "Pan-02", "PAN 02"],
-      "dataSource": "Literature",
-      "litCitation": "Corbett 1984 (Cancer Res 44:717, 3-methylcholanthrene-induced PDAC); immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_D627",
-      "cellosaurusRrid": "CVCL_D627",
-      "ncitDisease": "Mouse pancreatic ductal adenocarcinoma",
-
-      "curated": "Panc02",
-      "curatedTier": 1,
-
-      "lineage": "Pancreas",
-      "tissue": "EpithelialTissue",
-      "site": "Pancreas",
-      "tumorLocation": "Pancreas",
-      "cancerType": "PancreaticCancer",
-      "cancerTypeDetailed": "PancreaticDuctalAdenocarcinoma",
-      "morphology": "Epithelial",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Carcinogen-induced",
-      "mouseModelDetailed": "3-methylcholanthrene-induced pancreatic ductal adenocarcinoma in a male C57BL/6 mouse (Corbett 1984). The carcinogen-induced origin produces a higher mutational burden than KRAS-driven GEMM PDAC models — useful for studies where neoantigen load matters, but biologically distinct from human KRAS-PDAC.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "male",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Intraperitoneal injection gives peritoneal carcinomatosis with ascites and liver / lung micro-metastases.",
-
-      "immuneProfile": {
-        "tmbCategory": "high",
-        "tmbDetail": "Higher TMB than KRAS-GEMM pancreatic models (carcinogen-induced); intermediate between LL/2 and MC38.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "variable",
-        "immunePhenotypeDetail": "Variable across studies — orthotopic implantation produces stromal / immune-excluded tumours, while subcutaneous can be more inflamed. Lacks the dense fibrotic stroma of human PDAC.",
-        "icbResponse": "partial",
-        "icbResponseDetail": "Reports of partial monotherapy response to anti-PD-L1; widely used for combination ICB / vaccine studies rather than monotherapy efficacy.",
-        "source": "Mosely 2017 (PMID 28768203)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Corbett (NCI / Wayne State)",
-      "distributor": "Kerafast (EQ001-NRC), collaborator distribution.",
-      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "6692374",
-
-      "cautions": [
-        "Panc02 has been criticised as poorly representing human PDAC biology: it is more immunogenic than KRAS-driven GEMM PDAC, lacks the dense desmoplastic stroma, and behaves quite differently from KPC. Use as a 'permissive' PDAC syngeneic model rather than a faithful surrogate for KRAS-mutant disease."
-      ],
-
-      "drivers": [
-        {"gene": "Kras",   "alteration": "wild-type", "pathway": "RAS/MAPK", "note": "Notable WT — distinguishes Panc02 from human KRAS-driven PDAC and from the KPC GEMM. Panc02 is KRAS-independent."},
-        {"gene": "Trp53",  "alteration": "mutated",   "pathway": "p53",      "note": "Inactivating point mutation."},
-        {"gene": "Smad4",  "alteration": "mutated",   "pathway": "TGF-β",    "note": "Inactivating — TGF-β pathway loss."},
-        {"gene": "Cdkn2a", "alteration": "lost",      "pathway": "Cell cycle","note": "Reported deletion in some sub-stocks."}
-      ]
+     "gene": "Smad4",
+     "alteration": "mutated",
+     "pathway": "TGF-\u03b2",
+     "note": "Inactivating \u2014 TGF-\u03b2 pathway loss."
     },
     {
-      "id": "LITMOC1",
-      "name": "MOC1",
-      "synonyms": ["Mouse Oral Cancer 1"],
-      "dataSource": "Literature",
-      "litCitation": "Judd 2012 (Cancer Res 72:365, PMID 22086849); follow-up immune characterisation in Onken 2014 (Oral Oncol, PMID 24668645); Cellosaurus CVCL_ZD32",
-      "cellosaurusRrid": "CVCL_ZD32",
-      "ncitDisease": "Squamous cell carcinoma of the mouse oral cavity",
-
-      "curated": "MOC1",
-      "curatedTier": 1,
-
-      "lineage": "HeadNeck",
-      "tissue": "EpithelialTissue",
-      "site": "OralCavity",
-      "tumorLocation": "OralCavity",
-      "cancerType": "HeadNeckCancer",
-      "cancerTypeDetailed": "HeadNeckSquamousCellCarcinoma",
-      "morphology": "Epithelial",
-      "morphologyDetailed": "Well-differentiated squamous cell carcinoma.",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Carcinogen-induced",
-      "mouseModelDetailed": "Established by Judd et al. 2012 from a C57BL/6 mouse oral squamous cell carcinoma induced by 4-nitroquinoline-1-oxide (4-NQO). MOC1 is the immunogenic / T-cell inflamed sister line in the MOC1 vs MOC2 pair, used as the positive-control HNSCC model for ICB efficacy.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "female",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Locally invasive; limited spontaneous metastasis from orthotopic / buccal implantation.",
-
-      "immuneProfile": {
-        "tmbCategory": "high",
-        "tmbDetail": "High TMB consistent with 4-NQO-induced HNSCC; comparable to MC38.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "inflamed",
-        "immunePhenotypeDetail": "T-cell inflamed with substantial CD8+ infiltration; the immunogenic member of the MOC1/MOC2 pair.",
-        "icbResponse": "responsive",
-        "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 responsive in monotherapy or combination — positive-control HNSCC syngeneic line.",
-        "source": "Judd 2012 (PMID 22086849); Onken 2014 (PMID 24668645)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Judd / Uppaluri lab",
-      "distributor": "Kerafast (EQ002-NRC).",
-      "media": "IMDM/Ham's F-12 (2:1) + 5% FBS + EGF + hydrocortisone + insulin (Judd 2012 keratinocyte cocktail).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "22086849",
-
-      "drivers": [
-        {"gene": "Trp53",  "alteration": "mutated", "pathway": "p53",        "note": "4-NQO-induced inactivation."},
-        {"gene": "Cdkn2a", "alteration": "lost",    "pathway": "Cell cycle", "note": "Reported deletion."}
-      ]
+     "gene": "Pole",
+     "alteration": "mutated",
+     "pathway": "DNA repair",
+     "note": "Polymerase-\u03b5 proofreading defect \u2014 major contributor to the ultramutator / high-TMB phenotype."
     },
     {
-      "id": "LITMOC2",
-      "name": "MOC2",
-      "synonyms": ["Mouse Oral Cancer 2"],
-      "dataSource": "Literature",
-      "litCitation": "Judd 2012 (Cancer Res 72:365, PMID 22086849); follow-up in Onken 2014 (Oral Oncol, PMID 24668645); Cellosaurus CVCL_ZD33",
-      "cellosaurusRrid": "CVCL_ZD33",
-      "ncitDisease": "Squamous cell carcinoma of the mouse oral cavity",
-
-      "curated": "MOC2",
-      "curatedTier": 1,
-
-      "lineage": "HeadNeck",
-      "tissue": "EpithelialTissue",
-      "site": "OralCavity",
-      "tumorLocation": "OralCavity",
-      "cancerType": "HeadNeckCancer",
-      "cancerTypeDetailed": "HeadNeckSquamousCellCarcinoma",
-      "morphology": "Epithelial",
-      "morphologyDetailed": "Poorly-differentiated, aggressive squamous cell carcinoma.",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Carcinogen-induced",
-      "mouseModelDetailed": "Sister line to MOC1 from the same 4-NQO-induced cohort (Judd 2012). MOC2 is the aggressive, immune-excluded / ICB-resistant member of the pair — together MOC1/MOC2 are the canonical 'hot vs cold within one cancer type' contrast.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "female",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Aggressive locoregional invasion and lymph-node metastasis from orthotopic implantation — used as the metastatic HNSCC model.",
-
-      "immuneProfile": {
-        "tmbCategory": "medium",
-        "tmbDetail": "Lower TMB than MOC1 despite the same 4-NQO carcinogen — explains part of the immune-cold phenotype.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "cold",
-        "immunePhenotypeDetail": "Immune-excluded / cold tumour with low CD8+ infiltration and high myeloid content; canonical resistant HNSCC model.",
-        "icbResponse": "resistant",
-        "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 monotherapy resistant — used as the negative-control HNSCC syngeneic line and for combination-therapy escalation studies.",
-        "source": "Judd 2012 (PMID 22086849); Onken 2014 (PMID 24668645)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Judd / Uppaluri lab",
-      "distributor": "Kerafast (EQ003-NRC).",
-      "media": "IMDM/Ham's F-12 (2:1) + 5% FBS + EGF + hydrocortisone + insulin (Judd 2012 keratinocyte cocktail).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "22086849",
-
-      "cautions": [
-        "Cellosaurus annotates the host strain as 'C57BL/6 Cxcr3-/-' — the line was characterised in CXCR3-knockout hosts in some studies. Standard usage is in WT C57BL/6 recipients, but this is worth knowing when comparing CXCL9/10/11–CXCR3 axis findings across labs."
-      ],
-
-      "drivers": [
-        {"gene": "Trp53",  "alteration": "mutated", "pathway": "p53",        "note": "4-NQO-induced inactivation."},
-        {"gene": "Cdkn2a", "alteration": "lost",    "pathway": "Cell cycle", "note": "Reported deletion."}
-      ]
-    },
-    {
-      "id": "LITID8",
-      "name": "ID8",
-      "synonyms": ["ID8/MOSEC", "MOSEC"],
-      "dataSource": "Literature",
-      "litCitation": "Roby 2000 (Carcinogenesis 21:585, PMID 10753190); immune characterisation in Walton 2016 (Cancer Res, PMID 27235858) for the p53/Brca2-edited derivative; Cellosaurus CVCL_IU14",
-      "cellosaurusRrid": "CVCL_IU14",
-      "ncitDisease": null,
-
-      "curated": "ID8",
-      "curatedTier": 1,
-
-      "lineage": "Ovary",
-      "tissue": "EpithelialTissue",
-      "site": "Ovary",
-      "tumorLocation": "Ovary",
-      "cancerType": "OvarianCancer",
-      "cancerTypeDetailed": "OvarianSurfaceEpithelialCarcinoma",
-      "morphology": "Epithelial",
-      "morphologyDetailed": "Spontaneously-transformed ovarian surface epithelial cells (Mouse Ovarian Surface Epithelial Cells = MOSEC).",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Spontaneous (in-vitro transformed)",
-      "mouseModelDetailed": "Adult female C57BL/6 ovarian surface epithelium serially passaged in vitro until spontaneous transformation (Roby 2000). The parental ID8 is p53-WT; the widely-used Walton derivatives carry CRISPR Trp53-/- and Trp53-/-Brca2-/- edits and behave quite differently — ID8-Trp53/Brca2-KO is responsive to PARPi + ICB while parental ID8 is largely resistant.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "female",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Intraperitoneal injection produces ovarian-cancer-like ascites and peritoneal carcinomatosis — the standard mouse high-grade serous ovarian cancer surrogate.",
-
-      "immuneProfile": {
-        "tmbCategory": "low",
-        "tmbDetail": "Low TMB — spontaneous in-vitro transformation, few somatic mutations.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "cold",
-        "immunePhenotypeDetail": "Immune-excluded / cold; large peritoneal disease burden with suppressive myeloid microenvironment.",
-        "icbResponse": "resistant",
-        "icbResponseDetail": "Parental ID8 is anti-PD-1 / anti-PD-L1 monotherapy resistant. The CRISPR Trp53-/-Brca2-/- derivative becomes responsive to PARPi + ICB combinations — use the matching derivative for HRD / BRCA studies.",
-        "source": "Walton 2016 (PMID 27235858); Roby 2000 (PMID 10753190)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Roby lab (University of Kansas)",
-      "distributor": "Collaborator distribution; CRISPR derivatives via Walton lab.",
-      "media": "DMEM + 4% FBS + insulin/transferrin/selenium (ITS) supplement (Roby 2000).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "10753190",
-
-      "cautions": [
-        "The 'ID8' you receive may be the parental p53-WT line OR one of the Walton CRISPR derivatives (Trp53-/-, Trp53-/-Brca2-/-, etc.). These behave very differently in ICB and PARPi response — always confirm genotype with the depositor."
-      ],
-
-      "drivers": [
-        {"gene": "Trp53", "alteration": "wild-type", "pathway": "p53",            "note": "Parental ID8 is p53-WT — distinguishes from human high-grade serous ovarian cancer (~96 % TP53-mutant). The Walton CRISPR derivatives are Trp53-/-."},
-        {"gene": "Brca1", "alteration": "wild-type", "pathway": "DNA repair",     "note": "WT in parental; Walton Brca1-/- CRISPR derivative available separately."},
-        {"gene": "Brca2", "alteration": "wild-type", "pathway": "DNA repair",     "note": "WT in parental; Walton Brca2-/- CRISPR derivative is the one that responds to PARPi + ICB."},
-        {"gene": "Pten",  "alteration": "wild-type", "pathway": "PI3K/AKT",       "note": "WT in parental."}
-      ]
-    },
-    {
-      "id": "LITTC1",
-      "name": "TC-1",
-      "synonyms": ["TC-1 [Mouse lung]", "TC-1[JHU-1]", "Tissue Culture-1"],
-      "dataSource": "Literature",
-      "litCitation": "Lin 1996 (Cancer Res 56:21, PMID 8548765, Wu/Hung lab); Cellosaurus CVCL_4699",
-      "cellosaurusRrid": "CVCL_4699",
-      "ncitDisease": null,
-
-      "curated": "TC-1",
-      "curatedTier": 1,
-
-      "lineage": "Lung",
-      "tissue": "EpithelialTissue",
-      "site": "Lung",
-      "tumorLocation": "Lung",
-      "cancerType": "LungCancer",
-      "cancerTypeDetailed": "EngineeredHPV16ModelTumor",
-      "morphology": "Epithelial",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Engineered (HPV-16 E6/E7 + H-RAS)",
-      "mouseModelDetailed": "Primary C57BL/6 lung epithelial cells co-transformed in vitro with HPV-16 E6/E7 and an activated c-Ha-ras oncogene (Lin et al. 1996). NOT a spontaneous cervical-cancer line — it is engineered lung epithelium that serves as a surrogate HPV-expressing tumour model. Standard for HPV-vaccine / E7-targeted immunotherapy studies.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": null,
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Subcutaneous engraftment standard; limited spontaneous metastasis.",
-
-      "immuneProfile": {
-        "tmbCategory": "low",
-        "tmbDetail": "Low somatic TMB (in-vitro engineered, few accumulated mutations) — immunogenicity is driven by the foreign HPV-16 E6/E7 viral antigens, not by neoantigens.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "variable",
-        "immunePhenotypeDetail": "Tumour is rejected by mice immunised against E7 (canonical HPV-vaccine readout). Untreated TC-1 grows progressively with modest baseline T-cell infiltration.",
-        "icbResponse": "partial",
-        "icbResponseDetail": "ICB monotherapy gives partial efficacy; pairs strongly with E7-peptide vaccines or DNA vaccines — used to demonstrate vaccine + ICB synergy.",
-        "source": "Lin 1996 (PMID 8548765)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Wu / Hung lab (Johns Hopkins)",
-      "distributor": "Collaborator distribution (JHU).",
-      "media": "RPMI-1640 + 10% FBS + L-glutamine + pen/strep + non-essential amino acids (typical).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "8548765",
-
-      "cautions": [
-        "Sex of the originating C57BL/6 donor not recorded in the primary literature — left as unknown.",
-        "Frequently labelled 'cervical cancer model' in vaccine papers — biologically it is engineered lung epithelium with HPV-16 oncogenes. Use as a model of HPV-driven tumour immunology, not as a cervical-cancer cell line."
-      ],
-
-      "drivers": [
-        {"gene": "HPV-16 E6", "alteration": "transgene", "pathway": "p53",      "note": "Foreign viral oncogene — inactivates p53. Major immunogenic neoantigen."},
-        {"gene": "HPV-16 E7", "alteration": "transgene", "pathway": "Rb",       "note": "Foreign viral oncogene — inactivates Rb. The dominant target for vaccine / TCR studies."},
-        {"gene": "Hras",      "alteration": "transgene", "pathway": "RAS/MAPK", "note": "Activated c-Ha-ras (cooperating oncogene introduced alongside E6/E7)."}
-      ]
-    },
-    {
-      "id": "LITB16F1",
-      "name": "B16-F1",
-      "synonyms": ["B16/F1", "B16 F1", "B16F1"],
-      "dataSource": "Literature",
-      "litCitation": "Fidler 1975 (Cancer Res 35:218, PMID 1109790; F1/F10 metastatic-variant series); Cellosaurus CVCL_0158",
-      "cellosaurusRrid": "CVCL_0158",
-      "ncitDisease": "Mouse melanoma",
-
-      "curated": "B16-F1",
-      "curatedTier": 1,
-
-      "lineage": "Skin",
-      "tissue": "EpithelialTissue",
-      "site": "Skin",
-      "tumorLocation": "Skin",
-      "cancerType": "Melanoma",
-      "cancerTypeDetailed": "CutaneousMelanoma",
-      "morphology": "Melanocytic",
-      "morphologyDetailed": "Pigmented melanoma.",
-
-      "modelType": "Wildtype",
-      "mouseModel": "Spontaneous",
-      "mouseModelDetailed": "Parental sub-line of the Fidler / Nicolson B16 metastatic-variant series (Fidler 1975). F1 = first round of in-vivo lung-colonising selection; F10 (CVCL_0159) is the more-metastatic descendant that dominates published syngeneic-melanoma work. Both are immune-cold / poorly-immunogenic.",
-      "strain": "C57BL/6",
-      "strainPct": 100,
-
-      "mhcA": "H-2b",
-      "mhcB": "H-2b",
-      "gender": "male",
-
-      "complexRearrangement": null,
-      "chromothripsis": null,
-      "survivalDays": null,
-      "metastasis": "Selected for lung-colonising potential; F10 (descendant) is the more metastatic variant. F1 is moderately metastatic.",
-
-      "immuneProfile": {
-        "tmbCategory": "low",
-        "tmbDetail": "Low-to-moderate TMB; spontaneous melanoma origin without strong mutational signatures.",
-        "msiStatus": "stable",
-        "msiDetail": "Microsatellite stable.",
-        "immunePhenotype": "cold",
-        "immunePhenotypeDetail": "Classically immune-cold. Low baseline MHC-I expression (induceable with IFN-γ), low CD8+ infiltration — used as the prototypical poorly-immunogenic melanoma model.",
-        "icbResponse": "resistant",
-        "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 monotherapy largely resistant (rare partial responders). Used as the negative-control melanoma syngeneic; pairs with cytokine therapy, adoptive T cells, or vaccine combinations for efficacy.",
-        "source": "Fidler 1975 (PMID 1109790)"
-      },
-
-      "immunocompetent": "Yes (C57BL/6)",
-      "source": "Fidler / Nicolson (MD Anderson)",
-      "distributor": "ATCC (CRL-6323), Kerafast.",
-      "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
-      "cultureSystem": "Adherent 2D",
-      "pmid": "1109790",
-
-      "cautions": [
-        "Most published 'B16 melanoma' work uses B16-F10 (CVCL_0159), not B16-F1. The two share an origin but F10 has been further selected for lung-colonising / metastatic potential and shows different growth kinetics. Confirm which sub-line your collaborators use."
-      ],
-
-      "drivers": [
-        {"gene": "Cdkn2a", "alteration": "lost",       "pathway": "Cell cycle", "note": "Homozygous deletion — classic melanoma driver."},
-        {"gene": "Pten",   "alteration": "lost",       "pathway": "PI3K/AKT",   "note": "Reported loss in some B16 sub-lines."},
-        {"gene": "Trp53",  "alteration": "wild-type",  "pathway": "p53",        "note": "p53 typically WT in B16 — contrast with human melanoma."},
-        {"gene": "Braf",   "alteration": "wild-type",  "pathway": "RAS/MAPK",   "note": "Notable WT — B16 is NOT BRAF-mutant; do not use as a model of BRAF-V600 human melanoma."},
-        {"gene": "MHC-I",  "alteration": "low",        "pathway": "Antigen presentation", "note": "Low constitutive MHC-I expression (induceable with IFN-γ) — contributes to the immune-cold phenotype."}
-      ]
+     "gene": "MMR",
+     "alteration": "deficient",
+     "pathway": "DNA repair",
+     "note": "Mismatch-repair deficient \u2192 microsatellite instability."
     }
-  ]
+   ],
+   "providers": [
+    {
+     "db": "ABM",
+     "accession": "T8291",
+     "url": "https://www.abmgood.com/search?query=T8291&filter_by=cat_no"
+    },
+    {
+     "db": "Kerafast",
+     "accession": "ENH204-FP",
+     "url": "https://www.kerafast.com/Search?SearchTerm=&quot;ENH204-FP&quot;"
+    },
+    {
+     "db": "Millipore",
+     "accession": "SCC172",
+     "url": "https://www.merckmillipore.com/catalogue/item/SCC172"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-A002",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-A002"
+    }
+   ]
+  },
+  {
+   "id": "LITLL2",
+   "name": "LL/2",
+   "synonyms": [
+    "LL/2 (LLC1)",
+    "LL2",
+    "LLC1",
+    "LLC",
+    "Lewis lung carcinoma line 1",
+    "Lewis lung carcinoma",
+    "Lewis Lung Cancer"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Lewis 1951 (Bull Johns Hopkins Hosp 88:251); immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_4358",
+   "cellosaurusRrid": "CVCL_4358",
+   "ncitDisease": "Malignant tumors of the mouse pulmonary system",
+   "curated": "LL/2",
+   "curatedTier": 1,
+   "lineage": "Lung",
+   "tissue": "EpithelialTissue",
+   "site": "Lung",
+   "tumorLocation": "Lung",
+   "cancerType": "LungCancer",
+   "cancerTypeDetailed": "LungCarcinoma",
+   "morphology": "Epithelial",
+   "morphologyDetailed": null,
+   "modelType": "Wildtype",
+   "mouseModel": "Spontaneous",
+   "mouseModelDetailed": "Spontaneously arising lung carcinoma in a C57BL/6 mouse (Lewis 1951). KRAS-mutant, TP53-mutant. Used as the canonical 'cold' / immune-excluded NSCLC syngeneic model and a standard negative-control line for ICB efficacy studies.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": null,
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Highly metastatic to lung when injected intravenously; one of the most-used syngeneic metastasis models.",
+   "immuneProfile": {
+    "tmbCategory": "low",
+    "tmbDetail": "Low TMB relative to MC38 / CT26; consistent with the spontaneous low-mutator origin.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "cold",
+    "immunePhenotypeDetail": "Immune-excluded / cold tumour. Low CD8+ infiltration, high myeloid / MDSC content (Mosely 2017).",
+    "icbResponse": "resistant",
+    "icbResponseDetail": "Anti-PD-1 / anti-PD-L1 monotherapy resistant \u2014 used as the canonical negative-control syngeneic line for checkpoint-blockade studies. Some combination strategies (anti-PD-L1 + chemotherapy / anti-CTLA-4) show partial efficacy.",
+    "source": "Mosely 2017 (PMID 28768203)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Lewis 1951 (Johns Hopkins)",
+   "distributor": "ATCC (CRL-1642), ECACC, Kerafast.",
+   "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "7226139",
+   "cautions": [
+    "Cellosaurus notes LL/2 could be identical to 3LL (CVCL_5653). The two designations refer to clonal derivatives of the same Lewis 1951 parent tumour; treat data across the two as comparable but not strictly interchangeable.",
+    "Sex of the originating mouse is not consistently reported in the primary literature \u2014 left as unknown rather than guess."
+   ],
+   "drivers": [
+    {
+     "gene": "Kras",
+     "alteration": "mutated",
+     "pathway": "RAS/MAPK",
+     "note": "Activating mutation (G12V most commonly reported)."
+    },
+    {
+     "gene": "Trp53",
+     "alteration": "mutated",
+     "pathway": "p53",
+     "note": "Inactivating \u2014 LoF of the p53 axis."
+    },
+    {
+     "gene": "Cdkn2a",
+     "alteration": "lost",
+     "pathway": "Cell cycle",
+     "note": "Homozygous deletion in some sub-lines."
+    }
+   ],
+   "providers": [
+    {
+     "db": "AddexBio",
+     "accession": "C0016030/5000",
+     "url": "https://www.addexbio.com/productdetail?pid=5000"
+    },
+    {
+     "db": "ATCC",
+     "accession": "CRL-1642",
+     "url": "https://www.atcc.org/products/CRL-1642"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60050",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60050"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0145",
+     "url": "https://bcrj.org.br/pesquisa/?search=0145"
+    },
+    {
+     "db": "CLS",
+     "accession": "305311",
+     "url": "https://www.cytion.com/305311"
+    },
+    {
+     "db": "ECACC",
+     "accession": "90020104",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=90020104"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 216",
+     "url": null
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 200781YJ",
+     "url": null
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C587",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB0558",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB0558&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0153",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo101/0153.html"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-C018",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-C018"
+    }
+   ]
+  },
+  {
+   "id": "LITPANC02",
+   "name": "Panc02",
+   "synonyms": [
+    "Panc-02",
+    "Panc 02",
+    "Pan02",
+    "Pan-02",
+    "PAN 02"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Corbett 1984 (Cancer Res 44:717, 3-methylcholanthrene-induced PDAC); immune profile in Mosely 2017 (Cell Reports, PMID 28768203); Cellosaurus CVCL_D627",
+   "cellosaurusRrid": "CVCL_D627",
+   "ncitDisease": "Mouse pancreatic ductal adenocarcinoma",
+   "curated": "Panc02",
+   "curatedTier": 1,
+   "lineage": "Pancreas",
+   "tissue": "EpithelialTissue",
+   "site": "Pancreas",
+   "tumorLocation": "Pancreas",
+   "cancerType": "PancreaticCancer",
+   "cancerTypeDetailed": "PancreaticDuctalAdenocarcinoma",
+   "morphology": "Epithelial",
+   "modelType": "Wildtype",
+   "mouseModel": "Carcinogen-induced",
+   "mouseModelDetailed": "3-methylcholanthrene-induced pancreatic ductal adenocarcinoma in a male C57BL/6 mouse (Corbett 1984). The carcinogen-induced origin produces a higher mutational burden than KRAS-driven GEMM PDAC models \u2014 useful for studies where neoantigen load matters, but biologically distinct from human KRAS-PDAC.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "male",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Intraperitoneal injection gives peritoneal carcinomatosis with ascites and liver / lung micro-metastases.",
+   "immuneProfile": {
+    "tmbCategory": "high",
+    "tmbDetail": "Higher TMB than KRAS-GEMM pancreatic models (carcinogen-induced); intermediate between LL/2 and MC38.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "variable",
+    "immunePhenotypeDetail": "Variable across studies \u2014 orthotopic implantation produces stromal / immune-excluded tumours, while subcutaneous can be more inflamed. Lacks the dense fibrotic stroma of human PDAC.",
+    "icbResponse": "partial",
+    "icbResponseDetail": "Reports of partial monotherapy response to anti-PD-L1; widely used for combination ICB / vaccine studies rather than monotherapy efficacy.",
+    "source": "Mosely 2017 (PMID 28768203)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Corbett (NCI / Wayne State)",
+   "distributor": "Kerafast (EQ001-NRC), collaborator distribution.",
+   "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "6692374",
+   "cautions": [
+    "Panc02 has been criticised as poorly representing human PDAC biology: it is more immunogenic than KRAS-driven GEMM PDAC, lacks the dense desmoplastic stroma, and behaves quite differently from KPC. Use as a 'permissive' PDAC syngeneic model rather than a faithful surrogate for KRAS-mutant disease."
+   ],
+   "drivers": [
+    {
+     "gene": "Kras",
+     "alteration": "wild-type",
+     "pathway": "RAS/MAPK",
+     "note": "Notable WT \u2014 distinguishes Panc02 from human KRAS-driven PDAC and from the KPC GEMM. Panc02 is KRAS-independent."
+    },
+    {
+     "gene": "Trp53",
+     "alteration": "mutated",
+     "pathway": "p53",
+     "note": "Inactivating point mutation."
+    },
+    {
+     "gene": "Smad4",
+     "alteration": "mutated",
+     "pathway": "TGF-\u03b2",
+     "note": "Inactivating \u2014 TGF-\u03b2 pathway loss."
+    },
+    {
+     "gene": "Cdkn2a",
+     "alteration": "lost",
+     "pathway": "Cell cycle",
+     "note": "Reported deletion in some sub-stocks."
+    }
+   ],
+   "providers": [
+    {
+     "db": "CLS",
+     "accession": "300501",
+     "url": "https://www.cytion.com/300501"
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "PAN 02",
+     "url": null
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-C067",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-C067"
+    }
+   ]
+  },
+  {
+   "id": "LITMOC1",
+   "name": "MOC1",
+   "synonyms": [
+    "Mouse Oral Cancer 1"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Judd 2012 (Cancer Res 72:365, PMID 22086849); follow-up immune characterisation in Onken 2014 (Oral Oncol, PMID 24668645); Cellosaurus CVCL_ZD32",
+   "cellosaurusRrid": "CVCL_ZD32",
+   "ncitDisease": "Squamous cell carcinoma of the mouse oral cavity",
+   "curated": "MOC1",
+   "curatedTier": 1,
+   "lineage": "HeadNeck",
+   "tissue": "EpithelialTissue",
+   "site": "OralCavity",
+   "tumorLocation": "OralCavity",
+   "cancerType": "HeadNeckCancer",
+   "cancerTypeDetailed": "HeadNeckSquamousCellCarcinoma",
+   "morphology": "Epithelial",
+   "morphologyDetailed": "Well-differentiated squamous cell carcinoma.",
+   "modelType": "Wildtype",
+   "mouseModel": "Carcinogen-induced",
+   "mouseModelDetailed": "Established by Judd et al. 2012 from a C57BL/6 mouse oral squamous cell carcinoma induced by 4-nitroquinoline-1-oxide (4-NQO). MOC1 is the immunogenic / T-cell inflamed sister line in the MOC1 vs MOC2 pair, used as the positive-control HNSCC model for ICB efficacy.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "female",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Locally invasive; limited spontaneous metastasis from orthotopic / buccal implantation.",
+   "immuneProfile": {
+    "tmbCategory": "high",
+    "tmbDetail": "High TMB consistent with 4-NQO-induced HNSCC; comparable to MC38.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "inflamed",
+    "immunePhenotypeDetail": "T-cell inflamed with substantial CD8+ infiltration; the immunogenic member of the MOC1/MOC2 pair.",
+    "icbResponse": "responsive",
+    "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 responsive in monotherapy or combination \u2014 positive-control HNSCC syngeneic line.",
+    "source": "Judd 2012 (PMID 22086849); Onken 2014 (PMID 24668645)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Judd / Uppaluri lab",
+   "distributor": "Kerafast (EQ002-NRC).",
+   "media": "IMDM/Ham's F-12 (2:1) + 5% FBS + EGF + hydrocortisone + insulin (Judd 2012 keratinocyte cocktail).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "22086849",
+   "drivers": [
+    {
+     "gene": "Trp53",
+     "alteration": "mutated",
+     "pathway": "p53",
+     "note": "4-NQO-induced inactivation."
+    },
+    {
+     "gene": "Cdkn2a",
+     "alteration": "lost",
+     "pathway": "Cell cycle",
+     "note": "Reported deletion."
+    }
+   ],
+   "providers": [
+    {
+     "db": "Kerafast",
+     "accession": "EWL001-FP",
+     "url": "https://www.kerafast.com/Search?SearchTerm=&quot;EWL001-FP&quot;"
+    },
+    {
+     "db": "Millipore",
+     "accession": "SCC469",
+     "url": "https://www.merckmillipore.com/catalogue/item/SCC469"
+    }
+   ]
+  },
+  {
+   "id": "LITMOC2",
+   "name": "MOC2",
+   "synonyms": [
+    "Mouse Oral Cancer 2"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Judd 2012 (Cancer Res 72:365, PMID 22086849); follow-up in Onken 2014 (Oral Oncol, PMID 24668645); Cellosaurus CVCL_ZD33",
+   "cellosaurusRrid": "CVCL_ZD33",
+   "ncitDisease": "Squamous cell carcinoma of the mouse oral cavity",
+   "curated": "MOC2",
+   "curatedTier": 1,
+   "lineage": "HeadNeck",
+   "tissue": "EpithelialTissue",
+   "site": "OralCavity",
+   "tumorLocation": "OralCavity",
+   "cancerType": "HeadNeckCancer",
+   "cancerTypeDetailed": "HeadNeckSquamousCellCarcinoma",
+   "morphology": "Epithelial",
+   "morphologyDetailed": "Poorly-differentiated, aggressive squamous cell carcinoma.",
+   "modelType": "Wildtype",
+   "mouseModel": "Carcinogen-induced",
+   "mouseModelDetailed": "Sister line to MOC1 from the same 4-NQO-induced cohort (Judd 2012). MOC2 is the aggressive, immune-excluded / ICB-resistant member of the pair \u2014 together MOC1/MOC2 are the canonical 'hot vs cold within one cancer type' contrast.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "female",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Aggressive locoregional invasion and lymph-node metastasis from orthotopic implantation \u2014 used as the metastatic HNSCC model.",
+   "immuneProfile": {
+    "tmbCategory": "medium",
+    "tmbDetail": "Lower TMB than MOC1 despite the same 4-NQO carcinogen \u2014 explains part of the immune-cold phenotype.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "cold",
+    "immunePhenotypeDetail": "Immune-excluded / cold tumour with low CD8+ infiltration and high myeloid content; canonical resistant HNSCC model.",
+    "icbResponse": "resistant",
+    "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 monotherapy resistant \u2014 used as the negative-control HNSCC syngeneic line and for combination-therapy escalation studies.",
+    "source": "Judd 2012 (PMID 22086849); Onken 2014 (PMID 24668645)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Judd / Uppaluri lab",
+   "distributor": "Kerafast (EQ003-NRC).",
+   "media": "IMDM/Ham's F-12 (2:1) + 5% FBS + EGF + hydrocortisone + insulin (Judd 2012 keratinocyte cocktail).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "22086849",
+   "cautions": [
+    "Cellosaurus annotates the host strain as 'C57BL/6 Cxcr3-/-' \u2014 the line was characterised in CXCR3-knockout hosts in some studies. Standard usage is in WT C57BL/6 recipients, but this is worth knowing when comparing CXCL9/10/11\u2013CXCR3 axis findings across labs."
+   ],
+   "drivers": [
+    {
+     "gene": "Trp53",
+     "alteration": "mutated",
+     "pathway": "p53",
+     "note": "4-NQO-induced inactivation."
+    },
+    {
+     "gene": "Cdkn2a",
+     "alteration": "lost",
+     "pathway": "Cell cycle",
+     "note": "Reported deletion."
+    }
+   ],
+   "providers": [
+    {
+     "db": "Kerafast",
+     "accession": "EWL002-FP",
+     "url": "https://www.kerafast.com/Search?SearchTerm=&quot;EWL002-FP&quot;"
+    },
+    {
+     "db": "Millipore",
+     "accession": "SCC470",
+     "url": "https://www.merckmillipore.com/catalogue/item/SCC470"
+    }
+   ]
+  },
+  {
+   "id": "LITID8",
+   "name": "ID8",
+   "synonyms": [
+    "ID8/MOSEC",
+    "MOSEC"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Roby 2000 (Carcinogenesis 21:585, PMID 10753190); immune characterisation in Walton 2016 (Cancer Res, PMID 27235858) for the p53/Brca2-edited derivative; Cellosaurus CVCL_IU14",
+   "cellosaurusRrid": "CVCL_IU14",
+   "ncitDisease": null,
+   "curated": "ID8",
+   "curatedTier": 1,
+   "lineage": "Ovary",
+   "tissue": "EpithelialTissue",
+   "site": "Ovary",
+   "tumorLocation": "Ovary",
+   "cancerType": "OvarianCancer",
+   "cancerTypeDetailed": "OvarianSurfaceEpithelialCarcinoma",
+   "morphology": "Epithelial",
+   "morphologyDetailed": "Spontaneously-transformed ovarian surface epithelial cells (Mouse Ovarian Surface Epithelial Cells = MOSEC).",
+   "modelType": "Wildtype",
+   "mouseModel": "Spontaneous (in-vitro transformed)",
+   "mouseModelDetailed": "Adult female C57BL/6 ovarian surface epithelium serially passaged in vitro until spontaneous transformation (Roby 2000). The parental ID8 is p53-WT; the widely-used Walton derivatives carry CRISPR Trp53-/- and Trp53-/-Brca2-/- edits and behave quite differently \u2014 ID8-Trp53/Brca2-KO is responsive to PARPi + ICB while parental ID8 is largely resistant.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "female",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Intraperitoneal injection produces ovarian-cancer-like ascites and peritoneal carcinomatosis \u2014 the standard mouse high-grade serous ovarian cancer surrogate.",
+   "immuneProfile": {
+    "tmbCategory": "low",
+    "tmbDetail": "Low TMB \u2014 spontaneous in-vitro transformation, few somatic mutations.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "cold",
+    "immunePhenotypeDetail": "Immune-excluded / cold; large peritoneal disease burden with suppressive myeloid microenvironment.",
+    "icbResponse": "resistant",
+    "icbResponseDetail": "Parental ID8 is anti-PD-1 / anti-PD-L1 monotherapy resistant. The CRISPR Trp53-/-Brca2-/- derivative becomes responsive to PARPi + ICB combinations \u2014 use the matching derivative for HRD / BRCA studies.",
+    "source": "Walton 2016 (PMID 27235858); Roby 2000 (PMID 10753190)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Roby lab (University of Kansas)",
+   "distributor": "Collaborator distribution; CRISPR derivatives via Walton lab.",
+   "media": "DMEM + 4% FBS + insulin/transferrin/selenium (ITS) supplement (Roby 2000).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "10753190",
+   "cautions": [
+    "The 'ID8' you receive may be the parental p53-WT line OR one of the Walton CRISPR derivatives (Trp53-/-, Trp53-/-Brca2-/-, etc.). These behave very differently in ICB and PARPi response \u2014 always confirm genotype with the depositor."
+   ],
+   "drivers": [
+    {
+     "gene": "Trp53",
+     "alteration": "wild-type",
+     "pathway": "p53",
+     "note": "Parental ID8 is p53-WT \u2014 distinguishes from human high-grade serous ovarian cancer (~96 % TP53-mutant). The Walton CRISPR derivatives are Trp53-/-."
+    },
+    {
+     "gene": "Brca1",
+     "alteration": "wild-type",
+     "pathway": "DNA repair",
+     "note": "WT in parental; Walton Brca1-/- CRISPR derivative available separately."
+    },
+    {
+     "gene": "Brca2",
+     "alteration": "wild-type",
+     "pathway": "DNA repair",
+     "note": "WT in parental; Walton Brca2-/- CRISPR derivative is the one that responds to PARPi + ICB."
+    },
+    {
+     "gene": "Pten",
+     "alteration": "wild-type",
+     "pathway": "PI3K/AKT",
+     "note": "WT in parental."
+    }
+   ],
+   "providers": [
+    {
+     "db": "CLS",
+     "accession": "305305",
+     "url": "https://www.cytion.com/305305"
+    },
+    {
+     "db": "Millipore",
+     "accession": "SCC145",
+     "url": "https://www.merckmillipore.com/catalogue/item/SCC145"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-C103",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-C103"
+    }
+   ]
+  },
+  {
+   "id": "LITTC1",
+   "name": "TC-1",
+   "synonyms": [
+    "TC-1 [Mouse lung]",
+    "TC-1[JHU-1]",
+    "Tissue Culture-1"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Lin 1996 (Cancer Res 56:21, PMID 8548765, Wu/Hung lab); Cellosaurus CVCL_4699",
+   "cellosaurusRrid": "CVCL_4699",
+   "ncitDisease": null,
+   "curated": "TC-1",
+   "curatedTier": 1,
+   "lineage": "Lung",
+   "tissue": "EpithelialTissue",
+   "site": "Lung",
+   "tumorLocation": "Lung",
+   "cancerType": "LungCancer",
+   "cancerTypeDetailed": "EngineeredHPV16ModelTumor",
+   "morphology": "Epithelial",
+   "modelType": "Wildtype",
+   "mouseModel": "Engineered (HPV-16 E6/E7 + H-RAS)",
+   "mouseModelDetailed": "Primary C57BL/6 lung epithelial cells co-transformed in vitro with HPV-16 E6/E7 and an activated c-Ha-ras oncogene (Lin et al. 1996). NOT a spontaneous cervical-cancer line \u2014 it is engineered lung epithelium that serves as a surrogate HPV-expressing tumour model. Standard for HPV-vaccine / E7-targeted immunotherapy studies.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": null,
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Subcutaneous engraftment standard; limited spontaneous metastasis.",
+   "immuneProfile": {
+    "tmbCategory": "low",
+    "tmbDetail": "Low somatic TMB (in-vitro engineered, few accumulated mutations) \u2014 immunogenicity is driven by the foreign HPV-16 E6/E7 viral antigens, not by neoantigens.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "variable",
+    "immunePhenotypeDetail": "Tumour is rejected by mice immunised against E7 (canonical HPV-vaccine readout). Untreated TC-1 grows progressively with modest baseline T-cell infiltration.",
+    "icbResponse": "partial",
+    "icbResponseDetail": "ICB monotherapy gives partial efficacy; pairs strongly with E7-peptide vaccines or DNA vaccines \u2014 used to demonstrate vaccine + ICB synergy.",
+    "source": "Lin 1996 (PMID 8548765)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Wu / Hung lab (Johns Hopkins)",
+   "distributor": "Collaborator distribution (JHU).",
+   "media": "RPMI-1640 + 10% FBS + L-glutamine + pen/strep + non-essential amino acids (typical).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "8548765",
+   "cautions": [
+    "Sex of the originating C57BL/6 donor not recorded in the primary literature \u2014 left as unknown.",
+    "Frequently labelled 'cervical cancer model' in vaccine papers \u2014 biologically it is engineered lung epithelium with HPV-16 oncogenes. Use as a model of HPV-driven tumour immunology, not as a cervical-cancer cell line."
+   ],
+   "drivers": [
+    {
+     "gene": "HPV-16 E6",
+     "alteration": "transgene",
+     "pathway": "p53",
+     "note": "Foreign viral oncogene \u2014 inactivates p53. Major immunogenic neoantigen."
+    },
+    {
+     "gene": "HPV-16 E7",
+     "alteration": "transgene",
+     "pathway": "Rb",
+     "note": "Foreign viral oncogene \u2014 inactivates Rb. The dominant target for vaccine / TCR studies."
+    },
+    {
+     "gene": "Hras",
+     "alteration": "transgene",
+     "pathway": "RAS/MAPK",
+     "note": "Activated c-Ha-ras (cooperating oncogene introduced alongside E6/E7)."
+    }
+   ],
+   "providers": [
+    {
+     "db": "CLS",
+     "accession": "305388",
+     "url": "https://www.cytion.com/305388"
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C569",
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "LITB16F1",
+   "name": "B16-F1",
+   "synonyms": [
+    "B16/F1",
+    "B16 F1",
+    "B16F1"
+   ],
+   "dataSource": "Literature",
+   "litCitation": "Fidler 1975 (Cancer Res 35:218, PMID 1109790; F1/F10 metastatic-variant series); Cellosaurus CVCL_0158",
+   "cellosaurusRrid": "CVCL_0158",
+   "ncitDisease": "Mouse melanoma",
+   "curated": "B16-F1",
+   "curatedTier": 1,
+   "lineage": "Skin",
+   "tissue": "EpithelialTissue",
+   "site": "Skin",
+   "tumorLocation": "Skin",
+   "cancerType": "Melanoma",
+   "cancerTypeDetailed": "CutaneousMelanoma",
+   "morphology": "Melanocytic",
+   "morphologyDetailed": "Pigmented melanoma.",
+   "modelType": "Wildtype",
+   "mouseModel": "Spontaneous",
+   "mouseModelDetailed": "Parental sub-line of the Fidler / Nicolson B16 metastatic-variant series (Fidler 1975). F1 = first round of in-vivo lung-colonising selection; F10 (CVCL_0159) is the more-metastatic descendant that dominates published syngeneic-melanoma work. Both are immune-cold / poorly-immunogenic.",
+   "strain": "C57BL/6",
+   "strainPct": 100,
+   "mhcA": "H-2b",
+   "mhcB": "H-2b",
+   "gender": "male",
+   "complexRearrangement": null,
+   "chromothripsis": null,
+   "survivalDays": null,
+   "metastasis": "Selected for lung-colonising potential; F10 (descendant) is the more metastatic variant. F1 is moderately metastatic.",
+   "immuneProfile": {
+    "tmbCategory": "low",
+    "tmbDetail": "Low-to-moderate TMB; spontaneous melanoma origin without strong mutational signatures.",
+    "msiStatus": "stable",
+    "msiDetail": "Microsatellite stable.",
+    "immunePhenotype": "cold",
+    "immunePhenotypeDetail": "Classically immune-cold. Low baseline MHC-I expression (induceable with IFN-\u03b3), low CD8+ infiltration \u2014 used as the prototypical poorly-immunogenic melanoma model.",
+    "icbResponse": "resistant",
+    "icbResponseDetail": "Anti-PD-1 / anti-CTLA-4 monotherapy largely resistant (rare partial responders). Used as the negative-control melanoma syngeneic; pairs with cytokine therapy, adoptive T cells, or vaccine combinations for efficacy.",
+    "source": "Fidler 1975 (PMID 1109790)"
+   },
+   "immunocompetent": "Yes (C57BL/6)",
+   "source": "Fidler / Nicolson (MD Anderson)",
+   "distributor": "ATCC (CRL-6323), Kerafast.",
+   "media": "DMEM + 10% FBS + L-glutamine + pen/strep (typical).",
+   "cultureSystem": "Adherent 2D",
+   "pmid": "1109790",
+   "cautions": [
+    "Most published 'B16 melanoma' work uses B16-F10 (CVCL_0159), not B16-F1. The two share an origin but F10 has been further selected for lung-colonising / metastatic potential and shows different growth kinetics. Confirm which sub-line your collaborators use."
+   ],
+   "drivers": [
+    {
+     "gene": "Cdkn2a",
+     "alteration": "lost",
+     "pathway": "Cell cycle",
+     "note": "Homozygous deletion \u2014 classic melanoma driver."
+    },
+    {
+     "gene": "Pten",
+     "alteration": "lost",
+     "pathway": "PI3K/AKT",
+     "note": "Reported loss in some B16 sub-lines."
+    },
+    {
+     "gene": "Trp53",
+     "alteration": "wild-type",
+     "pathway": "p53",
+     "note": "p53 typically WT in B16 \u2014 contrast with human melanoma."
+    },
+    {
+     "gene": "Braf",
+     "alteration": "wild-type",
+     "pathway": "RAS/MAPK",
+     "note": "Notable WT \u2014 B16 is NOT BRAF-mutant; do not use as a model of BRAF-V600 human melanoma."
+    },
+    {
+     "gene": "MHC-I",
+     "alteration": "low",
+     "pathway": "Antigen presentation",
+     "note": "Low constitutive MHC-I expression (induceable with IFN-\u03b3) \u2014 contributes to the immune-cold phenotype."
+    }
+   ],
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-6323",
+     "url": "https://www.atcc.org/products/CRL-6323"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60030",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60030"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0045",
+     "url": "https://bcrj.org.br/pesquisa/?search=0045"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0039",
+     "url": null
+    },
+    {
+     "db": "ECACC",
+     "accession": "92101203",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=92101203"
+    },
+    {
+     "db": "KCLB",
+     "accession": "80007",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=80007"
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "B16F1",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB2649",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB2649&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0347",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo103/0347.html"
+    }
+   ]
+  }
+ ]
 }

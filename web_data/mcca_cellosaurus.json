@@ -1,173 +1,8 @@
 {
  "_doc": "Cellosaurus enrichment for MCCA lines. Output of scripts/enrich_with_cellosaurus.py.",
  "byCellLine": {
-  "MCCA0026": {
-   "rrid": "CVCL_0125",
-   "identifier": "4T1",
-   "synonyms": [
-    "4T1-A",
-    "4T1.0",
-    "4T1/WT"
-   ],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cfC3H",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0029": null,
-  "MCCA0031": {
-   "rrid": "CVCL_9723",
-   "identifier": "67NR",
-   "synonyms": [],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cfC3H",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0478": {
-   "rrid": "CVCL_1940",
-   "identifier": "A20",
-   "synonyms": [
-    "A-20"
-   ],
-   "ncitDisease": "Mouse reticulum cell sarcoma",
-   "breed": "BALB/cAnN",
-   "sex": "Sex unspecified",
-   "cautions": null
-  },
   "MCCA0441": null,
-  "MCCA0039": {
-   "rrid": "CVCL_7254",
-   "identifier": "CT26",
-   "synonyms": [
-    "CT-26",
-    "CT 26",
-    "Colon Tumor 26"
-   ],
-   "ncitDisease": "Mouse colon adenocarcinoma",
-   "breed": "BALB/c",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0495": {
-   "rrid": "CVCL_0255",
-   "identifier": "EL4",
-   "synonyms": [
-    "EL-4",
-    "EL 4",
-    "E.L.4"
-   ],
-   "ncitDisease": "Mouse precursor T cell lymphoblastic lymphoma/leukemia",
-   "breed": "C57BL/6N",
-   "sex": "Sex unspecified",
-   "cautions": null
-  },
-  "MCCA0036": {
-   "rrid": "CVCL_1923",
-   "identifier": "EMT6",
-   "synonyms": [
-    "EMT-6",
-    "Experimental Mammary Tumour-6"
-   ],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cCRGL",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0594": {
-   "rrid": "CVCL_GR23",
-   "identifier": "EO771",
-   "synonyms": [
-    "Eo771",
-    "E0771",
-    "EO 771"
-   ],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "C57BL/6",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0184": {
-   "rrid": "CVCL_0327",
-   "identifier": "Hepa 1-6",
-   "synonyms": [
-    "HEPA 1-6",
-    "Hepa-1-6",
-    "Hepa1-6"
-   ],
-   "ncitDisease": "Hepatocellular carcinoma of the mouse",
-   "breed": "C57L/J",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0152": {
-   "rrid": "CVCL_2174",
-   "identifier": "RenCa",
-   "synonyms": [
-    "Renca",
-    "RENCA",
-    "Renal Carcinoma"
-   ],
-   "ncitDisease": "Mouse kidney carcinoma",
-   "breed": "BALB/c",
-   "sex": "Male",
-   "cautions": null
-  },
-  "MCCA0496": {
-   "rrid": "CVCL_2244",
-   "identifier": "YAC-1",
-   "synonyms": [
-    "Yac-1",
-    "YAC"
-   ],
-   "ncitDisease": "Mouse lymphoma",
-   "breed": "A/Sn",
-   "sex": null,
-   "cautions": null
-  },
-  "MCCA0027": {
-   "rrid": "CVCL_0I86",
-   "identifier": "168FARN",
-   "synonyms": [],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cfC3H",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0028": {
-   "rrid": "CVCL_B383",
-   "identifier": "4T07",
-   "synonyms": [
-    "4TO7"
-   ],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cfC3H",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0595": {
-   "rrid": "CVCL_VR89",
-   "identifier": "AT-3",
-   "synonyms": [],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "B6.FVB-Tg(MMTV-PyVT)634Mul/LellJ (MTAG)",
-   "sex": "Female",
-   "cautions": null
-  },
-  "MCCA0506": {
-   "rrid": "CVCL_Y003",
-   "identifier": "GL261",
-   "synonyms": [
-    "Glioma 261",
-    "GLIOMA 261",
-    "Glioma-261",
-    "GL-261"
-   ],
-   "ncitDisease": "Mouse glioblastoma",
-   "breed": "C57BL/6",
-   "sex": null,
-   "cautions": null
-  },
   "MCCA0529": null,
   "MCCA0530": null,
   "MCCA0459": null,
@@ -237,15 +72,6 @@
   "MCCA0252": null,
   "MCCA0253": null,
   "MCCA0254": null,
-  "MCCA0289": {
-   "rrid": "CVCL_3481",
-   "identifier": "266-6",
-   "synonyms": [],
-   "ncitDisease": "Mouse pancreatic acinar neoplasm",
-   "breed": null,
-   "sex": "Sex unspecified",
-   "cautions": null
-  },
   "MCCA0307": null,
   "MCCA0581": null,
   "MCCA0582": null,
@@ -334,32 +160,10 @@
   "MCCA0331": null,
   "MCCA0332": null,
   "MCCA0333": null,
-  "MCCA0030": {
-   "rrid": "CVCL_9721",
-   "identifier": "66cl-4",
-   "synonyms": [
-    "66cl4",
-    "66c14",
-    "Line 66 clone 4"
-   ],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/cfC3H",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0334": null,
   "MCCA0335": null,
   "MCCA0336": null,
   "MCCA0337": null,
-  "MCCA0497": {
-   "rrid": "CVCL_1937",
-   "identifier": "7926",
-   "synonyms": [],
-   "ncitDisease": "Mouse leukemia",
-   "breed": "C3H",
-   "sex": null,
-   "cautions": null
-  },
   "MCCA0338": null,
   "MCCA0339": null,
   "MCCA0340": null,
@@ -498,46 +302,6 @@
   "MCCA0217": null,
   "MCCA0218": null,
   "MCCA0219": null,
-  "MCCA0512": {
-   "rrid": "CVCL_0149",
-   "identifier": "AlphaT3-1",
-   "synonyms": [
-    "AlphaT31",
-    "alphaT3-1",
-    "alpha T3-1",
-    "alpha-T3-1",
-    "aT3-1"
-   ],
-   "ncitDisease": null,
-   "breed": "C57BL/6 x BALB/c transgenic",
-   "sex": "Male",
-   "cautions": null
-  },
-  "MCCA0513": {
-   "rrid": "CVCL_2300",
-   "identifier": "AtT-20",
-   "synonyms": [
-    "AtT 20",
-    "ATT-20",
-    "AtT20"
-   ],
-   "ncitDisease": "Mouse pituitary gland neoplasms",
-   "breed": "LAF1",
-   "sex": "Sex unspecified",
-   "cautions": null
-  },
-  "MCCA0442": {
-   "rrid": "CVCL_B0CG",
-   "identifier": "B2905",
-   "synonyms": [
-    "Melanoma model 4",
-    "M4"
-   ],
-   "ncitDisease": "Mouse melanoma",
-   "breed": "C57BL/6 Hgftg",
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0042": null,
   "MCCA0109": null,
   "MCCA0043": null,
@@ -603,57 +367,14 @@
   "MCCA0392": null,
   "MCCA0181": null,
   "MCCA0182": null,
-  "MCCA0038": {
-   "rrid": "CVCL_1986",
-   "identifier": "CMT93",
-   "synonyms": [
-    "CMT-93",
-    "CMT 93",
-    "C57 Mouse Tumor 93"
-   ],
-   "ncitDisease": "Mouse rectum carcinoma",
-   "breed": "C57BL/ICRF",
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0032": null,
-  "MCCA0033": {
-   "rrid": "CVCL_0I90",
-   "identifier": "D2A1",
-   "synonyms": [],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/c",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0034": null,
   "MCCA0565": null,
   "MCCA0566": null,
   "MCCA0035": null,
-  "MCCA0500": {
-   "rrid": "CVCL_2015",
-   "identifier": "DA-1",
-   "synonyms": [
-    "DA1",
-    "Da"
-   ],
-   "ncitDisease": "Mouse lymphoma",
-   "breed": "BALB/c",
-   "sex": null,
-   "cautions": null
-  },
   "MCCA0183": null,
   "MCCA0024": null,
   "MCCA0498": null,
-  "MCCA0562": {
-   "rrid": "CVCL_E119",
-   "identifier": "F3II",
-   "synonyms": [],
-   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
-   "breed": "BALB/c",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0393": null,
   "MCCA0394": null,
   "MCCA0395": null,
@@ -662,51 +383,12 @@
   "MCCA0397": null,
   "MCCA0563": null,
   "MCCA0070": null,
-  "MCCA0476": {
-   "rrid": "CVCL_3949",
-   "identifier": "J558L",
-   "synonyms": [
-    "J 558L",
-    "J.558 L"
-   ],
-   "ncitDisease": "Mouse multiple myeloma",
-   "breed": "BALB/c",
-   "sex": "Sex unspecified",
-   "cautions": null
-  },
   "MCCA0398": null,
   "MCCA0399": null,
   "MCCA0400": null,
   "MCCA0401": null,
   "MCCA0558": null,
-  "MCCA0475": {
-   "rrid": "CVCL_0382",
-   "identifier": "L1210",
-   "synonyms": [
-    "L 1210",
-    "L-1210",
-    "Leukemic 1210",
-    "Leukemia 1210",
-    "Leukemia L1210"
-   ],
-   "ncitDisease": "Mouse leukemia",
-   "breed": "DBA/2",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0507": null,
-  "MCCA0502": {
-   "rrid": "CVCL_2107",
-   "identifier": "M1",
-   "synonyms": [
-    "M 1",
-    "M-1 myeloid leukemia"
-   ],
-   "ncitDisease": "Mouse myeloid leukemia",
-   "breed": "SL",
-   "sex": null,
-   "cautions": null
-  },
   "MCCA0508": null,
   "MCCA0509": null,
   "MCCA0515": null,
@@ -717,19 +399,6 @@
   "MCCA0520": null,
   "MCCA0503": null,
   "MCCA0567": null,
-  "MCCA0477": {
-   "rrid": "CVCL_3857",
-   "identifier": "MPC-11",
-   "synonyms": [
-    "MPC 11",
-    "MPC11",
-    "Merwin Plasma Cell tumor-11"
-   ],
-   "ncitDisease": "Mouse multiple myeloma",
-   "breed": "BALB/c",
-   "sex": "Female",
-   "cautions": null
-  },
   "MCCA0113": null,
   "MCCA0114": null,
   "MCCA0115": null,
@@ -771,36 +440,8 @@
   "MCCA0522": null,
   "MCCA0523": null,
   "MCCA0521": null,
-  "MCCA0439": {
-   "rrid": "CVCL_J703",
-   "identifier": "Myc-CaP",
-   "synonyms": [],
-   "ncitDisease": "Carcinoma of the mouse prostate gland",
-   "breed": "FVB Hi-Myc transgenic",
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0472": null,
   "MCCA0473": null,
-  "MCCA0510": {
-   "rrid": "CVCL_0470",
-   "identifier": "Neuro-2a",
-   "synonyms": [
-    "NEURO-2A",
-    "Neuro 2a",
-    "Neuro2a",
-    "Neuro2A",
-    "N-2a",
-    "N2a",
-    "N2A",
-    "Nb2a",
-    "NB2a"
-   ],
-   "ncitDisease": "Mouse neuroblastoma",
-   "breed": "A/J",
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0511": null,
   "MCCA0085": null,
   "MCCA0040": null,
@@ -816,18 +457,6 @@
   "MCCA0403": null,
   "MCCA0404": null,
   "MCCA0553": null,
-  "MCCA0501": {
-   "rrid": "CVCL_2154",
-   "identifier": "P815",
-   "synonyms": [
-    "P-815",
-    "P 815"
-   ],
-   "ncitDisease": "Mouse mast cell neoplasm",
-   "breed": "DBA/2",
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0405": null,
   "MCCA0406": null,
   "MCCA0407": null,
@@ -836,15 +465,6 @@
   "MCCA0410": null,
   "MCCA0411": null,
   "MCCA0020": null,
-  "MCCA0440": {
-   "rrid": "CVCL_0F37",
-   "identifier": "PTEN-CaP8",
-   "synonyms": [],
-   "ncitDisease": "Carcinoma of the mouse prostate gland",
-   "breed": null,
-   "sex": "Male",
-   "cautions": null
-  },
   "MCCA0091": null,
   "MCCA0092": null,
   "MCCA0093": null,
@@ -866,17 +486,6 @@
   "MCCA0423": null,
   "MCCA0424": null,
   "MCCA0425": null,
-  "MCCA0151": {
-   "rrid": "CVCL_3575",
-   "identifier": "RAG",
-   "synonyms": [
-    "Rag"
-   ],
-   "ncitDisease": "Mouse kidney carcinoma",
-   "breed": "BALB/c",
-   "sex": null,
-   "cautions": null
-  },
   "MCCA0095": null,
   "MCCA0096": null,
   "MCCA0058": null,
@@ -947,6 +556,1227 @@
   "MCCA0450": null,
   "MCCA0102": null,
   "MCCA0104": null,
+  "MCCA0443": null,
+  "MCCA0026": {
+   "rrid": "CVCL_0125",
+   "identifier": "4T1",
+   "synonyms": [
+    "4T1-A",
+    "4T1.0",
+    "4T1/WT"
+   ],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cfC3H",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "AddexBio",
+     "accession": "C0006004/13",
+     "url": "https://www.addexbio.com/productdetail?pid=13"
+    },
+    {
+     "db": "ATCC",
+     "accession": "CRL-2539",
+     "url": "https://www.atcc.org/products/CRL-2539"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0022",
+     "url": "https://bcrj.org.br/pesquisa/?search=0022"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0294",
+     "url": null
+    },
+    {
+     "db": "CLS",
+     "accession": "300300",
+     "url": "https://www.cytion.com/300300"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 200967YJ",
+     "url": null
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C604",
+     "url": null
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-B004",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-B004"
+    }
+   ]
+  },
+  "MCCA0031": {
+   "rrid": "CVCL_9723",
+   "identifier": "67NR",
+   "synonyms": [],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cfC3H",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0478": {
+   "rrid": "CVCL_1940",
+   "identifier": "A20",
+   "synonyms": [
+    "A-20"
+   ],
+   "ncitDisease": "Mouse reticulum cell sarcoma",
+   "breed": "BALB/cAnN",
+   "sex": "Sex unspecified",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "TIB-208",
+     "url": "https://www.atcc.org/products/TIB-208"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60556",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60556"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0030",
+     "url": "https://bcrj.org.br/pesquisa/?search=0030"
+    },
+    {
+     "db": "CLS",
+     "accession": "305263",
+     "url": "https://www.cytion.com/305263"
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB2745",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB2745&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0571",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo105/0571.html"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-C061",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-C061"
+    }
+   ]
+  },
+  "MCCA0039": {
+   "rrid": "CVCL_7254",
+   "identifier": "CT26",
+   "synonyms": [
+    "CT-26",
+    "CT 26",
+    "Colon Tumor 26"
+   ],
+   "ncitDisease": "Mouse colon adenocarcinoma",
+   "breed": "BALB/c",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ABM",
+     "accession": "T8267",
+     "url": "https://www.abmgood.com/search?query=T8267&filter_by=cat_no"
+    },
+    {
+     "db": "CLS",
+     "accession": "305229",
+     "url": "https://www.cytion.com/305229"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 2012007YJ",
+     "url": null
+    },
+    {
+     "db": "KCLB",
+     "accession": "80009",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=80009"
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C532",
+     "url": null
+    }
+   ]
+  },
+  "MCCA0495": {
+   "rrid": "CVCL_0255",
+   "identifier": "EL4",
+   "synonyms": [
+    "EL-4",
+    "EL 4",
+    "E.L.4"
+   ],
+   "ncitDisease": "Mouse precursor T cell lymphoblastic lymphoma/leukemia",
+   "breed": "C57BL/6N",
+   "sex": "Sex unspecified",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "TIB-39",
+     "url": "https://www.atcc.org/products/TIB-39"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60179",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60179"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0136",
+     "url": null
+    },
+    {
+     "db": "CLS",
+     "accession": "300653",
+     "url": "https://www.cytion.com/300653"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-831",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-831"
+    },
+    {
+     "db": "ECACC",
+     "accession": "85023105",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=85023105"
+    },
+    {
+     "db": "JCRB",
+     "accession": "JCRB1350",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=JCRB1350"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 2013027YJ",
+     "url": null
+    },
+    {
+     "db": "KCLB",
+     "accession": "40039",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=40039"
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C114",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB1641",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB1641&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0150",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo101/0150.html"
+    }
+   ]
+  },
+  "MCCA0036": {
+   "rrid": "CVCL_1923",
+   "identifier": "EMT6",
+   "synonyms": [
+    "EMT-6",
+    "Experimental Mammary Tumour-6"
+   ],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cCRGL",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-2755",
+     "url": "https://www.atcc.org/products/CRL-2755"
+    },
+    {
+     "db": "CLS",
+     "accession": "305159",
+     "url": "https://www.cytion.com/305159"
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "EMT-6",
+     "url": null
+    }
+   ]
+  },
+  "MCCA0594": {
+   "rrid": "CVCL_GR23",
+   "identifier": "EO771",
+   "synonyms": [
+    "Eo771",
+    "E0771",
+    "EO 771"
+   ],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "C57BL/6",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-3461",
+     "url": "https://www.atcc.org/products/CRL-3461"
+    },
+    {
+     "db": "CLS",
+     "accession": "305352",
+     "url": "https://www.cytion.com/305352"
+    }
+   ]
+  },
+  "MCCA0184": {
+   "rrid": "CVCL_0327",
+   "identifier": "Hepa 1-6",
+   "synonyms": [
+    "HEPA 1-6",
+    "Hepa-1-6",
+    "Hepa1-6"
+   ],
+   "ncitDisease": "Hepatocellular carcinoma of the mouse",
+   "breed": "C57L/J",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "AddexBio",
+     "accession": "C0015005/4999",
+     "url": "https://www.addexbio.com/productdetail?pid=4999"
+    },
+    {
+     "db": "ATCC",
+     "accession": "CRL-1830",
+     "url": "https://www.atcc.org/products/CRL-1830"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60051",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60051"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0313",
+     "url": null
+    },
+    {
+     "db": "CLS",
+     "accession": "400474",
+     "url": "https://www.cytion.com/400474"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-175",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-175"
+    },
+    {
+     "db": "ECACC",
+     "accession": "92110305",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=92110305"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 157",
+     "url": null
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C517",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB1638",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB1638&lang=En"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-A005",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-A005"
+    }
+   ]
+  },
+  "MCCA0152": {
+   "rrid": "CVCL_2174",
+   "identifier": "RenCa",
+   "synonyms": [
+    "Renca",
+    "RENCA",
+    "Renal Carcinoma"
+   ],
+   "ncitDisease": "Mouse kidney carcinoma",
+   "breed": "BALB/c",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-2947",
+     "url": "https://www.atcc.org/products/CRL-2947"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0346",
+     "url": "https://bcrj.org.br/pesquisa/?search=0346"
+    },
+    {
+     "db": "CLS",
+     "accession": "400321",
+     "url": "https://www.cytion.com/400321"
+    },
+    {
+     "db": "KCLB",
+     "accession": "80022",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=80022"
+    }
+   ]
+  },
+  "MCCA0496": {
+   "rrid": "CVCL_2244",
+   "identifier": "YAC-1",
+   "synonyms": [
+    "Yac-1",
+    "YAC"
+   ],
+   "ncitDisease": "Mouse lymphoma",
+   "breed": "A/Sn",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "TIB-160",
+     "url": "https://www.atcc.org/products/TIB-160"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60147",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60147"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0255",
+     "url": "https://bcrj.org.br/pesquisa/?search=0255"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0001",
+     "url": null
+    },
+    {
+     "db": "CLS",
+     "accession": "400383",
+     "url": "https://www.cytion.com/400383"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-96",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-96"
+    },
+    {
+     "db": "ECACC",
+     "accession": "86022801",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=86022801"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 243",
+     "url": null
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 93031YJ",
+     "url": null
+    },
+    {
+     "db": "KCLB",
+     "accession": "40160",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=40160"
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C552",
+     "url": null
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "YAC",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB1165",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB1165&lang=En"
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB2799",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB2799&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0387",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo103/0387.html"
+    }
+   ]
+  },
+  "MCCA0027": {
+   "rrid": "CVCL_0I86",
+   "identifier": "168FARN",
+   "synonyms": [],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cfC3H",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0028": {
+   "rrid": "CVCL_B383",
+   "identifier": "4T07",
+   "synonyms": [
+    "4TO7"
+   ],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cfC3H",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0595": {
+   "rrid": "CVCL_VR89",
+   "identifier": "AT-3",
+   "synonyms": [],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "B6.FVB-Tg(MMTV-PyVT)634Mul/LellJ (MTAG)",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ABM",
+     "accession": "T8054",
+     "url": "https://www.abmgood.com/search?query=T8054&filter_by=cat_no"
+    },
+    {
+     "db": "Millipore",
+     "accession": "SCC178",
+     "url": "https://www.merckmillipore.com/catalogue/item/SCC178"
+    }
+   ]
+  },
+  "MCCA0506": {
+   "rrid": "CVCL_Y003",
+   "identifier": "GL261",
+   "synonyms": [
+    "Glioma 261",
+    "GLIOMA 261",
+    "Glioma-261",
+    "GL-261"
+   ],
+   "ncitDisease": "Mouse glioblastoma",
+   "breed": "C57BL/6",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "BCRJ",
+     "accession": "0299",
+     "url": "https://bcrj.org.br/pesquisa/?search=0299"
+    },
+    {
+     "db": "CLS",
+     "accession": "305225",
+     "url": "https://www.cytion.com/305225"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-802",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-802"
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "Glioma 261",
+     "url": null
+    }
+   ]
+  },
+  "MCCA0289": {
+   "rrid": "CVCL_3481",
+   "identifier": "266-6",
+   "synonyms": [],
+   "ncitDisease": "Mouse pancreatic acinar neoplasm",
+   "breed": null,
+   "sex": "Sex unspecified",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-2151",
+     "url": "https://www.atcc.org/products/CRL-2151"
+    },
+    {
+     "db": "Ubigene",
+     "accession": "YC-C014",
+     "url": "https://www.ubigene.us/product/?cate=0&mykeyword=YC-C014"
+    }
+   ]
+  },
+  "MCCA0030": {
+   "rrid": "CVCL_9721",
+   "identifier": "66cl-4",
+   "synonyms": [
+    "66cl4",
+    "66c14",
+    "Line 66 clone 4"
+   ],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/cfC3H",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0497": {
+   "rrid": "CVCL_1937",
+   "identifier": "7926",
+   "synonyms": [],
+   "ncitDisease": "Mouse leukemia",
+   "breed": "C3H",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "DSMZ",
+     "accession": "ACC-587",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-587"
+    }
+   ]
+  },
+  "MCCA0512": {
+   "rrid": "CVCL_0149",
+   "identifier": "AlphaT3-1",
+   "synonyms": [
+    "AlphaT31",
+    "alphaT3-1",
+    "alpha T3-1",
+    "alpha-T3-1",
+    "aT3-1"
+   ],
+   "ncitDisease": null,
+   "breed": "C57BL/6 x BALB/c transgenic",
+   "sex": "Male",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0513": {
+   "rrid": "CVCL_2300",
+   "identifier": "AtT-20",
+   "synonyms": [
+    "AtT 20",
+    "ATT-20",
+    "AtT20"
+   ],
+   "ncitDisease": "Mouse pituitary gland neoplasms",
+   "breed": "LAF1",
+   "sex": "Sex unspecified",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CCL-89",
+     "url": "https://www.atcc.org/products/CCL-89"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60244",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60244"
+    },
+    {
+     "db": "CLS",
+     "accession": "305161",
+     "url": "https://www.cytion.com/305161"
+    },
+    {
+     "db": "ECACC",
+     "accession": "87021902",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=87021902"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 149",
+     "url": null
+    },
+    {
+     "db": "JCRB",
+     "accession": "JCRB9098",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=JCRB9098"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 93012YJ",
+     "url": null
+    }
+   ]
+  },
+  "MCCA0442": {
+   "rrid": "CVCL_B0CG",
+   "identifier": "B2905",
+   "synonyms": [
+    "Melanoma model 4",
+    "M4"
+   ],
+   "ncitDisease": "Mouse melanoma",
+   "breed": "C57BL/6 Hgftg",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-3476",
+     "url": "https://www.atcc.org/products/CRL-3476"
+    }
+   ]
+  },
+  "MCCA0038": {
+   "rrid": "CVCL_1986",
+   "identifier": "CMT93",
+   "synonyms": [
+    "CMT-93",
+    "CMT 93",
+    "C57 Mouse Tumor 93"
+   ],
+   "ncitDisease": "Mouse rectum carcinoma",
+   "breed": "C57BL/ICRF",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "AddexBio",
+     "accession": "C0009020/4925",
+     "url": "https://www.addexbio.com/productdetail?pid=4925"
+    },
+    {
+     "db": "ATCC",
+     "accession": "CCL-223",
+     "url": "https://www.atcc.org/products/CCL-223"
+    },
+    {
+     "db": "CancerTools",
+     "accession": "152752",
+     "url": "https://www.cancertools.org/cell-lines/152752"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 14",
+     "url": null
+    },
+    {
+     "db": "KCLB",
+     "accession": "10223",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=10223"
+    },
+    {
+     "db": "Ximbio",
+     "accession": "152752",
+     "url": "https://ximbio.com/reagent/152752"
+    }
+   ]
+  },
+  "MCCA0033": {
+   "rrid": "CVCL_0I90",
+   "identifier": "D2A1",
+   "synonyms": [],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/c",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0500": {
+   "rrid": "CVCL_2015",
+   "identifier": "DA-1",
+   "synonyms": [
+    "DA1",
+    "Da"
+   ],
+   "ncitDisease": "Mouse lymphoma",
+   "breed": "BALB/c",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "BCRJ",
+     "accession": "0074",
+     "url": "https://bcrj.org.br/pesquisa/?search=0074"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-51",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-51"
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB1143",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB1143&lang=En"
+    }
+   ]
+  },
+  "MCCA0562": {
+   "rrid": "CVCL_E119",
+   "identifier": "F3II",
+   "synonyms": [],
+   "ncitDisease": "Malignant neoplasms of the mouse mammary gland",
+   "breed": "BALB/c",
+   "sex": "Female",
+   "cautions": null,
+   "providers": null
+  },
+  "MCCA0476": {
+   "rrid": "CVCL_3949",
+   "identifier": "J558L",
+   "synonyms": [
+    "J 558L",
+    "J.558 L"
+   ],
+   "ncitDisease": "Mouse multiple myeloma",
+   "breed": "BALB/c",
+   "sex": "Sex unspecified",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ECACC",
+     "accession": "88032902",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=88032902"
+    }
+   ]
+  },
+  "MCCA0475": {
+   "rrid": "CVCL_0382",
+   "identifier": "L1210",
+   "synonyms": [
+    "L 1210",
+    "L-1210",
+    "Leukemic 1210",
+    "Leukemia 1210",
+    "Leukemia L1210"
+   ],
+   "ncitDisease": "Mouse leukemia",
+   "breed": "DBA/2",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CCL-219",
+     "url": "https://www.atcc.org/products/CCL-219"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60049",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60049"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0138",
+     "url": "https://bcrj.org.br/pesquisa/?search=0138"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0203",
+     "url": null
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-123",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-123"
+    },
+    {
+     "db": "ECACC",
+     "accession": "87092804",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=87092804"
+    },
+    {
+     "db": "ICLC",
+     "accession": "ATL99002",
+     "url": "http://www.iclc.it/details/det_list.php?line_id=ATL99002"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 152",
+     "url": null
+    },
+    {
+     "db": "JCRB",
+     "accession": "JCRB9026",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=JCRB9026"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 200774YJ",
+     "url": null
+    },
+    {
+     "db": "KCLB",
+     "accession": "10219",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=10219"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0154",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo101/0154.html"
+    }
+   ]
+  },
+  "MCCA0502": {
+   "rrid": "CVCL_2107",
+   "identifier": "M1",
+   "synonyms": [
+    "M 1",
+    "M-1 myeloid leukemia"
+   ],
+   "ncitDisease": "Mouse myeloid leukemia",
+   "breed": "SL",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "TIB-192",
+     "url": "https://www.atcc.org/products/TIB-192"
+    },
+    {
+     "db": "CLS",
+     "accession": "305261",
+     "url": "https://www.cytion.com/305261"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-331",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-331"
+    },
+    {
+     "db": "ECACC",
+     "accession": "91110711",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=91110711"
+    },
+    {
+     "db": "ECACC",
+     "accession": "93120826",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=93120826"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 71",
+     "url": null
+    },
+    {
+     "db": "JCRB",
+     "accession": "IFO50006",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=IFO50006"
+    },
+    {
+     "db": "KCLB",
+     "accession": "40192",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=40192"
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB0169",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB0169&lang=En"
+    }
+   ]
+  },
+  "MCCA0477": {
+   "rrid": "CVCL_3857",
+   "identifier": "MPC-11",
+   "synonyms": [
+    "MPC 11",
+    "MPC11",
+    "Merwin Plasma Cell tumor-11"
+   ],
+   "ncitDisease": "Mouse multiple myeloma",
+   "breed": "BALB/c",
+   "sex": "Female",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CCL-167",
+     "url": "https://www.atcc.org/products/CCL-167"
+    },
+    {
+     "db": "ECACC",
+     "accession": "91031103",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=91031103"
+    },
+    {
+     "db": "IBRC",
+     "accession": "C10138",
+     "url": null
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 45",
+     "url": null
+    },
+    {
+     "db": "NCI-DTP",
+     "accession": "MPC-11",
+     "url": null
+    }
+   ]
+  },
+  "MCCA0439": {
+   "rrid": "CVCL_J703",
+   "identifier": "Myc-CaP",
+   "synonyms": [],
+   "ncitDisease": "Carcinoma of the mouse prostate gland",
+   "breed": "FVB Hi-Myc transgenic",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-3255",
+     "url": "https://www.atcc.org/products/CRL-3255"
+    }
+   ]
+  },
+  "MCCA0510": {
+   "rrid": "CVCL_0470",
+   "identifier": "Neuro-2a",
+   "synonyms": [
+    "NEURO-2A",
+    "Neuro 2a",
+    "Neuro2a",
+    "Neuro2A",
+    "N-2a",
+    "N2a",
+    "N2A",
+    "Nb2a",
+    "NB2a"
+   ],
+   "ncitDisease": "Mouse neuroblastoma",
+   "breed": "A/J",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "Abcam",
+     "accession": "ab279975",
+     "url": "https://www.abcam.com/ab279975.html"
+    },
+    {
+     "db": "ATCC",
+     "accession": "CCL-131",
+     "url": "https://www.atcc.org/products/CCL-131"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60026",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60026"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0189",
+     "url": "https://bcrj.org.br/pesquisa/?search=0189"
+    },
+    {
+     "db": "CCLV",
+     "accession": "CCLV-RIE 0132",
+     "url": null
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0162",
+     "url": null
+    },
+    {
+     "db": "CLS",
+     "accession": "400394",
+     "url": "https://www.cytion.com/400394"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-148",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-148"
+    },
+    {
+     "db": "ECACC",
+     "accession": "89121404",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=89121404"
+    },
+    {
+     "db": "Hysigen",
+     "accession": "TCM-C750",
+     "url": "https://hysigen.com/TCM-C750.html"
+    },
+    {
+     "db": "ICLC",
+     "accession": "ATL99007",
+     "url": "http://www.iclc.it/details/det_list.php?line_id=ATL99007"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 128",
+     "url": null
+    },
+    {
+     "db": "JCRB",
+     "accession": "IFO50081",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=IFO50081"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 2014025YJ",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB2639",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB2639&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0509",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo105/0509.html"
+    }
+   ]
+  },
+  "MCCA0501": {
+   "rrid": "CVCL_2154",
+   "identifier": "P815",
+   "synonyms": [
+    "P-815",
+    "P 815"
+   ],
+   "ncitDisease": "Mouse mast cell neoplasm",
+   "breed": "DBA/2",
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "TIB-64",
+     "url": "https://www.atcc.org/products/TIB-64"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60178",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60178"
+    },
+    {
+     "db": "BCRJ",
+     "accession": "0200",
+     "url": "https://bcrj.org.br/pesquisa/?search=0200"
+    },
+    {
+     "db": "CCTCC",
+     "accession": "GDC0608",
+     "url": null
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-1",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-1"
+    },
+    {
+     "db": "IZSLER",
+     "accession": "BS TCL 118",
+     "url": null
+    },
+    {
+     "db": "JCRB",
+     "accession": "JCRB0078",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=JCRB0078"
+    },
+    {
+     "db": "KCB",
+     "accession": "KCB 93032YJ",
+     "url": null
+    },
+    {
+     "db": "NCBI_Iran",
+     "accession": "C550",
+     "url": null
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB1167",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB1167&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0168",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo101/0168.html"
+    }
+   ]
+  },
+  "MCCA0440": {
+   "rrid": "CVCL_0F37",
+   "identifier": "PTEN-CaP8",
+   "synonyms": [],
+   "ncitDisease": "Carcinoma of the mouse prostate gland",
+   "breed": null,
+   "sex": "Male",
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CRL-3033",
+     "url": "https://www.atcc.org/products/CRL-3033"
+    }
+   ]
+  },
+  "MCCA0151": {
+   "rrid": "CVCL_3575",
+   "identifier": "RAG",
+   "synonyms": [
+    "Rag"
+   ],
+   "ncitDisease": "Mouse kidney carcinoma",
+   "breed": "BALB/c",
+   "sex": null,
+   "cautions": null,
+   "providers": [
+    {
+     "db": "ATCC",
+     "accession": "CCL-142",
+     "url": "https://www.atcc.org/products/CCL-142"
+    },
+    {
+     "db": "BCRC",
+     "accession": "60404",
+     "url": "https://catalog.bcrc.firdi.org.tw/BcrcContent?bid=60404"
+    },
+    {
+     "db": "CLS",
+     "accession": "305190",
+     "url": "https://www.cytion.com/305190"
+    },
+    {
+     "db": "ECACC",
+     "accession": "89040605",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=89040605"
+    },
+    {
+     "db": "KCLB",
+     "accession": "10142",
+     "url": "https://cellbank.snu.ac.kr/cellline/search?sc=y&q=10142"
+    }
+   ]
+  },
   "MCCA0505": {
    "rrid": "CVCL_2239",
    "identifier": "WEHI-3B",
@@ -961,8 +1791,54 @@
    "ncitDisease": "Mouse leukemia",
    "breed": "BALB/c",
    "sex": "Male",
-   "cautions": null
-  },
-  "MCCA0443": null
+   "cautions": null,
+   "providers": [
+    {
+     "db": "BCRJ",
+     "accession": "0248",
+     "url": "https://bcrj.org.br/pesquisa/?search=0248"
+    },
+    {
+     "db": "CLS",
+     "accession": "400376",
+     "url": "https://www.cytion.com/400376"
+    },
+    {
+     "db": "DSMZ",
+     "accession": "ACC-26",
+     "url": "https://www.dsmz.de/collection/catalogue/details/culture/ACC-26"
+    },
+    {
+     "db": "ECACC",
+     "accession": "86013003",
+     "url": "https://www.culturecollections.org.uk/products/celllines/detail.jsp?refId=86013003"
+    },
+    {
+     "db": "IBRC",
+     "accession": "C10075",
+     "url": null
+    },
+    {
+     "db": "ICLC",
+     "accession": "ATL99003",
+     "url": "http://www.iclc.it/details/det_list.php?line_id=ATL99003"
+    },
+    {
+     "db": "JCRB",
+     "accession": "IFO50296",
+     "url": "https://cellbank.nibiohn.go.jp//~cellbank/en/search_res_det.cgi?RNO=IFO50296"
+    },
+    {
+     "db": "RCB",
+     "accession": "RCB2853",
+     "url": "https://cellbank.brc.riken.jp/cell_bank/CellInfo/?cellNo=RCB2853&lang=En"
+    },
+    {
+     "db": "TKG",
+     "accession": "TKG 0584",
+     "url": "http://www2.idac.tohoku.ac.jp/dep/ccr/TKGdate/TKGvo105/0584.html"
+    }
+   ]
+  }
  }
 }
