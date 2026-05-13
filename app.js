@@ -336,7 +336,12 @@
     activeId: null,
     sortDir: 1,                 // 1 asc, -1 desc
     filters: { q: '', lineage: '', cancer: '', model: '', sex: '', tier: '' },
-    sortBy: 'name'
+    sortBy: 'name',
+    // Side-by-side comparison: array of up to 2 pinned cell-line IDs.
+    // When length === 2 and compareActive is true, the detail pane
+    // renders the comparison view instead of the single-line view.
+    compareIds: [],
+    compareActive: false
   };
 
   // ---------- populate the lineage / cancer-type dropdowns from data ----------
@@ -936,9 +941,10 @@
       const tierTag = tier === 1 ? '<span class="tier-1">★ T1</span>'
                     : tier === 2 ? '<span class="tier-2">T2</span>' : '';
       const tismoTag = meta.tismo?.[cl] ? '<span class="tismo-tag" title="Has a TISMO RNA-seq / ICB-treatment record">tismo</span>' : '';
+      const pinned = state.compareIds.includes(cl) ? '<span title="Pinned for comparison" style="margin-left:4px;">📌</span>' : '';
       return `<div class="cl-row${cl === state.activeId ? ' active' : ''}" data-cl="${cl}" title="${cl}">`
         + `<span class="sex ${sx.cls}" title="${sx.title}">${sx.sym}</span>`
-        + `<span class="name">${name}${tierTag}${tismoTag}</span>`
+        + `<span class="name">${name}${tierTag}${tismoTag}${pinned}</span>`
         + `<span class="tissue">${lin}</span>`
         + `</div>`;
     }).join('');
@@ -993,11 +999,173 @@
     render();
   }
 
+  // ---------- compare-view helpers ----------
+  function pinForCompare(cl) {
+    const i = state.compareIds.indexOf(cl);
+    if (i >= 0) {
+      state.compareIds.splice(i, 1);
+    } else {
+      if (state.compareIds.length >= 2) state.compareIds.shift(); // drop the oldest
+      state.compareIds.push(cl);
+    }
+    // Re-render detail so the pin-button label updates and the banner
+    // recomputes. Also re-render the list so "pinned" markers update.
+    render();
+    renderDetail(state.activeId);
+  }
+
+  function renderCompareBanner() {
+    if (state.compareIds.length === 0) return '';
+    const ids = state.compareIds;
+    const pinned = ids.map(id =>
+      `<code style="background:var(--green-50); color:var(--green-800); padding:1px 6px; border-radius:8px; border:1px solid var(--green-200);">${meta.names[id] || id}</code>`
+    ).join(' + ');
+    const showHide = ids.length === 2
+      ? (state.compareActive
+        ? `<button data-compare-action="back" style="background:#fff; border:1px solid var(--gray-300); padding:3px 8px; font-size:11px; cursor:pointer; border-radius:4px;">← Back to single line</button>`
+        : `<button data-compare-action="show" style="background:var(--green-700); color:#fff; border:none; padding:3px 10px; font-size:11px; cursor:pointer; border-radius:4px;">Compare these two →</button>`)
+      : `<span style="color:var(--gray-500); font-size:11px; font-style:italic;">Pin a second line to compare.</span>`;
+    return `<div style="margin: 0 0 14px; padding: 8px 12px; background: var(--green-50); border-left: 3px solid var(--green-700); border-radius: 0 4px 4px 0; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <span style="font-size:11px; color:var(--green-800);"><b>Pinned</b>: ${pinned}</span>
+      <span style="margin-left:auto;">${showHide}</span>
+      <button data-compare-action="clear" title="Clear pins" style="background:none; border:none; color:var(--gray-500); cursor:pointer; font-size:11px; padding:0;">×</button>
+    </div>`;
+  }
+
+  function wireCompareButtons() {
+    document.querySelectorAll('[data-pin-cl]').forEach(b => {
+      b.addEventListener('click', (e) => { e.stopPropagation(); pinForCompare(b.dataset.pinCl); });
+    });
+    document.querySelectorAll('[data-compare-action]').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const a = b.dataset.compareAction;
+        if (a === 'show') { state.compareActive = true; renderDetail(null); }
+        else if (a === 'back') { state.compareActive = false; renderDetail(state.activeId); }
+        else if (a === 'clear') { state.compareIds = []; state.compareActive = false; render(); renderDetail(state.activeId); }
+      });
+    });
+  }
+
+  // Side-by-side view of two cell lines. Picks a focused field set and
+  // shows columns for A and B; rows where values differ get a faint
+  // amber highlight. Immune scores render as their bar visualisation
+  // doubled up so the user can eyeball the contrast.
+  function renderCompareView(aId, bId) {
+    const a = meta.names[aId] || aId, b = meta.names[bId] || bId;
+
+    const get = (cl, k) => meta[k]?.[cl];
+    const fmtPretty = (v) => v == null || v === '' ? '<span style="color:var(--gray-400);">—</span>' : prettyValue(typeof v === 'string' ? v : String(v));
+
+    const rows = [];
+    function addRow(label, va, vb, formatter) {
+      const f = formatter || fmtPretty;
+      const av = f(va), bv = f(vb);
+      // Highlight if the displayed strings differ AND neither is the
+      // empty/"—" placeholder.
+      const aStripped = va == null || va === '';
+      const bStripped = vb == null || vb === '';
+      const differ = !aStripped && !bStripped && String(va) !== String(vb);
+      const rowStyle = differ ? 'background:#fffbeb;' : '';
+      rows.push(`<tr style="${rowStyle}"><td style="padding:4px 8px; color:var(--gray-500); font-size:11px; vertical-align:top; width:140px;">${label}</td><td style="padding:4px 8px; vertical-align:top;">${av}</td><td style="padding:4px 8px; vertical-align:top;">${bv}</td></tr>`);
+    }
+
+    addRow('Lineage',           prettyLineage(get(aId, 'lineage')), prettyLineage(get(bId, 'lineage')));
+    addRow('Cancer type',       get(aId, 'cancerType'), get(bId, 'cancerType'), v => v == null ? '<span style="color:var(--gray-400);">—</span>' : prettyCancer(v));
+    addRow('Cancer (detail)',   get(aId, 'cancerTypeDetailed'), get(bId, 'cancerTypeDetailed'), v => v == null ? '<span style="color:var(--gray-400);">—</span>' : prettyCancer(v));
+    addRow('Tumour location',   get(aId, 'tumorLocation'), get(bId, 'tumorLocation'));
+    addRow('Model type',        get(aId, 'modelType'), get(bId, 'modelType'));
+    addRow('Mouse model',       get(aId, 'mouseModel'), get(bId, 'mouseModel'));
+    addRow('Background strain', get(aId, 'strain'), get(bId, 'strain'));
+    addRow('MHC haplotype',     get(aId, 'mhcA'), get(bId, 'mhcA'));
+    addRow('Sex of host',       get(aId, 'gender'), get(bId, 'gender'));
+    addRow('Tier',              get(aId, 'curatedTier'), get(bId, 'curatedTier'), v => v == null ? '<span style="color:var(--gray-400);">—</span>' : String(v));
+
+    // Driver mutations — show union with marker for which line carries each.
+    const drvA = (meta.drivers?.[aId] || []).map(d => d.gene + (d.alteration ? `:${d.alteration}` : ''));
+    const drvB = (meta.drivers?.[bId] || []).map(d => d.gene + (d.alteration ? `:${d.alteration}` : ''));
+    addRow('Drivers (literature)', drvA.length ? drvA.join(', ') : null, drvB.length ? drvB.join(', ') : null);
+
+    const mutA = meta.mutations?.[aId], mutB = meta.mutations?.[bId];
+    addRow('MCCA WES HIGH-impact', mutA?.totalHigh, mutB?.totalHigh, v => v == null ? '<span style="color:var(--gray-400);">—</span>' : String(v));
+    addRow('MCCA WES MODERATE',    mutA?.totalModerate, mutB?.totalModerate, v => v == null ? '<span style="color:var(--gray-400);">—</span>' : String(v));
+
+    // PubMed presence
+    const pubA = meta.pubmed?.[aId]?.count, pubB = meta.pubmed?.[bId]?.count;
+    addRow('PubMed papers',  pubA, pubB, v => v == null ? '<span style="color:var(--gray-400);">—</span>' : String(v));
+
+    // TISMO summary
+    const tA = meta.tismo?.[aId], tB = meta.tismo?.[bId];
+    addRow('TISMO samples',
+      tA ? `${tA.vivoSamples} in-vivo, ${tA.vitroSamples} in-vitro` : null,
+      tB ? `${tB.vivoSamples} in-vivo, ${tB.vitroSamples} in-vitro` : null);
+    addRow('ICB arms (R / NR)',
+      tA ? `${tA.icbResponders} / ${tA.icbNonResponders}` : null,
+      tB ? `${tB.icbResponders} / ${tB.icbNonResponders}` : null);
+
+    // Immune signature scores — render as numeric z and a tiny inline bar.
+    const renderScore = (z) => {
+      if (z == null) return '<span style="color:var(--gray-400);">—</span>';
+      const clamped = Math.max(-2, Math.min(2, z));
+      const pct = (Math.abs(clamped) / 2) * 50;
+      const side = clamped >= 0 ? 'right' : 'left';
+      const colour = clamped >= 0 ? '#15803d' : '#991b1b';
+      const tone = clamped >= 0 ? '#dcfce7' : '#fee2e2';
+      return `<div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:11px; font-variant-numeric:tabular-nums; min-width:50px; color:${colour};">${z >= 0 ? '+' : ''}${z.toFixed(2)}σ</span>
+        <div style="position:relative; flex:1; height:10px; background:#f9fafb; border-radius:3px; overflow:hidden;">
+          <div style="position:absolute; top:0; bottom:0; left:50%; width:1px; background:#d1d5db;"></div>
+          <div style="position:absolute; top:0; bottom:0; ${side}:50%; width:${pct}%; background:${tone};"></div>
+        </div>
+      </div>`;
+    };
+    const sA = meta.immuneScores?.[aId], sB = meta.immuneScores?.[bId];
+    const SCORE_NAMES = [
+      ['T-cell inflamed', 'tCellInflamed'],
+      ['MHC-I',           'mhcI'],
+      ['MHC-II',          'mhcII'],
+      ['MDSC',            'mdsc'],
+      ['M1 − M2',         'm1m2']
+    ];
+    for (const [label, key] of SCORE_NAMES) {
+      const za = sA?.[key], zb = sB?.[key];
+      const va = renderScore(za), vb = renderScore(zb);
+      const differ = za != null && zb != null && Math.abs(za - zb) >= 0.5;
+      const rowStyle = differ ? 'background:#fffbeb;' : '';
+      rows.push(`<tr style="${rowStyle}"><td style="padding:4px 8px; color:var(--gray-500); font-size:11px; vertical-align:middle;">${label}</td><td style="padding:4px 8px;">${va}</td><td style="padding:4px 8px;">${vb}</td></tr>`);
+    }
+
+    return `
+      <h2>Side-by-side comparison</h2>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:12px;">Rows that differ are highlighted in amber. Driver-mutation lists are the literature-curated set (8 workhorses) where available; MCCA WES counts are TMB proxy. Immune signature deltas of |Δz| ≥ 0.5σ get the highlight.</div>
+      <table style="border-collapse:collapse; width:100%; font-size:12px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--green-700); background:var(--green-50);">
+            <th style="padding:6px 8px; text-align:left; color:var(--green-800);">Field</th>
+            <th style="padding:6px 8px; text-align:left; color:var(--green-800);">${a}</th>
+            <th style="padding:6px 8px; text-align:left; color:var(--green-800);">${b}</th>
+          </tr>
+        </thead>
+        <tbody>${rows.join('')}</tbody>
+      </table>
+    `;
+  }
+
   // ---------- detail pane ----------
   function renderDetail(cl) {
     const pane = document.getElementById('detail-pane');
+    // Compare-view takeover: when two lines are pinned and compareActive
+    // is true, render the side-by-side view instead of the single-line
+    // detail. The "show comparison" / "back to single line" buttons in
+    // the banner toggle compareActive.
+    if (state.compareActive && state.compareIds.length === 2) {
+      pane.innerHTML = renderCompareBanner() + renderCompareView(state.compareIds[0], state.compareIds[1]);
+      wireCompareButtons();
+      return;
+    }
     if (!cl) {
-      pane.innerHTML = '<div class="placeholder">Pick a cell line from the list to see its details.</div>';
+      pane.innerHTML = renderCompareBanner() + '<div class="placeholder">Pick a cell line from the list to see its details.</div>';
+      wireCompareButtons();
       return;
     }
     const name = meta.names[cl] || cl;
@@ -1073,7 +1241,8 @@
       : '';
 
     const html = `
-      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge}</h2>
+      ${renderCompareBanner()}
+      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge} <button data-pin-cl="${cl}" class="pin-btn" title="${state.compareIds.includes(cl) ? 'Unpin from comparison' : 'Pin this line for side-by-side comparison'}" style="margin-left:auto; font-size:11px; padding:2px 8px; cursor:pointer; background:${state.compareIds.includes(cl) ? 'var(--green-50)' : '#fff'}; border:1px solid ${state.compareIds.includes(cl) ? 'var(--green-700)' : 'var(--gray-300)'}; color:${state.compareIds.includes(cl) ? 'var(--green-700)' : 'var(--gray-500)'}; border-radius:4px;">${state.compareIds.includes(cl) ? '📌 pinned' : '📌 pin for compare'}</button></h2>
       <div class="id">${cl}${meta.ncitDisease?.[cl] ? ' · ' + meta.ncitDisease[cl] : ''}</div>
       ${synonymsLine}
       ${provenance}
@@ -1143,6 +1312,7 @@
       </div>
     `;
     pane.innerHTML = html;
+    wireCompareButtons();
     wireFullExprSearch(cl);
   }
 

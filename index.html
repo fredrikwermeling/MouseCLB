@@ -122,7 +122,8 @@
     /* Detail pane */
     #detail-pane { padding: 18px 24px 60px; overflow-y: auto; max-height: calc(100vh - 49px); }
     #detail-pane .placeholder { color: var(--gray-400); font-style: italic; padding: 40px 0; text-align: center; }
-    #detail-pane h2 { margin: 0 0 4px; color: var(--green-800); font-size: 20px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    #detail-pane h2 { margin: 0 0 4px; color: var(--green-800); font-size: 20px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pin-btn:hover { background: var(--gray-50) !important; }
     #detail-pane .id { color: var(--gray-500); font-size: 11px; margin-bottom: 18px; }
 
     .section-title {
@@ -162,7 +163,7 @@
 <body>
   <header>
     <h1>MouseCLB</h1>
-    <span class="tag">v0.16 — pre-alpha</span>
+    <span class="tag">v0.17 — pre-alpha</span>
     <span class="tag" id="count-tag">loading…</span>
     <span class="sub">Mouse Cancer Cell Line Browser · <a href="https://github.com/fredrikwermeling/MouseCLB" target="_blank" rel="noopener" style="color:var(--gray-500);">source ↗</a></span>
   </header>
@@ -220,6 +221,6 @@
       <div class="placeholder">Pick a cell line from the list to see its details.</div>
     </section>
   </main>
-  <script src="app.js?v=v0_16"></script>
+  <script src="app.js?v=v0_17"></script>
 </body>
 </html>
