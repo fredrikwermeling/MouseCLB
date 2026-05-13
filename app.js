@@ -864,6 +864,8 @@
       if (state.filters.sex     && (meta.gender[cl] || '').toLowerCase() !== state.filters.sex) return false;
       if (state.filters.tier === '1' && meta.curatedTier[cl] !== 1) return false;
       if (state.filters.tier === '1or2' && meta.curatedTier[cl] !== 1 && meta.curatedTier[cl] !== 2) return false;
+      if (state.filters.tier === 'tismo' && !meta.immunePanel?.[cl]) return false;
+      if (state.filters.tier === 'lit'   && !meta.litCitation?.[cl]) return false;
       if (q) {
         const hay = [
           meta.names[cl] || cl, meta.lineage[cl], meta.cancerType[cl],
@@ -960,7 +962,14 @@
     if (f.cancer)  chips.push(chip('Cancer: ' + prettyCancer(f.cancer),    () => { f.cancer = '';  cancerSel.value  = ''; render(); }));
     if (f.model)   chips.push(chip('Model: '  + prettyValue(f.model),       () => { f.model = '';   document.getElementById('filterModel').value = ''; render(); }));
     if (f.sex)     chips.push(chip('Sex: '    + f.sex,                       () => { f.sex = '';     document.getElementById('filterSex').value = ''; render(); }));
-    if (f.tier)    chips.push(chip(f.tier === '1' ? 'Tier 1 only' : 'Tier 1 + 2', () => { f.tier = ''; document.getElementById('filterTier').value = ''; render(); }));
+    if (f.tier) {
+      const tierLabel = f.tier === '1'     ? 'Tier 1 only'
+                      : f.tier === '1or2'  ? 'Tier 1 + 2'
+                      : f.tier === 'tismo' ? 'TISMO immune-panel'
+                      : f.tier === 'lit'   ? 'Literature lines'
+                      : f.tier;
+      chips.push(chip(tierLabel, () => { f.tier = ''; document.getElementById('filterTier').value = ''; render(); }));
+    }
     if (f.q)       chips.push(chip('Search: ' + f.q,                         () => { f.q = ''; searchEl.value = ''; render(); }));
     if (chips.length) {
       activeBar.classList.add('shown');
