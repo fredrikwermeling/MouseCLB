@@ -199,6 +199,39 @@
     console.warn('Could not load TISMO immune panel:', e);
   }
 
+  // Tertile cutoffs used for the list-row PD-L1 / TMB scanning tags.
+  // Computed once at load and reused per render. Tertile thresholds are
+  // p33 and p67 of the cohort distribution; only HIGH and LOW
+  // (top/bottom tertile) get a tag in the row — MID gets no tag, so
+  // visual clutter only fires for lines worth noticing.
+  meta._tertiles = {};
+  function computeTertiles() {
+    // PD-L1 baseline (Cd274) across TISMO-covered lines.
+    const pdl1Vals = [];
+    for (const cl of meta.cellLines) {
+      const v = meta.immunePanel?.[cl]?.preICB_baseline?.mean?.Cd274;
+      if (v != null) pdl1Vals.push({ cl, v });
+    }
+    if (pdl1Vals.length >= 6) {
+      const sorted = [...pdl1Vals].sort((a, b) => a.v - b.v);
+      const lo = sorted[Math.floor(sorted.length / 3)].v;
+      const hi = sorted[Math.floor(sorted.length * 2 / 3)].v;
+      meta._tertiles.pdl1 = { lo, hi };
+    }
+    // TMB (HIGH-impact MCCA WES count) across lines with mutation data.
+    const tmbVals = [];
+    for (const cl of meta.cellLines) {
+      const m = meta.mutations?.[cl];
+      if (m?.totalHigh != null) tmbVals.push({ cl, v: m.totalHigh });
+    }
+    if (tmbVals.length >= 6) {
+      const sorted = [...tmbVals].sort((a, b) => a.v - b.v);
+      const lo = sorted[Math.floor(sorted.length / 3)].v;
+      const hi = sorted[Math.floor(sorted.length * 2 / 3)].v;
+      meta._tertiles.tmb = { lo, hi };
+    }
+  }
+
   // Composite immune-signature scores per cell line. Computed on the fly
   // from the panel data: mean z-score across each signature's gene set,
   // measured at preICB baseline so the score reflects the line's intrinsic
@@ -247,6 +280,7 @@
     }
   }
   computeImmuneScores();
+  computeTertiles();
 
   // Full TISMO expression matrix (Dryad / Zeng 2022). Eager-load the
   // small metadata for the gene autocomplete; lazy-load the 1.7 MB
@@ -1110,10 +1144,29 @@
       const tierTag = tier === 1 ? '<span class="tier-1">★ T1</span>'
                     : tier === 2 ? '<span class="tier-2">T2</span>' : '';
       const tismoTag = meta.tismo?.[cl] ? '<span class="tismo-tag" title="Has a TISMO RNA-seq / ICB-treatment record">tismo</span>' : '';
+      // PD-L1 tertile tag (TISMO-covered lines only). Top tertile gets
+      // a red ↑ tag (interesting for ICB context), bottom tertile a
+      // blue ↓. Mid is silent to keep the row uncluttered.
+      let pdl1Tag = '';
+      const pdl1V = meta.immunePanel?.[cl]?.preICB_baseline?.mean?.Cd274;
+      const pdl1T = meta._tertiles?.pdl1;
+      if (pdl1V != null && pdl1T) {
+        if (pdl1V >= pdl1T.hi)      pdl1Tag = `<span title="PD-L1 (Cd274) top-tertile baseline expression: ${pdl1V.toFixed(2)}" style="font-size:8px; padding:1px 4px; border-radius:6px; margin-left:4px; font-weight:600; background:#fee2e2; color:#991b1b; border:1px solid #fecaca;">PD-L1 ↑</span>`;
+        else if (pdl1V <= pdl1T.lo) pdl1Tag = `<span title="PD-L1 (Cd274) bottom-tertile baseline expression: ${pdl1V.toFixed(2)}" style="font-size:8px; padding:1px 4px; border-radius:6px; margin-left:4px; font-weight:600; background:#dbeafe; color:#1e40af; border:1px solid #bfdbfe;">PD-L1 ↓</span>`;
+      }
+      // TMB tertile tag (MCCA lines with WES). Top tertile = high TMB
+      // (red, immunogenic candidate); bottom tertile = low TMB (gray).
+      let tmbTag = '';
+      const tmbV = meta.mutations?.[cl]?.totalHigh;
+      const tmbT = meta._tertiles?.tmb;
+      if (tmbV != null && tmbT) {
+        if (tmbV >= tmbT.hi)      tmbTag = `<span title="HIGH-impact mutation top-tertile (TMB proxy): ${tmbV}" style="font-size:8px; padding:1px 4px; border-radius:6px; margin-left:4px; font-weight:600; background:#fee2e2; color:#991b1b; border:1px solid #fecaca;">TMB ↑</span>`;
+        else if (tmbV <= tmbT.lo) tmbTag = `<span title="HIGH-impact mutation bottom-tertile (TMB proxy): ${tmbV}" style="font-size:8px; padding:1px 4px; border-radius:6px; margin-left:4px; font-weight:600; background:#f3f4f6; color:#6b7280; border:1px solid #e5e7eb;">TMB ↓</span>`;
+      }
       const pinned = state.compareIds.includes(cl) ? '<span title="Pinned for comparison" style="margin-left:4px;">📌</span>' : '';
       return `<div class="cl-row${cl === state.activeId ? ' active' : ''}" data-cl="${cl}" title="${cl}">`
         + `<span class="sex ${sx.cls}" title="${sx.title}">${sx.sym}</span>`
-        + `<span class="name">${name}${tierTag}${tismoTag}${pinned}</span>`
+        + `<span class="name">${name}${tierTag}${tismoTag}${pdl1Tag}${tmbTag}${pinned}</span>`
         + `<span class="tissue">${lin}</span>`
         + `</div>`;
     }).join('');
