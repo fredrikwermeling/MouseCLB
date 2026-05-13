@@ -11,6 +11,7 @@
   const LIT_URL  = 'web_data/literature_lines.json';
   const MCCA_CELLO_URL = 'web_data/mcca_cellosaurus.json';
   const TISMO_URL = 'web_data/tismo_enrichment.json';
+  const PUBMED_URL = 'web_data/pubmed_presence.json';
 
   // ---------- load ----------
   let meta;
@@ -24,20 +25,26 @@
     return;
   }
 
-  // Tag every MCCA line with its provenance, then merge the supplemental
-  // literature-curated lines (MC38, LL/2, Pan02, MOC1/2, ID8, TC-1, etc.)
-  // MCCA is heavily KRAS-GEMM-biased and silently misses the carcinogen-
-  // induced workhorses that dominate everyday mouse-tumour work; the
-  // literature file fills that gap one line at a time. Each line carries
-  // its own dataSource + litCitation so the detail pane can show
-  // provenance.
-  if (!meta.dataSource) meta.dataSource = {};
+  // MouseCLB aggregates per-line info from multiple public web sources.
+  // Each cell line ends up with a `sources` array describing which
+  // sources contributed data, with URLs. No one source is "primary";
+  // lines may have one or many sources depending on coverage.
   if (!meta.litCitation) meta.litCitation = {};
   if (!meta.cellosaurusRrid) meta.cellosaurusRrid = {};
   if (!meta.synonyms) meta.synonyms = {};
   if (!meta.ncitDisease) meta.ncitDisease = {};
   if (!meta.cautions) meta.cautions = {};
-  for (const cl of meta.cellLines) meta.dataSource[cl] = 'MCCA';
+  if (!meta.sources) meta.sources = {};
+
+  // Bulk metadata for the 590 lines comes from MCCA. Tag them now;
+  // additional sources are added as we merge each enrichment file.
+  for (const cl of meta.cellLines) {
+    meta.sources[cl] = [{
+      name: 'MCCA',
+      url: 'https://www.mcca.tum.de',
+      what: 'bulk metadata (lineage, mouse-model, MHC, host strain)'
+    }];
+  }
 
   // Merge in Cellosaurus enrichment for the MCCA lines (built offline by
   // scripts/enrich_with_cellosaurus.py). Only ~34/590 lines match because
@@ -55,6 +62,12 @@
         if (Array.isArray(v.synonyms) && v.synonyms.length) meta.synonyms[cl] = v.synonyms;
         if (v.ncitDisease) meta.ncitDisease[cl] = v.ncitDisease;
         if (Array.isArray(v.cautions) && v.cautions.length) meta.cautions[cl] = v.cautions;
+        if (!meta.sources[cl]) meta.sources[cl] = [];
+        meta.sources[cl].push({
+          name: 'Cellosaurus',
+          url: `https://www.cellosaurus.org/${v.rrid}`,
+          what: 'identity (RRID, synonyms, NCIt disease, cautions)'
+        });
       }
     }
   } catch (e) {
@@ -79,11 +92,44 @@
       for (const [n, v] of Object.entries(td.byName || {})) tismoByNorm.set(norm(n), { tismoName: n, ...v });
       for (const cl of meta.cellLines) {
         const hit = tismoByNorm.get(norm(meta.names?.[cl] || cl));
-        if (hit) meta.tismo[cl] = hit;
+        if (hit) {
+          meta.tismo[cl] = hit;
+          if (!meta.sources[cl]) meta.sources[cl] = [];
+          meta.sources[cl].push({
+            name: 'TISMO',
+            url: 'https://tismo.pku-genomics.org/#/databrowser',
+            what: `RNA-seq sample index (${hit.vitroSamples || 0} in-vitro / ${hit.vivoSamples || 0} in-vivo, ${(hit.studies || []).length} studies)`
+          });
+        }
       }
     }
   } catch (e) {
     console.warn('Could not load TISMO enrichment:', e);
+  }
+
+  // PubMed literature-presence counts (NCBI E-utilities). Adds a
+  // "PubMed presence" source chip with a link to the disambiguated
+  // search results page for each line.
+  if (!meta.pubmed) meta.pubmed = {};
+  try {
+    const pr = await fetch(PUBMED_URL);
+    if (pr.ok) {
+      const pd = await pr.json();
+      for (const [cl, v] of Object.entries(pd.byCellLine || {})) {
+        if (!v || typeof v.count !== 'number') continue;
+        meta.pubmed[cl] = v;
+        if (v.count > 0) {
+          if (!meta.sources[cl]) meta.sources[cl] = [];
+          meta.sources[cl].push({
+            name: 'PubMed',
+            url: v.pubmedUrl,
+            what: `${v.count} cancer-context paper${v.count === 1 ? '' : 's'}`
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load PubMed presence:', e);
   }
 
   try {
@@ -105,13 +151,19 @@
       ];
       for (const entry of (lit.lines || [])) {
         const id = entry.id;
-        if (!id || meta.dataSource[id]) continue; // skip dupes / collisions with MCCA
+        if (!id || meta.sources[id]) continue; // skip dupes
         meta.cellLines.push(id);
         for (const f of fields) {
           const [dest, src] = f.includes(':') ? f.split(':') : [f, f];
           if (!meta[dest]) meta[dest] = {};
           if (entry[src] != null) meta[dest][id] = entry[src];
         }
+        // Initialise sources list — primary literature is the base.
+        const srcs = [];
+        if (entry.litCitation) {
+          srcs.push({ name: 'Primary literature', url: null, what: entry.litCitation });
+        }
+        meta.sources[id] = srcs;
       }
     }
   } catch (e) {
@@ -119,10 +171,8 @@
     console.warn('Could not load literature lines:', e);
   }
 
-  const nLit = Object.values(meta.dataSource).filter(s => s !== 'MCCA').length;
   const nTot = meta.cellLines.length;
-  document.getElementById('count-tag').textContent =
-    nLit > 0 ? `${nTot} cell lines (${nTot - nLit} MCCA + ${nLit} literature)` : `${nTot} cell lines`;
+  document.getElementById('count-tag').textContent = `${nTot} cell lines`;
 
   // ---------- UI state ----------
   const state = {
@@ -337,6 +387,11 @@
           const hasIcb = (t.icbTreatedSamples || 0) > 0;
           return hasIcb ? 0 : (10 - Math.min(9, t.vitroSamples + t.vivoSamples) / 10);
         }
+        case 'pubmed':  {
+          // Negative count for ascending = highest count first.
+          const c = meta.pubmed?.[cl]?.count;
+          return c == null ? 0 : -c;
+        }
         default:        return (meta.names[cl] || cl).toLowerCase();
       }
     };
@@ -358,12 +413,10 @@
       const tier = meta.curatedTier[cl];
       const tierTag = tier === 1 ? '<span class="tier-1">★ T1</span>'
                     : tier === 2 ? '<span class="tier-2">T2</span>' : '';
-      const src = meta.dataSource?.[cl];
-      const litTag = src && src !== 'MCCA' ? '<span class="lit-tag" title="Literature-curated (not in MCCA)">lit</span>' : '';
       const tismoTag = meta.tismo?.[cl] ? '<span class="tismo-tag" title="Has a TISMO RNA-seq / ICB-treatment record">tismo</span>' : '';
       return `<div class="cl-row${cl === state.activeId ? ' active' : ''}" data-cl="${cl}" title="${cl}">`
         + `<span class="sex ${sx.cls}" title="${sx.title}">${sx.sym}</span>`
-        + `<span class="name">${name}${tierTag}${litTag}${tismoTag}</span>`
+        + `<span class="name">${name}${tierTag}${tismoTag}</span>`
         + `<span class="tissue">${lin}</span>`
         + `</div>`;
     }).join('');
@@ -453,21 +506,31 @@
       : '';
 
     // Sections — grouped to mirror Correlate V2's CLB detail pane.
-    const src = meta.dataSource?.[cl] || 'MCCA';
-    const isLit = src !== 'MCCA';
-    const sourceBadge = isLit
-      ? `<span class="badge lit">Literature-curated</span>`
-      : `<span class="badge mcca">MCCA</span>`;
-    const provenance = isLit && meta.litCitation?.[cl]
-      ? `<div style="margin: 0 0 14px; padding: 8px 12px; background: #fffbeb; border-left: 3px solid #d97706; font-size: 11px; color: #92400e; border-radius: 0 4px 4px 0;">
-           <b>Source:</b> ${meta.litCitation[cl]}
-           ${meta.cellosaurusRrid?.[cl] ? `<br><b>RRID:</b> <a href="https://www.cellosaurus.org/${meta.cellosaurusRrid[cl]}" target="_blank" rel="noopener">${meta.cellosaurusRrid[cl]} ↗</a>` : ''}
+    // "Data from" chip row — every source that contributed data for
+    // this line, with a clickable link to the source page. Always
+    // includes Cellosaurus link when we have an RRID, and the primary
+    // literature citation when curated.
+    const sources = meta.sources?.[cl] || [];
+    const chipColours = {
+      'MCCA':                { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe' },
+      'Cellosaurus':         { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+      'TISMO':               { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+      'Primary literature':  { bg: '#fef3c7', fg: '#92400e', border: '#fde68a' }
+    };
+    const sourceChips = sources.map(s => {
+      const p = chipColours[s.name] || { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' };
+      const label = `${s.name}${s.what ? ` <span style="opacity:0.7;">— ${s.what}</span>` : ''}`;
+      const inner = s.url
+        ? `<a href="${s.url}" target="_blank" rel="noopener" style="color:${p.fg}; text-decoration:none;">${label} ↗</a>`
+        : label;
+      return `<span style="background:${p.bg}; color:${p.fg}; padding:2px 8px; border-radius:10px; font-size:11px; border:1px solid ${p.border};">${inner}</span>`;
+    }).join(' ');
+    const provenance = sourceChips
+      ? `<div style="margin: 0 0 14px; display:flex; flex-direction:column; gap:6px;">
+           <div style="font-size:10px; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.05em;">Data from</div>
+           <div style="display:flex; gap:4px; flex-wrap:wrap;">${sourceChips}</div>
          </div>`
-      : (meta.cellosaurusRrid?.[cl]
-        ? `<div style="font-size:11px; color:var(--gray-500); margin: 0 0 10px;">
-             RRID: <a href="https://www.cellosaurus.org/${meta.cellosaurusRrid[cl]}" target="_blank" rel="noopener" style="color:var(--green-700);">${meta.cellosaurusRrid[cl]} ↗</a>
-           </div>`
-        : '');
+      : '';
 
     // Synonyms line (Cellosaurus name-list minus the canonical identifier).
     const syns = meta.synonyms?.[cl];
@@ -487,8 +550,8 @@
       : '';
 
     const html = `
-      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge} ${sourceBadge}</h2>
-      <div class="id">${cl} · ${src}${meta.ncitDisease?.[cl] ? ' · ' + meta.ncitDisease[cl] : ''}</div>
+      <h2>${name} ${tierBadge} ${modelBadge} ${sexBadge}</h2>
+      <div class="id">${cl}${meta.ncitDisease?.[cl] ? ' · ' + meta.ncitDisease[cl] : ''}</div>
       ${synonymsLine}
       ${provenance}
       ${cautionBlock}
@@ -526,6 +589,13 @@
       ${renderImmuneProfile(meta.immuneProfile?.[cl])}
 
       ${renderTismo(meta.tismo?.[cl])}
+
+      ${meta.pubmed?.[cl]?.count != null ? `
+      <div class="section-title">Literature presence</div>
+      <div class="field">
+        <div class="k">PubMed mentions</div>
+        <div class="v"><b>${meta.pubmed[cl].count.toLocaleString()}</b> paper${meta.pubmed[cl].count === 1 ? '' : 's'} mentioning <code>${meta.pubmed[cl].name}</code> in a cancer/mouse context · <a href="${meta.pubmed[cl].pubmedUrl}" target="_blank" rel="noopener" style="color:var(--green-700);">open search ↗</a></div>
+      </div>` : ''}
 
       <div class="section-title">Culture & source</div>
       ${row('Curated name',     meta.curated[cl] || '<em style="color:#9ca3af;">not on curated list</em>')}
