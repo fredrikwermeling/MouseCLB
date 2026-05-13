@@ -14,6 +14,8 @@
   const PUBMED_URL = 'web_data/pubmed_presence.json';
   const MUT_URL = 'web_data/mutations.json';
   const IMMUNE_URL = 'web_data/tismo_immune_panel.json';
+  const FULL_EXPR_BIN_URL = 'web_data/tismo_full_expr.bin.gz';
+  const FULL_EXPR_META_URL = 'web_data/tismo_full_expr_metadata.json';
 
   // ---------- load ----------
   let meta;
@@ -196,6 +198,47 @@
   } catch (e) {
     console.warn('Could not load TISMO immune panel:', e);
   }
+
+  // Full TISMO expression matrix (Dryad / Zeng 2022). Eager-load the
+  // small metadata for the gene autocomplete; lazy-load the 1.7 MB
+  // binary blob on first gene query so detail-pane render isn't slowed
+  // for users who never use the gene search.
+  meta.fullExpr = { meta: null, data: null, loading: null, loaded: false };
+  try {
+    const fmr = await fetch(FULL_EXPR_META_URL);
+    if (fmr.ok) meta.fullExpr.meta = await fmr.json();
+  } catch (e) {
+    console.warn('Could not load TISMO full-expression metadata:', e);
+  }
+
+  async function loadFullExprMatrix() {
+    if (meta.fullExpr.loaded) return;
+    if (meta.fullExpr.loading) return meta.fullExpr.loading;
+    meta.fullExpr.loading = (async () => {
+      const t0 = performance.now();
+      const r = await fetch(FULL_EXPR_BIN_URL);
+      // Browser-native gzip decode — no external lib needed.
+      const stream = r.body.pipeThrough(new DecompressionStream('gzip'));
+      const buf = await new Response(stream).arrayBuffer();
+      const int16 = new Int16Array(buf);
+      const m = meta.fullExpr.meta;
+      const sf = m.scaleFactor;
+      const na = m.naValue;
+      const out = new Float32Array(int16.length);
+      for (let i = 0; i < int16.length; i++) {
+        out[i] = (int16[i] === na) ? NaN : int16[i] / sf;
+      }
+      meta.fullExpr.data = out;
+      meta.fullExpr.geneIndex = new Map();
+      m.genes.forEach((g, i) => meta.fullExpr.geneIndex.set(g.toUpperCase(), i));
+      meta.fullExpr.cellLineIndex = new Map();
+      m.cellLines.forEach((cl, i) => meta.fullExpr.cellLineIndex.set(cl, i));
+      meta.fullExpr.loaded = true;
+      console.log(`TISMO full-expression loaded: ${m.nGenes} genes × ${m.nCellLines} lines × ${m.nConditions} conds in ${((performance.now() - t0)/1000).toFixed(1)}s`);
+    })();
+    return meta.fullExpr.loading;
+  }
+  meta.loadFullExprMatrix = loadFullExprMatrix;
 
   try {
     const lr = await fetch(LIT_URL);
@@ -497,6 +540,129 @@
       </div>
       ${html}
     `;
+  }
+
+  // Per-gene expression search — type any gene, see this line's value
+  // for each condition (baseline / R / NR) alongside the cohort
+  // distribution. Lazy-loads the full Dryad expression matrix (1.7 MB
+  // gzipped) on first query.
+  function renderFullExprSearch(cl) {
+    const fe = meta.fullExpr;
+    if (!fe || !fe.meta) return '';
+    // Only show for lines that have TISMO coverage — otherwise there's
+    // no value here, the line simply isn't in the matrix.
+    if (!meta.tismo?.[cl]) return '';
+    return `
+      <div class="section-title">Expression search (TISMO)</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">
+        Type any of the ${fe.meta.nGenes.toLocaleString()} genes profiled in the Dryad TISMO companion data &mdash; this line's baseline / R / NR expression appears alongside the cohort distribution (22 lines × 3 conditions). Useful for genes not in the curated immune panel above. <span id="fullExprStatus_${cl}" style="color:var(--gray-500);">Matrix not loaded yet.</span>
+      </div>
+      <input type="text" id="fullExprInput_${cl}" placeholder="Cd274, Ifng, Foxp3, ..." autocomplete="off"
+             style="width: 100%; padding: 5px 8px; font-size: 12px; border: 1px solid var(--gray-300); border-radius: 4px; margin-bottom: 6px;">
+      <div id="fullExprSuggest_${cl}" style="font-size: 10px; color: var(--gray-500); margin-bottom: 6px; min-height: 14px;"></div>
+      <div id="fullExprResult_${cl}"></div>
+    `;
+  }
+
+  // Wire up the search input after each detail-pane render.
+  function wireFullExprSearch(cl) {
+    const input = document.getElementById(`fullExprInput_${cl}`);
+    if (!input) return;
+    const suggest = document.getElementById(`fullExprSuggest_${cl}`);
+    const result = document.getElementById(`fullExprResult_${cl}`);
+    const status = document.getElementById(`fullExprStatus_${cl}`);
+    const fe = meta.fullExpr;
+
+    function setStatus(s) { if (status) status.textContent = s; }
+
+    async function query(rawText) {
+      const text = (rawText || '').trim();
+      result.innerHTML = '';
+      suggest.textContent = '';
+      if (!text) return;
+      // Lazy-load matrix on first query.
+      if (!fe.loaded) {
+        setStatus('Loading matrix (1.7 MB)...');
+        try { await meta.loadFullExprMatrix(); }
+        catch (e) { setStatus('Failed to load matrix.'); return; }
+        setStatus('Matrix loaded.');
+      }
+      const want = text.toUpperCase();
+      const exactIdx = fe.geneIndex.get(want);
+      if (exactIdx == null) {
+        // Show top-5 substring matches.
+        const partials = [];
+        for (const [g, i] of fe.geneIndex) {
+          if (g.includes(want)) { partials.push(fe.meta.genes[i]); if (partials.length >= 8) break; }
+        }
+        suggest.innerHTML = partials.length
+          ? `No exact match. Try: ${partials.map(p => `<a href="#" data-pick="${p}" style="color:var(--green-700);">${p}</a>`).join(', ')}`
+          : `No gene matches &ldquo;${text}&rdquo;.`;
+        suggest.querySelectorAll('a[data-pick]').forEach(a => {
+          a.addEventListener('click', (e) => { e.preventDefault(); input.value = a.dataset.pick; query(a.dataset.pick); });
+        });
+        return;
+      }
+      // Found exact match — render this line's values + cohort distribution.
+      const gi = exactIdx;
+      const nCL = fe.meta.nCellLines;
+      const nC = fe.meta.nConditions;
+      const off = gi * nCL * nC;
+      const thisLineIdx = fe.cellLineIndex.get(meta.tismo?.[cl]?.tismoName) ?? fe.cellLineIndex.get(meta.names?.[cl]) ?? null;
+      const labels = fe.meta.conditions;
+
+      const cohort = labels.map(() => []);
+      let thisLine = labels.map(() => null);
+      for (let ci = 0; ci < nCL; ci++) {
+        for (let cond = 0; cond < nC; cond++) {
+          const v = fe.data[off + ci * nC + cond];
+          if (!isNaN(v)) {
+            cohort[cond].push({ cl: fe.meta.cellLines[ci], v });
+            if (ci === thisLineIdx) thisLine[cond] = v;
+          }
+        }
+      }
+      // Render: a row per condition. Each row shows this line's value as
+      // a labeled bullet, plus the rest of the cohort as little dots so
+      // user can see where this line sits.
+      const formatRow = (cond, condIdx) => {
+        const vals = cohort[condIdx];
+        if (!vals.length) return `<div style="margin:6px 0; font-size:11px; color:var(--gray-500);"><b>${cond}</b>: no samples in cohort.</div>`;
+        const min = Math.min(...vals.map(v => v.v));
+        const max = Math.max(...vals.map(v => v.v));
+        const range = max - min || 1;
+        const dots = vals.map(({cl: clName, v}) => {
+            const x = (v - min) / range * 100;
+            const isThis = (clName === fe.meta.cellLines[thisLineIdx]);
+            return `<circle cx="${x}%" cy="50%" r="${isThis ? 5 : 3}" fill="${isThis ? '#dc2626' : '#9ca3af'}" stroke="${isThis ? '#7f1d1d' : 'none'}" stroke-width="${isThis ? 1 : 0}"><title>${clName}: ${v.toFixed(2)}</title></circle>`;
+        }).join('');
+        const thisVal = thisLine[condIdx];
+        const valStr = thisVal != null ? `<b>${thisVal.toFixed(2)}</b>` : '<span style="color:var(--gray-400);">no data</span>';
+        const condColour = cond === 'baseline' ? 'var(--gray-500)' : cond === 'R' ? '#15803d' : '#991b1b';
+        return `<div style="display:grid; grid-template-columns: 80px 70px 1fr; gap:8px; align-items:center; padding:3px 0; font-size:11px;">
+          <span style="color:${condColour}; font-weight:600;">${cond}</span>
+          <span style="font-variant-numeric:tabular-nums;">${valStr}</span>
+          <svg viewBox="0 0 100 10" preserveAspectRatio="none" style="width:100%; height:14px;">${dots}</svg>
+        </div>`;
+      };
+      const html = `
+        <div style="margin-top:4px; padding: 6px 8px; background: var(--gray-50); border-left: 3px solid var(--green-700); border-radius: 0 4px 4px 0;">
+          <div style="font-family:ui-monospace, monospace; font-weight:600; color:var(--gray-700); margin-bottom:4px;">${fe.meta.genes[gi]}</div>
+          ${labels.map((c, i) => formatRow(c, i)).join('')}
+          <div style="font-size:10px; color:var(--gray-500); margin-top:4px;">Each row: this line in red, other TISMO lines in gray. x-axis = expression range across cohort for this condition. Hover dots for cell-line names.</div>
+        </div>`;
+      result.innerHTML = html;
+      setStatus(`Matrix loaded — ${fe.meta.nGenes.toLocaleString()} genes available.`);
+    }
+
+    let timer;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => query(input.value), 200);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { clearTimeout(timer); query(input.value); }
+    });
   }
 
   // TISMO record section — surfaces the per-sample richness in TISMO:
@@ -849,6 +1015,8 @@
 
       ${renderImmunePanel(cl)}
 
+      ${renderFullExprSearch(cl)}
+
       ${meta.pubmed?.[cl]?.count != null ? `
       <div class="section-title">Literature presence</div>
       <div class="field">
@@ -873,6 +1041,7 @@
       </div>
     `;
     pane.innerHTML = html;
+    wireFullExprSearch(cl);
   }
 
   // ---------- events ----------
