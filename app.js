@@ -13,6 +13,7 @@
   const TISMO_URL = 'web_data/tismo_enrichment.json';
   const PUBMED_URL = 'web_data/pubmed_presence.json';
   const MUT_URL = 'web_data/mutations.json';
+  const IMMUNE_URL = 'web_data/tismo_immune_panel.json';
 
   // ---------- load ----------
   let meta;
@@ -158,6 +159,42 @@
     }
   } catch (e) {
     console.warn('Could not load mutations:', e);
+  }
+
+  // TISMO immune-gene panel (mean expression of curated immune-relevant
+  // genes per cell line × condition, from the Zeng 2022 Dryad deposition).
+  if (!meta.immunePanel) meta.immunePanel = {};
+  meta.immunePanelMeta = null;
+  try {
+    const ipr = await fetch(IMMUNE_URL);
+    if (ipr.ok) {
+      const ipd = await ipr.json();
+      meta.immunePanelMeta = ipd;
+      // Map by name (Dryad uses display names; we resolve to cell-line IDs
+      // via normalized name match against meta.names).
+      const wantNorm = new Map();
+      for (const [name, v] of Object.entries(ipd.byCellLine || {})) wantNorm.set(norm(name), { tismoName: name, ...v });
+      for (const cl of meta.cellLines) {
+        const hit = wantNorm.get(norm(meta.names?.[cl] || cl));
+        if (hit) {
+          meta.immunePanel[cl] = hit;
+          if (!meta.sources[cl]) meta.sources[cl] = [];
+          // Don't duplicate if TISMO already a source — just enrich its description.
+          const existing = meta.sources[cl].find(s => s.name === 'TISMO');
+          if (existing) {
+            existing.what = `${existing.what}; immune-gene panel (Dryad)`;
+          } else {
+            meta.sources[cl].push({
+              name: 'TISMO / Dryad',
+              url: 'https://datadryad.org/dataset/doi:10.5061/dryad.b8gtht7g1',
+              what: 'immune-gene panel (mean expression by ICB-response group)'
+            });
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load TISMO immune panel:', e);
   }
 
   try {
@@ -375,6 +412,91 @@
       return `<span style="background:var(--green-50); padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid var(--green-200); margin-right:3px;">${inner}</span>`;
     }).join('');
     return `<div class="field"><div class="k">Available from</div><div class="v" style="display:flex; flex-wrap:wrap; gap:3px;">${chips}</div></div>`;
+  }
+
+  // TISMO immune-gene panel renderer. For each panel group, a small
+  // 5-col table: gene · baseline · R · NR · cohort-mean. Cells are
+  // colour-coded by z-score against the cohort, and R-vs-NR differences
+  // are highlighted (responder-enriched in green, NR-enriched in red).
+  function renderImmunePanel(cl) {
+    const ip = (typeof meta !== 'undefined' && meta.immunePanel) ? meta.immunePanel[cl] : null;
+    const ipMeta = (typeof meta !== 'undefined') ? meta.immunePanelMeta : null;
+    if (!ip || !ipMeta) return '';
+
+    const base = ip.preICB_baseline || {};
+    const rcond = ip.postICB_R || {};
+    const nrcond = ip.postICB_NR || {};
+    const cohort = ipMeta.cohortStats || {};
+
+    // Cell shading by z-score against cohort.
+    function zCell(value, gene) {
+      if (value == null) return '<td style="color:#9ca3af; text-align:right;">—</td>';
+      const c = cohort[gene];
+      let bg = '#f9fafb';
+      if (c && c.sd > 0) {
+        const z = (value - c.mean) / c.sd;
+        if (z >= 1.5)      bg = '#fecaca';     // red — very high
+        else if (z >= 0.5) bg = '#fed7aa';     // amber — moderately high
+        else if (z <= -1.5) bg = '#bfdbfe';    // blue — very low
+        else if (z <= -0.5) bg = '#dbeafe';    // pale blue — moderately low
+      }
+      return `<td style="background:${bg}; text-align:right; font-variant-numeric:tabular-nums; padding:1px 6px;">${value.toFixed(2)}</td>`;
+    }
+
+    function rvnrDelta(r, nr) {
+      if (r == null || nr == null) return '';
+      const d = r - nr;
+      const color = Math.abs(d) >= 0.3 ? (d > 0 ? '#15803d' : '#991b1b') : '#9ca3af';
+      const sym = d > 0 ? '↑' : (d < 0 ? '↓' : '');
+      return `<td style="color:${color}; text-align:right; padding:1px 6px; font-size:10px; font-variant-numeric:tabular-nums;">${sym}${Math.abs(d).toFixed(2)}</td>`;
+    }
+
+    let html = '';
+    for (const [groupName, genes] of Object.entries(ipMeta.panel || {})) {
+      const rows = [];
+      for (const g of genes) {
+        const b  = base.mean?.[g];
+        const r  = rcond.mean?.[g];
+        const nr = nrcond.mean?.[g];
+        const c  = cohort[g];
+        if (b == null && r == null && nr == null) continue;
+        rows.push(`<tr>
+          <td style="padding:1px 6px; font-family:ui-monospace, monospace; font-size:10px; color:#374151;">${g}</td>
+          ${zCell(b, g)}
+          ${zCell(r, g)}
+          ${zCell(nr, g)}
+          ${rvnrDelta(r, nr)}
+          <td style="color:#9ca3af; text-align:right; padding:1px 6px; font-size:10px; font-variant-numeric:tabular-nums;">${c ? c.mean.toFixed(2) : '—'}</td>
+        </tr>`);
+      }
+      if (!rows.length) continue;
+      html += `<details style="margin-bottom:6px;">
+        <summary style="cursor:pointer; font-size:12px; color:var(--gray-700); padding:4px 0; border-bottom:1px solid var(--gray-200); font-weight:600;">${groupName} <span style="color:#9ca3af; font-weight:400; font-size:11px;">(${rows.length} genes)</span></summary>
+        <table style="border-collapse:collapse; font-size:11px; width:100%; margin-top:4px;">
+          <thead><tr style="color:#6b7280; font-size:10px;">
+            <th style="text-align:left; padding:2px 6px;">gene</th>
+            <th style="text-align:right; padding:2px 6px;">baseline<br><span style="font-weight:400;">n=${base.n || 0}</span></th>
+            <th style="text-align:right; padding:2px 6px;">R<br><span style="font-weight:400;">n=${rcond.n || 0}</span></th>
+            <th style="text-align:right; padding:2px 6px;">NR<br><span style="font-weight:400;">n=${nrcond.n || 0}</span></th>
+            <th style="text-align:right; padding:2px 6px;">R−NR</th>
+            <th style="text-align:right; padding:2px 6px;">cohort μ</th>
+          </tr></thead>
+          <tbody>${rows.join('')}</tbody>
+        </table>
+      </details>`;
+    }
+
+    const totalBase  = base.n  || 0;
+    const totalR     = rcond.n || 0;
+    const totalNR    = nrcond.n || 0;
+    return `
+      <div class="section-title">Immune gene panel (TISMO)</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:8px;">
+        Mean expression of a ${Object.values(ipMeta.panel).reduce((a,gs)=>a+gs.length,0)}-gene immune panel, per ICB-response group. Source: <a href="${ipMeta.source.url}" target="_blank" rel="noopener" style="color:var(--green-700);">${ipMeta.source.name} ↗</a> (${ipMeta.source.paper.split(',')[0]}). Values are log-normalised TPM (quantile + ComBat). Cell shading: red = high vs cohort, blue = low.
+        ${totalBase + totalR + totalNR === 0 ? '<br><b>No samples</b> for this line in this cohort.' : ''}
+      </div>
+      ${html}
+    `;
   }
 
   // TISMO record section — surfaces the per-sample richness in TISMO:
@@ -724,6 +846,8 @@
       ${renderImmuneProfile(meta.immuneProfile?.[cl])}
 
       ${renderTismo(meta.tismo?.[cl])}
+
+      ${renderImmunePanel(cl)}
 
       ${meta.pubmed?.[cl]?.count != null ? `
       <div class="section-title">Literature presence</div>
