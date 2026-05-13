@@ -10,6 +10,7 @@
   const META_URL = 'web_data/metadata.json';
   const LIT_URL  = 'web_data/literature_lines.json';
   const MCCA_CELLO_URL = 'web_data/mcca_cellosaurus.json';
+  const TISMO_URL = 'web_data/tismo_enrichment.json';
 
   // ---------- load ----------
   let meta;
@@ -58,6 +59,31 @@
     }
   } catch (e) {
     console.warn('Could not load MCCA Cellosaurus enrichment:', e);
+  }
+
+  // Merge in TISMO enrichment (sample counts, GEO study IDs, ICB-arm
+  // counts). TISMO catalogues 92 syngeneic mouse lines with RNA-seq +
+  // ICB context drawn from public studies. We don't ship the raw
+  // expression matrix (the TISMO download endpoint returns plot images,
+  // not raw data); instead each line gets a "TISMO record" block with
+  // sample counts, study accessions, and a link out to the TISMO portal.
+  if (!meta.tismo) meta.tismo = {};
+  const norm = (s) => (s || '').toLowerCase().replace(/[\s\-_/]/g, '');
+  try {
+    const tr = await fetch(TISMO_URL);
+    if (tr.ok) {
+      const td = await tr.json();
+      // TISMO keys lines by display name; we need to match by normalized
+      // name against meta.names. Build a reverse index once.
+      const tismoByNorm = new Map();
+      for (const [n, v] of Object.entries(td.byName || {})) tismoByNorm.set(norm(n), { tismoName: n, ...v });
+      for (const cl of meta.cellLines) {
+        const hit = tismoByNorm.get(norm(meta.names?.[cl] || cl));
+        if (hit) meta.tismo[cl] = hit;
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load TISMO enrichment:', e);
   }
 
   try {
@@ -216,6 +242,50 @@
     `;
   }
 
+  // TISMO record section — sample counts, GEO study links, ICB
+  // arm counts. Linked out to the TISMO portal for the raw data.
+  function renderTismo(t) {
+    if (!t) return '';
+    // GEO accessions are GSE-prefixed; the rest are internal study IDs
+    // (which TISMO keeps despite no public landing page).
+    const studyChips = (t.studies || []).map(s => {
+      if (/^GSE\d+$/.test(s)) {
+        return `<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${s}" target="_blank" rel="noopener" style="background:#dcfce7; color:#15803d; padding:1px 6px; border-radius:10px; font-size:10px; text-decoration:none; border:1px solid #bbf7d0; margin-right:3px;">${s} ↗</a>`;
+      }
+      return `<span style="background:#f3f4f6; color:#6b7280; padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid #e5e7eb; margin-right:3px;">${s}</span>`;
+    }).join('');
+    const icbBadge = (t.icbTreatedSamples || 0) > 0
+      ? `<span class="badge" style="background:#dcfce7; color:#15803d; border-color:#bbf7d0;">${t.icbTreatedSamples} ICB-arm samples</span>`
+      : `<span class="badge" style="background:#f3f4f6; color:#6b7280; border-color:#e5e7eb;">no ICB arm</span>`;
+    const portalLink = `https://tismo.pku-genomics.org/#/databrowser`;
+    const fields = [];
+    if (t.vitroSamples) fields.push(`<b>${t.vitroSamples}</b> in-vitro`);
+    if (t.vivoSamples)  fields.push(`<b>${t.vivoSamples}</b> in-vivo`);
+    const sampleLine = fields.join(' · ');
+    const treatmentLine = (t.icbTreatments && t.icbTreatments.length)
+      ? `<div class="field"><div class="k">ICB / drug arms</div><div class="v">${t.icbTreatments.join(', ')}</div></div>`
+      : '';
+    const strainLine = (t.mouseStrains && t.mouseStrains.length)
+      ? `<div class="field"><div class="k">Host strains used</div><div class="v">${t.mouseStrains.join(', ')}</div></div>`
+      : '';
+    return `
+      <div class="section-title">TISMO record</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">
+        Cell line is catalogued in <a href="${portalLink}" target="_blank" rel="noopener" style="color:var(--green-700);">TISMO ↗</a> (Tumor Immune Syngeneic MOuse). Raw RNA-seq + ICB-treatment data are at the GEO accessions below.
+      </div>
+      <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+        ${icbBadge}
+        ${t.originYear ? `<span class="badge" style="background:#f3f4f6; color:#6b7280;">est. ${t.originYear}</span>` : ''}
+        ${t.parent ? `<span class="badge" style="background:#eef2ff; color:#3730a3; border-color:#c7d2fe;">child of ${t.parent}</span>` : ''}
+      </div>
+      ${sampleLine ? `<div class="field"><div class="k">Samples</div><div class="v">${sampleLine}</div></div>` : ''}
+      ${treatmentLine}
+      ${strainLine}
+      ${t.origin ? `<div class="field"><div class="k">Origin (TISMO)</div><div class="v">${t.origin}</div></div>` : ''}
+      ${studyChips ? `<div style="margin-top:8px;"><div style="font-size:11px; color:var(--gray-500); margin-bottom:4px;">Studies (${(t.studies||[]).length}):</div>${studyChips}</div>` : ''}
+    `;
+  }
+
   // Sex glyph (♀ / ♂ / ⚥) coloured to match Correlate V2.
   function sexGlyph(cl) {
     const g = (meta.gender?.[cl] || '').toLowerCase();
@@ -258,6 +328,15 @@
         case 'tier':    return meta.curatedTier[cl] || 99;
         case 'lineage': return (meta.lineage[cl] || '~').toLowerCase();
         case 'cancer':  return (meta.cancerType[cl] || meta.modelType[cl] || '~').toLowerCase();
+        case 'tismo':   {
+          const t = meta.tismo?.[cl];
+          // TISMO-covered lines sort to the top in ascending order (lower
+          // is "more interesting"). Within TISMO, prefer those with ICB
+          // arms, then by total sample count.
+          if (!t) return 99;
+          const hasIcb = (t.icbTreatedSamples || 0) > 0;
+          return hasIcb ? 0 : (10 - Math.min(9, t.vitroSamples + t.vivoSamples) / 10);
+        }
         default:        return (meta.names[cl] || cl).toLowerCase();
       }
     };
@@ -281,9 +360,10 @@
                     : tier === 2 ? '<span class="tier-2">T2</span>' : '';
       const src = meta.dataSource?.[cl];
       const litTag = src && src !== 'MCCA' ? '<span class="lit-tag" title="Literature-curated (not in MCCA)">lit</span>' : '';
+      const tismoTag = meta.tismo?.[cl] ? '<span class="tismo-tag" title="Has a TISMO RNA-seq / ICB-treatment record">tismo</span>' : '';
       return `<div class="cl-row${cl === state.activeId ? ' active' : ''}" data-cl="${cl}" title="${cl}">`
         + `<span class="sex ${sx.cls}" title="${sx.title}">${sx.sym}</span>`
-        + `<span class="name">${name}${tierTag}${litTag}</span>`
+        + `<span class="name">${name}${tierTag}${litTag}${tismoTag}</span>`
         + `<span class="tissue">${lin}</span>`
         + `</div>`;
     }).join('');
@@ -444,6 +524,8 @@
       ${row('Immunocompetent transplant', meta.immunocompetent[cl])}
 
       ${renderImmuneProfile(meta.immuneProfile?.[cl])}
+
+      ${renderTismo(meta.tismo?.[cl])}
 
       <div class="section-title">Culture & source</div>
       ${row('Curated name',     meta.curated[cl] || '<em style="color:#9ca3af;">not on curated list</em>')}

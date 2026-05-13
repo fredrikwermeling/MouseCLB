@@ -1,0 +1,2150 @@
+{
+ "_doc": "Per-cell-line TISMO enrichment: sample counts, study IDs (mostly GEO accessions), ICB-arm flags, host-strain options. Built by scripts/build_tismo_enrichment.py against https://tismo.pku-genomics.org. Raw expression matrices live behind the TISMO download pages; this file links each MouseCLB cell line to its TISMO entry so users can dive deeper.",
+ "_schemaVersion": 1,
+ "byName": {
+  "B16": {
+   "tismoId": 1,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "1954",
+   "parent": null,
+   "vitroSamples": 94,
+   "vivoSamples": 168,
+   "icbTreatedSamples": 147,
+   "studies": [
+    "GSE101104",
+    "GSE104463",
+    "GSE106390",
+    "GSE107670",
+    "GSE109268",
+    "GSE109485",
+    "GSE110708",
+    "GSE117074",
+    "GSE119673",
+    "GSE122789",
+    "GSE127252",
+    "GSE130697",
+    "GSE134261",
+    "GSE134296",
+    "GSE134388",
+    "GSE136619",
+    "GSE145319",
+    "GSE149824",
+    "GSE149825",
+    "GSE150401",
+    "GSE151829",
+    "GSE152451",
+    "GSE152925",
+    "GSE162105",
+    "GSE164014",
+    "GSE164075",
+    "GSE71491",
+    "GSE83848",
+    "GSE85353",
+    "GSE85535",
+    "GSE90885",
+    "RTM28723893",
+    "SSG33589424"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6 ARE-del +/-",
+    "C57BL/6J"
+   ],
+   "icbTreatments": [
+    "M1-c6v1",
+    "antiCD40;",
+    "antiCD40; TNFa; antiTRP1;",
+    "antiCTLA4",
+    "antiPD1",
+    "antiPD1; Gvax;",
+    "antiPD1; antiCD40;",
+    "antiPD1; antiCTLA4;",
+    "antiPD1; antiCTLA4; birinapant",
+    "antiPD1; antiCTLA4; intra&extracranial;",
+    "antiPD1; antiCTLA4; intracranial;",
+    "antiPDL1",
+    "antiPDL1; swainsonine",
+    "birinapant",
+    "cyclophosphamide",
+    "high cholesterol diet",
+    "isotype",
+    "isotype; PBS",
+    "isotype; intra&extracranial;",
+    "isotype; intracranial;",
+    "normal diet",
+    "swainsonine",
+    "vehicle"
+   ],
+   "cellTreatments": [
+    "IFNb",
+    "IFNb; gRNA_control;",
+    "IFNg",
+    "IFNg; sgRosa26;",
+    "IFNg; sgTraf3-1;",
+    "TNFa",
+    "gRNA_control;",
+    "sgRosa26",
+    "vehicle"
+   ]
+  },
+  "S91-M3": {
+   "tismoId": 2,
+   "cancerType": "Melanoma",
+   "background": "DBA/2",
+   "sex": "male",
+   "origin": "spontaneous",
+   "originYear": "1966",
+   "parent": "S91",
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE109268"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "YUMM1.1": {
+   "tismoId": 3,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM; carcinogen-induced",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE84264"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "YUMM2.1": {
+   "tismoId": 4,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM; carcinogen-induced",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE84264"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "YUMM1.7": {
+   "tismoId": 5,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM; carcinogen-induced",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 37,
+   "icbTreatedSamples": 37,
+   "studies": [
+    "GSE103713",
+    "GSE103725",
+    "GSE84264"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "NSG"
+   ],
+   "icbTreatments": [
+    "BRAFi",
+    "BRAFi; antiPDL2;",
+    "vehicle"
+   ],
+   "cellTreatments": []
+  },
+  "YUMMER1.7": {
+   "tismoId": 6,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "irradiation of carcinogen-induced parent YUMM1.7",
+   "originYear": "2017",
+   "parent": "YUMM1.7",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "D4M.3A": {
+   "tismoId": 7,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "D4M.3A.3": {
+   "tismoId": 8,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM",
+   "originYear": "2021",
+   "parent": "D4M.3A",
+   "vitroSamples": 0,
+   "vivoSamples": 9,
+   "icbTreatedSamples": 9,
+   "studies": [
+    "GSE159344"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "antiPD1",
+    "antiPD1; aFP; imiquimod;",
+    "isotype"
+   ],
+   "cellTreatments": []
+  },
+  "D3UV2": {
+   "tismoId": 9,
+   "cancerType": "Melanoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM; carcinogen-induced",
+   "originYear": "2021",
+   "parent": "D4M.3A.3",
+   "vitroSamples": 0,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 6,
+   "studies": [
+    "GSE159344"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "antiPD1",
+    "isotype"
+   ],
+   "cellTreatments": []
+  },
+  "CT26": {
+   "tismoId": 10,
+   "cancerType": "Colorectal carcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "carcinogen-induced",
+   "originYear": "1975",
+   "parent": null,
+   "vitroSamples": 23,
+   "vivoSamples": 113,
+   "icbTreatedSamples": 89,
+   "studies": [
+    "ERP114266",
+    "GSE111092",
+    "GSE134510",
+    "GSE138224",
+    "GSE139474",
+    "GSE139475",
+    "GSE142589",
+    "GSE153239",
+    "GSE157602",
+    "GSE53001",
+    "GSE60647",
+    "RTM28723893"
+   ],
+   "mouseStrains": [
+    "BALB/c",
+    "Balb/cAnNCr"
+   ],
+   "icbTreatments": [
+    "Semliki Forest virus VA7",
+    "antiGARP:TGFb FcD",
+    "antiGARP:TGFb FcD; antiPD1 FcS;",
+    "antiGARP:TGFb WT",
+    "antiGARP:TGFb WT; antiPD1 FcS;",
+    "antiPD1",
+    "antiPD1_FcS",
+    "antiPDL1; antiCTL4;",
+    "antiTGFb",
+    "antiTGFb; antiPD1 FcS;",
+    "incomplete radiofrequency ablation",
+    "isotype",
+    "vehicle"
+   ],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "TNFa"
+   ]
+  },
+  "MC38": {
+   "tismoId": 11,
+   "cancerType": "Colorectal carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "carcinogen-induced",
+   "originYear": "1975",
+   "parent": null,
+   "vitroSamples": 79,
+   "vivoSamples": 45,
+   "icbTreatedSamples": 33,
+   "studies": [
+    "GSE112251",
+    "GSE112252",
+    "GSE136121",
+    "GSE143700",
+    "GSE145823",
+    "GSE151829",
+    "GSE160985",
+    "GSE172162",
+    "GSE93017",
+    "RTM28723893"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6N",
+    "C57BL/6N Rag1_KO"
+   ],
+   "icbTreatments": [
+    "antiPD1",
+    "antiPD1; exercise",
+    "antiPDL1",
+    "exercise",
+    "isotype"
+   ],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "IFNg; TNFa",
+    "TNFa",
+    "gRNA_control;",
+    "gRNA_control; TNFa;",
+    "vehicle"
+   ]
+  },
+  "1638N-T1": {
+   "tismoId": 12,
+   "cancerType": "Colorectal carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "1971",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE78696"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "CMT93": {
+   "tismoId": 13,
+   "cancerType": "Colorectal carcinoma",
+   "background": "C57BL/icrf",
+   "sex": "male",
+   "origin": "carcinogen-induced",
+   "originYear": "1978",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE78696"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "LLC": {
+   "tismoId": 14,
+   "cancerType": "Lung carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "1951",
+   "parent": null,
+   "vitroSamples": 55,
+   "vivoSamples": 68,
+   "icbTreatedSamples": 19,
+   "studies": [
+    "GSE100412",
+    "GSE103548",
+    "GSE115109",
+    "GSE131271",
+    "GSE148101",
+    "GSE155972",
+    "GSE71491",
+    "GSE80678",
+    "GSE84535",
+    "GSE97975",
+    "GSE98672",
+    "RTM28723893"
+   ],
+   "mouseStrains": [
+    "B6.129P2-Syktm1.2Tara/J (flox)",
+    "C57BL/6",
+    "C57BL/6 Syk cre",
+    "C57BL/6 p110g_KO",
+    "C57BL/6-GFP(C57BL/6J-132Tg(UBC-GFP)30Scha/J)",
+    "C57BL/6-Tg(UBC-GFP)30Scha/J",
+    "C57BL/6J"
+   ],
+   "icbTreatments": [
+    "SRX3207",
+    "antiPD1; antiCTL4;",
+    "cyclophosphamide",
+    "vehicle"
+   ],
+   "cellTreatments": [
+    "BMP2",
+    "IFNb",
+    "IFNg",
+    "TNFa",
+    "sh_control",
+    "vehicle"
+   ]
+  },
+  "CMT-167": {
+   "tismoId": 15,
+   "cancerType": "Lung carcinoma",
+   "background": "C57BL/lcrf",
+   "sex": "female",
+   "origin": "spontaneous parent",
+   "originYear": "1984",
+   "parent": "CMT-64",
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE100412"
+   ],
+   "mouseStrains": [
+    "C57BL/6-Tg(UBC-GFP)30Scha/J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "MLE12": {
+   "tismoId": 16,
+   "cancerType": "Lung adenocarcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "1992",
+   "parent": null,
+   "vitroSamples": 4,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE103548"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "4T1": {
+   "tismoId": 17,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "410.4",
+   "vitroSamples": 145,
+   "vivoSamples": 182,
+   "icbTreatedSamples": 112,
+   "studies": [
+    "GSE100403",
+    "GSE104264",
+    "GSE109268",
+    "GSE109725",
+    "GSE109798",
+    "GSE110770",
+    "GSE110912",
+    "GSE111329",
+    "GSE112038",
+    "GSE115232",
+    "GSE122378",
+    "GSE129858",
+    "GSE130472",
+    "GSE132529",
+    "GSE132568",
+    "GSE134787",
+    "GSE137757",
+    "GSE137818",
+    "GSE138026",
+    "GSE140192",
+    "GSE142169",
+    "GSE145319",
+    "GSE146012",
+    "GSE150928",
+    "GSE154541",
+    "GSE154676",
+    "GSE154682",
+    "GSE160071",
+    "GSE63180",
+    "GSE85353",
+    "RTM28723893",
+    "XW33589424"
+   ],
+   "mouseStrains": [
+    "BALB/c",
+    "BALB/cJ",
+    "NSG"
+   ],
+   "icbTreatments": [
+    "antiCTLA4; old;",
+    "antiCTLA4; young;",
+    "antiPD1",
+    "antiPDL1; old;",
+    "antiPDL1; young;",
+    "aza",
+    "isotype; old;",
+    "isotype; young;",
+    "vehicle"
+   ],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "TGFb1",
+    "TNFa",
+    "gRNA_control",
+    "mock infected",
+    "plasmid_control",
+    "sgCOP1; IFNg",
+    "sgCOP1; IFNg;",
+    "sgRosa26;",
+    "sgRosa26; IFNg;",
+    "sh_control",
+    "vehicle"
+   ]
+  },
+  "4T07": {
+   "tismoId": 18,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "44FT0",
+   "vitroSamples": 7,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE145319",
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "EMT6": {
+   "tismoId": 19,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "implantation",
+   "originYear": "1971",
+   "parent": null,
+   "vitroSamples": 6,
+   "vivoSamples": 47,
+   "icbTreatedSamples": 40,
+   "studies": [
+    "GSE107801",
+    "GSE150928",
+    "XW33589424"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [
+    "M7824 (anti_PDL1_TGFb_Trap)",
+    "antiPDL1;",
+    "anti_PDL1(mut)_TGFb_Trap_control",
+    "isotype"
+   ],
+   "cellTreatments": [
+    "IFNg"
+   ]
+  },
+  "67NR": {
+   "tismoId": 20,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/cJ",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "67",
+   "vitroSamples": 12,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE138026",
+    "GSE145319",
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "vehicle"
+   ]
+  },
+  "D2A1": {
+   "tismoId": 21,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "F311": {
+   "tismoId": 22,
+   "cancerType": "Mammary carcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "M3",
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "6DT1": {
+   "tismoId": 23,
+   "cancerType": "Mammary carcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 23,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "HRM1": {
+   "tismoId": 24,
+   "cancerType": "Mammary carcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Mvt1": {
+   "tismoId": 25,
+   "cancerType": "Mammary carcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 6,
+   "vivoSamples": 32,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE130900",
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "sh_control"
+   ]
+  },
+  "Met1": {
+   "tismoId": 26,
+   "cancerType": "Mammary carcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2005",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 32,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE111157",
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "NDL(UCD)": {
+   "tismoId": 27,
+   "cancerType": "Mammary carcinoma",
+   "background": "FVB/N",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE113379"
+   ],
+   "mouseStrains": [
+    "FVB/N"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "E0771": {
+   "tismoId": 28,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "1952",
+   "parent": null,
+   "vitroSamples": 4,
+   "vivoSamples": 26,
+   "icbTreatedSamples": 16,
+   "studies": [
+    "GSE148149",
+    "GSE150928",
+    "GSE174053",
+    "XW33589424"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6J",
+    "C57BL/6_Adiponectin-Cre_PD-L1f/f"
+   ],
+   "icbTreatments": [
+    "antiPD1; high.fat.diet;",
+    "isotype; high.fat.diet;"
+   ],
+   "cellTreatments": [
+    "IFNg"
+   ]
+  },
+  "Py230": {
+   "tismoId": 29,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 9,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE140192"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Py8119": {
+   "tismoId": 30,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 2,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE126606",
+    "GSE144787"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6_Tet2KO"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "TS/A": {
+   "tismoId": 31,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "1983",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE154541"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "sh_control"
+   ]
+  },
+  "TSAE1": {
+   "tismoId": 32,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "TS/A",
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "M6": {
+   "tismoId": 33,
+   "cancerType": "Mammary adenocarcinoma",
+   "background": "REAR",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 6,
+   "vivoSamples": 31,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928",
+    "GSE96641"
+   ],
+   "mouseStrains": [
+    "FVB",
+    "REAR"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "vector_control"
+   ]
+  },
+  "KPB25L": {
+   "tismoId": 34,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "FVB/N",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 6,
+   "vivoSamples": 59,
+   "icbTreatedSamples": 25,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "FVB/NJ"
+   ],
+   "icbTreatments": [
+    "antiPD1; antiCTLA4;"
+   ],
+   "cellTreatments": []
+  },
+  "KPB25L-Apobec": {
+   "tismoId": 35,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "FVB/N",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": "KPB25L",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "KPB25L-UV": {
+   "tismoId": 36,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "FVB/N",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": "KPB25L",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "T11": {
+   "tismoId": 37,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 6,
+   "vivoSamples": 74,
+   "icbTreatedSamples": 37,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [
+    "antiPD1; antiCTLA4;"
+   ],
+   "cellTreatments": []
+  },
+  "T11-Apobec": {
+   "tismoId": 38,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": "T11",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "T11-UV": {
+   "tismoId": 39,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": "T11",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-2153F": {
+   "tismoId": 40,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-2224": {
+   "tismoId": 41,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-2225L": {
+   "tismoId": 42,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 22,
+   "icbTreatedSamples": 8,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [
+    "antiPD1; antiCTLA4;"
+   ],
+   "cellTreatments": []
+  },
+  "p53-2245": {
+   "tismoId": 43,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-2336R": {
+   "tismoId": 44,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 21,
+   "icbTreatedSamples": 10,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [
+    "antiPD1; antiCTLA4;"
+   ],
+   "cellTreatments": []
+  },
+  "p53-9263-3": {
+   "tismoId": 45,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 5,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-T1": {
+   "tismoId": 46,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-T12": {
+   "tismoId": 47,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-T2": {
+   "tismoId": 48,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-T6": {
+   "tismoId": 49,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "p53-T7": {
+   "tismoId": 50,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 1,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE124821"
+   ],
+   "mouseStrains": [
+    "BALB/cJ"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "R3T": {
+   "tismoId": 51,
+   "cancerType": "Mammary cancer, NOS",
+   "background": "129S1J",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE150928"
+   ],
+   "mouseStrains": [
+    "129S1J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Renca": {
+   "tismoId": 52,
+   "cancerType": "Renal adenocarcinoma",
+   "background": "BALB/c",
+   "sex": "male",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 13,
+   "vivoSamples": 87,
+   "icbTreatedSamples": 48,
+   "studies": [
+    "GSE145919",
+    "GSE153941",
+    "GSE162105",
+    "RTM28723893"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [
+    "antiCTLA4; antiPDL1;"
+   ],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "TNFa"
+   ]
+  },
+  "Hepa1-6": {
+   "tismoId": 53,
+   "cancerType": "Hepatocellular carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "Hepa-1",
+   "vitroSamples": 6,
+   "vivoSamples": 8,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE106975",
+    "GSE134246",
+    "GSE144787"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6_Tet2KO"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "sh_control",
+    "si_control"
+   ]
+  },
+  "Hepa-1c1c7": {
+   "tismoId": 54,
+   "cancerType": "Hepatocellular carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "Hepa-1c1",
+   "vitroSamples": 3,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE49571"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "vehicle"
+   ]
+  },
+  "BNL-MEA": {
+   "tismoId": 55,
+   "cancerType": "Hepatocellular carcinoma",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": "BNL CL.2",
+   "vitroSamples": 0,
+   "vivoSamples": 32,
+   "icbTreatedSamples": 32,
+   "studies": [
+    "GSE148947"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [
+    "DC-101_800ug",
+    "antiPD1",
+    "antiPD1; regorafenib_5;",
+    "regorafenib_20",
+    "regorafenib_5",
+    "vehicle"
+   ],
+   "cellTreatments": []
+  },
+  "RM-1": {
+   "tismoId": 56,
+   "cancerType": "Prostate carcinoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 7,
+   "vivoSamples": 2,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE131828",
+    "GSE147099"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "CE1-4": {
+   "tismoId": 57,
+   "cancerType": "Prostate adenocarcinoma",
+   "background": "FVB/N",
+   "sex": "male",
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": "CE1",
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE126159"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Pten-Smad4": {
+   "tismoId": 58,
+   "cancerType": "Prostate adenocarcinoma",
+   "background": "FVB/N",
+   "sex": "male",
+   "origin": "GEMM",
+   "originYear": "2019",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE131828"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Panc02": {
+   "tismoId": 59,
+   "cancerType": "Pancreatic ductal adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 14,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE137382",
+    "RTM28723893"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "TNFa"
+   ]
+  },
+  "KPC": {
+   "tismoId": 60,
+   "cancerType": "Pancreatic ductal adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 12,
+   "vivoSamples": 8,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE101336",
+    "RTM28723893"
+   ],
+   "mouseStrains": [
+    "KrasG12D/+;Trp53R172H/+"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "IFNb",
+    "IFNg",
+    "TNFa"
+   ]
+  },
+  "KCP": {
+   "tismoId": 61,
+   "cancerType": "Pancreatic ductal adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2021",
+   "parent": "KPC1203",
+   "vitroSamples": 3,
+   "vivoSamples": 11,
+   "icbTreatedSamples": 11,
+   "studies": [
+    "GSE149815"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "ARS1620;",
+    "SHP099;",
+    "SHP099; ARS1620;",
+    "vehicle"
+   ],
+   "cellTreatments": [
+    "vehicle"
+   ]
+  },
+  "6419c5": {
+   "tismoId": 62,
+   "cancerType": "Pancreatic ductal adenocarcinoma",
+   "background": "KPCY",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2018",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 2,
+   "studies": [
+    "GSE146834"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "antiPD1; antiCTLA4; gemcitabine; abraxane; CD40agonist;"
+   ],
+   "cellTreatments": []
+  },
+  "MB49": {
+   "tismoId": 63,
+   "cancerType": "Bladder carcinoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 8,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE112973",
+    "GSE136619"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "UPPL1541": {
+   "tismoId": 64,
+   "cancerType": "Bladder carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2018",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 8,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE112973",
+    "GSE136619"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "BBN963": {
+   "tismoId": 65,
+   "cancerType": "Bladder carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "2018",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE112973",
+    "GSE136619"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "ID8": {
+   "tismoId": 66,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "2000",
+   "parent": null,
+   "vitroSamples": 7,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE111630",
+    "GSE129097"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "KMF (ID8-IP)": {
+   "tismoId": 67,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "spontaneous",
+   "originYear": "2019",
+   "parent": "ID8",
+   "vitroSamples": 0,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "HGS1": {
+   "tismoId": 68,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2020",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "C57BL/6J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "HGS2": {
+   "tismoId": 69,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2020",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "C57BL/6J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "HGS3": {
+   "tismoId": 70,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2020",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "C57BL/6J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "HGS4": {
+   "tismoId": 71,
+   "cancerType": "Ovarian carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "GEMM",
+   "originYear": "2020",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 5,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "C57BL/6J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "30200": {
+   "tismoId": 72,
+   "cancerType": "Ovarian carcinoma",
+   "background": "FVB/N",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 4,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "60577": {
+   "tismoId": 73,
+   "cancerType": "Ovarian carcinoma",
+   "background": "FVB/N",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2014",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 5,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE132289"
+   ],
+   "mouseStrains": [
+    "FVB"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "MOC1": {
+   "tismoId": 74,
+   "cancerType": "Head and neck squamous cell carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "carcinogen-induced",
+   "originYear": "2012",
+   "parent": null,
+   "vitroSamples": 18,
+   "vivoSamples": 9,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "RU31562203",
+    "RU31562203_LZ5733"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "IFNg"
+   ]
+  },
+  "MOC2": {
+   "tismoId": 75,
+   "cancerType": "Head and neck squamous cell carcinoma",
+   "background": "C57BL/6",
+   "sex": "female",
+   "origin": "carcinogen-induced",
+   "originYear": "2012",
+   "parent": null,
+   "vitroSamples": 7,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "RU31562203"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "IFNg"
+   ]
+  },
+  "MOC22": {
+   "tismoId": 76,
+   "cancerType": "Head and neck squamous cell carcinoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "2012",
+   "parent": null,
+   "vitroSamples": 4,
+   "vivoSamples": 6,
+   "icbTreatedSamples": 6,
+   "studies": [
+    "RU31562203"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "antiPD1",
+    "isotype"
+   ],
+   "cellTreatments": [
+    "IFNg"
+   ]
+  },
+  "YTN2": {
+   "tismoId": 77,
+   "cancerType": "Gastric adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "carcinogen-induced",
+   "originYear": "2018",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 15,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE146027"
+   ],
+   "mouseStrains": [
+    "C57BL/6N"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "YTN16": {
+   "tismoId": 78,
+   "cancerType": "Gastric adenocarcinoma",
+   "background": "C57BL/6",
+   "sex": "male",
+   "origin": "carcinogen-induced",
+   "originYear": "2018",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 44,
+   "icbTreatedSamples": 27,
+   "studies": [
+    "GSE146027"
+   ],
+   "mouseStrains": [
+    "C57BL/6N"
+   ],
+   "icbTreatments": [
+    "antiCTLA4",
+    "antiPD1",
+    "antiPD1; antiIL17",
+    "anti_IL17"
+   ],
+   "cellTreatments": []
+  },
+  "GL261": {
+   "tismoId": 79,
+   "cancerType": "Glioblastoma multiforme",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 4,
+   "vivoSamples": 40,
+   "icbTreatedSamples": 15,
+   "studies": [
+    "GSE107423",
+    "GSE151284",
+    "GSE151414",
+    "GSE71491",
+    "GSE94239",
+    "GSE97975"
+   ],
+   "mouseStrains": [
+    "C57BL/6",
+    "C57BL/6_PfpKO_Rag2KO",
+    "SCID"
+   ],
+   "icbTreatments": [
+    "antiVEGFa_100ug",
+    "antiVEGFa_200ug",
+    "antiVEGFa_50ug",
+    "cyclophosphamide"
+   ],
+   "cellTreatments": []
+  },
+  "CT-2A": {
+   "tismoId": 80,
+   "cancerType": "Glioblastoma multiforme",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE151414"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Mut3": {
+   "tismoId": 81,
+   "cancerType": "Glioblastoma multiforme",
+   "background": "Mixed",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2005",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE151414"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "5": {
+   "tismoId": 82,
+   "cancerType": "Glioblastoma multiforme",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "GEMM",
+   "originYear": "2009",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 3,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE151414"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "Neuro-2a": {
+   "tismoId": 83,
+   "cancerType": "Neuroblastoma",
+   "background": "A/J",
+   "sex": "male",
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": "C-1300",
+   "vitroSamples": 7,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE106999",
+    "GSE140357",
+    "GSE87862"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "A20": {
+   "tismoId": 84,
+   "cancerType": "Follicular dendritic cell sarcoma (B lymphocyte)",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "spontaneous",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 4,
+   "vivoSamples": 30,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE139536",
+    "GSE157920",
+    "GSE60927"
+   ],
+   "mouseStrains": [
+    "BALB/c",
+    "BALB/c_Sparc_KO"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "MPC-11": {
+   "tismoId": 85,
+   "cancerType": "Plasmacytoma",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "1970",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE60927"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "P815": {
+   "tismoId": 86,
+   "cancerType": "Mastocytoma",
+   "background": "DBA/2",
+   "sex": "male",
+   "origin": "carcinogen-induced",
+   "originYear": "1957",
+   "parent": null,
+   "vitroSamples": 1,
+   "vivoSamples": 2,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE136619"
+   ],
+   "mouseStrains": [
+    "DBA/2J"
+   ],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "EL4": {
+   "tismoId": 87,
+   "cancerType": "T-cell lymphoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 5,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE111092",
+    "GSE125384",
+    "GSE138165"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": []
+  },
+  "F9": {
+   "tismoId": 88,
+   "cancerType": "Teratocarcinoma",
+   "background": "129/Sv",
+   "sex": "male",
+   "origin": "implantation",
+   "originYear": "1973",
+   "parent": "OTT6050",
+   "vitroSamples": 4,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE111145",
+    "GSE56893"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "sh_control",
+    "vehicle"
+   ]
+  },
+  "AB1": {
+   "tismoId": 89,
+   "cancerType": "Mesothelioma",
+   "background": "BALB/c",
+   "sex": "female",
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 72,
+   "icbTreatedSamples": 48,
+   "studies": [
+    "GSE153941"
+   ],
+   "mouseStrains": [
+    "BALB/c"
+   ],
+   "icbTreatments": [
+    "antiCTLA4; antiPDL1;"
+   ],
+   "cellTreatments": []
+  },
+  "AB22": {
+   "tismoId": 90,
+   "cancerType": "Mesothelioma",
+   "background": "BALB/c",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 3,
+   "vivoSamples": 0,
+   "icbTreatedSamples": 0,
+   "studies": [
+    "GSE134795"
+   ],
+   "mouseStrains": [],
+   "icbTreatments": [],
+   "cellTreatments": [
+    "sh_control"
+   ]
+  },
+  "MCA205": {
+   "tismoId": 91,
+   "cancerType": "Sarcoma",
+   "background": "C57BL/6",
+   "sex": null,
+   "origin": "carcinogen-induced",
+   "originYear": "",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 8,
+   "icbTreatedSamples": 8,
+   "studies": [
+    "GSE126988"
+   ],
+   "mouseStrains": [
+    "C57BL/6"
+   ],
+   "icbTreatments": [
+    "cisplatin; crizotinib",
+    "vehicle"
+   ],
+   "cellTreatments": []
+  },
+  "402230": {
+   "tismoId": 92,
+   "cancerType": "Sarcoma",
+   "background": "129/SvJae\u00a0",
+   "sex": null,
+   "origin": "GEMM; carcinogen-induced",
+   "originYear": "2020",
+   "parent": null,
+   "vitroSamples": 0,
+   "vivoSamples": 16,
+   "icbTreatedSamples": 16,
+   "studies": [
+    "GSE148856"
+   ],
+   "mouseStrains": [
+    "129/SvJae"
+   ],
+   "icbTreatments": [
+    "antiPD1",
+    "antiPD1; radiation;",
+    "isotype",
+    "isotype; radiation;"
+   ],
+   "cellTreatments": []
+  }
+ }
+}
