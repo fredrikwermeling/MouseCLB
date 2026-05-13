@@ -457,6 +457,124 @@
     `;
   }
 
+  // Unified driver-mutations renderer — merges the literature-curated
+  // `drivers` array (hand-curated annotations on the 8 workhorses)
+  // with the MCCA WES `mutations.driverMuts` panel hits into one
+  // gene-keyed table. Each row shows source badges (lit / WES) so the
+  // user sees at a glance whether the call is from primary literature,
+  // sequencing data, or both reinforcing each other.
+  function renderUnifiedDrivers(cl) {
+    const lit = meta.drivers?.[cl] || [];
+    const m = meta.mutations?.[cl];
+    const wes = m?.driverMuts || [];
+    if (lit.length === 0 && wes.length === 0 && !m) return '';
+
+    // Build a per-gene merged record. Keys are normalized gene symbols.
+    const byGene = new Map();
+    for (const d of lit) {
+      const g = (d.gene || '').toUpperCase();
+      if (!g) continue;
+      if (!byGene.has(g)) byGene.set(g, { gene: d.gene, lit: [], wes: [] });
+      byGene.get(g).lit.push(d);
+    }
+    for (const v of wes) {
+      const g = (v.gene || '').toUpperCase();
+      if (!g) continue;
+      if (!byGene.has(g)) byGene.set(g, { gene: v.gene, lit: [], wes: [] });
+      byGene.get(g).wes.push(v);
+    }
+
+    // Sort: rows where both sources agree first, then lit-only, then WES-only.
+    const arr = [...byGene.values()];
+    arr.sort((a, b) => {
+      const ap = (a.lit.length && a.wes.length) ? 0 : a.lit.length ? 1 : 2;
+      const bp = (b.lit.length && b.wes.length) ? 0 : b.lit.length ? 1 : 2;
+      if (ap !== bp) return ap - bp;
+      return a.gene.localeCompare(b.gene);
+    });
+
+    function alterationPillHTML(alt) {
+      const palettes = {
+        'mutated':       { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+        'deleted':       { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+        'lost':          { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' },
+        'low':           { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe' },
+        'wild-type':     { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+        'WT':            { bg: '#dcfce7', fg: '#15803d', border: '#bbf7d0' },
+        'transgene':     { bg: '#f3e8ff', fg: '#6b21a8', border: '#e9d5ff' },
+        'amplified':     { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+        'overexpressed': { bg: '#ffedd5', fg: '#9a3412', border: '#fed7aa' },
+        'deficient':     { bg: '#fee2e2', fg: '#991b1b', border: '#fecaca' }
+      };
+      const p = palettes[alt] || { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' };
+      return `<span class="badge" style="background:${p.bg}; color:${p.fg}; border-color:${p.border}; font-family:ui-monospace, monospace; font-size:10px;">${alt}</span>`;
+    }
+    function sourceBadge(kind) {
+      const palettes = {
+        lit: { bg: '#fef3c7', fg: '#92400e', border: '#fde68a', label: 'lit' },
+        wes: { bg: '#dbeafe', fg: '#1e40af', border: '#bfdbfe', label: 'WES' }
+      };
+      const p = palettes[kind];
+      return `<span title="${kind === 'lit' ? 'Literature-curated annotation' : 'MCCA whole-exome sequencing call'}" style="background:${p.bg}; color:${p.fg}; padding:1px 5px; border-radius:8px; font-size:9px; font-weight:600; letter-spacing:0.04em; border:1px solid ${p.border}; text-transform:uppercase;">${p.label}</span>`;
+    }
+    function wesAltSummary(v) {
+      // Compress effect strings ("stop_gained&splice_region_variant" → "stop_gained + splice").
+      const eff = (v.effect || '').replace(/_/g, ' ').replace(/&/g, ' + ');
+      return `${alterationPillHTML(v.impact === 'HIGH' ? 'mutated' : 'mutated')} ${eff}${v.hgvsP ? ` <code>${v.hgvsP}</code>` : ''}`;
+    }
+
+    const rows = arr.map(g => {
+      const badges = [];
+      if (g.lit.length) badges.push(sourceBadge('lit'));
+      if (g.wes.length) badges.push(sourceBadge('wes'));
+      const altParts = [];
+      // Literature: pill + note
+      for (const d of g.lit) {
+        altParts.push(`<div style="margin: 2px 0;">${alterationPillHTML(d.alteration || 'mutated')} ${d.pathway ? `<span style="color:var(--gray-500); font-size:11px;">[${d.pathway}]</span>` : ''} <span style="font-size:11px;">${d.note || ''}</span></div>`);
+      }
+      // WES: one row per variant with hgvs_p
+      for (const v of g.wes) {
+        const palette = v.impact === 'HIGH'
+          ? { bg: '#fee2e2', fg: '#991b1b' }
+          : { bg: '#fef3c7', fg: '#92400e' };
+        altParts.push(`<div style="margin: 2px 0; font-size:11px;"><span class="badge" style="background:${palette.bg}; color:${palette.fg}; font-family:ui-monospace, monospace; font-size:10px;">${v.impact}</span> ${(v.effect || '').replace(/_/g, ' ').replace(/&/g, ' + ')} ${v.hgvsP ? `<code style="color:var(--gray-700);">${v.hgvsP}</code>` : ''}${v.chrom ? ` <span style="color:var(--gray-500); font-size:10px;">chr${v.chrom}:${v.pos}</span>` : ''}</div>`);
+      }
+      return `<div style="display:grid; grid-template-columns: 100px 64px 1fr; gap:8px; align-items:start; padding:4px 0; border-bottom:1px solid #f3f4f6;">
+        <div><code style="font-weight:600; color:#374151;">${g.gene}</code></div>
+        <div style="display:flex; gap:3px; flex-wrap:wrap;">${badges.join('')}</div>
+        <div>${altParts.join('')}</div>
+      </div>`;
+    }).join('');
+
+    // TMB summary badges (kept from the old renderMccaMutations).
+    let tmbBlock = '';
+    if (m) {
+      tmbBlock = `<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+        <span class="badge" style="background:#fee2e2; color:#991b1b; border-color:#fecaca;"><b>${m.totalHigh}</b> HIGH-impact</span>
+        <span class="badge" style="background:#fef3c7; color:#92400e; border-color:#fde68a;"><b>${m.totalModerate}</b> MODERATE-impact</span>
+      </div>`;
+    }
+    let topGenesBlock = '';
+    if (m?.topHighImpactGenes?.length) {
+      const chips = m.topHighImpactGenes.map(g => `<span style="background:#f3f4f6; padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid #e5e7eb; margin-right:3px;"><code>${g.gene}</code> × ${g.n}</span>`).join('');
+      topGenesBlock = `<div style="margin-top:8px; font-size:11px;"><span style="color:var(--gray-500);">Top HIGH-impact non-panel genes:</span> ${chips}</div>`;
+    }
+
+    const sourceLine = `<div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">
+      Source badges: <span style="background:#fef3c7; color:#92400e; padding:1px 5px; border-radius:8px; font-size:9px; font-weight:600; letter-spacing:0.04em; border:1px solid #fde68a; text-transform:uppercase;">lit</span> = hand-curated annotation (primary literature);
+      <span style="background:#dbeafe; color:#1e40af; padding:1px 5px; border-radius:8px; font-size:9px; font-weight:600; letter-spacing:0.04em; border:1px solid #bfdbfe; text-transform:uppercase;">WES</span> = <a href="https://www.mcca.tum.de" target="_blank" rel="noopener" style="color:var(--green-700);">MCCA WES ↗</a> driver-panel hit.
+      Genes with both source types appear first.
+    </div>`;
+
+    return `
+      <div class="section-title">Driver mutations &amp; genome</div>
+      ${sourceLine}
+      ${tmbBlock}
+      ${rows ? rows : '<div style="font-size:11px; color:var(--gray-500); font-style:italic;">No driver-panel hits or curated drivers for this line.</div>'}
+      ${topGenesBlock}
+    `;
+  }
+
   function renderDrivers(drivers) {
     if (!Array.isArray(drivers) || drivers.length === 0) return '';
     const rows = drivers.map(d => {
@@ -1329,9 +1447,7 @@
       ${row('Complex rearrangement', meta.complexRearrangement[cl])}
       ${row('Chromothripsis',        meta.chromothripsis[cl])}
 
-      ${renderDrivers(meta.drivers?.[cl])}
-
-      ${renderMccaMutations(meta.mutations?.[cl])}
+      ${renderUnifiedDrivers(cl)}
 
       <div class="section-title">Immune context</div>
       ${row('MHC haplotype A',         meta.mhcA[cl])}

@@ -1,55 +1,38 @@
 # MouseCLB — punch list
 
-Resume point after v0.14. Sources currently feeding the app: MCCA
+Resume point after v0.20. Sources currently feeding the app: MCCA
 (metadata + WES mutations), Cellosaurus (RRID + synonyms + cautions +
 distributor xrefs), TISMO API (sample-level richness + GEO links),
-TISMO/Dryad / Zeng 2022 (114-gene immune panel × baseline/R/NR for
-22 lines), PubMed (literature presence), primary literature (8 deep
-curated workhorses).
+TISMO/Dryad / Zeng 2022 (114-gene immune panel + full 15.4k-gene
+expression matrix × baseline/R/NR for 22 lines), PubMed (literature
+presence), primary literature (8 deep curated workhorses).
 
-## Quick wins (~30-60 min each)
+## Shipped between v0.15 and v0.20
 
-- [ ] **Filter chip**: "Has TISMO immune-panel data" (22 lines). Small
-      UI add; lets users narrow to lines with the richest immune data.
-- [ ] **Default-expand Checkpoint + IFN-γ** in the immune panel — the
-      two most-asked-about groups. Other groups stay collapsed.
+- ✅ Per-gene expression browser (full Dryad matrix, 1.7 MB binary blob,
+  v0.15) — gene-search UI + cohort-dotplot per condition.
+- ✅ Composite immune-signature scores (T-cell inflamed / MHC-I / MHC-II
+  / MDSC / M1-M2) with bar viz + sort options (v0.16).
+- ✅ Compare two cell lines side-by-side (v0.17) — pin button, banner,
+  3-col difference-highlighted table.
+- ✅ TISMO-covered & literature-curated subset filters (v0.18).
+- ✅ Default-expand Checkpoint + IFN-γ + per-group panel-mean strip
+  plot (v0.19).
+- ✅ Unified Drivers schema — literature + MCCA WES merged into one
+  table with source badges (v0.20).
+
+## Quick wins still open (~30-60 min each)
+
 - [ ] **Immune-summary tag in list row**: small pill showing PD-L1
       tertile (HIGH/MID/LOW vs cohort) for lines with TISMO data, so
       you can scan PD-L1-high candidates without opening each.
 - [ ] **List-row TMB tag** showing HIGH-impact-count tertile for MCCA
       lines with WES data.
-- [ ] **CURATED_CELL_LINES.md refresh** — it's still v0.1 era; update
-      to reflect the 22 TISMO-covered + 8 literature + 590 MCCA lines.
-- [ ] **README sources table refresh** — sync with v0.14 contents.
+- [ ] **CURATED_CELL_LINES.md refresh** — it's still v0.1 era.
+- [ ] **README sources table refresh** — sync with current contents.
 
-## Medium (1-3 h each)
+## Heavier still open
 
-- [ ] **Composite immune-signature scores** per cell line: T-cell-
-      inflamed (Ayers/IFN-γ), MDSC score, M1/M2 ratio, MHC-I score,
-      Pole/MMR-deficient signature. Single number per line →
-      sortable, comparable across cohort. Sort options:
-      "Sort: T-cell-inflamed score", "Sort: MDSC score", etc.
-- [ ] **Compare two cell lines side-by-side**: pick two from the list,
-      detail pane splits and highlights differences. The most-asked
-      view for "should I use line A or line B?"
-- [ ] **Bar-chart / heatmap visualization** for the immune panel (pure
-      SVG, no library). Current table is information-dense; visual
-      gives a faster scan. Per-group sparkline ideally.
-- [ ] **Unified "Drivers" schema**: map MCCA WES driver-panel hits
-      onto the same shape as literature `drivers` arrays, so the
-      "Driver mutations" section reads consistently regardless of
-      source. Currently MCCA hits are shown in a separate section.
-
-## Heavier (a session each)
-
-- [ ] **Per-gene expression browser**: given the 22-line TISMO panel
-      data, allow the user to type any gene name and see a bar chart
-      across the 22 lines × 3 conditions. Like Correlate V2's gene-
-      search UI but bounded to immune panel + ICB context. To support
-      arbitrary genes we'd need to also process the full Dryad
-      expression matrix (currently we keep only the 114-gene panel)
-      — option: keep the full matrix in a binary blob, gzipped,
-      loaded on demand.
 - [ ] **"Pick the right model" decision tree**: given user goal
       (e.g. "ICB-responsive HNSCC", "cold KRAS-mutant lung",
       "high-TMB colon"), narrow to candidate lines with reasons. The
