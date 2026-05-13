@@ -567,8 +567,57 @@
         </tr>`);
       }
       if (!rows.length) continue;
-      html += `<details style="margin-bottom:6px;">
-        <summary style="cursor:pointer; font-size:12px; color:var(--gray-700); padding:4px 0; border-bottom:1px solid var(--gray-200); font-weight:600;">${groupName} <span style="color:#9ca3af; font-weight:400; font-size:11px;">(${rows.length} genes)</span></summary>
+      // Default-expand the two highest-signal groups so the most-asked
+      // questions ("is this line PD-L1-high? T-cell inflamed?") are
+      // answered without an extra click. The rest stay collapsed to
+      // keep the section scannable.
+      const defaultOpen = (groupName === 'Checkpoint' || groupName === 'IFN-γ / T-cell infl.');
+
+      // Per-group summary: compute each cell line's panel-mean z-score
+      // (mean across the genes in this group, baseline only) and render
+      // a small strip plot with this line highlighted. Lets the user
+      // see at a glance "is this line an outlier on this panel?".
+      const groupGenes = genes;
+      const lineMeanZ = (clName) => {
+        const entry = ipMeta.byCellLine?.[clName];
+        const baseMeans = entry?.preICB_baseline?.mean;
+        if (!baseMeans) return null;
+        const zs = [];
+        for (const g of groupGenes) {
+          const v = baseMeans[g];
+          const c = cohort[g];
+          if (v == null || !c || c.sd <= 0) continue;
+          zs.push((v - c.mean) / c.sd);
+        }
+        return zs.length >= 3 ? zs.reduce((a, b) => a + b, 0) / zs.length : null;
+      };
+      // Resolve THIS cell line's tismo name; group panel is keyed by tismo display name.
+      const myTismoName = meta.tismo?.[cl]?.tismoName;
+      const allLines = Object.keys(ipMeta.byCellLine || {});
+      const pointZs = allLines.map(n => ({ n, z: lineMeanZ(n) })).filter(p => p.z != null);
+      let stripSvg = '';
+      let summaryNum = '<span style="color:var(--gray-400);">—</span>';
+      if (pointZs.length) {
+        const min = Math.min(...pointZs.map(p => p.z));
+        const max = Math.max(...pointZs.map(p => p.z));
+        const range = max - min || 1;
+        const dots = pointZs.map(p => {
+          const x = (p.z - min) / range * 100;
+          const isThis = (p.n === myTismoName);
+          return `<circle cx="${x}%" cy="50%" r="${isThis ? 4 : 2}" fill="${isThis ? '#dc2626' : '#9ca3af'}"><title>${p.n}: ${p.z.toFixed(2)}σ</title></circle>`;
+        }).join('');
+        stripSvg = `<svg viewBox="0 0 100 10" preserveAspectRatio="none" style="width:120px; height:14px; flex-shrink:0;">${dots}</svg>`;
+        const myZ = pointZs.find(p => p.n === myTismoName)?.z;
+        if (myZ != null) {
+          const colour = myZ > 0 ? '#15803d' : myZ < 0 ? '#991b1b' : 'var(--gray-500)';
+          summaryNum = `<span style="color:${colour}; font-variant-numeric:tabular-nums; font-size:11px;">${myZ >= 0 ? '+' : ''}${myZ.toFixed(2)}σ</span>`;
+        }
+      }
+      html += `<details ${defaultOpen ? 'open' : ''} style="margin-bottom:6px;">
+        <summary style="cursor:pointer; font-size:12px; color:var(--gray-700); padding:4px 0; border-bottom:1px solid var(--gray-200); font-weight:600; display:flex; align-items:center; gap:8px;">
+          <span>${groupName} <span style="color:#9ca3af; font-weight:400; font-size:11px;">(${rows.length} genes)</span></span>
+          <span style="margin-left:auto; display:flex; align-items:center; gap:6px;">${summaryNum} ${stripSvg}</span>
+        </summary>
         <table style="border-collapse:collapse; font-size:11px; width:100%; margin-top:4px;">
           <thead><tr style="color:#6b7280; font-size:10px;">
             <th style="text-align:left; padding:2px 6px;">gene</th>
