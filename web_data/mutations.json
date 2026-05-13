@@ -1,0 +1,5139 @@
+{
+ "_doc": "Per-cell-line driver-mutation summary derived from MCCA-Mutations-2025Q3.xlsx (https://www.mcca.tum.de). Filtered to HIGH and MODERATE SnpEff impact; predicted-non-coding (MODIFIER) and synonymous (LOW) rows dropped. Per-line: totalHigh / totalModerate counts (rough TMB proxy), full variant detail for the ~70-gene cancer-driver panel, and the top-5 most-mutated non-driver genes by HIGH-impact count.",
+ "source": {
+  "name": "MCCA",
+  "file": "MCCA-Mutations-2025Q3.xlsx",
+  "url": "https://www.mcca.tum.de"
+ },
+ "driverPanel": [
+  "Akt1",
+  "Alk",
+  "Apc",
+  "Asxl1",
+  "Atm",
+  "Atr",
+  "Atrx",
+  "Bap1",
+  "Bcl2",
+  "Bcl6",
+  "Bcor",
+  "Braf",
+  "Brca1",
+  "Brca2",
+  "Cdh1",
+  "Cdkn2a",
+  "Cdkn2b",
+  "Chek1",
+  "Chek2",
+  "Crebbp",
+  "Ctnnb1",
+  "Egfr",
+  "Ep300",
+  "Erbb2",
+  "Erbb3",
+  "Ezh2",
+  "Fbxw7",
+  "Flt3",
+  "Foxa1",
+  "Hras",
+  "Idh1",
+  "Idh2",
+  "Jak1",
+  "Jak2",
+  "Kit",
+  "Kmt2c",
+  "Kmt2d",
+  "Kras",
+  "Mdm2",
+  "Mdm4",
+  "Met",
+  "Mlh1",
+  "Mre11a",
+  "Msh2",
+  "Msh6",
+  "Mtor",
+  "Myc",
+  "Mycl1",
+  "Mycn",
+  "Nbn",
+  "Nf1",
+  "Nf2",
+  "Notch1",
+  "Notch2",
+  "Nras",
+  "Pbrm1",
+  "Pdgfra",
+  "Pik3ca",
+  "Pik3cb",
+  "Pms2",
+  "Pold1",
+  "Pole",
+  "Pten",
+  "Rad51",
+  "Rb1",
+  "Ret",
+  "Setd2",
+  "Smad2",
+  "Smad4",
+  "Sox2",
+  "Spop",
+  "Stag2",
+  "Stk11",
+  "Trp53",
+  "Tsc1",
+  "Tsc2",
+  "Vhl",
+  "Wt1"
+ ],
+ "byCellLine": {
+  "MCCA0027": {
+   "totalHigh": 94,
+   "totalModerate": 1347,
+   "driverMuts": [
+    {
+     "gene": "Atm",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala889Thr",
+     "chrom": "9.0",
+     "pos": 53503124,
+     "af": 0.512
+    },
+    {
+     "gene": "Bcor",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly292Ala",
+     "chrom": "X",
+     "pos": 12058481,
+     "af": 0.953
+    },
+    {
+     "gene": "Jak2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ile784Thr",
+     "chrom": "19.0",
+     "pos": 29298655,
+     "af": 0.347
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr4222Ile",
+     "chrom": "5.0",
+     "pos": 25287142,
+     "af": 0.267
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly441Ala",
+     "chrom": "5.0",
+     "pos": 25377257,
+     "af": 0.311
+    },
+    {
+     "gene": "Msh6",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1274Asp",
+     "chrom": "17.0",
+     "pos": 87990457,
+     "af": 0.35
+    },
+    {
+     "gene": "Msh6",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala1353Pro",
+     "chrom": "17.0",
+     "pos": 87990785,
+     "af": 0.281
+    },
+    {
+     "gene": "Nf1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala1919Pro",
+     "chrom": "11.0",
+     "pos": 79540469,
+     "af": 0.25
+    },
+    {
+     "gene": "Ret",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Arg215His",
+     "chrom": "6.0",
+     "pos": 118180444,
+     "af": 0.185
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "Adam24",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0028": {
+   "totalHigh": 131,
+   "totalModerate": 1171,
+   "driverMuts": [
+    {
+     "gene": "Chek2",
+     "impact": "HIGH",
+     "effect": "stop_gained&splice_region_variant",
+     "hgvsP": "p.Gln518*",
+     "chrom": "5.0",
+     "pos": 110872105,
+     "af": 0.409
+    },
+    {
+     "gene": "Pdgfra",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Thr153fs",
+     "chrom": "5.0",
+     "pos": 75166597,
+     "af": 0.509
+    },
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Glu32fs",
+     "chrom": "11.0",
+     "pos": 69587265,
+     "af": 0.994
+    },
+    {
+     "gene": "Brca2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser1531Asn",
+     "chrom": "5.0",
+     "pos": 150541364,
+     "af": 0.451
+    },
+    {
+     "gene": "Crebbp",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Lys1838Thr",
+     "chrom": "16.0",
+     "pos": 4085861,
+     "af": 0.547
+    },
+    {
+     "gene": "Flt3",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val828Met",
+     "chrom": "5.0",
+     "pos": 147341281,
+     "af": 0.382
+    },
+    {
+     "gene": "Myc",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro87Gln",
+     "chrom": "15.0",
+     "pos": 61987736,
+     "af": 0.119
+    },
+    {
+     "gene": "Nf1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Arg1655Cys",
+     "chrom": "11.0",
+     "pos": 79535724,
+     "af": 0.57
+    },
+    {
+     "gene": "Notch2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly320Glu",
+     "chrom": "3.0",
+     "pos": 98098180,
+     "af": 0.254
+    },
+    {
+     "gene": "Pik3ca",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala423Ser",
+     "chrom": "3.0",
+     "pos": 32443594,
+     "af": 0.258
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Wdr75",
+     "n": 2
+    },
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Trmt10a",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0029": {
+   "totalHigh": 43,
+   "totalModerate": 438,
+   "driverMuts": [
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Glu32fs",
+     "chrom": "11.0",
+     "pos": 69587265,
+     "af": 0.995
+    },
+    {
+     "gene": "Kit",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala942Ser",
+     "chrom": "5.0",
+     "pos": 75654429,
+     "af": 0.194
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "BC005561",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0030": {
+   "totalHigh": 86,
+   "totalModerate": 926,
+   "driverMuts": [
+    {
+     "gene": "Crebbp",
+     "impact": "HIGH",
+     "effect": "splice_donor_variant&intron_variant",
+     "hgvsP": null,
+     "chrom": "16.0",
+     "pos": 4101557,
+     "af": 0.5
+    },
+    {
+     "gene": "Flt3",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly620Ala",
+     "chrom": "5.0",
+     "pos": 147354695,
+     "af": 0.488
+    },
+    {
+     "gene": "Notch2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro2107Ala",
+     "chrom": "3.0",
+     "pos": 98146341,
+     "af": 0.275
+    },
+    {
+     "gene": "Pold1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly762Ser",
+     "chrom": "7.0",
+     "pos": 44535797,
+     "af": 0.573
+    },
+    {
+     "gene": "Stag2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu403Asp",
+     "chrom": "X",
+     "pos": 42233883,
+     "af": 0.97
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "BC005561",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0031": {
+   "totalHigh": 126,
+   "totalModerate": 1154,
+   "driverMuts": [
+    {
+     "gene": "Chek2",
+     "impact": "HIGH",
+     "effect": "stop_gained&splice_region_variant",
+     "hgvsP": "p.Gln518*",
+     "chrom": "5.0",
+     "pos": 110872105,
+     "af": 0.254
+    },
+    {
+     "gene": "Pdgfra",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Thr153fs",
+     "chrom": "5.0",
+     "pos": 75166597,
+     "af": 0.428
+    },
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Glu32fs",
+     "chrom": "11.0",
+     "pos": 69587265,
+     "af": 0.993
+    },
+    {
+     "gene": "Brca2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser1531Asn",
+     "chrom": "5.0",
+     "pos": 150541364,
+     "af": 0.52
+    },
+    {
+     "gene": "Crebbp",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Lys1838Thr",
+     "chrom": "16.0",
+     "pos": 4085861,
+     "af": 0.49
+    },
+    {
+     "gene": "Flt3",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val828Met",
+     "chrom": "5.0",
+     "pos": 147341281,
+     "af": 0.429
+    },
+    {
+     "gene": "Nf1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Arg1655Cys",
+     "chrom": "11.0",
+     "pos": 79535724,
+     "af": 0.367
+    },
+    {
+     "gene": "Notch2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly320Glu",
+     "chrom": "3.0",
+     "pos": 98098180,
+     "af": 0.307
+    },
+    {
+     "gene": "Pik3ca",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala423Ser",
+     "chrom": "3.0",
+     "pos": 32443594,
+     "af": 0.298
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Wdr75",
+     "n": 2
+    },
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0032": {
+   "totalHigh": 61,
+   "totalModerate": 480,
+   "driverMuts": [
+    {
+     "gene": "Flt3",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg58*",
+     "chrom": "5.0",
+     "pos": 147377067,
+     "af": 0.378
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu3805*",
+     "chrom": "5.0",
+     "pos": 25298896,
+     "af": 0.438
+    },
+    {
+     "gene": "Pbrm1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1321Lys",
+     "chrom": "14.0",
+     "pos": 31106178,
+     "af": 0.562
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "Adam24",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0033": {
+   "totalHigh": 58,
+   "totalModerate": 460,
+   "driverMuts": [
+    {
+     "gene": "Flt3",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg58*",
+     "chrom": "5.0",
+     "pos": 147377067,
+     "af": 0.714
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu3805*",
+     "chrom": "5.0",
+     "pos": 25298896,
+     "af": 0.752
+    },
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Met243fs",
+     "chrom": "11.0",
+     "pos": 69589196,
+     "af": 0.991
+    },
+    {
+     "gene": "Pbrm1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1321Lys",
+     "chrom": "14.0",
+     "pos": 31106178,
+     "af": 0.322
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "BC005561",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0034": {
+   "totalHigh": 68,
+   "totalModerate": 499,
+   "driverMuts": [
+    {
+     "gene": "Flt3",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg58*",
+     "chrom": "5.0",
+     "pos": 147377067,
+     "af": 0.667
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu3805*",
+     "chrom": "5.0",
+     "pos": 25298896,
+     "af": 0.78
+    },
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Met243fs",
+     "chrom": "11.0",
+     "pos": 69589196,
+     "af": 0.991
+    },
+    {
+     "gene": "Pbrm1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1321Lys",
+     "chrom": "14.0",
+     "pos": 31106178,
+     "af": 0.479
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "BC003331",
+     "n": 2
+    },
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0035": {
+   "totalHigh": 68,
+   "totalModerate": 503,
+   "driverMuts": [
+    {
+     "gene": "Flt3",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg58*",
+     "chrom": "5.0",
+     "pos": 147377067,
+     "af": 0.619
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu3805*",
+     "chrom": "5.0",
+     "pos": 25298896,
+     "af": 0.772
+    },
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Met243fs",
+     "chrom": "11.0",
+     "pos": 69589196,
+     "af": 0.989
+    },
+    {
+     "gene": "Pbrm1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1321Lys",
+     "chrom": "14.0",
+     "pos": 31106178,
+     "af": 0.523
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    },
+    {
+     "gene": "BC005561",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0036": {
+   "totalHigh": 73,
+   "totalModerate": 711,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Gly209*",
+     "chrom": "19.0",
+     "pos": 32811828,
+     "af": 0.989
+    },
+    {
+     "gene": "Akt1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly157Ala",
+     "chrom": "12.0",
+     "pos": 112658643,
+     "af": 0.2
+    },
+    {
+     "gene": "Braf",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Trp656Gly",
+     "chrom": "6.0",
+     "pos": 39627727,
+     "af": 0.188
+    },
+    {
+     "gene": "Sox2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly233Cys",
+     "chrom": "3.0",
+     "pos": 34651112,
+     "af": 0.192
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Usp21",
+     "n": 2
+    },
+    {
+     "gene": "Ralgapa2",
+     "n": 2
+    },
+    {
+     "gene": "Ankrd35",
+     "n": 2
+    },
+    {
+     "gene": "Trmt10a",
+     "n": 2
+    },
+    {
+     "gene": "Mup18",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0037": {
+   "totalHigh": 7,
+   "totalModerate": 34,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Ser1193*",
+     "chrom": "18.0",
+     "pos": 34313630,
+     "af": 0.99
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Tyr217Cys",
+     "chrom": "11.0",
+     "pos": 69588725,
+     "af": 0.977
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ush2a",
+     "n": 1
+    },
+    {
+     "gene": "Psd4",
+     "n": 1
+    },
+    {
+     "gene": "Mecom",
+     "n": 1
+    },
+    {
+     "gene": "CK137956",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r44",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0040": {
+   "totalHigh": 6,
+   "totalModerate": 53,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Ser1193*",
+     "chrom": "18.0",
+     "pos": 34313630,
+     "af": 0.987
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Tyr217Cys",
+     "chrom": "11.0",
+     "pos": 69588725,
+     "af": 0.981
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Col4a4",
+     "n": 1
+    },
+    {
+     "gene": "Ush2a",
+     "n": 1
+    },
+    {
+     "gene": "Mecom",
+     "n": 1
+    },
+    {
+     "gene": "CK137956",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r44",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0047": {
+   "totalHigh": 2,
+   "totalModerate": 29,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Ser1193*",
+     "chrom": "18.0",
+     "pos": 34313630,
+     "af": 0.22
+    },
+    {
+     "gene": "Kit",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala538Thr",
+     "chrom": "5.0",
+     "pos": 75640555,
+     "af": 0.422
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Tyr217Cys",
+     "chrom": "11.0",
+     "pos": 69588725,
+     "af": 0.121
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Zfhx2",
+     "n": 1
+    },
+    {
+     "gene": "Apc",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0054": {
+   "totalHigh": 3,
+   "totalModerate": 32,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser37Phe",
+     "chrom": "9.0",
+     "pos": 120950618,
+     "af": 0.31
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1196",
+     "n": 1
+    },
+    {
+     "gene": "Nlrp14",
+     "n": 1
+    },
+    {
+     "gene": "Junb",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0055": {
+   "totalHigh": 3,
+   "totalModerate": 33,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser37Phe",
+     "chrom": "9.0",
+     "pos": 120950618,
+     "af": 0.293
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1196",
+     "n": 1
+    },
+    {
+     "gene": "Nlrp14",
+     "n": 1
+    },
+    {
+     "gene": "Junb",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0061": {
+   "totalHigh": 9,
+   "totalModerate": 63,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu891*",
+     "chrom": "18.0",
+     "pos": 34312723,
+     "af": 0.992
+    },
+    {
+     "gene": "Alk",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val838Met",
+     "chrom": "17.0",
+     "pos": 71904372,
+     "af": 0.318
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val213Met",
+     "chrom": "11.0",
+     "pos": 69588712,
+     "af": 0.989
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1047",
+     "n": 1
+    },
+    {
+     "gene": "Psmd4",
+     "n": 1
+    },
+    {
+     "gene": "Olfr944",
+     "n": 1
+    },
+    {
+     "gene": "Igdcc3",
+     "n": 1
+    },
+    {
+     "gene": "Actl11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0064": {
+   "totalHigh": 8,
+   "totalModerate": 58,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu891*",
+     "chrom": "18.0",
+     "pos": 34312723,
+     "af": 0.992
+    },
+    {
+     "gene": "Alk",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val838Met",
+     "chrom": "17.0",
+     "pos": 71904372,
+     "af": 0.4
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val213Met",
+     "chrom": "11.0",
+     "pos": 69588712,
+     "af": 0.991
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1047",
+     "n": 1
+    },
+    {
+     "gene": "Olfr944",
+     "n": 1
+    },
+    {
+     "gene": "Clpx",
+     "n": 1
+    },
+    {
+     "gene": "Actl11",
+     "n": 1
+    },
+    {
+     "gene": "Npm1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0065": {
+   "totalHigh": 12,
+   "totalModerate": 61,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu891*",
+     "chrom": "18.0",
+     "pos": 34312723,
+     "af": 0.99
+    },
+    {
+     "gene": "Nf2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln428Lys",
+     "chrom": "11.0",
+     "pos": 4789723,
+     "af": 0.158
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val213Met",
+     "chrom": "11.0",
+     "pos": 69588712,
+     "af": 0.987
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Cenpf",
+     "n": 1
+    },
+    {
+     "gene": "Cerkl",
+     "n": 1
+    },
+    {
+     "gene": "Olfr1047",
+     "n": 1
+    },
+    {
+     "gene": "Rbm15",
+     "n": 1
+    },
+    {
+     "gene": "Slc25a18",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0066": {
+   "totalHigh": 7,
+   "totalModerate": 48,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly34Glu",
+     "chrom": "9.0",
+     "pos": 120950609,
+     "af": 0.733
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly263Arg",
+     "chrom": "11.0",
+     "pos": 69589586,
+     "af": 0.973
+    },
+    {
+     "gene": "Wt1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser186Asn",
+     "chrom": "2.0",
+     "pos": 105127353,
+     "af": 0.2
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ncoa2",
+     "n": 1
+    },
+    {
+     "gene": "Gabrg1",
+     "n": 1
+    },
+    {
+     "gene": "Tex36",
+     "n": 1
+    },
+    {
+     "gene": "Adam24",
+     "n": 1
+    },
+    {
+     "gene": "Cacna2d3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0068": {
+   "totalHigh": 9,
+   "totalModerate": 65,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly34Glu",
+     "chrom": "9.0",
+     "pos": 120950609,
+     "af": 0.558
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly263Arg",
+     "chrom": "11.0",
+     "pos": 69589586,
+     "af": 0.969
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ncoa2",
+     "n": 1
+    },
+    {
+     "gene": "Gabrg1",
+     "n": 1
+    },
+    {
+     "gene": "Prss36",
+     "n": 1
+    },
+    {
+     "gene": "Tex36",
+     "n": 1
+    },
+    {
+     "gene": "Adam24",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0071": {
+   "totalHigh": 2,
+   "totalModerate": 62,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser45Phe",
+     "chrom": "9.0",
+     "pos": 120950642,
+     "af": 0.425
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Sspo",
+     "n": 1
+    },
+    {
+     "gene": "Klra1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0072": {
+   "totalHigh": 3,
+   "totalModerate": 18,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Cdh10",
+     "n": 1
+    },
+    {
+     "gene": "Rin1",
+     "n": 1
+    },
+    {
+     "gene": "Asb11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0076": {
+   "totalHigh": 2,
+   "totalModerate": 43,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Tyr30_Asp32del",
+     "chrom": "9.0",
+     "pos": 120950594,
+     "af": 0.453
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nckap1",
+     "n": 1
+    },
+    {
+     "gene": "Dppa5a",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0077": {
+   "totalHigh": 4,
+   "totalModerate": 51,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Tyr30_Asp32del",
+     "chrom": "9.0",
+     "pos": 120950594,
+     "af": 0.467
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nckap1",
+     "n": 1
+    },
+    {
+     "gene": "Olfr1131",
+     "n": 1
+    },
+    {
+     "gene": "Dppa5a",
+     "n": 1
+    },
+    {
+     "gene": "Krt25",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0078": {
+   "totalHigh": 6,
+   "totalModerate": 32,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.343
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Asn128del",
+     "chrom": "11.0",
+     "pos": 69588378,
+     "af": 0.973
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tgm6",
+     "n": 1
+    },
+    {
+     "gene": "Rsf1",
+     "n": 1
+    },
+    {
+     "gene": "Myo1g",
+     "n": 1
+    },
+    {
+     "gene": "Nkd2",
+     "n": 1
+    },
+    {
+     "gene": "Pik3r1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0080": {
+   "totalHigh": 5,
+   "totalModerate": 61,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.436
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tas2r113",
+     "n": 1
+    },
+    {
+     "gene": "Slit3",
+     "n": 1
+    },
+    {
+     "gene": "Tppp",
+     "n": 1
+    },
+    {
+     "gene": "Ephb3",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r120",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0083": {
+   "totalHigh": 6,
+   "totalModerate": 59,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.41
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Plch2",
+     "n": 1
+    },
+    {
+     "gene": "Tas2r113",
+     "n": 1
+    },
+    {
+     "gene": "Arhgap42",
+     "n": 1
+    },
+    {
+     "gene": "Tppp",
+     "n": 1
+    },
+    {
+     "gene": "Ephb3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0084": {
+   "totalHigh": 4,
+   "totalModerate": 33,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser37Phe",
+     "chrom": "9.0",
+     "pos": 120950618,
+     "af": 0.483
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1196",
+     "n": 1
+    },
+    {
+     "gene": "Nlrp14",
+     "n": 1
+    },
+    {
+     "gene": "Junb",
+     "n": 1
+    },
+    {
+     "gene": "Iws1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0085": {
+   "totalHigh": 5,
+   "totalModerate": 57,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.564
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ttn",
+     "n": 1
+    },
+    {
+     "gene": "Tas2r113",
+     "n": 1
+    },
+    {
+     "gene": "Tppp",
+     "n": 1
+    },
+    {
+     "gene": "Ephb3",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r120",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0087": {
+   "totalHigh": 7,
+   "totalModerate": 48,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly34Glu",
+     "chrom": "9.0",
+     "pos": 120950609,
+     "af": 0.62
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly263Arg",
+     "chrom": "11.0",
+     "pos": 69589586,
+     "af": 0.972
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ncoa2",
+     "n": 1
+    },
+    {
+     "gene": "Tpr",
+     "n": 1
+    },
+    {
+     "gene": "Gabrg1",
+     "n": 1
+    },
+    {
+     "gene": "Myo18b",
+     "n": 1
+    },
+    {
+     "gene": "Tex36",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0099": {
+   "totalHigh": 7,
+   "totalModerate": 52,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu891*",
+     "chrom": "18.0",
+     "pos": 34312723,
+     "af": 0.992
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val213Met",
+     "chrom": "11.0",
+     "pos": 69588712,
+     "af": 0.985
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1047",
+     "n": 1
+    },
+    {
+     "gene": "Olfr944",
+     "n": 1
+    },
+    {
+     "gene": "Igdcc3",
+     "n": 1
+    },
+    {
+     "gene": "Actl11",
+     "n": 1
+    },
+    {
+     "gene": "Akap6",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0100": {
+   "totalHigh": 9,
+   "totalModerate": 43,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Glu891*",
+     "chrom": "18.0",
+     "pos": 34312723,
+     "af": 0.985
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Val213Met",
+     "chrom": "11.0",
+     "pos": 69588712,
+     "af": 0.991
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1047",
+     "n": 1
+    },
+    {
+     "gene": "Abcb9",
+     "n": 1
+    },
+    {
+     "gene": "Olfr944",
+     "n": 1
+    },
+    {
+     "gene": "Igdcc3",
+     "n": 1
+    },
+    {
+     "gene": "Actl11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0101": {
+   "totalHigh": 11,
+   "totalModerate": 126,
+   "driverMuts": [
+    {
+     "gene": "Bcl6",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Phe668Leu",
+     "chrom": "16.0",
+     "pos": 23966247,
+     "af": 0.125
+    },
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser37Phe",
+     "chrom": "9.0",
+     "pos": 120950618,
+     "af": 0.417
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Cys138Tyr",
+     "chrom": "11.0",
+     "pos": 69588410,
+     "af": 0.982
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Hmcn1",
+     "n": 1
+    },
+    {
+     "gene": "Myl9",
+     "n": 1
+    },
+    {
+     "gene": "Fndc7",
+     "n": 1
+    },
+    {
+     "gene": "Plppr1",
+     "n": 1
+    },
+    {
+     "gene": "Cntn6",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0118": {
+   "totalHigh": 3,
+   "totalModerate": 38,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Adgra2",
+     "n": 1
+    },
+    {
+     "gene": "Map1s",
+     "n": 1
+    },
+    {
+     "gene": "Hecw1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0123": {
+   "totalHigh": 4,
+   "totalModerate": 32,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly34Glu",
+     "chrom": "9.0",
+     "pos": 120950609,
+     "af": 0.385
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly263Arg",
+     "chrom": "11.0",
+     "pos": 69589586,
+     "af": 0.448
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ncoa2",
+     "n": 1
+    },
+    {
+     "gene": "Tex36",
+     "n": 1
+    },
+    {
+     "gene": "Adam24",
+     "n": 1
+    },
+    {
+     "gene": "Hoxc11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0127": {
+   "totalHigh": 2,
+   "totalModerate": 54,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Tyr30_Asp32del",
+     "chrom": "9.0",
+     "pos": 120950594,
+     "af": 0.59
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Card9",
+     "n": 1
+    },
+    {
+     "gene": "Dppa5a",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0131": {
+   "totalHigh": 4,
+   "totalModerate": 27,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.468
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Asn128del",
+     "chrom": "11.0",
+     "pos": 69588378,
+     "af": 0.321
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tgm6",
+     "n": 1
+    },
+    {
+     "gene": "Rsf1",
+     "n": 1
+    },
+    {
+     "gene": "Nkd2",
+     "n": 1
+    },
+    {
+     "gene": "Zfy2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0133": {
+   "totalHigh": 4,
+   "totalModerate": 51,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr41Ile",
+     "chrom": "9.0",
+     "pos": 120950630,
+     "af": 0.437
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tas2r113",
+     "n": 1
+    },
+    {
+     "gene": "Tppp",
+     "n": 1
+    },
+    {
+     "gene": "Ephb3",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r120",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0134": {
+   "totalHigh": 3,
+   "totalModerate": 40,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser37Cys",
+     "chrom": "9.0",
+     "pos": 120950618,
+     "af": 0.574
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Polm",
+     "n": 1
+    },
+    {
+     "gene": "Col1a1",
+     "n": 1
+    },
+    {
+     "gene": "Slitrk4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0135": {
+   "totalHigh": 6,
+   "totalModerate": 48,
+   "driverMuts": [
+    {
+     "gene": "Ctnnb1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser33Phe",
+     "chrom": "9.0",
+     "pos": 120950606,
+     "af": 0.437
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1204",
+     "n": 1
+    },
+    {
+     "gene": "Blm",
+     "n": 1
+    },
+    {
+     "gene": "Hephl1",
+     "n": 1
+    },
+    {
+     "gene": "Fam13c",
+     "n": 1
+    },
+    {
+     "gene": "Myo1c",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0136": {
+   "totalHigh": 0,
+   "totalModerate": 8,
+   "driverMuts": [
+    {
+     "gene": "Sox2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly233Asp",
+     "chrom": "3.0",
+     "pos": 34651113,
+     "af": 0.102
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0137": {
+   "totalHigh": 1,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ubald2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0154": {
+   "totalHigh": 1,
+   "totalModerate": 17,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1277",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0173": {
+   "totalHigh": 2,
+   "totalModerate": 24,
+   "driverMuts": [
+    {
+     "gene": "Cdkn2a",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg97*",
+     "chrom": "4.0",
+     "pos": 89276887,
+     "af": 0.935
+    },
+    {
+     "gene": "Braf",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Asp631Gly",
+     "chrom": "6.0",
+     "pos": 39627801,
+     "af": 0.453
+    },
+    {
+     "gene": "Cdkn2a",
+     "impact": "MODERATE",
+     "effect": "missense_variant&splice_region_variant",
+     "hgvsP": "p.Gly64Asp",
+     "chrom": "4.0",
+     "pos": 89276985,
+     "af": 0.947
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Cdkn2a",
+     "n": 1
+    },
+    {
+     "gene": "Serpina16",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0176": {
+   "totalHigh": 2,
+   "totalModerate": 13,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kcnj1",
+     "n": 1
+    },
+    {
+     "gene": "Samd3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0185": {
+   "totalHigh": 2,
+   "totalModerate": 24,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dnah9",
+     "n": 1
+    },
+    {
+     "gene": "Flrt2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0186": {
+   "totalHigh": 1,
+   "totalModerate": 2,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1490",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0187": {
+   "totalHigh": 0,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0188": {
+   "totalHigh": 0,
+   "totalModerate": 18,
+   "driverMuts": [
+    {
+     "gene": "Braf",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Asp631Gly",
+     "chrom": "6.0",
+     "pos": 39627801,
+     "af": 0.46
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0190": {
+   "totalHigh": 0,
+   "totalModerate": 6,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0191": {
+   "totalHigh": 2,
+   "totalModerate": 12,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Ile5fs",
+     "chrom": "19.0",
+     "pos": 32758457,
+     "af": 0.366
+    },
+    {
+     "gene": "Pten",
+     "impact": "MODERATE",
+     "effect": "disruptive_inframe_deletion",
+     "hgvsP": "p.Ile5_Glu7delinsMet",
+     "chrom": "19.0",
+     "pos": 32758458,
+     "af": 0.72
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nfu1",
+     "n": 1
+    },
+    {
+     "gene": "Pten",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0194": {
+   "totalHigh": 2,
+   "totalModerate": 10,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "HIGH",
+     "effect": "frameshift_variant",
+     "hgvsP": "p.Lys6fs",
+     "chrom": "19.0",
+     "pos": 32758457,
+     "af": 0.171
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Gipr",
+     "n": 1
+    },
+    {
+     "gene": "Pten",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0231": {
+   "totalHigh": 2,
+   "totalModerate": 5,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kif3b",
+     "n": 1
+    },
+    {
+     "gene": "Pcdhb17",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0255": {
+   "totalHigh": 16,
+   "totalModerate": 146,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61Lys",
+     "chrom": "6.0",
+     "pos": 145234357,
+     "af": 0.646
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Adamdec1",
+     "n": 2
+    },
+    {
+     "gene": "Ttn",
+     "n": 1
+    },
+    {
+     "gene": "Armc10",
+     "n": 1
+    },
+    {
+     "gene": "C87414",
+     "n": 1
+    },
+    {
+     "gene": "Nxpe5",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0257": {
+   "totalHigh": 6,
+   "totalModerate": 107,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61Leu",
+     "chrom": "6.0",
+     "pos": 145234356,
+     "af": 0.653
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "C87414",
+     "n": 1
+    },
+    {
+     "gene": "Usp12",
+     "n": 1
+    },
+    {
+     "gene": "Ticrr",
+     "n": 1
+    },
+    {
+     "gene": "Olfr617",
+     "n": 1
+    },
+    {
+     "gene": "Clvs2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0258": {
+   "totalHigh": 3,
+   "totalModerate": 48,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61His",
+     "chrom": "6.0",
+     "pos": 145234355,
+     "af": 0.546
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Slc25a24",
+     "n": 1
+    },
+    {
+     "gene": "Stk31",
+     "n": 1
+    },
+    {
+     "gene": "Olfr910",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0260": {
+   "totalHigh": 11,
+   "totalModerate": 136,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Otud7b",
+     "n": 1
+    },
+    {
+     "gene": "Speer4d",
+     "n": 1
+    },
+    {
+     "gene": "C87414",
+     "n": 1
+    },
+    {
+     "gene": "Sspo",
+     "n": 1
+    },
+    {
+     "gene": "Lrrn1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0261": {
+   "totalHigh": 2,
+   "totalModerate": 14,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61Arg",
+     "chrom": "6.0",
+     "pos": 145234356,
+     "af": 0.54
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Vmn1r77",
+     "n": 1
+    },
+    {
+     "gene": "Cbln1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0262": {
+   "totalHigh": 5,
+   "totalModerate": 26,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Zgrf1",
+     "n": 1
+    },
+    {
+     "gene": "Gcfc2",
+     "n": 1
+    },
+    {
+     "gene": "Nomo1",
+     "n": 1
+    },
+    {
+     "gene": "Snx31",
+     "n": 1
+    },
+    {
+     "gene": "Sybu",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0263": {
+   "totalHigh": 1,
+   "totalModerate": 27,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Map2k1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0264": {
+   "totalHigh": 7,
+   "totalModerate": 51,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61Arg",
+     "chrom": "6.0",
+     "pos": 145234356,
+     "af": 0.373
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala135Pro",
+     "chrom": "11.0",
+     "pos": 69588400,
+     "af": 0.285
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Zranb3",
+     "n": 1
+    },
+    {
+     "gene": "Lrrc31",
+     "n": 1
+    },
+    {
+     "gene": "Rtkn",
+     "n": 1
+    },
+    {
+     "gene": "Slc5a8",
+     "n": 1
+    },
+    {
+     "gene": "Zfat",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0265": {
+   "totalHigh": 1,
+   "totalModerate": 8,
+   "driverMuts": [
+    {
+     "gene": "Kras",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gln61Arg",
+     "chrom": "6.0",
+     "pos": 145234356,
+     "af": 0.446
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Mug2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0271": {
+   "totalHigh": 2,
+   "totalModerate": 17,
+   "driverMuts": [
+    {
+     "gene": "Wt1",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg363*",
+     "chrom": "2.0",
+     "pos": 105163410,
+     "af": 0.359
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Wt1",
+     "n": 1
+    },
+    {
+     "gene": "Dpysl5",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0272": {
+   "totalHigh": 2,
+   "totalModerate": 19,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Lrp1b",
+     "n": 1
+    },
+    {
+     "gene": "Ctsm",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0273": {
+   "totalHigh": 4,
+   "totalModerate": 32,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Card9",
+     "n": 1
+    },
+    {
+     "gene": "Ppp1r35",
+     "n": 1
+    },
+    {
+     "gene": "Atp8b1",
+     "n": 1
+    },
+    {
+     "gene": "Atp9b",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0274": {
+   "totalHigh": 3,
+   "totalModerate": 30,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Rtf1",
+     "n": 1
+    },
+    {
+     "gene": "Cyp3a16",
+     "n": 1
+    },
+    {
+     "gene": "Olfr834",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0276": {
+   "totalHigh": 5,
+   "totalModerate": 19,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr642",
+     "n": 1
+    },
+    {
+     "gene": "Ap1g1",
+     "n": 1
+    },
+    {
+     "gene": "Jkamp",
+     "n": 1
+    },
+    {
+     "gene": "Emc2",
+     "n": 1
+    },
+    {
+     "gene": "Ccdc184",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0278": {
+   "totalHigh": 0,
+   "totalModerate": 9,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0279": {
+   "totalHigh": 4,
+   "totalModerate": 16,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tmem132b",
+     "n": 1
+    },
+    {
+     "gene": "Akt1s1",
+     "n": 1
+    },
+    {
+     "gene": "Serpina9",
+     "n": 1
+    },
+    {
+     "gene": "Ighv1-61",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0280": {
+   "totalHigh": 0,
+   "totalModerate": 42,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0281": {
+   "totalHigh": 2,
+   "totalModerate": 19,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Enpep",
+     "n": 1
+    },
+    {
+     "gene": "Clip1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0283": {
+   "totalHigh": 2,
+   "totalModerate": 38,
+   "driverMuts": [
+    {
+     "gene": "Kit",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser44Pro",
+     "chrom": "5.0",
+     "pos": 75607088,
+     "af": 0.427
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dnah9",
+     "n": 1
+    },
+    {
+     "gene": "Pde4d",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0284": {
+   "totalHigh": 0,
+   "totalModerate": 19,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0285": {
+   "totalHigh": 3,
+   "totalModerate": 27,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tmem98",
+     "n": 1
+    },
+    {
+     "gene": "Cbx1",
+     "n": 1
+    },
+    {
+     "gene": "Katnal2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0286": {
+   "totalHigh": 0,
+   "totalModerate": 16,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0287": {
+   "totalHigh": 2,
+   "totalModerate": 24,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kif16b",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0291": {
+   "totalHigh": 0,
+   "totalModerate": 4,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0292": {
+   "totalHigh": 7,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Cacybp",
+     "n": 1
+    },
+    {
+     "gene": "Olfr1200",
+     "n": 1
+    },
+    {
+     "gene": "Stil",
+     "n": 1
+    },
+    {
+     "gene": "Galnt11",
+     "n": 1
+    },
+    {
+     "gene": "Ptpn20",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0293": {
+   "totalHigh": 4,
+   "totalModerate": 28,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nup210",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r30",
+     "n": 1
+    },
+    {
+     "gene": "Olfr6",
+     "n": 1
+    },
+    {
+     "gene": "Tmem98",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0294": {
+   "totalHigh": 2,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nt5c1a",
+     "n": 1
+    },
+    {
+     "gene": "Card6",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0295": {
+   "totalHigh": 1,
+   "totalModerate": 14,
+   "driverMuts": [
+    {
+     "gene": "Wt1",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Arg363*",
+     "chrom": "2.0",
+     "pos": 105163410,
+     "af": 0.493
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Wt1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0297": {
+   "totalHigh": 3,
+   "totalModerate": 23,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Lrp1b",
+     "n": 1
+    },
+    {
+     "gene": "Ctsm",
+     "n": 1
+    },
+    {
+     "gene": "Ddx26b",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0299": {
+   "totalHigh": 1,
+   "totalModerate": 26,
+   "driverMuts": [
+    {
+     "gene": "Nbn",
+     "impact": "MODERATE",
+     "effect": "missense_variant&splice_region_variant",
+     "hgvsP": "p.Ala636Val",
+     "chrom": "4.0",
+     "pos": 15984021,
+     "af": 0.122
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Klra8",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0300": {
+   "totalHigh": 26,
+   "totalModerate": 17,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Skint11",
+     "n": 2
+    },
+    {
+     "gene": "Bmp5",
+     "n": 2
+    },
+    {
+     "gene": "Khdrbs2",
+     "n": 1
+    },
+    {
+     "gene": "Akt3",
+     "n": 1
+    },
+    {
+     "gene": "Olfr1223",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0301": {
+   "totalHigh": 0,
+   "totalModerate": 23,
+   "driverMuts": [
+    {
+     "gene": "Notch1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala2026Gly",
+     "chrom": "2.0",
+     "pos": 26462221,
+     "af": 0.107
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Arg245Pro",
+     "chrom": "11.0",
+     "pos": 69589211,
+     "af": 0.11
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0302": {
+   "totalHigh": 2,
+   "totalModerate": 14,
+   "driverMuts": [
+    {
+     "gene": "Pdgfra",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser724Pro",
+     "chrom": "5.0",
+     "pos": 75182989,
+     "af": 0.234
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ccdc73",
+     "n": 1
+    },
+    {
+     "gene": "Cebpz",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0303": {
+   "totalHigh": 3,
+   "totalModerate": 38,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Sugp2",
+     "n": 1
+    },
+    {
+     "gene": "Clcn7",
+     "n": 1
+    },
+    {
+     "gene": "Otub1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0304": {
+   "totalHigh": 3,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Trrap",
+     "n": 1
+    },
+    {
+     "gene": "Ecm2",
+     "n": 1
+    },
+    {
+     "gene": "Cldn34b4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0305": {
+   "totalHigh": 1,
+   "totalModerate": 48,
+   "driverMuts": [
+    {
+     "gene": "Brca1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly744Arg",
+     "chrom": "11.0",
+     "pos": 101525077,
+     "af": 0.151
+    },
+    {
+     "gene": "Mdm4",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.His462Gln",
+     "chrom": "1.0",
+     "pos": 132991743,
+     "af": 0.197
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Vwf",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0306": {
+   "totalHigh": 2,
+   "totalModerate": 20,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Slc2a1",
+     "n": 1
+    },
+    {
+     "gene": "Snrnp40",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0307": {
+   "totalHigh": 2,
+   "totalModerate": 28,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Pdzph1",
+     "n": 1
+    },
+    {
+     "gene": "Nkrf",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0308": {
+   "totalHigh": 3,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ncor1",
+     "n": 2
+    },
+    {
+     "gene": "Ppp2r1a",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0310": {
+   "totalHigh": 1,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Nek11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0313": {
+   "totalHigh": 7,
+   "totalModerate": 89,
+   "driverMuts": [
+    {
+     "gene": "Atm",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1539Asp",
+     "chrom": "9.0",
+     "pos": 53488562,
+     "af": 0.15
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Fam193a",
+     "n": 1
+    },
+    {
+     "gene": "Atp2c2",
+     "n": 1
+    },
+    {
+     "gene": "Dync1li1",
+     "n": 1
+    },
+    {
+     "gene": "Tom1l2",
+     "n": 1
+    },
+    {
+     "gene": "Mink1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0314": {
+   "totalHigh": 6,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Capzb",
+     "n": 1
+    },
+    {
+     "gene": "Srrm3",
+     "n": 1
+    },
+    {
+     "gene": "Tma16",
+     "n": 1
+    },
+    {
+     "gene": "P3h2",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r105",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0315": {
+   "totalHigh": 4,
+   "totalModerate": 9,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Gln17*",
+     "chrom": "19.0",
+     "pos": 32758493,
+     "af": 0.566
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dpp10",
+     "n": 1
+    },
+    {
+     "gene": "Mllt10",
+     "n": 1
+    },
+    {
+     "gene": "Pop4",
+     "n": 1
+    },
+    {
+     "gene": "Pten",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0316": {
+   "totalHigh": 2,
+   "totalModerate": 16,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ccser1",
+     "n": 2
+    }
+   ]
+  },
+  "MCCA0317": {
+   "totalHigh": 2,
+   "totalModerate": 9,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Amy2a1",
+     "n": 1
+    },
+    {
+     "gene": "Cc2d1a",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0318": {
+   "totalHigh": 1,
+   "totalModerate": 17,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Aprt",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0319": {
+   "totalHigh": 3,
+   "totalModerate": 23,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Col9a2",
+     "n": 1
+    },
+    {
+     "gene": "Nlrp4b",
+     "n": 1
+    },
+    {
+     "gene": "Cd22",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0321": {
+   "totalHigh": 0,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0322": {
+   "totalHigh": 1,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Rad51ap2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0323": {
+   "totalHigh": 1,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Atf2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0324": {
+   "totalHigh": 1,
+   "totalModerate": 1,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dnah7a",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0326": {
+   "totalHigh": 1,
+   "totalModerate": 15,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Acy1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0327": {
+   "totalHigh": 4,
+   "totalModerate": 33,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Plekha6",
+     "n": 1
+    },
+    {
+     "gene": "Cttnbp2",
+     "n": 1
+    },
+    {
+     "gene": "Vmp1",
+     "n": 1
+    },
+    {
+     "gene": "Cd74",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0328": {
+   "totalHigh": 1,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Vmn2r95",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0329": {
+   "totalHigh": 5,
+   "totalModerate": 25,
+   "driverMuts": [
+    {
+     "gene": "Kmt2d",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Thr5420Ile",
+     "chrom": "15.0",
+     "pos": 98835414,
+     "af": 0.508
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Slc25a24",
+     "n": 1
+    },
+    {
+     "gene": "Pde5a",
+     "n": 1
+    },
+    {
+     "gene": "Cul1",
+     "n": 1
+    },
+    {
+     "gene": "Psg29",
+     "n": 1
+    },
+    {
+     "gene": "Usp9x",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0331": {
+   "totalHigh": 3,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Gtf3c3",
+     "n": 1
+    },
+    {
+     "gene": "Ddost",
+     "n": 1
+    },
+    {
+     "gene": "Sorl1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0332": {
+   "totalHigh": 3,
+   "totalModerate": 15,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Speg",
+     "n": 1
+    },
+    {
+     "gene": "Sorl1",
+     "n": 1
+    },
+    {
+     "gene": "Ighv3-4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0335": {
+   "totalHigh": 7,
+   "totalModerate": 16,
+   "driverMuts": [
+    {
+     "gene": "Atrx",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly1026Lys",
+     "chrom": "X",
+     "pos": 105875155,
+     "af": 0.177
+    },
+    {
+     "gene": "Pole",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1298Asp",
+     "chrom": "5.0",
+     "pos": 110318327,
+     "af": 0.122
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Jag2",
+     "n": 2
+    },
+    {
+     "gene": "Surf6",
+     "n": 1
+    },
+    {
+     "gene": "Inadl",
+     "n": 1
+    },
+    {
+     "gene": "Abcb4",
+     "n": 1
+    },
+    {
+     "gene": "Dpep2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0337": {
+   "totalHigh": 2,
+   "totalModerate": 9,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ticrr",
+     "n": 1
+    },
+    {
+     "gene": "Vrk2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0338": {
+   "totalHigh": 6,
+   "totalModerate": 23,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Pcdh18",
+     "n": 1
+    },
+    {
+     "gene": "Asah1",
+     "n": 1
+    },
+    {
+     "gene": "Ighv1-66",
+     "n": 1
+    },
+    {
+     "gene": "Usp7",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r90",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0340": {
+   "totalHigh": 5,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Pnmal1",
+     "n": 1
+    },
+    {
+     "gene": "Olfr609",
+     "n": 1
+    },
+    {
+     "gene": "Zcchc10",
+     "n": 1
+    },
+    {
+     "gene": "Heatr5a",
+     "n": 1
+    },
+    {
+     "gene": "Zfp449",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0341": {
+   "totalHigh": 1,
+   "totalModerate": 15,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Eya2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0342": {
+   "totalHigh": 2,
+   "totalModerate": 18,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Hyal4",
+     "n": 1
+    },
+    {
+     "gene": "Rpgr",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0343": {
+   "totalHigh": 4,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Igsf3",
+     "n": 1
+    },
+    {
+     "gene": "Unc13b",
+     "n": 1
+    },
+    {
+     "gene": "Mtcl1",
+     "n": 1
+    },
+    {
+     "gene": "Suv39h1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0344": {
+   "totalHigh": 0,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0345": {
+   "totalHigh": 2,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Mkl1",
+     "n": 1
+    },
+    {
+     "gene": "Pla2g10",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0347": {
+   "totalHigh": 4,
+   "totalModerate": 18,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Arhgef38",
+     "n": 1
+    },
+    {
+     "gene": "Wbp2",
+     "n": 1
+    },
+    {
+     "gene": "Alpk2",
+     "n": 1
+    },
+    {
+     "gene": "Col4a6",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0348": {
+   "totalHigh": 0,
+   "totalModerate": 9,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0349": {
+   "totalHigh": 2,
+   "totalModerate": 20,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr703",
+     "n": 1
+    },
+    {
+     "gene": "Mdm1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0350": {
+   "totalHigh": 0,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0351": {
+   "totalHigh": 2,
+   "totalModerate": 11,
+   "driverMuts": [
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant&splice_region_variant",
+     "hgvsP": "p.Thr122Met",
+     "chrom": "11.0",
+     "pos": 69587631,
+     "af": 0.981
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ankef1",
+     "n": 1
+    },
+    {
+     "gene": "Prex1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0352": {
+   "totalHigh": 2,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Phf12",
+     "n": 1
+    },
+    {
+     "gene": "Rbp4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0356": {
+   "totalHigh": 3,
+   "totalModerate": 15,
+   "driverMuts": [
+    {
+     "gene": "Pbrm1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro580Thr",
+     "chrom": "14.0",
+     "pos": 31061620,
+     "af": 0.11
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Pydc4",
+     "n": 1
+    },
+    {
+     "gene": "Fbn1",
+     "n": 1
+    },
+    {
+     "gene": "Matr3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0357": {
+   "totalHigh": 1,
+   "totalModerate": 6,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Acaca",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0359": {
+   "totalHigh": 1,
+   "totalModerate": 7,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ube2j1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0360": {
+   "totalHigh": 1,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dnah8",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0361": {
+   "totalHigh": 2,
+   "totalModerate": 24,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ap1g1",
+     "n": 1
+    },
+    {
+     "gene": "Ccdc184",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0362": {
+   "totalHigh": 2,
+   "totalModerate": 19,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ap1g1",
+     "n": 1
+    },
+    {
+     "gene": "Ccdc184",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0363": {
+   "totalHigh": 7,
+   "totalModerate": 43,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ttn",
+     "n": 1
+    },
+    {
+     "gene": "Insrr",
+     "n": 1
+    },
+    {
+     "gene": "Arhgef10l",
+     "n": 1
+    },
+    {
+     "gene": "Lilr4b",
+     "n": 1
+    },
+    {
+     "gene": "Atg2b",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0364": {
+   "totalHigh": 3,
+   "totalModerate": 15,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1133",
+     "n": 1
+    },
+    {
+     "gene": "Bmper",
+     "n": 1
+    },
+    {
+     "gene": "Nrcam",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0365": {
+   "totalHigh": 4,
+   "totalModerate": 16,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kcnd3",
+     "n": 1
+    },
+    {
+     "gene": "Olfr585",
+     "n": 1
+    },
+    {
+     "gene": "Vps13c",
+     "n": 1
+    },
+    {
+     "gene": "Gpr31b",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0366": {
+   "totalHigh": 1,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Rgs18",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0367": {
+   "totalHigh": 3,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dars",
+     "n": 1
+    },
+    {
+     "gene": "Mrgprb3",
+     "n": 1
+    },
+    {
+     "gene": "Vldlr",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0368": {
+   "totalHigh": 0,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0369": {
+   "totalHigh": 0,
+   "totalModerate": 13,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0370": {
+   "totalHigh": 2,
+   "totalModerate": 16,
+   "driverMuts": [
+    {
+     "gene": "Brca2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala1922Val",
+     "chrom": "5.0",
+     "pos": 150542537,
+     "af": 0.526
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Il18r1",
+     "n": 1
+    },
+    {
+     "gene": "Myo6",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0372": {
+   "totalHigh": 6,
+   "totalModerate": 34,
+   "driverMuts": [
+    {
+     "gene": "Ep300",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro1077Arg",
+     "chrom": "15.0",
+     "pos": 81630091,
+     "af": 0.241
+    },
+    {
+     "gene": "Ep300",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly1374Ala",
+     "chrom": "15.0",
+     "pos": 81640093,
+     "af": 0.237
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dll4",
+     "n": 1
+    },
+    {
+     "gene": "Usp12",
+     "n": 1
+    },
+    {
+     "gene": "Cd209c",
+     "n": 1
+    },
+    {
+     "gene": "Golga4",
+     "n": 1
+    },
+    {
+     "gene": "Olfr791",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0373": {
+   "totalHigh": 4,
+   "totalModerate": 37,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ifi205",
+     "n": 1
+    },
+    {
+     "gene": "Spta1",
+     "n": 1
+    },
+    {
+     "gene": "Nrcam",
+     "n": 1
+    },
+    {
+     "gene": "Habp2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0374": {
+   "totalHigh": 4,
+   "totalModerate": 65,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kmo",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r61",
+     "n": 1
+    },
+    {
+     "gene": "Sycp2l",
+     "n": 1
+    },
+    {
+     "gene": "Msl3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0377": {
+   "totalHigh": 0,
+   "totalModerate": 32,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0378": {
+   "totalHigh": 3,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Strap",
+     "n": 1
+    },
+    {
+     "gene": "Nlrp4b",
+     "n": 1
+    },
+    {
+     "gene": "Acin1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0379": {
+   "totalHigh": 2,
+   "totalModerate": 16,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Myh8",
+     "n": 1
+    },
+    {
+     "gene": "Tomm22",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0380": {
+   "totalHigh": 4,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kl",
+     "n": 1
+    },
+    {
+     "gene": "Bean1",
+     "n": 1
+    },
+    {
+     "gene": "Bmp5",
+     "n": 1
+    },
+    {
+     "gene": "Cog3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0381": {
+   "totalHigh": 1,
+   "totalModerate": 67,
+   "driverMuts": [
+    {
+     "gene": "Notch1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser183Arg",
+     "chrom": "2.0",
+     "pos": 26484461,
+     "af": 0.164
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ube3b",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0382": {
+   "totalHigh": 2,
+   "totalModerate": 37,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Prrc2c",
+     "n": 1
+    },
+    {
+     "gene": "Naip5",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0383": {
+   "totalHigh": 1,
+   "totalModerate": 6,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Clip4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0384": {
+   "totalHigh": 0,
+   "totalModerate": 11,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0387": {
+   "totalHigh": 1,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr338",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0389": {
+   "totalHigh": 7,
+   "totalModerate": 57,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Col3a1",
+     "n": 1
+    },
+    {
+     "gene": "Dcdc5",
+     "n": 1
+    },
+    {
+     "gene": "Col24a1",
+     "n": 1
+    },
+    {
+     "gene": "Plk5",
+     "n": 1
+    },
+    {
+     "gene": "Srgap1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0390": {
+   "totalHigh": 2,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Enpep",
+     "n": 1
+    },
+    {
+     "gene": "Clip1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0391": {
+   "totalHigh": 1,
+   "totalModerate": 9,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Anapc5",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0392": {
+   "totalHigh": 2,
+   "totalModerate": 26,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Reg3a",
+     "n": 1
+    },
+    {
+     "gene": "Vps53",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0393": {
+   "totalHigh": 0,
+   "totalModerate": 15,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Cys136Tyr",
+     "chrom": "19.0",
+     "pos": 32800014,
+     "af": 0.993
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0394": {
+   "totalHigh": 1,
+   "totalModerate": 14,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Cys136Tyr",
+     "chrom": "19.0",
+     "pos": 32800014,
+     "af": 0.987
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Igsf1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0395": {
+   "totalHigh": 1,
+   "totalModerate": 8,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Cys136Tyr",
+     "chrom": "19.0",
+     "pos": 32800014,
+     "af": 0.981
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "C2cd3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0396": {
+   "totalHigh": 2,
+   "totalModerate": 8,
+   "driverMuts": [
+    {
+     "gene": "Pten",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Cys136Tyr",
+     "chrom": "19.0",
+     "pos": 32800014,
+     "af": 0.988
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Zfp638",
+     "n": 1
+    },
+    {
+     "gene": "Uggt2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0398": {
+   "totalHigh": 2,
+   "totalModerate": 15,
+   "driverMuts": [
+    {
+     "gene": "Notch1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro362Gln",
+     "chrom": "2.0",
+     "pos": 26480988,
+     "af": 0.253
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Atg2b",
+     "n": 1
+    },
+    {
+     "gene": "Kcnq3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0399": {
+   "totalHigh": 2,
+   "totalModerate": 16,
+   "driverMuts": [
+    {
+     "gene": "Notch1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro362Gln",
+     "chrom": "2.0",
+     "pos": 26480988,
+     "af": 0.235
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Atg2b",
+     "n": 1
+    },
+    {
+     "gene": "Kcnq3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0400": {
+   "totalHigh": 3,
+   "totalModerate": 17,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Lgr5",
+     "n": 1
+    },
+    {
+     "gene": "Tlr11",
+     "n": 1
+    },
+    {
+     "gene": "Cdc23",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0401": {
+   "totalHigh": 3,
+   "totalModerate": 7,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Faf1",
+     "n": 1
+    },
+    {
+     "gene": "Megf8",
+     "n": 1
+    },
+    {
+     "gene": "Mcc",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0402": {
+   "totalHigh": 1,
+   "totalModerate": 6,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Sry",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0403": {
+   "totalHigh": 7,
+   "totalModerate": 78,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Lrrc7",
+     "n": 1
+    },
+    {
+     "gene": "Csmd3",
+     "n": 1
+    },
+    {
+     "gene": "Pcp4",
+     "n": 1
+    },
+    {
+     "gene": "Plg",
+     "n": 1
+    },
+    {
+     "gene": "Nrxn1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0406": {
+   "totalHigh": 1,
+   "totalModerate": 6,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ccdc170",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0407": {
+   "totalHigh": 0,
+   "totalModerate": 4,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0408": {
+   "totalHigh": 2,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Rpl6l",
+     "n": 1
+    },
+    {
+     "gene": "Vps53",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0412": {
+   "totalHigh": 2,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Brms1l",
+     "n": 1
+    },
+    {
+     "gene": "Ik",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0413": {
+   "totalHigh": 2,
+   "totalModerate": 23,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Mmp20",
+     "n": 1
+    },
+    {
+     "gene": "2009-03-01 00:00:00",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0414": {
+   "totalHigh": 0,
+   "totalModerate": 8,
+   "driverMuts": [
+    {
+     "gene": "Kit",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser44Pro",
+     "chrom": "5.0",
+     "pos": 75607088,
+     "af": 0.198
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0415": {
+   "totalHigh": 3,
+   "totalModerate": 12,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Adamtsl2",
+     "n": 1
+    },
+    {
+     "gene": "Spaca7",
+     "n": 1
+    },
+    {
+     "gene": "Hoxb3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0416": {
+   "totalHigh": 1,
+   "totalModerate": 13,
+   "driverMuts": [
+    {
+     "gene": "Erbb3",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu1215Asp",
+     "chrom": "10.0",
+     "pos": 128569743,
+     "af": 0.129
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Jakmip3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0417": {
+   "totalHigh": 1,
+   "totalModerate": 1,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Asah1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0418": {
+   "totalHigh": 3,
+   "totalModerate": 13,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ankib1",
+     "n": 1
+    },
+    {
+     "gene": "Cdk14",
+     "n": 1
+    },
+    {
+     "gene": "Csmd3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0419": {
+   "totalHigh": 1,
+   "totalModerate": 13,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Rspo4",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0421": {
+   "totalHigh": 2,
+   "totalModerate": 13,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Acap3",
+     "n": 1
+    },
+    {
+     "gene": "Taar3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0422": {
+   "totalHigh": 1,
+   "totalModerate": 39,
+   "driverMuts": [
+    {
+     "gene": "Brca2",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ser3322Arg",
+     "chrom": "5.0",
+     "pos": 150569487,
+     "af": 0.119
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Amigo2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0423": {
+   "totalHigh": 5,
+   "totalModerate": 42,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Mup17",
+     "n": 2
+    },
+    {
+     "gene": "Cntln",
+     "n": 1
+    },
+    {
+     "gene": "Ighv3-7",
+     "n": 1
+    },
+    {
+     "gene": "Katnal2",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0424": {
+   "totalHigh": 3,
+   "totalModerate": 3,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Stil",
+     "n": 1
+    },
+    {
+     "gene": "Vprbp",
+     "n": 1
+    },
+    {
+     "gene": "Dnah11",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0425": {
+   "totalHigh": 3,
+   "totalModerate": 28,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Brinp2",
+     "n": 1
+    },
+    {
+     "gene": "Fto",
+     "n": 1
+    },
+    {
+     "gene": "Fbxw10",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0426": {
+   "totalHigh": 0,
+   "totalModerate": 24,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0427": {
+   "totalHigh": 3,
+   "totalModerate": 28,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Acat1",
+     "n": 1
+    },
+    {
+     "gene": "Strn3",
+     "n": 1
+    },
+    {
+     "gene": "Evl",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0428": {
+   "totalHigh": 1,
+   "totalModerate": 8,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Arhgef38",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0429": {
+   "totalHigh": 0,
+   "totalModerate": 10,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0431": {
+   "totalHigh": 0,
+   "totalModerate": 16,
+   "driverMuts": [
+    {
+     "gene": "Bcor",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Asn294His",
+     "chrom": "X",
+     "pos": 12058476,
+     "af": 0.449
+    }
+   ],
+   "topHighImpactGenes": []
+  },
+  "MCCA0432": {
+   "totalHigh": 0,
+   "totalModerate": 14,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0433": {
+   "totalHigh": 0,
+   "totalModerate": 7,
+   "driverMuts": [],
+   "topHighImpactGenes": []
+  },
+  "MCCA0434": {
+   "totalHigh": 2,
+   "totalModerate": 47,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ambra1",
+     "n": 1
+    },
+    {
+     "gene": "Olfr960",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0436": {
+   "totalHigh": 7,
+   "totalModerate": 9,
+   "driverMuts": [
+    {
+     "gene": "Crebbp",
+     "impact": "HIGH",
+     "effect": "frameshift_variant&splice_acceptor_variant&splice_region_variant&intron_variant",
+     "hgvsP": "p.Asp1125fs",
+     "chrom": "16.0",
+     "pos": 4108273,
+     "af": 0.196
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Dhx9",
+     "n": 1
+    },
+    {
+     "gene": "Olfr1223",
+     "n": 1
+    },
+    {
+     "gene": "Pex2",
+     "n": 1
+    },
+    {
+     "gene": "Tnc",
+     "n": 1
+    },
+    {
+     "gene": "Lig3",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0437": {
+   "totalHigh": 3,
+   "totalModerate": 28,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Kdm2b",
+     "n": 1
+    },
+    {
+     "gene": "Slc4a1",
+     "n": 1
+    },
+    {
+     "gene": "Tcerg1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0446": {
+   "totalHigh": 14,
+   "totalModerate": 221,
+   "driverMuts": [
+    {
+     "gene": "Apc",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Ala1604Pro",
+     "chrom": "18.0",
+     "pos": 34314862,
+     "af": 0.442
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Glu255Gln",
+     "chrom": "11.0",
+     "pos": 69589240,
+     "af": 0.991
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Aox2",
+     "n": 1
+    },
+    {
+     "gene": "Serpinb3b",
+     "n": 1
+    },
+    {
+     "gene": "Traf5",
+     "n": 1
+    },
+    {
+     "gene": "Slc4a11",
+     "n": 1
+    },
+    {
+     "gene": "Selenbp1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0447": {
+   "totalHigh": 11,
+   "totalModerate": 260,
+   "driverMuts": [
+    {
+     "gene": "Trp53",
+     "impact": "HIGH",
+     "effect": "stop_gained",
+     "hgvsP": "p.Lys289*",
+     "chrom": "11.0",
+     "pos": 69589664,
+     "af": 0.399
+    },
+    {
+     "gene": "Atm",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Asn3013Thr",
+     "chrom": "9.0",
+     "pos": 53439909,
+     "af": 0.324
+    },
+    {
+     "gene": "Crebbp",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Trp1152Cys",
+     "chrom": "16.0",
+     "pos": 4108192,
+     "af": 0.103
+    },
+    {
+     "gene": "Kmt2c",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Gly4054Ala",
+     "chrom": "5.0",
+     "pos": 25290587,
+     "af": 0.119
+    },
+    {
+     "gene": "Mlh1",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Lys377Arg",
+     "chrom": "9.0",
+     "pos": 111241516,
+     "af": 0.133
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Lys129Asn",
+     "chrom": "11.0",
+     "pos": 69588384,
+     "af": 0.49
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Lzts3",
+     "n": 1
+    },
+    {
+     "gene": "RP23-92D22.3",
+     "n": 1
+    },
+    {
+     "gene": "Ift172",
+     "n": 1
+    },
+    {
+     "gene": "Klk1b26",
+     "n": 1
+    },
+    {
+     "gene": "Klk1b16",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0449": {
+   "totalHigh": 12,
+   "totalModerate": 196,
+   "driverMuts": [
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Tyr233Cys",
+     "chrom": "11.0",
+     "pos": 69589175,
+     "af": 0.436
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Met243Leu",
+     "chrom": "11.0",
+     "pos": 69589204,
+     "af": 0.329
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Ttn",
+     "n": 2
+    },
+    {
+     "gene": "Ptpn14",
+     "n": 1
+    },
+    {
+     "gene": "Slc2a5",
+     "n": 1
+    },
+    {
+     "gene": "Myo1h",
+     "n": 1
+    },
+    {
+     "gene": "Klra17",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0451": {
+   "totalHigh": 8,
+   "totalModerate": 115,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Neu2",
+     "n": 1
+    },
+    {
+     "gene": "Sycp2",
+     "n": 1
+    },
+    {
+     "gene": "Smcp",
+     "n": 1
+    },
+    {
+     "gene": "Zic1",
+     "n": 1
+    },
+    {
+     "gene": "Cdh9",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0464": {
+   "totalHigh": 8,
+   "totalModerate": 109,
+   "driverMuts": [
+    {
+     "gene": "Erbb3",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Phe363Val",
+     "chrom": "10.0",
+     "pos": 128581786,
+     "af": 0.574
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Neu2",
+     "n": 1
+    },
+    {
+     "gene": "Mmp9",
+     "n": 1
+    },
+    {
+     "gene": "Smcp",
+     "n": 1
+    },
+    {
+     "gene": "Vmn1r63",
+     "n": 1
+    },
+    {
+     "gene": "Zic1",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0466": {
+   "totalHigh": 2,
+   "totalModerate": 30,
+   "driverMuts": [],
+   "topHighImpactGenes": [
+    {
+     "gene": "Bpifb9a",
+     "n": 1
+    },
+    {
+     "gene": "Vegfc",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0467": {
+   "totalHigh": 13,
+   "totalModerate": 89,
+   "driverMuts": [
+    {
+     "gene": "Atrx",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Tyr1805His",
+     "chrom": "X",
+     "pos": 105836418,
+     "af": 0.131
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Olfr1098",
+     "n": 1
+    },
+    {
+     "gene": "Smcp",
+     "n": 1
+    },
+    {
+     "gene": "Srsf12",
+     "n": 1
+    },
+    {
+     "gene": "Kcnh2",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r57",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0469": {
+   "totalHigh": 2,
+   "totalModerate": 94,
+   "driverMuts": [
+    {
+     "gene": "Kmt2d",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Leu943Phe",
+     "chrom": "15.0",
+     "pos": 98862549,
+     "af": 0.111
+    },
+    {
+     "gene": "Trp53",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro149Thr",
+     "chrom": "11.0",
+     "pos": 69588442,
+     "af": 0.985
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Tnr",
+     "n": 1
+    },
+    {
+     "gene": "Brd7",
+     "n": 1
+    }
+   ]
+  },
+  "MCCA0470": {
+   "totalHigh": 7,
+   "totalModerate": 60,
+   "driverMuts": [
+    {
+     "gene": "Kmt2d",
+     "impact": "MODERATE",
+     "effect": "missense_variant",
+     "hgvsP": "p.Pro475Ala",
+     "chrom": "15.0",
+     "pos": 98864045,
+     "af": 0.324
+    }
+   ],
+   "topHighImpactGenes": [
+    {
+     "gene": "Smcp",
+     "n": 1
+    },
+    {
+     "gene": "Trim33",
+     "n": 1
+    },
+    {
+     "gene": "Zic1",
+     "n": 1
+    },
+    {
+     "gene": "Vmn2r82",
+     "n": 1
+    },
+    {
+     "gene": "Dach1",
+     "n": 1
+    }
+   ]
+  }
+ }
+}

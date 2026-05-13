@@ -12,6 +12,7 @@
   const MCCA_CELLO_URL = 'web_data/mcca_cellosaurus.json';
   const TISMO_URL = 'web_data/tismo_enrichment.json';
   const PUBMED_URL = 'web_data/pubmed_presence.json';
+  const MUT_URL = 'web_data/mutations.json';
 
   // ---------- load ----------
   let meta;
@@ -134,6 +135,28 @@
     console.warn('Could not load PubMed presence:', e);
   }
 
+  // Driver-mutation calls from MCCA's mutation file. Adds:
+  //   meta.mutations[cl] = {totalHigh, totalModerate, driverMuts: [...]}
+  // For lines that have any driver-panel hits, also adds a contributor
+  // line to meta.sources[cl] so the "Data from" chip row reflects the
+  // mutation layer (separate from MCCA's bulk metadata contribution).
+  if (!meta.mutations) meta.mutations = {};
+  try {
+    const mr = await fetch(MUT_URL);
+    if (mr.ok) {
+      const md = await mr.json();
+      for (const [cl, v] of Object.entries(md.byCellLine || {})) {
+        meta.mutations[cl] = v;
+        // Upgrade the MCCA chip's what-text so users see this line has
+        // mutation data alongside metadata.
+        const src = (meta.sources?.[cl] || []).find(s => s.name === 'MCCA');
+        if (src) src.what = 'metadata + WES mutation calls';
+      }
+    }
+  } catch (e) {
+    console.warn('Could not load mutations:', e);
+  }
+
   try {
     const lr = await fetch(LIT_URL);
     if (lr.ok) {
@@ -253,6 +276,48 @@
     };
     const p = palettes[alt] || { bg: '#f3f4f6', fg: '#6b7280', border: '#e5e7eb' };
     return `<span class="badge" style="background:${p.bg}; color:${p.fg}; border-color:${p.border}; font-family:ui-monospace, monospace; font-size:10px;">${alt}</span>`;
+  }
+
+  // Render the MCCA-derived mutation block (raw WES calls). Separate
+  // from the literature-curated `drivers` array because the data shape
+  // and provenance are different: this is per-variant SnpEff output
+  // with HGVS_p, not a hand-curated alteration tag.
+  function renderMccaMutations(m) {
+    if (!m) return '';
+    const drivers = m.driverMuts || [];
+    const tmbBlock = `<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;">
+      <span class="badge" style="background:#fee2e2; color:#991b1b; border-color:#fecaca;"><b>${m.totalHigh}</b> HIGH-impact</span>
+      <span class="badge" style="background:#fef3c7; color:#92400e; border-color:#fde68a;"><b>${m.totalModerate}</b> MODERATE-impact</span>
+    </div>`;
+    let drvBlock = '';
+    if (drivers.length) {
+      const rows = drivers.slice(0, 30).map(d => {
+        const palette = d.impact === 'HIGH'
+          ? { bg:'#fee2e2', fg:'#991b1b', border:'#fecaca' }
+          : { bg:'#fef3c7', fg:'#92400e', border:'#fde68a' };
+        const pill = `<span class="badge" style="background:${palette.bg}; color:${palette.fg}; border-color:${palette.border}; font-family:ui-monospace, monospace; font-size:10px;">${d.impact}</span>`;
+        const effect = (d.effect || '').replace(/_/g, ' ').replace(/&/g, ' + ');
+        return `<div style="display:grid; grid-template-columns: 110px 70px 1fr 90px; gap:8px; align-items:baseline; padding:3px 0; border-bottom:1px solid #f3f4f6; font-size:11px;">
+          <div><code style="font-weight:600; color:#374151;">${d.gene}</code></div>
+          <div>${pill}</div>
+          <div style="color:var(--gray-700);">${effect} ${d.hgvsP ? `<code style="color:#374151;">${d.hgvsP}</code>` : ''}</div>
+          <div style="color:var(--gray-500); font-size:10px; text-align:right; font-variant-numeric:tabular-nums;">${d.chrom ? `chr${d.chrom}:${d.pos}` : ''}</div>
+        </div>`;
+      }).join('');
+      drvBlock = `<div style="font-size:11px; color:var(--gray-500); margin: 8px 0 4px;">Driver-panel hits (${drivers.length}${drivers.length > 30 ? ', showing top 30' : ''}):</div>${rows}`;
+    }
+    let topGenesBlock = '';
+    if (m.topHighImpactGenes && m.topHighImpactGenes.length) {
+      const chips = m.topHighImpactGenes.map(g => `<span style="background:#f3f4f6; padding:1px 6px; border-radius:10px; font-size:10px; border:1px solid #e5e7eb; margin-right:3px;"><code>${g.gene}</code> × ${g.n}</span>`).join('');
+      topGenesBlock = `<div style="margin-top:8px; font-size:11px;"><span style="color:var(--gray-500);">Top HIGH-impact non-panel genes:</span> ${chips}</div>`;
+    }
+    return `
+      <div class="section-title">Mutations &mdash; MCCA WES calls</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px;">SnpEff-annotated variants from MCCA's <a href="https://www.mcca.tum.de" target="_blank" rel="noopener" style="color:var(--green-700);">2025Q3 mutation release ↗</a>. Filtered to HIGH and MODERATE impact; pseudogenes (Gm*, *Rik) dropped. Counts are a rough TMB proxy.</div>
+      ${tmbBlock}
+      ${drvBlock}
+      ${topGenesBlock}
+    `;
   }
 
   function renderDrivers(drivers) {
@@ -408,6 +473,13 @@
           // Negative count for ascending = highest count first.
           const c = meta.pubmed?.[cl]?.count;
           return c == null ? 0 : -c;
+        }
+        case 'tmb':     {
+          const m = meta.mutations?.[cl];
+          // TMB-proxy: total HIGH + MODERATE-impact filtered variants.
+          // Negative for ascending = highest TMB first.
+          if (!m) return 0;
+          return -(m.totalHigh + m.totalModerate / 10);
         }
         default:        return (meta.names[cl] || cl).toLowerCase();
       }
@@ -598,6 +670,8 @@
       ${row('Chromothripsis',        meta.chromothripsis[cl])}
 
       ${renderDrivers(meta.drivers?.[cl])}
+
+      ${renderMccaMutations(meta.mutations?.[cl])}
 
       <div class="section-title">Immune context</div>
       ${row('MHC haplotype A',         meta.mhcA[cl])}
