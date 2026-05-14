@@ -25,11 +25,8 @@ presence), primary literature (8 deep curated workhorses).
 - ✅ "Pick a model" guided picker (v0.22) — 5 preset goals
   (ICB-responsive / cold-resistant / high-TMB / PD-L1-high / MHC-I-loss),
   lineage filter, ranked candidates with match-reason explanations.
-
-## Quick wins still open (~30-60 min each)
-
-- [ ] **CURATED_CELL_LINES.md refresh** — it's still v0.1 era.
-- [ ] **README sources table refresh** — sync with current contents.
+- ✅ README + CURATED_CELL_LINES.md refreshed (v0.23) to reflect the
+  full v0.22 feature set and current data coverage.
 
 ## Heavier still open
 
